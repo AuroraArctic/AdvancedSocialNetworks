@@ -1,0 +1,130 @@
+##########################
+# STATISTICS
+##########################
+
+# FLORENTINE FAMILIES
+
+# Libraries import
+library(sna)
+library(tidyverse)
+
+# Data import
+PFM<-as.matrix(read.csv("Datasets/Padgett_FlorentineFamilies_Marriage.csv",
+                        stringsAsFactors=FALSE, row.names=1))
+PFA<-read.csv("Datasets/Padgett_FlorentineFamilies_Attributes.csv",
+              stringsAsFactors=FALSE, row.names=1)
+
+# Converting the matrix into network
+PFMn<-as.network(PFM, directed=F)
+
+# Working on nodes colors...
+## Defining the number of colors necessary to map wealth 
+n_colors<-max(PFA$Priors)-min(PFA$Priors)+1
+
+## Create a function to generate a palette
+colfunc <- colorRampPalette(c("#B78FB3", "#22BFAC"))
+
+## Generate range
+vertex_color<-colfunc(n_colors)[PFA$Priors-min(PFA$Priors)+1]
+
+# Plotting the families based on their wealth
+gplot(PFMn, 
+      gmode="graph",
+      #layout
+      mode="fruchtermanreingold",
+      jitter=F,
+      #ties
+      edge.col="grey70",
+      #nodes
+      vertex.col=vertex_color,
+      vertex.cex=PFA$Wealth/80+1,
+      #labels
+      displaylabels=T,
+      label.pos=1,
+      label.cex=.7)
+
+
+# Degree
+as.data.frame(sna::degree(PFMn, gmode="graph"), rownames(PFM))
+PFMn.Deg<-sna::degree(PFMn, gmode="graph")
+
+
+############################
+# STATISTICAL TESTS
+############################
+
+## Correlation test between degree and priors
+cor.test(PFMn.Deg,PFA$Priors) # positive correlation
+
+## Linear Model
+M1<-lm(PFMn.Deg~PFA$Priors) 
+summary(M1)
+
+# PERMUTATION BASED APPROACH
+
+## Data preparation
+PFA.P<-PFA$Priors
+sample(PFA.P) # Sample of priors with no replacement
+
+sample_matrix<-matrix(NA,1000,1) # Initializing the matrix
+
+for (k in c(1:1000))
+{
+  PFA.P_PERM<-sample(PFA.P) # Permutation of Priors
+  # Compute correlation between degree and Priors permuted
+  sample_matrix[k,1]<-cor(PFMn.Deg,PFA.P_PERM) 
+}
+
+## Information of the Matrix with correlations
+summary(sample_matrix)
+
+## Plotting the correlation trend among samplings
+par(mar=c(3,3,3,3))
+hist(sample_matrix, breaks=50)
+
+## Sum 
+(corRealValue<-cor(PFMn.Deg,PFA$Priors)) # Actual correlation with no sampling
+sum(sample_matrix>=corRealValue)/1000 # Mean correlation above actual cor
+sum(sample_matrix<=-corRealValue)/1000 # Mean correlation below actual cor
+
+# Summing them
+sum(sample_matrix>=corRealValue)/1000 + sum(sample_matrix<=-corRealValue)/1000
+
+# Consinder the absolute number of correlation
+sum(sample_matrix>=abs(corRealValue))/1000
+sum(sample_matrix<=-abs(corRealValue))/1000
+sum(sample_matrix>=abs(corRealValue))/1000 + sum(OUTPUT<=-abs(corRealValue))/1000
+
+# SPECIFIC DATA SAMPLING
+x1<-c(7,8,6,7,0,8,9,7,8,5,9,7,8,7)
+y1<-c(5,6,7,9,0,4,6,5,6,7,6,7,7,9)
+plot(x1,y1)
+cor(x1,y1)
+cor.test(x1,y1)
+
+# Initializing output as matrix that does not follow a 
+# normal distribution through permutation based approaches
+OUTPUT<-matrix(NA,20000,1)
+for (k in c(1:20000))
+{
+  x1_PERM<-sample(x1)
+  OUTPUT[k,1]<-cor(y1,x1_PERM)
+}
+hist(OUTPUT, nclass=20, prob=T)
+
+## 95%-CI
+mean(OUTPUT)+sd(OUTPUT)*1.96
+mean(OUTPUT)-sd(OUTPUT)*1.96
+
+## 2 approaches
+x <- seq(min(OUTPUT), max(OUTPUT), length = 40)
+f <- dnorm(x, mean = mean(OUTPUT), sd = sd(OUTPUT))
+
+hist(OUTPUT, nclass=20, prob=T, col="cornflowerblue")
+lines(x, f, col = "blue", lwd = 2, type = "b")
+
+curve(dnorm(x, mean=mean(OUTPUT), sd=sd(OUTPUT)), 
+      col="darkblue", lwd=2, add=TRUE)
+sum(OUTPUT>cor(x1,y1))/20000
+
+abline(v=cor(x1,y1), lwd=3, col="red")

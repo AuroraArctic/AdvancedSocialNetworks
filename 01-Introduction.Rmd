@@ -1,0 +1,165 @@
+\part{Theory}
+
+# Introduction
+
+## Social Network Analysis
+
+*What is a social network?*
+
+<aside>
+💡 It involves not only the existence of a network but also the social component (the presence of more entities interacting with each other).
+
+</aside>
+
+*Is Instagram a social network?*
+
+<aside>
+💡 Yes, since it is a network that links people
+
+</aside>
+
+*Is the communication between students a social network?*
+
+<aside>
+💡 It is since it represents the link between and among two or more students.
+
+</aside>
+
+*Is a supply chain a social network?*
+
+<aside>
+💡 Each role inside the supply chain is linked with the previous and the following
+
+</aside>
+
+*Is the Tokyo train line a social network?*
+
+<aside>
+💡 It is a network, but since it does not primarily involve people: it may link them, but mainly geographically and individually.
+
+</aside>
+
+*Is our brain a social network?*
+
+<aside>
+💡 It is a network, but not necessarily a social one: it is supposed to be so whenever we interact with external factors.
+
+</aside>
+
+*Can words be part of a social network?*
+
+<aside>
+💡 They can be if we trace what people say and link words based on the topic, the person, the place, the context etc. Remember that documents or conversations may be both the context and the node that may be linked to other documents or conversations, based on what we're studying (e.g. communication between two or more individuals, events, etc).
+
+</aside>
+
+### Definition
+
+**Networks** are a way of thinking about social systems that focus our attention on the relationships among the entities that make up the system, which we call actors or nodes. These are the focus of **Network Science**.  
+
+The nodes in a network can be almost anything, although when we talk about social networks we normally expect the nodes to be active agents rather than, say, inanimate objects. Most often, nodes are individuals, but can also be collectivities. **Social Network Analysis** focuses on humans and how their actions and mechanisms impact the system of interest. 
+
+In a social network, we can find:
+
+- **Nodes** or vertices, entities that are linked together and are studied;
+- **Ties** or Edges, which link nodes with one another;
+- **Boundary**, a delimited group where some nodes are part of it and some others don't. It's like the criteria of choosing a subset of data inside a much bigger group of nodes and links.
+
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+knitr::include_graphics("images/01-Introduction/Untitled.png")
+```
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Nodes} & \textbf{Edges}      & \textbf{Boundary}              \\ \midrule
+Students       & Friends/Enemies     & All students in a year         \\
+Protesters     & Communicate         & All protesters at an event     \\
+Organisations  & Collaborate         & All organisations in a field   \\
+Regions        & People move between & All regions in Italy           \\
+Countries      & Trade               & All EU Countries               \\
+Words          & Used together       & All tweets on a specific topic \\ \bottomrule
+\end{tabular}
+\caption{Example of possible networks, specifying nodes, edges and the boundary. }
+\label{tab:network_example}
+\end{table}
+
+
+### Social Network Representation
+
+A usual representation for networks is the **Adjacency matrix**, a square matrix that can be reciprocal (mirrored) or not (different if we swap columns and rows). Generally, self-loops do not make sense, therefore in certain situations, we can just ignore them by inserting a 0. Whenever there is a tie linking two nodes, we insert a 1. 
+
+The value inside the adjacency matrix between a couple of nodes may assume values different from 0 and 1, e.g. the weight of the tie. By adding attributes (e.g. age, gender),  we could modify the network representation based on a specific attribute (e.g. colour, size, shape). 
+
+## Types of networks
+
+### Sociocentric or complete network analysis
+
+A complete or **sociocentric network** is such that we detain data about the mutual relationship of every couple of nodes inside the considered network. Normally, an **ego network analysis** belongs to such type of networks, where there is a central node and we're interested in modelling all relationships entertained with that subject.
+
+<aside>
+💡 *For instance, a LinkedIn ego network contains a central node and its connected contacts, which may be divided into different categories, based on the context (e.g. university, colleagues, fields of interest etc).*
+
+</aside>
+
+An extension to the ego network approach is to continue iterating and expanding the network, starting from a single node and iterating over its linked nodes (**Snowball sampling**). 
+
+### Directed and undirected networks
+
+<aside>
+💡 *Normally, friendships is an undirected network, since it is mutual, but not all people we define as such will agree with us, since they may have other priorities people to think to. 
+Friendship requires frequent meetings, trust, long-term relationships. Friendship is a concept that requires specific behaviours and expectations.*
+
+</aside>
+
+Undirected networks are such that relationships are mutual and both parts know they're linked. 
+
+Directed networks may be represented both by straight lines with two arrows or curved lines with two lines, pointing in opposite directions. 
+
+### Multiple network relations
+
+We could look at:
+
+- different types of links (e.g. positive and negative), differentiated by the link or node colour;
+- how relationships evolve among the same nodes;
+
+### Weighted networks
+
+These types of networks have weights or values of the edge, where nodes or links may have different importances from each other. 
+
+### Two-mode or Bipartite networks
+
+In two-mode networks, there are two types of nodes, where each node is associated with the other type. It's an undirect way to look at connections between people that may be unconscious. 
+
+The two-mode network can be projected to a one-mode network, based on their common connections to the other type node. 
+
+## Levels of analysis
+
+- **Group Level**
+    
+    We look at the entire network, not focusing on a specific node, looking at communities or how far some nodes are from each other.
+    
+    <aside>
+    💡 *Do well-connected networks tend to diffuse ideas faster?*
+    
+    </aside>
+    
+- **Individual Level**
+    
+    Focusing on a single node, we look at its connections and position inside the network (e.g. centralisation, density). Most node-level network properties are aggregations of dyad-level measurements, as when we count the number of ties that a node has.
+    
+    <aside>
+    💡 *Do actors with more friends tend to have stronger immune systems?*
+    
+    </aside>
+    
+- **Dyadic Level**
+    
+    We study pairwise relations between actors and ask research questions. The dyad level is the fundamental unit of network data collection, and is the unit with the greatest frequency.
+    
+    <aside>
+    💡 *Do pairs of actors with business ties tend to develop affective ties?*
+    
+    </aside>

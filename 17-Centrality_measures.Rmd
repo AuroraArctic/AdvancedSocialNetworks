@@ -1,0 +1,168 @@
+# Centrality Measures
+
+## Scientists example
+```{r}
+library(sna)
+
+# SCIENTISTS COLLABORATION
+BS504Cx<-as.matrix(read.csv("Datasets/Borgatti_Scientists504_Collaboration.csv",
+                            stringsAsFactors=FALSE, row.names=1))
+
+# Pick only those who have at least 3 collabs
+BS504C<-(BS504Cx>3)
+
+# Plotting the collaborations
+par(mar=c(0,0,0,0))
+gplot(BS504C, 
+      gmode="graph",
+      #layout
+      mode="kamadakawai",
+      jitter=F,
+      #ties
+      edge.col="grey80", 
+      edge.lwd=.1,
+      #nodes
+      vertex.col="cornflowerblue",
+      vertex.cex=.75)
+```
+
+```{r}
+# Inserting attributes
+BS504Attr<-read.csv("Datasets/Borgatti_Scientists504_Attributes.csv",
+                    stringsAsFactors=FALSE, row.names=1)
+
+Tenure<-(BS504Attr$Years) # Years attribute
+TenureA<-(round(10*(Tenure)/max((Tenure)))) # Normalizing years
+colfunc <- colorRampPalette(c("#B78FB3", "#22BFAC")) # color palette
+
+COLWB<-colfunc(7) # 7 colors
+vertex_color = ifelse(TenureA %in% c(5,6),COLWB[6],
+                      ifelse(TenureA>=7, COLWB[7],COLWB[TenureA+1]))
+
+par(mar=c(0,0,0,0))
+gplot(BS504C, 
+      gmode="graph", 
+      #layout
+      mode="kamadakawai",
+      jitter = F,
+      #ties
+      edge.col="grey80",
+      edge.lwd=.2, 
+      #nodes
+      vertex.col=vertex_color, # color
+      vertex.cex=1,#1+.7*(2-BS504Attr$Sex), 
+      vertex.sides=BS504Attr$Sex-1*47+3)
+
+legend("topright",
+       legend = c("Colors"," Senior", " Junior", " ","Shapes", " Male", " Female"),
+       col = c("white","#B78FB3","#22BFAC","white","white","black","black"), 
+       bty = "n", 
+       pch =c(19,19,19,19,19,19,18),
+       pt.cex = c(0,2.1,2.1,0,0,1.7,1.9), 
+       cex = 1, 
+       text.col = "grey10", 
+       horiz = F , 
+       inset = c(0.01))
+```
+## Florentine Families
+
+```{r}
+# FLORENTINE FAMILIES
+PFM<-as.matrix(read.csv("Datasets/Padgett_FlorentineFamilies_Marriage.csv",
+                        stringsAsFactors=FALSE, row.names=1))
+PFMn<-as.network(PFM, directed=F)
+gplot(PFMn, 
+      gmode="graph",
+      #layout
+      mode="fruchtermanreingold",
+      jitter=F,
+      #ties
+      edge.col="grey80",
+      #nodes
+      vertex.col="cornflowerblue",
+      #labels
+      displaylabels=T,
+      label.pos=1,
+      label.cex=.8)
+```
+
+
+```{r}
+# Add attributes file and use wealth to change size of nodes (vertex.cex)
+PFA<-read.csv("Datasets/Padgett_FlorentineFamilies_Attributes.csv",
+               stringsAsFactors=FALSE, row.names=1)
+
+# Color palette
+n_colors<-max(PFA$Priors)-min(PFA$Priors)+1
+colfunc <- colorRampPalette(c("#FFD670", "#70D6FF"))
+colors<-colfunc(n_colors)
+vertex_colors<-colors[PFA$Priors+1]
+
+par(mar=c(0,0,0,0))
+gplot(PFMn, 
+      gmode="graph",
+      #layout
+      mode="fruchtermanreingold",
+      jitter=F,
+      #ties
+      edge.col="grey20",
+      #nodes
+      vertex.col=vertex_colors,
+      vertex.cex=PFA$Wealth/80+1,
+      #labels
+      displaylabels=T,
+      label.pos=1,
+      label.cex=.7)
+```
+
+
+```{r}
+# Calculate centrality measures
+
+## Degree
+sna::degree(PFMn, gmode="graph")
+
+## Betweenness centrality
+sna::betweenness(PFMn, gmode="graph", cmode="undirected")
+
+## Bonacich Power Centrality
+sna::bonpow(PFMn, gmode="graph", exponent=0)
+
+## Constraint index
+library(igraph)
+PFM_i<-graph_from_adjacency_matrix(as.matrix(PFM),mode="undirected", diag=F)
+constraint(PFM_i)
+```
+
+
+```{r}
+# Statistical tests for significance
+PFMn.Deg<-sna::degree(PFMn, gmode="graph")
+
+cor.test(PFMn.Deg,PFA$Priors) # Number of families vs Priors
+cor.test(PFMn.Deg,PFA$Wealth) # Number or families vs Wealth
+cor.test(PFA$Priors,PFA$Wealth) # Priors vs Wealth
+```
+
+
+```{r}
+# Linear Models
+## One of them
+M1<-lm(PFMn.Deg~PFA$Priors)
+summary(M1)
+## Both of them
+M2<-lm(PFMn.Deg~PFA$Priors+PFA$Wealth)
+summary(M2)
+```
+
+
+```{r}
+# Bonacich Centrality
+exponents = c(seq(-0.5,0.5,0.1))
+bonpow_results = c()
+for(e in exponents){
+   bonpow_results = append(bonpow_results,
+                           sna::bonpow(PFA, gmode="graph", exponent=e))
+}
+
+bonpow_results

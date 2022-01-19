@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Visualization | Advanced Social Networks</title>
+  <meta name="description" content="Chapter 7 Visualization | Advanced Social Networks" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Visualization | Advanced Social Networks" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="AuroraArctic/AdvancedSocialNetworks" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Visualization | Advanced Social Networks" />
+  
+  
+  
+
+<meta name="author" content="Aurora Maria Tumminello" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="references.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Class Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#social-network-analysis"><i class="fa fa-check"></i><b>1.1</b> Social Network Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#definition"><i class="fa fa-check"></i><b>1.1.1</b> Definition</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#social-network-representation"><i class="fa fa-check"></i><b>1.1.2</b> Social Network Representation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#types-of-networks"><i class="fa fa-check"></i><b>1.2</b> Types of networks</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#sociocentric-or-complete-network-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Sociocentric or complete network analysis</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#directed-and-undirected-networks"><i class="fa fa-check"></i><b>1.2.2</b> Directed and undirected networks</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#multiple-network-relations"><i class="fa fa-check"></i><b>1.2.3</b> Multiple network relations</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#weighted-networks"><i class="fa fa-check"></i><b>1.2.4</b> Weighted networks</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#two-mode-or-bipartite-networks"><i class="fa fa-check"></i><b>1.2.5</b> Two-mode or Bipartite networks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#levels-of-analysis"><i class="fa fa-check"></i><b>1.3</b> Levels of analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-measures.html"><a href="basic-measures.html"><i class="fa fa-check"></i><b>2</b> Basic Measures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-measures.html"><a href="basic-measures.html#degree-centrality"><i class="fa fa-check"></i><b>2.1</b> Degree centrality</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network"><i class="fa fa-check"></i><b>2.1.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network"><i class="fa fa-check"></i><b>2.1.2</b> Undirected Network</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-measures.html"><a href="basic-measures.html#density-and-average-degree"><i class="fa fa-check"></i><b>2.2</b> Density and average degree</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-1"><i class="fa fa-check"></i><b>2.2.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-1"><i class="fa fa-check"></i><b>2.2.2</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.2.3" data-path="basic-measures.html"><a href="basic-measures.html#average-degree"><i class="fa fa-check"></i><b>2.2.3</b> Average Degree</a></li>
+<li class="chapter" data-level="2.2.4" data-path="basic-measures.html"><a href="basic-measures.html#importance-of-density"><i class="fa fa-check"></i><b>2.2.4</b> Importance of density</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-measures.html"><a href="basic-measures.html#degree-centralization"><i class="fa fa-check"></i><b>2.3</b> Degree-centralization</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#direct-connections"><i class="fa fa-check"></i><b>3.1</b> Direct connections</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#density"><i class="fa fa-check"></i><b>3.1.1</b> Density</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#average-degree-1"><i class="fa fa-check"></i><b>3.1.2</b> Average Degree</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#components"><i class="fa fa-check"></i><b>3.2</b> Components</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#component-ratio"><i class="fa fa-check"></i><b>3.2.1</b> Component ratio</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#connectedness-and-fragmentation"><i class="fa fa-check"></i><b>3.2.2</b> Connectedness and fragmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cohesion-measures.html"><a href="cohesion-measures.html#geodesic"><i class="fa fa-check"></i><b>3.3</b> Geodesic</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#compactness-and-breadth"><i class="fa fa-check"></i><b>3.3.1</b> Compactness and breadth</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#k-step-approach"><i class="fa fa-check"></i><b>3.3.2</b> K-step approach</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cohesion-measures.html"><a href="cohesion-measures.html#exercises"><i class="fa fa-check"></i><b>3.4</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#comment-on-the-results-obtained"><i class="fa fa-check"></i><b>3.4.1</b> Comment on the results obtained</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="centrality.html"><a href="centrality.html"><i class="fa fa-check"></i><b>4</b> Centrality</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="centrality.html"><a href="centrality.html#degree-centrality-1"><i class="fa fa-check"></i><b>4.1</b> Degree Centrality</a></li>
+<li class="chapter" data-level="4.2" data-path="centrality.html"><a href="centrality.html#closeness-centrality"><i class="fa fa-check"></i><b>4.2</b> Closeness Centrality</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="centrality.html"><a href="centrality.html#freemans-closeness-centrality"><i class="fa fa-check"></i><b>4.2.1</b> Freeman’s closeness centrality</a></li>
+<li class="chapter" data-level="4.2.2" data-path="centrality.html"><a href="centrality.html#reciprocal-closeness-centrality"><i class="fa fa-check"></i><b>4.2.2</b> Reciprocal closeness centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="centrality.html"><a href="centrality.html#betweenness-centrality"><i class="fa fa-check"></i><b>4.3</b> Betweenness Centrality</a></li>
+<li class="chapter" data-level="4.4" data-path="centrality.html"><a href="centrality.html#resource-dependence-theory"><i class="fa fa-check"></i><b>4.4</b> Resource Dependence Theory</a></li>
+<li class="chapter" data-level="4.5" data-path="centrality.html"><a href="centrality.html#bonacich-beta-centrality"><i class="fa fa-check"></i><b>4.5</b> Bonacich Beta Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>5</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>5.1</b> Equations</a></li>
+<li class="chapter" data-level="5.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>5.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="5.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>5.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>6</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>6.1</b> Publishing</a></li>
+<li class="chapter" data-level="6.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>6.2</b> 404 pages</a></li>
+<li class="chapter" data-level="6.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>6.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="7" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>7</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visualization.html"><a href="visualization.html#prerequisites"><i class="fa fa-check"></i><b>7.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="7.2" data-path="visualization.html"><a href="visualization.html#modifying-the-layout-on-khf-network"><i class="fa fa-check"></i><b>7.2</b> Modifying the layout on KHF network</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="visualization.html"><a href="visualization.html#random-layout"><i class="fa fa-check"></i><b>7.2.1</b> Random layout</a></li>
+<li class="chapter" data-level="7.2.2" data-path="visualization.html"><a href="visualization.html#circle-layout"><i class="fa fa-check"></i><b>7.2.2</b> Circle Layout</a></li>
+<li class="chapter" data-level="7.2.3" data-path="visualization.html"><a href="visualization.html#fr-layout"><i class="fa fa-check"></i><b>7.2.3</b> FR Layout</a></li>
+<li class="chapter" data-level="7.2.4" data-path="visualization.html"><a href="visualization.html#kha-network"><i class="fa fa-check"></i><b>7.2.4</b> KHA Network</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#layout-based-on-2-continuous-attributes"><i class="fa fa-check"></i><b>7.3</b> Layout based on 2 continuous attributes</a></li>
+<li class="chapter" data-level="7.4" data-path="visualization.html"><a href="visualization.html#layout-where-points-are-grouped-based-on-nominal-attribute"><i class="fa fa-check"></i><b>7.4</b> Layout where points are grouped based on nominal attribute</a></li>
+<li class="chapter" data-level="7.5" data-path="visualization.html"><a href="visualization.html#geography---international-trade-among-countries-in-1928"><i class="fa fa-check"></i><b>7.5</b> Geography - International trade among countries in 1928</a></li>
+<li class="chapter" data-level="7.6" data-path="visualization.html"><a href="visualization.html#multidimensional-scaling"><i class="fa fa-check"></i><b>7.6</b> Multidimensional scaling</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="visualization.html"><a href="visualization.html#mds-on-primates"><i class="fa fa-check"></i><b>7.6.1</b> MDS on Primates</a></li>
+<li class="chapter" data-level="7.6.2" data-path="visualization.html"><a href="visualization.html#mds-on-valued-trade"><i class="fa fa-check"></i><b>7.6.2</b> MDS on valued trade</a></li>
+<li class="chapter" data-level="7.6.3" data-path="visualization.html"><a href="visualization.html#mds-on-geodesic-distances"><i class="fa fa-check"></i><b>7.6.3</b> MDS on geodesic distances</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="visualization.html"><a href="visualization.html#kamadakawai-and-fr-layout-khfs"><i class="fa fa-check"></i><b>7.7</b> KamadaKawai and FR layout KHFS</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="visualization.html"><a href="visualization.html#on-simulated-data"><i class="fa fa-check"></i><b>7.7.1</b> On Simulated data</a></li>
+<li class="chapter" data-level="7.7.2" data-path="visualization.html"><a href="visualization.html#scientists-collaborations"><i class="fa fa-check"></i><b>7.7.2</b> Scientists collaborations</a></li>
+<li class="chapter" data-level="7.7.3" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-khf"><i class="fa fa-check"></i><b>7.7.3</b> Nodal attributes on KHF</a></li>
+<li class="chapter" data-level="7.7.4" data-path="visualization.html"><a href="visualization.html#scientists-collaboration-more-complex"><i class="fa fa-check"></i><b>7.7.4</b> Scientists collaboration (more complex)</a></li>
+<li class="chapter" data-level="7.7.5" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-pfm"><i class="fa fa-check"></i><b>7.7.5</b> Nodal attributes on PFM</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="visualization.html"><a href="visualization.html#tie-strength-on-scientists-collaborations"><i class="fa fa-check"></i><b>7.8</b> Tie strength on Scientists collaborations</a></li>
+<li class="chapter" data-level="7.9" data-path="visualization.html"><a href="visualization.html#directed-networks"><i class="fa fa-check"></i><b>7.9</b> Directed networks</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Advanced Social Networks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visualization" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Visualization</h1>
+<div id="prerequisites" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Prerequisites</h2>
+<p>Before starting to visualize networks, it is necessary to install the package for Social Network Analysis, called <code>sna</code>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="visualization.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;sna&quot;)</span></span>
+<span id="cb24-2"><a href="visualization.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span></code></pre></div>
+</div>
+<div id="modifying-the-layout-on-khf-network" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Modifying the layout on KHF network</h2>
+<div id="random-layout" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Random layout</h3>
+<p>Let’s plot the nodes randomly in the two-dimensional space, with the KHF dataset.</p>
+<p>Notice that in order to build a network, we need an adjacency matrix, that’s why the csv is converted into a matrix structure. Then, in order to symmetrize it and make it undirected, it is multiplied for its transpose, to make a self-multiplication, in order to get an undirected network from a directed one (remember that if there’s a link going in both sides, we can insert an undirected link between these two vertices).</p>
+<p><em>For instance, consider the following directed adjacency matrix:</em></p>
+<p><span class="math display">\[
+\left( \begin{array}{ccc}
+0 &amp; 1 &amp; 1 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 \end{array} \right)
+\]</span>
+By computing its transpose and perform the self multiplication we obtain the undirected network (symmetric and with links only whenever the link goes on both sides in the original directed network):</p>
+<p><span class="math display">\[
+\left( \begin{array}{ccc}
+0 &amp; 1 &amp; 1 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 \end{array} \right) \times 
+\left( \begin{array}{ccc}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 1 \end{array} \right) = 
+\left( \begin{array}{ccc}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 \end{array} \right)
+\]</span></p>
+<p>In the end it is turned into a network object.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="visualization.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Read in the friendship network for Krackhardt&#39;s high-tech managers:</span></span>
+<span id="cb25-2"><a href="visualization.html#cb25-2" aria-hidden="true" tabindex="-1"></a>KHF <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;./Datasets/Krackhardt_HighTech_Friendship.csv&quot;</span>,</span>
+<span id="cb25-3"><a href="visualization.html#cb25-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb25-4"><a href="visualization.html#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="visualization.html#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="visualization.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Symmetrize the matrix using the minimum approach, so a friendship tie</span></span>
+<span id="cb25-7"><a href="visualization.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># is only considered if both agree they are friends:</span></span>
+<span id="cb25-8"><a href="visualization.html#cb25-8" aria-hidden="true" tabindex="-1"></a>KHFS <span class="ot">&lt;-</span> KHF<span class="sc">*</span><span class="fu">t</span>(KHF)</span>
+<span id="cb25-9"><a href="visualization.html#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="visualization.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Turn this into a &quot;network&quot; object:</span></span>
+<span id="cb25-11"><a href="visualization.html#cb25-11" aria-hidden="true" tabindex="-1"></a>KHFSn<span class="ot">&lt;-</span><span class="fu">as.network</span>(KHFS, <span class="at">directed=</span>F)</span></code></pre></div>
+<p>To save the plot as a tiff file (in the default folder) use the <code>tiff()</code> function, which opens an image file,
+and finish with <code>dev.off()</code>, which closes the image file for changes.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="visualization.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Create and save visualization</span></span>
+<span id="cb26-2"><a href="visualization.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tiff(file=&quot;images/Fig_01_KHFS_Random.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb26-3"><a href="visualization.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="visualization.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)) <span class="co"># Margin deletion</span></span>
+<span id="cb26-5"><a href="visualization.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHFSn,</span>
+<span id="cb26-6"><a href="visualization.html#cb26-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,      <span class="co"># undirected network</span></span>
+<span id="cb26-7"><a href="visualization.html#cb26-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;random&quot;</span>,      <span class="co"># random plotting of nodes</span></span>
+<span id="cb26-8"><a href="visualization.html#cb26-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,           <span class="co"># do not allow nodes to be &quot;jittered&quot;</span></span>
+<span id="cb26-9"><a href="visualization.html#cb26-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>,  <span class="co"># set color of ties</span></span>
+<span id="cb26-10"><a href="visualization.html#cb26-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,   <span class="co"># set color of nodes</span></span>
+<span id="cb26-11"><a href="visualization.html#cb26-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,    <span class="co"># indicate that labels should be included</span></span>
+<span id="cb26-12"><a href="visualization.html#cb26-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,        <span class="co"># indicate that labels should be given below points</span></span>
+<span id="cb26-13"><a href="visualization.html#cb26-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)       <span class="co"># indicate the size of the labels (1 is default)</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="visualization.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dev.off()</span></span></code></pre></div>
+<p><em><code>gmode="graph"</code> is used for <strong>undirected</strong> networks, while <code>gmode="digraph</code> is used for <strong>directed</strong> networks. If the input graph is undirected but the selected gmode is for directed networks, then arrows on both sides will be visualized. Also, most of the times the margin deletion is not necessary.</em></p>
+<p>The use of random position may be risky because of links overlapping and too close nodes.</p>
+</div>
+<div id="circle-layout" class="section level3" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Circle Layout</h3>
+<p>For a circle layout, it is necessary to change <code>mode</code> into <code>"cirlce"</code>.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="visualization.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tiff(file=&quot;images/Fig_02_KHFS_Circle.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb28-2"><a href="visualization.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb28-3"><a href="visualization.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHFSn, </span>
+<span id="cb28-4"><a href="visualization.html#cb28-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;digraph&quot;</span>,</span>
+<span id="cb28-5"><a href="visualization.html#cb28-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;circle&quot;</span>,</span>
+<span id="cb28-6"><a href="visualization.html#cb28-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb28-7"><a href="visualization.html#cb28-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb28-8"><a href="visualization.html#cb28-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb28-9"><a href="visualization.html#cb28-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb28-10"><a href="visualization.html#cb28-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb28-11"><a href="visualization.html#cb28-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="visualization.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dev.off()</span></span></code></pre></div>
+</div>
+<div id="fr-layout" class="section level3" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> FR Layout</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="visualization.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tiff(file=&quot;images/Fig_03_KHFS_FR.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb30-2"><a href="visualization.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb30-3"><a href="visualization.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHFSn, </span>
+<span id="cb30-4"><a href="visualization.html#cb30-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb30-5"><a href="visualization.html#cb30-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb30-6"><a href="visualization.html#cb30-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb30-7"><a href="visualization.html#cb30-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span><span class="cn">FALSE</span>,</span>
+<span id="cb30-8"><a href="visualization.html#cb30-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb30-9"><a href="visualization.html#cb30-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>,</span>
+<span id="cb30-10"><a href="visualization.html#cb30-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb30-11"><a href="visualization.html#cb30-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb30-12"><a href="visualization.html#cb30-12" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb30-13"><a href="visualization.html#cb30-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb30-14"><a href="visualization.html#cb30-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb30-15"><a href="visualization.html#cb30-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="visualization.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dev.off()</span></span></code></pre></div>
+</div>
+<div id="kha-network" class="section level3" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> KHA Network</h3>
+<p>The following network is more dense than the previous.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="visualization.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the advice network for Krackhardt&#39;s high-tech managers:</span></span>
+<span id="cb32-2"><a href="visualization.html#cb32-2" aria-hidden="true" tabindex="-1"></a>KHA<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Advice.csv&quot;</span>,</span>
+<span id="cb32-3"><a href="visualization.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb32-4"><a href="visualization.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Symmetrize the matrix using the minimum approach, so an advice tie</span></span>
+<span id="cb32-5"><a href="visualization.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># is only considered if both ask each other for advice:</span></span>
+<span id="cb32-6"><a href="visualization.html#cb32-6" aria-hidden="true" tabindex="-1"></a>KHAS<span class="ot">&lt;-</span>KHA<span class="sc">*</span><span class="fu">t</span>(KHA)</span>
+<span id="cb32-7"><a href="visualization.html#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="visualization.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn this into a &quot;network&quot; object:</span></span>
+<span id="cb32-9"><a href="visualization.html#cb32-9" aria-hidden="true" tabindex="-1"></a>KHASn<span class="ot">&lt;-</span><span class="fu">as.network</span>(KHAS, <span class="at">directed=</span>F)</span>
+<span id="cb32-10"><a href="visualization.html#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="visualization.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_04_KHAS_FR.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb32-12"><a href="visualization.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb32-13"><a href="visualization.html#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHASn, </span>
+<span id="cb32-14"><a href="visualization.html#cb32-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb32-15"><a href="visualization.html#cb32-15" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb32-16"><a href="visualization.html#cb32-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb32-17"><a href="visualization.html#cb32-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb32-18"><a href="visualization.html#cb32-18" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb32-19"><a href="visualization.html#cb32-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb32-20"><a href="visualization.html#cb32-20" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb32-21"><a href="visualization.html#cb32-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb32-22"><a href="visualization.html#cb32-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb32-23"><a href="visualization.html#cb32-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb32-24"><a href="visualization.html#cb32-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb32-25"><a href="visualization.html#cb32-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="visualization.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+<p>We could also build a function to plot a network:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="visualization.html#cb34-1" aria-hidden="true" tabindex="-1"></a>plot_network <span class="ot">=</span> <span class="cf">function</span>(network){</span>
+<span id="cb34-2"><a href="visualization.html#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gplot</span>(network, </span>
+<span id="cb34-3"><a href="visualization.html#cb34-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb34-4"><a href="visualization.html#cb34-4" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb34-5"><a href="visualization.html#cb34-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb34-6"><a href="visualization.html#cb34-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb34-7"><a href="visualization.html#cb34-7" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb34-8"><a href="visualization.html#cb34-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb34-9"><a href="visualization.html#cb34-9" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb34-10"><a href="visualization.html#cb34-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb34-11"><a href="visualization.html#cb34-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb34-12"><a href="visualization.html#cb34-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb34-13"><a href="visualization.html#cb34-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb34-14"><a href="visualization.html#cb34-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span>
+<span id="cb34-15"><a href="visualization.html#cb34-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-16"><a href="visualization.html#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="visualization.html#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of use</span></span>
+<span id="cb34-18"><a href="visualization.html#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_network</span>(KHASn)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+</div>
+</div>
+<div id="layout-based-on-2-continuous-attributes" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Layout based on 2 continuous attributes</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="visualization.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and convert it into matrix</span></span>
+<span id="cb35-2"><a href="visualization.html#cb35-2" aria-hidden="true" tabindex="-1"></a>WPJ <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Wolfe_Primates_JointPresence.csv&quot;</span>,</span>
+<span id="cb35-3"><a href="visualization.html#cb35-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb35-4"><a href="visualization.html#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="visualization.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read attributes</span></span>
+<span id="cb35-6"><a href="visualization.html#cb35-6" aria-hidden="true" tabindex="-1"></a>WPAttr <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Wolfe_Primates_Attributes.csv&quot;</span>,</span>
+<span id="cb35-7"><a href="visualization.html#cb35-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb35-8"><a href="visualization.html#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="visualization.html#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Rescale attributes so they range from 0 to 1</span></span>
+<span id="cb35-10"><a href="visualization.html#cb35-10" aria-hidden="true" tabindex="-1"></a>WP.AGE <span class="ot">&lt;-</span> (WPAttr<span class="sc">$</span>AGE<span class="sc">-</span><span class="fu">min</span>(WPAttr<span class="sc">$</span>AGE))<span class="sc">/</span>(<span class="fu">max</span>(WPAttr<span class="sc">$</span>AGE)<span class="sc">-</span><span class="fu">min</span>(WPAttr<span class="sc">$</span>AGE))</span>
+<span id="cb35-11"><a href="visualization.html#cb35-11" aria-hidden="true" tabindex="-1"></a>WP.RANK <span class="ot">&lt;-</span> (<span class="fu">max</span>(WPAttr<span class="sc">$</span>RANK)<span class="sc">-</span>WPAttr<span class="sc">$</span>RANK)<span class="sc">/</span>(<span class="fu">max</span>(WPAttr<span class="sc">$</span>RANK)<span class="sc">-</span><span class="fu">min</span>(WPAttr<span class="sc">$</span>RANK))</span>
+<span id="cb35-12"><a href="visualization.html#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="visualization.html#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn the 2 continuous variables into coordinates</span></span>
+<span id="cb35-14"><a href="visualization.html#cb35-14" aria-hidden="true" tabindex="-1"></a>WPCOORD <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(WP.AGE,WP.RANK),</span>
+<span id="cb35-15"><a href="visualization.html#cb35-15" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">dim</span>(WPJ)[<span class="dv">1</span>],<span class="dv">2</span>)</span>
+<span id="cb35-16"><a href="visualization.html#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-17"><a href="visualization.html#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Consider drawing only &quot;relatively strong&quot; ties</span></span>
+<span id="cb35-18"><a href="visualization.html#cb35-18" aria-hidden="true" tabindex="-1"></a>WPJ6W <span class="ot">&lt;-</span> (WPJ<span class="sc">&gt;</span><span class="dv">5</span>)<span class="sc">*</span>(WPJ<span class="dv">-5</span>) <span class="co"># Only consider a tie in tie matrix, but only if major than 5 and then rescale it by removing 5</span></span></code></pre></div>
+<p>In the next step, we’re going to make darker ties for those links where primates interacted more with each other (from grey40 to grey90).</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="visualization.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create colors (greyscales) for ties</span></span>
+<span id="cb36-2"><a href="visualization.html#cb36-2" aria-hidden="true" tabindex="-1"></a>WPJ6W.Color<span class="ot">&lt;-</span>WPJ6W</span>
+<span id="cb36-3"><a href="visualization.html#cb36-3" aria-hidden="true" tabindex="-1"></a>col.grey<span class="ot">&lt;-</span><span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;grey90&quot;</span>, <span class="st">&quot;grey40&quot;</span>))</span>
+<span id="cb36-4"><a href="visualization.html#cb36-4" aria-hidden="true" tabindex="-1"></a>col.greyN<span class="ot">&lt;-</span><span class="fu">col.grey</span>(<span class="fu">max</span>(WPJ6W)<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb36-5"><a href="visualization.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">max</span>(WPJ6W)))</span>
+<span id="cb36-6"><a href="visualization.html#cb36-6" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb36-7"><a href="visualization.html#cb36-7" aria-hidden="true" tabindex="-1"></a>    WPJ6W.Color[WPJ6W<span class="sc">==</span>k]<span class="ot">&lt;-</span>col.greyN[k<span class="sc">+</span><span class="dv">1</span>]</span>
+<span id="cb36-8"><a href="visualization.html#cb36-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Now let’s start drawing, remembering that:</p>
+<ul>
+<li>coordinates of nodes are given by their rank and their age (attributes): <code>coord=WPCOORD</code>;</li>
+<li>the edge color is given by the mapping color based on their number of links: <code>edge.col=WPJ6W.Color</code>;</li>
+<li>the color of the vertex indicates the gender of the primate (white for females, black for males): <code>vertex.col=(WPAttr$GENDER=="male")*9</code>;</li>
+<li>the added arrows allows us to visualize the cartesian plan.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="visualization.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tiff(file=&quot;images/Fig_05_WPJ_coordAgeRank6W.tiff&quot;, width=5, height=6, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb37-2"><a href="visualization.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb37-3"><a href="visualization.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(WPJ6W<span class="sc">*</span><span class="fl">1.1</span>,</span>
+<span id="cb37-4"><a href="visualization.html#cb37-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;digraph&quot;</span>, </span>
+<span id="cb37-5"><a href="visualization.html#cb37-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb37-6"><a href="visualization.html#cb37-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>WPCOORD, <span class="co"># using the coordinates to place primates </span></span>
+<span id="cb37-7"><a href="visualization.html#cb37-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb37-8"><a href="visualization.html#cb37-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb37-9"><a href="visualization.html#cb37-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span>WPJ6W.Color,</span>
+<span id="cb37-10"><a href="visualization.html#cb37-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">3</span>,</span>
+<span id="cb37-11"><a href="visualization.html#cb37-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb37-12"><a href="visualization.html#cb37-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>(WPAttr<span class="sc">$</span>GENDER<span class="sc">==</span><span class="st">&quot;male&quot;</span>)<span class="sc">*</span><span class="dv">9</span>,</span>
+<span id="cb37-13"><a href="visualization.html#cb37-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span><span class="fl">0.5</span>, </span>
+<span id="cb37-14"><a href="visualization.html#cb37-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb37-15"><a href="visualization.html#cb37-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T, </span>
+<span id="cb37-16"><a href="visualization.html#cb37-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb37-17"><a href="visualization.html#cb37-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>,</span>
+<span id="cb37-18"><a href="visualization.html#cb37-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">arrowhead.cex =</span> <span class="fl">0.4</span>)</span>
+<span id="cb37-19"><a href="visualization.html#cb37-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-20"><a href="visualization.html#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Add arrows</span></span>
+<span id="cb37-21"><a href="visualization.html#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="sc">-</span>.<span class="dv">1</span>, <span class="sc">-</span>.<span class="dv">1</span>, <span class="fl">1.1</span>, <span class="sc">-</span>.<span class="dv">1</span>, <span class="at">length =</span> <span class="fl">0.1</span>)</span>
+<span id="cb37-22"><a href="visualization.html#cb37-22" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="sc">-</span>.<span class="dv">1</span>, <span class="sc">-</span>.<span class="dv">1</span>, <span class="sc">-</span>.<span class="dv">1</span>, <span class="fl">1.1</span>, <span class="at">length =</span> <span class="fl">0.1</span>)</span>
+<span id="cb37-23"><a href="visualization.html#cb37-23" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span>.<span class="dv">1</span>, <span class="fl">1.1</span>, <span class="at">labels=</span><span class="st">&quot;Rank&quot;</span>,</span>
+<span id="cb37-24"><a href="visualization.html#cb37-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="fl">0.8</span>, <span class="at">pos=</span><span class="dv">4</span>)</span>
+<span id="cb37-25"><a href="visualization.html#cb37-25" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">1.1</span>,<span class="sc">-</span>.<span class="dv">1</span>, <span class="at">labels=</span><span class="st">&quot;Age&quot;</span>,</span>
+<span id="cb37-26"><a href="visualization.html#cb37-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="fl">0.8</span>, <span class="at">pos=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="visualization.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dev.off()</span></span></code></pre></div>
+</div>
+<div id="layout-where-points-are-grouped-based-on-nominal-attribute" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Layout where points are grouped based on nominal attribute</h2>
+<p>First of all, we’re going to import the datasets and convert them into networks as usual:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="visualization.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Convert datasets into networks</span></span>
+<span id="cb39-2"><a href="visualization.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Convert the KHA dataset into a network</span></span>
+<span id="cb39-3"><a href="visualization.html#cb39-3" aria-hidden="true" tabindex="-1"></a>KHA<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Advice.csv&quot;</span>,</span>
+<span id="cb39-4"><a href="visualization.html#cb39-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb39-5"><a href="visualization.html#cb39-5" aria-hidden="true" tabindex="-1"></a>KHAS<span class="ot">&lt;-</span>KHA<span class="sc">*</span><span class="fu">t</span>(KHA)</span>
+<span id="cb39-6"><a href="visualization.html#cb39-6" aria-hidden="true" tabindex="-1"></a>KHASn<span class="ot">&lt;-</span><span class="fu">as.network</span>(KHAS, <span class="at">directed=</span>F)</span>
+<span id="cb39-7"><a href="visualization.html#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="visualization.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Convert the KHF dataset into a network</span></span>
+<span id="cb39-9"><a href="visualization.html#cb39-9" aria-hidden="true" tabindex="-1"></a>KHF<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Friendship.csv&quot;</span>,</span>
+<span id="cb39-10"><a href="visualization.html#cb39-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb39-11"><a href="visualization.html#cb39-11" aria-hidden="true" tabindex="-1"></a>KHFS<span class="ot">&lt;-</span>KHF<span class="sc">*</span><span class="fu">t</span>(KHF)</span>
+<span id="cb39-12"><a href="visualization.html#cb39-12" aria-hidden="true" tabindex="-1"></a>KHFSn<span class="ot">&lt;-</span><span class="fu">as.network</span>(KHFS, <span class="at">directed=</span>F)</span></code></pre></div>
+<p>Then, we can create a network with ties within departments to define positions. By importing the KHA dataset and maintaining its attribute, we will maintain the departments and convert them to matrix. In the end, we maintain only those links where two subjects belong to the same department (<code>DEPS==t(DEPS)</code>).</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="visualization.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create a network with ties within department to define positions</span></span>
+<span id="cb40-2"><a href="visualization.html#cb40-2" aria-hidden="true" tabindex="-1"></a>KHAttr<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Attributes.csv&quot;</span>,</span>
+<span id="cb40-3"><a href="visualization.html#cb40-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb40-4"><a href="visualization.html#cb40-4" aria-hidden="true" tabindex="-1"></a>DEPS<span class="ot">&lt;-</span><span class="fu">matrix</span>(KHAttr<span class="sc">$</span>DEPT,<span class="fu">nrow</span>(KHA),<span class="fu">nrow</span>(KHA))</span>
+<span id="cb40-5"><a href="visualization.html#cb40-5" aria-hidden="true" tabindex="-1"></a>DEPSIM<span class="ot">&lt;-</span>DEPS<span class="sc">==</span><span class="fu">t</span>(DEPS)</span></code></pre></div>
+<p>We can get nodes coordinates by plotting them based on their department similarity. Coords may change from an execution to another, but groupings will be the same. In this way, we will place similar nodes next to each other.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="visualization.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Get coordinates</span></span>
+<span id="cb41-2"><a href="visualization.html#cb41-2" aria-hidden="true" tabindex="-1"></a>DEP_COORD<span class="ot">&lt;-</span><span class="fu">gplot</span>(DEPSIM, </span>
+<span id="cb41-3"><a href="visualization.html#cb41-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">displaylabels=</span>T)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="visualization.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Draw the friendship network using the coordinates got from nominal friendship</span></span>
+<span id="cb42-2"><a href="visualization.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tiff(file=&quot;images/Fig_06_KHFS_Department1.tiff&quot;, width=5, height=7, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb42-3"><a href="visualization.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb42-4"><a href="visualization.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHFSn,</span>
+<span id="cb42-5"><a href="visualization.html#cb42-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb42-6"><a href="visualization.html#cb42-6" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb42-7"><a href="visualization.html#cb42-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>DEP_COORD,</span>
+<span id="cb42-8"><a href="visualization.html#cb42-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb42-9"><a href="visualization.html#cb42-9" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb42-10"><a href="visualization.html#cb42-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey50&quot;</span>,</span>
+<span id="cb42-11"><a href="visualization.html#cb42-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">7</span>,</span>
+<span id="cb42-12"><a href="visualization.html#cb42-12" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb42-13"><a href="visualization.html#cb42-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb42-14"><a href="visualization.html#cb42-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb42-15"><a href="visualization.html#cb42-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T, </span>
+<span id="cb42-16"><a href="visualization.html#cb42-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>, </span>
+<span id="cb42-17"><a href="visualization.html#cb42-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="visualization.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dev.off()</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="visualization.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tiff(file=&quot;images/Fig_06_KHAS_Department1.tiff&quot;, width=5, height=7, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb44-2"><a href="visualization.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb44-3"><a href="visualization.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHASn,</span>
+<span id="cb44-4"><a href="visualization.html#cb44-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb44-5"><a href="visualization.html#cb44-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb44-6"><a href="visualization.html#cb44-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>DEP_COORD,</span>
+<span id="cb44-7"><a href="visualization.html#cb44-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb44-8"><a href="visualization.html#cb44-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb44-9"><a href="visualization.html#cb44-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey50&quot;</span>,</span>
+<span id="cb44-10"><a href="visualization.html#cb44-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">7</span>,</span>
+<span id="cb44-11"><a href="visualization.html#cb44-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb44-12"><a href="visualization.html#cb44-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb44-13"><a href="visualization.html#cb44-13" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb44-14"><a href="visualization.html#cb44-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T, </span>
+<span id="cb44-15"><a href="visualization.html#cb44-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>, </span>
+<span id="cb44-16"><a href="visualization.html#cb44-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="visualization.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dev.off()</span></span></code></pre></div>
+</div>
+<div id="geography---international-trade-among-countries-in-1928" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Geography - International trade among countries in 1928</h2>
+<p>In this case, nodes are positioned based on the geographic location of their capitals. Canada and the US have been slightly moved to the West to make the trade between European countries more visible.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="visualization.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Dataset conversion into network</span></span>
+<span id="cb46-2"><a href="visualization.html#cb46-2" aria-hidden="true" tabindex="-1"></a>STE<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Savage_TransactionFlows_ExportsPerc.csv&quot;</span>,</span>
+<span id="cb46-3"><a href="visualization.html#cb46-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb46-4"><a href="visualization.html#cb46-4" aria-hidden="true" tabindex="-1"></a>STAttr<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Savage_TransactionFlows_Attributes.csv&quot;</span>,</span>
+<span id="cb46-5"><a href="visualization.html#cb46-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb46-6"><a href="visualization.html#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="visualization.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Consider Latitude and Longitude</span></span>
+<span id="cb46-8"><a href="visualization.html#cb46-8" aria-hidden="true" tabindex="-1"></a>LA<span class="ot">&lt;-</span>STAttr<span class="sc">$</span>Latitude</span>
+<span id="cb46-9"><a href="visualization.html#cb46-9" aria-hidden="true" tabindex="-1"></a>LO<span class="ot">&lt;-</span>STAttr<span class="sc">$</span>Longitude</span>
+<span id="cb46-10"><a href="visualization.html#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="visualization.html#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Move Canada and US to the west</span></span>
+<span id="cb46-12"><a href="visualization.html#cb46-12" aria-hidden="true" tabindex="-1"></a>LO[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]<span class="ot">&lt;-</span>LO[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]<span class="sc">+</span><span class="dv">40</span></span>
+<span id="cb46-13"><a href="visualization.html#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-14"><a href="visualization.html#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Symmetrized using product</span></span>
+<span id="cb46-15"><a href="visualization.html#cb46-15" aria-hidden="true" tabindex="-1"></a>STES<span class="ot">&lt;-</span>(STE<span class="sc">*</span><span class="fu">t</span>(STE))</span>
+<span id="cb46-16"><a href="visualization.html#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  To plot only stronger trades (more than 19 trades)</span></span>
+<span id="cb46-17"><a href="visualization.html#cb46-17" aria-hidden="true" tabindex="-1"></a>STESGT20<span class="ot">&lt;-</span><span class="fu">round</span>(((STES<span class="sc">&gt;</span><span class="dv">19</span>)<span class="sc">*</span>(STES<span class="dv">-19</span>))<span class="sc">^</span>.<span class="dv">5</span>)</span>
+<span id="cb46-18"><a href="visualization.html#cb46-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-19"><a href="visualization.html#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create colors (greyscale) for ties</span></span>
+<span id="cb46-20"><a href="visualization.html#cb46-20" aria-hidden="true" tabindex="-1"></a>STESGT20.Color<span class="ot">&lt;-</span>STESGT20</span>
+<span id="cb46-21"><a href="visualization.html#cb46-21" aria-hidden="true" tabindex="-1"></a>col.grey<span class="ot">&lt;-</span><span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;grey80&quot;</span>, <span class="st">&quot;grey40&quot;</span>))</span>
+<span id="cb46-22"><a href="visualization.html#cb46-22" aria-hidden="true" tabindex="-1"></a>col.greyN<span class="ot">&lt;-</span><span class="fu">col.grey</span>(<span class="fu">max</span>(STESGT20)<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb46-23"><a href="visualization.html#cb46-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">max</span>(STESGT20)))</span>
+<span id="cb46-24"><a href="visualization.html#cb46-24" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb46-25"><a href="visualization.html#cb46-25" aria-hidden="true" tabindex="-1"></a>    STESGT20.Color[STESGT20<span class="sc">==</span>k]<span class="ot">&lt;-</span>col.greyN[k<span class="sc">+</span><span class="dv">1</span>]</span>
+<span id="cb46-26"><a href="visualization.html#cb46-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="visualization.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Visualizing the map</span></span>
+<span id="cb47-2"><a href="visualization.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_07_STE_Trade1928_Geogr.tiff&quot;, width=8, height=4, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb47-3"><a href="visualization.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb47-4"><a href="visualization.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(STESGT20, </span>
+<span id="cb47-5"><a href="visualization.html#cb47-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb47-6"><a href="visualization.html#cb47-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span><span class="fu">cbind</span>(LO,LA), <span class="co"># Using geographical coordinates to map cities</span></span>
+<span id="cb47-7"><a href="visualization.html#cb47-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb47-8"><a href="visualization.html#cb47-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span>STESGT20.Color,</span>
+<span id="cb47-9"><a href="visualization.html#cb47-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span><span class="fl">0.4</span>,</span>
+<span id="cb47-10"><a href="visualization.html#cb47-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;grey90&quot;</span>,</span>
+<span id="cb47-11"><a href="visualization.html#cb47-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span><span class="fl">0.3</span>,</span>
+<span id="cb47-12"><a href="visualization.html#cb47-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T, </span>
+<span id="cb47-13"><a href="visualization.html#cb47-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">5</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="visualization.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+</div>
+<div id="multidimensional-scaling" class="section level2" number="7.6">
+<h2><span class="header-section-number">7.6</span> Multidimensional scaling</h2>
+<div id="mds-on-primates" class="section level3" number="7.6.1">
+<h3><span class="header-section-number">7.6.1</span> MDS on Primates</h3>
+<p>We can apply the MDS in order to better plot nodes inside the network, by using the default function in R <code>cmdscale()</code>.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="visualization.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Rescale values using MDS</span></span>
+<span id="cb49-2"><a href="visualization.html#cb49-2" aria-hidden="true" tabindex="-1"></a>WPJS<span class="ot">&lt;-</span><span class="fu">log</span>(WPJ<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb49-3"><a href="visualization.html#cb49-3" aria-hidden="true" tabindex="-1"></a>WPJ_CoordMDS<span class="ot">&lt;-</span><span class="fu">cmdscale</span>(<span class="fu">max</span>(WPJS)<span class="sc">*</span><span class="fl">1.001</span><span class="sc">-</span>WPJS, <span class="at">eig=</span><span class="cn">TRUE</span>, <span class="at">k =</span> <span class="dv">2</span>)</span>
+<span id="cb49-4"><a href="visualization.html#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="visualization.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Consider drawing only &quot;relatively strong&quot; ties</span></span>
+<span id="cb49-6"><a href="visualization.html#cb49-6" aria-hidden="true" tabindex="-1"></a>WPJ6W<span class="ot">&lt;-</span>(WPJ<span class="sc">&gt;</span><span class="dv">5</span>)<span class="sc">*</span>(WPJ<span class="dv">-5</span>)</span>
+<span id="cb49-7"><a href="visualization.html#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="visualization.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Create color for ties</span></span>
+<span id="cb49-9"><a href="visualization.html#cb49-9" aria-hidden="true" tabindex="-1"></a>WPJ6W.Color<span class="ot">&lt;-</span>WPJ6W</span>
+<span id="cb49-10"><a href="visualization.html#cb49-10" aria-hidden="true" tabindex="-1"></a>col.grey<span class="ot">&lt;-</span><span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;grey80&quot;</span>, <span class="st">&quot;grey30&quot;</span>))</span>
+<span id="cb49-11"><a href="visualization.html#cb49-11" aria-hidden="true" tabindex="-1"></a>col.greyN<span class="ot">&lt;-</span><span class="fu">col.grey</span>(<span class="fu">max</span>(WPJ6W)<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb49-12"><a href="visualization.html#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">max</span>(WPJ6W)))</span>
+<span id="cb49-13"><a href="visualization.html#cb49-13" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb49-14"><a href="visualization.html#cb49-14" aria-hidden="true" tabindex="-1"></a>    WPJ6W.Color[WPJ6W<span class="sc">==</span>k]<span class="ot">&lt;-</span>col.greyN[k<span class="sc">+</span><span class="dv">1</span>]</span>
+<span id="cb49-15"><a href="visualization.html#cb49-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb49-16"><a href="visualization.html#cb49-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-17"><a href="visualization.html#cb49-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Draw</span></span>
+<span id="cb49-18"><a href="visualization.html#cb49-18" aria-hidden="true" tabindex="-1"></a><span class="co"># tiff(file=&quot;images/Fig_08_WPJ6W_mds.tiff&quot;, width=6, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb49-19"><a href="visualization.html#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb49-20"><a href="visualization.html#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(WPJ6W<span class="sc">*</span><span class="fl">1.1</span>,</span>
+<span id="cb49-21"><a href="visualization.html#cb49-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, </span>
+<span id="cb49-22"><a href="visualization.html#cb49-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb49-23"><a href="visualization.html#cb49-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>WPJ_CoordMDS<span class="sc">$</span>points,</span>
+<span id="cb49-24"><a href="visualization.html#cb49-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb49-25"><a href="visualization.html#cb49-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span>WPJ6W.Color,</span>
+<span id="cb49-26"><a href="visualization.html#cb49-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span><span class="fl">0.5</span>,</span>
+<span id="cb49-27"><a href="visualization.html#cb49-27" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb49-28"><a href="visualization.html#cb49-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="fu">ifelse</span>(WPAttr<span class="sc">$</span>GENDER<span class="sc">==</span><span class="st">&quot;male&quot;</span>,<span class="dv">4</span>,<span class="dv">2</span>),</span>
+<span id="cb49-29"><a href="visualization.html#cb49-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span><span class="fl">0.8</span>, </span>
+<span id="cb49-30"><a href="visualization.html#cb49-30" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb49-31"><a href="visualization.html#cb49-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T, </span>
+<span id="cb49-32"><a href="visualization.html#cb49-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb49-33"><a href="visualization.html#cb49-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="visualization.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dev.off()</span></span></code></pre></div>
+</div>
+<div id="mds-on-valued-trade" class="section level3" number="7.6.2">
+<h3><span class="header-section-number">7.6.2</span> MDS on valued trade</h3>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="visualization.html#cb51-1" aria-hidden="true" tabindex="-1"></a>STE<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Savage_TransactionFlows_ExportsPerc.csv&quot;</span>,</span>
+<span id="cb51-2"><a href="visualization.html#cb51-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb51-3"><a href="visualization.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Symmetrized using product</span></span>
+<span id="cb51-4"><a href="visualization.html#cb51-4" aria-hidden="true" tabindex="-1"></a>STES<span class="ot">&lt;-</span>(STE<span class="sc">*</span><span class="fu">t</span>(STE))</span>
+<span id="cb51-5"><a href="visualization.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># To plot only stronger trade </span></span>
+<span id="cb51-6"><a href="visualization.html#cb51-6" aria-hidden="true" tabindex="-1"></a>STESGT20<span class="ot">&lt;-</span><span class="fu">round</span>(((STES<span class="sc">&gt;</span><span class="dv">19</span>)<span class="sc">*</span>(STES<span class="dv">-19</span>))<span class="sc">^</span>.<span class="dv">5</span>)</span>
+<span id="cb51-7"><a href="visualization.html#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-8"><a href="visualization.html#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create colors (greyscale) for ties</span></span>
+<span id="cb51-9"><a href="visualization.html#cb51-9" aria-hidden="true" tabindex="-1"></a>STESGT20.Color<span class="ot">&lt;-</span>STESGT20</span>
+<span id="cb51-10"><a href="visualization.html#cb51-10" aria-hidden="true" tabindex="-1"></a>col.grey<span class="ot">&lt;-</span><span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;grey80&quot;</span>, <span class="st">&quot;grey40&quot;</span>))</span>
+<span id="cb51-11"><a href="visualization.html#cb51-11" aria-hidden="true" tabindex="-1"></a>col.greyN<span class="ot">&lt;-</span><span class="fu">col.grey</span>(<span class="fu">max</span>(STESGT20)<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb51-12"><a href="visualization.html#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">max</span>(STESGT20)))</span>
+<span id="cb51-13"><a href="visualization.html#cb51-13" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb51-14"><a href="visualization.html#cb51-14" aria-hidden="true" tabindex="-1"></a>    STESGT20.Color[STESGT20<span class="sc">==</span>k]<span class="ot">&lt;-</span>col.greyN[k<span class="sc">+</span><span class="dv">1</span>]</span>
+<span id="cb51-15"><a href="visualization.html#cb51-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-16"><a href="visualization.html#cb51-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-17"><a href="visualization.html#cb51-17" aria-hidden="true" tabindex="-1"></a>STESGT20_Coord<span class="ot">&lt;-</span><span class="fu">cmdscale</span>((<span class="fu">max</span>(STE)<span class="sc">*</span><span class="fl">1.002</span><span class="sc">-</span>STE)<span class="sc">^</span><span class="dv">2</span>, <span class="at">eig=</span><span class="cn">TRUE</span>, <span class="at">k =</span> <span class="dv">2</span>)</span>
+<span id="cb51-18"><a href="visualization.html#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="co">#STESGT20_Coord&lt;-cmdscale(STE-STE, eig=TRUE, k = 2)</span></span>
+<span id="cb51-19"><a href="visualization.html#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_08_STESGT20_mds.tiff&quot;, width=6, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb51-20"><a href="visualization.html#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb51-21"><a href="visualization.html#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(STESGT20, </span>
+<span id="cb51-22"><a href="visualization.html#cb51-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb51-23"><a href="visualization.html#cb51-23" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb51-24"><a href="visualization.html#cb51-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>STESGT20_Coord<span class="sc">$</span>points,</span>
+<span id="cb51-25"><a href="visualization.html#cb51-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb51-26"><a href="visualization.html#cb51-26" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb51-27"><a href="visualization.html#cb51-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span>STESGT20.Color,</span>
+<span id="cb51-28"><a href="visualization.html#cb51-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span><span class="fl">0.4</span>,</span>
+<span id="cb51-29"><a href="visualization.html#cb51-29" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb51-30"><a href="visualization.html#cb51-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;grey90&quot;</span>,</span>
+<span id="cb51-31"><a href="visualization.html#cb51-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span><span class="fl">0.8</span>,</span>
+<span id="cb51-32"><a href="visualization.html#cb51-32" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb51-33"><a href="visualization.html#cb51-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T, </span>
+<span id="cb51-34"><a href="visualization.html#cb51-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>, </span>
+<span id="cb51-35"><a href="visualization.html#cb51-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="visualization.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+</div>
+<div id="mds-on-geodesic-distances" class="section level3" number="7.6.3">
+<h3><span class="header-section-number">7.6.3</span> MDS on geodesic distances</h3>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="visualization.html#cb53-1" aria-hidden="true" tabindex="-1"></a>KHA<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Advice.csv&quot;</span>,</span>
+<span id="cb53-2"><a href="visualization.html#cb53-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb53-3"><a href="visualization.html#cb53-3" aria-hidden="true" tabindex="-1"></a>KHAS<span class="ot">&lt;-</span>KHA<span class="sc">*</span><span class="fu">t</span>(KHA)</span>
+<span id="cb53-4"><a href="visualization.html#cb53-4" aria-hidden="true" tabindex="-1"></a>KHASn<span class="ot">&lt;-</span><span class="fu">as.network</span>(KHAS, <span class="at">directed=</span>F)</span>
+<span id="cb53-5"><a href="visualization.html#cb53-5" aria-hidden="true" tabindex="-1"></a>GeoD<span class="ot">&lt;-</span><span class="fu">geodist</span>(KHASn)</span>
+<span id="cb53-6"><a href="visualization.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(GeoD<span class="sc">$</span>gdist)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="visualization.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">#GeoD$gdist[GeoD$counts==0]&lt;--999</span></span>
+<span id="cb55-2"><a href="visualization.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co">#GeoD$gdist[GeoD$gdist==-999]&lt;-max(GeoD$gdist)</span></span>
+<span id="cb55-3"><a href="visualization.html#cb55-3" aria-hidden="true" tabindex="-1"></a>GeoD_Coord<span class="ot">&lt;-</span><span class="fu">cmdscale</span>(GeoD<span class="sc">$</span>gdist, <span class="at">eig=</span><span class="cn">TRUE</span>, <span class="at">k=</span><span class="dv">2</span>)</span>
+<span id="cb55-4"><a href="visualization.html#cb55-4" aria-hidden="true" tabindex="-1"></a>GeoD_Coord</span></code></pre></div>
+<pre><code>## $points
+##              [,1]        [,2]
+##  [1,]  0.76162888 -0.15192804
+##  [2,] -1.51428017  0.01452473
+##  [3,]  0.06243284 -0.53328907
+##  [4,]  0.02556773 -0.89875609
+##  [5,]  1.13565391  0.34041487
+##  [6,] -1.25508843 -0.97588178
+##  [7,] -0.74784913  0.81617695
+##  [8,]  0.06471364 -0.77547617
+##  [9,]  0.85297735  0.24843971
+## [10,]  1.07052904 -0.29602193
+## [11,] -1.29460998  1.71553243
+## [12,] -1.51428017  0.01452473
+## [13,]  0.95428481  0.34017104
+## [14,] -0.29225683  0.53688623
+## [15,]  1.05597933  0.13644745
+## [16,]  1.01641735  0.12773099
+## [17,] -1.23959938 -0.42884357
+## [18,]  0.37975961  0.20110852
+## [19,]  1.14398272  0.29717063
+## [20,]  0.06113491 -0.41675189
+## [21,] -0.72709801 -0.31217975
+## 
+## $eig
+##  [1]  1.881496e+01  7.566499e+00  5.471410e+00  3.744726e+00  3.436953e+00
+##  [6]  2.613479e+00  2.377477e+00  2.000000e+00  2.000000e+00  2.000000e+00
+## [11]  1.109910e+00  7.348856e-01  5.306488e-01  1.185842e-01  2.664535e-15
+## [16] -1.212696e-01 -2.706349e-01 -6.477894e-01 -1.307601e+00 -2.646835e+00
+## [21] -3.715879e+00
+## 
+## $x
+## NULL
+## 
+## $ac
+## [1] 0
+## 
+## $GOF
+## [1] 0.4308616 0.5023171</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="visualization.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_09_GeoDKHA_MDS.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb57-2"><a href="visualization.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb57-3"><a href="visualization.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHASn,</span>
+<span id="cb57-4"><a href="visualization.html#cb57-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb57-5"><a href="visualization.html#cb57-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb57-6"><a href="visualization.html#cb57-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>GeoD_Coord<span class="sc">$</span>points,</span>
+<span id="cb57-7"><a href="visualization.html#cb57-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>T,</span>
+<span id="cb57-8"><a href="visualization.html#cb57-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb57-9"><a href="visualization.html#cb57-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey50&quot;</span>,</span>
+<span id="cb57-10"><a href="visualization.html#cb57-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">7</span>,</span>
+<span id="cb57-11"><a href="visualization.html#cb57-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb57-12"><a href="visualization.html#cb57-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb57-13"><a href="visualization.html#cb57-13" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb57-14"><a href="visualization.html#cb57-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb57-15"><a href="visualization.html#cb57-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="visualization.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+</div>
+</div>
+<div id="kamadakawai-and-fr-layout-khfs" class="section level2" number="7.7">
+<h2><span class="header-section-number">7.7</span> KamadaKawai and FR layout KHFS</h2>
+<div id="on-simulated-data" class="section level3" number="7.7.1">
+<h3><span class="header-section-number">7.7.1</span> On Simulated data</h3>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="visualization.html#cb59-1" aria-hidden="true" tabindex="-1"></a>mat8<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>),<span class="dv">8</span>,<span class="dv">8</span>)</span>
+<span id="cb59-2"><a href="visualization.html#cb59-2" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">1</span>,<span class="dv">2</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-3"><a href="visualization.html#cb59-3" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">2</span>,<span class="dv">3</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-4"><a href="visualization.html#cb59-4" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">3</span>,<span class="dv">4</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-5"><a href="visualization.html#cb59-5" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">3</span>,<span class="dv">5</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-6"><a href="visualization.html#cb59-6" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">3</span>,<span class="dv">6</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-7"><a href="visualization.html#cb59-7" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">4</span>,<span class="dv">5</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-8"><a href="visualization.html#cb59-8" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">4</span>,<span class="dv">6</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-9"><a href="visualization.html#cb59-9" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">5</span>,<span class="dv">6</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-10"><a href="visualization.html#cb59-10" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">6</span>,<span class="dv">7</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-11"><a href="visualization.html#cb59-11" aria-hidden="true" tabindex="-1"></a>mat8[<span class="dv">7</span>,<span class="dv">8</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb59-12"><a href="visualization.html#cb59-12" aria-hidden="true" tabindex="-1"></a>mat8s<span class="ot">&lt;-</span>(mat8<span class="sc">+</span><span class="fu">t</span>(mat8))<span class="sc">&gt;</span><span class="dv">0</span></span>
+<span id="cb59-13"><a href="visualization.html#cb59-13" aria-hidden="true" tabindex="-1"></a>mat8s</span></code></pre></div>
+<pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]
+## [1,] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+## [2,]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+## [3,] FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE
+## [4,] FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE
+## [5,] FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE
+## [6,] FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE
+## [7,] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
+## [8,] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="visualization.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(mat8, </span>
+<span id="cb61-2"><a href="visualization.html#cb61-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb61-3"><a href="visualization.html#cb61-3" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb61-4"><a href="visualization.html#cb61-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb61-5"><a href="visualization.html#cb61-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span><span class="cn">FALSE</span>,</span>
+<span id="cb61-6"><a href="visualization.html#cb61-6" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb61-7"><a href="visualization.html#cb61-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb61-8"><a href="visualization.html#cb61-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb61-9"><a href="visualization.html#cb61-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb61-10"><a href="visualization.html#cb61-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb61-11"><a href="visualization.html#cb61-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb61-12"><a href="visualization.html#cb61-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb61-13"><a href="visualization.html#cb61-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="visualization.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(mat8, </span>
+<span id="cb62-2"><a href="visualization.html#cb62-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb62-3"><a href="visualization.html#cb62-3" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb62-4"><a href="visualization.html#cb62-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;kamadakawai&quot;</span>,</span>
+<span id="cb62-5"><a href="visualization.html#cb62-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span><span class="cn">FALSE</span>,</span>
+<span id="cb62-6"><a href="visualization.html#cb62-6" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb62-7"><a href="visualization.html#cb62-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb62-8"><a href="visualization.html#cb62-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb62-9"><a href="visualization.html#cb62-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb62-10"><a href="visualization.html#cb62-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb62-11"><a href="visualization.html#cb62-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb62-12"><a href="visualization.html#cb62-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb62-13"><a href="visualization.html#cb62-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-2.png" width="672" /></p>
+</div>
+<div id="scientists-collaborations" class="section level3" number="7.7.2">
+<h3><span class="header-section-number">7.7.2</span> Scientists collaborations</h3>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="visualization.html#cb63-1" aria-hidden="true" tabindex="-1"></a>BS504Cx<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Borgatti_Scientists504_Attributes.csv&quot;</span>,</span>
+<span id="cb63-2"><a href="visualization.html#cb63-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb63-3"><a href="visualization.html#cb63-3" aria-hidden="true" tabindex="-1"></a>BS504C<span class="ot">&lt;-</span>(BS504Cx<span class="sc">&gt;</span><span class="dv">3</span>)</span>
+<span id="cb63-4"><a href="visualization.html#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="visualization.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_011b_BS504C_KK.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb63-6"><a href="visualization.html#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb63-7"><a href="visualization.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504C, </span>
+<span id="cb63-8"><a href="visualization.html#cb63-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb63-9"><a href="visualization.html#cb63-9" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb63-10"><a href="visualization.html#cb63-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;kamadakawai&quot;</span>,</span>
+<span id="cb63-11"><a href="visualization.html#cb63-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb63-12"><a href="visualization.html#cb63-12" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb63-13"><a href="visualization.html#cb63-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>, </span>
+<span id="cb63-14"><a href="visualization.html#cb63-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">1</span>,</span>
+<span id="cb63-15"><a href="visualization.html#cb63-15" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb63-16"><a href="visualization.html#cb63-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb63-17"><a href="visualization.html#cb63-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>.<span class="dv">75</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="visualization.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+</div>
+<div id="nodal-attributes-on-khf" class="section level3" number="7.7.3">
+<h3><span class="header-section-number">7.7.3</span> Nodal attributes on KHF</h3>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="visualization.html#cb65-1" aria-hidden="true" tabindex="-1"></a>KHF<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Friendship.csv&quot;</span>,</span>
+<span id="cb65-2"><a href="visualization.html#cb65-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb65-3"><a href="visualization.html#cb65-3" aria-hidden="true" tabindex="-1"></a>KHFS<span class="ot">&lt;-</span>KHF<span class="sc">*</span><span class="fu">t</span>(KHF)</span>
+<span id="cb65-4"><a href="visualization.html#cb65-4" aria-hidden="true" tabindex="-1"></a>KHAttr<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Attributes.csv&quot;</span>,</span>
+<span id="cb65-5"><a href="visualization.html#cb65-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb65-6"><a href="visualization.html#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(KHAttr<span class="sc">$</span>TENURE)</span></code></pre></div>
+<pre><code>## 
+##        0.25 3.332999945 4.666999817 4.833000183 5.416999817         7.5 
+##           1           1           1           1           1           1 
+## 8.416999817 8.916999817 9.083000183        9.25 9.333000183 10.41699982 
+##           1           1           1           1           1           1 
+## 11.33300018 11.66699982 12.41699982        12.5       12.75 19.58300018 
+##           1           1           1           1           1           1 
+##          27          28          30 
+##           1           1           1</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="visualization.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_011_KHF_LEVELTENURE.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb67-2"><a href="visualization.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb67-3"><a href="visualization.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHFS, </span>
+<span id="cb67-4"><a href="visualization.html#cb67-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb67-5"><a href="visualization.html#cb67-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb67-6"><a href="visualization.html#cb67-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb67-7"><a href="visualization.html#cb67-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb67-8"><a href="visualization.html#cb67-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb67-9"><a href="visualization.html#cb67-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey30&quot;</span>,</span>
+<span id="cb67-10"><a href="visualization.html#cb67-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">4</span>,</span>
+<span id="cb67-11"><a href="visualization.html#cb67-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb67-12"><a href="visualization.html#cb67-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb67-13"><a href="visualization.html#cb67-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>KHAttr<span class="sc">$</span>TENURE<span class="sc">/</span><span class="dv">20</span><span class="fl">+.8</span>,</span>
+<span id="cb67-14"><a href="visualization.html#cb67-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb67-15"><a href="visualization.html#cb67-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span><span class="cn">TRUE</span>,</span>
+<span id="cb67-16"><a href="visualization.html#cb67-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="visualization.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="visualization.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># type sides of nodes</span></span>
+<span id="cb69-2"><a href="visualization.html#cb69-2" aria-hidden="true" tabindex="-1"></a>KHF<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Friendship.csv&quot;</span>,</span>
+<span id="cb69-3"><a href="visualization.html#cb69-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb69-4"><a href="visualization.html#cb69-4" aria-hidden="true" tabindex="-1"></a>KHFS<span class="ot">&lt;-</span>KHF<span class="sc">*</span><span class="fu">t</span>(KHF)</span>
+<span id="cb69-5"><a href="visualization.html#cb69-5" aria-hidden="true" tabindex="-1"></a>KHAttr<span class="sc">$</span>AGE</span></code></pre></div>
+<pre><code>##  [1] 33 42 40 33 32 59 55 34 62 37 46 34 48 43 40 27 30 33 32 38 36</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="visualization.html#cb71-1" aria-hidden="true" tabindex="-1"></a>KHAttr<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Attributes.csv&quot;</span>,</span>
+<span id="cb71-2"><a href="visualization.html#cb71-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb71-3"><a href="visualization.html#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="visualization.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_013_KHF_DEPARTMENT.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb71-5"><a href="visualization.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb71-6"><a href="visualization.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHFS, </span>
+<span id="cb71-7"><a href="visualization.html#cb71-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb71-8"><a href="visualization.html#cb71-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb71-9"><a href="visualization.html#cb71-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb71-10"><a href="visualization.html#cb71-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb71-11"><a href="visualization.html#cb71-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb71-12"><a href="visualization.html#cb71-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey30&quot;</span>,</span>
+<span id="cb71-13"><a href="visualization.html#cb71-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">4</span>,</span>
+<span id="cb71-14"><a href="visualization.html#cb71-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb71-15"><a href="visualization.html#cb71-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>(KHAttr<span class="sc">$</span>LEVEL<span class="sc">==</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">1</span><span class="sc">+</span>(KHAttr<span class="sc">$</span>LEVEL<span class="sc">==</span><span class="dv">2</span>)<span class="sc">*</span><span class="dv">7</span><span class="sc">+</span>(KHAttr<span class="sc">$</span>LEVEL<span class="sc">==</span><span class="dv">3</span>)<span class="sc">*</span><span class="dv">0</span>,</span>
+<span id="cb71-16"><a href="visualization.html#cb71-16" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Define symbols</span></span>
+<span id="cb71-17"><a href="visualization.html#cb71-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.sides=</span>((KHAttr<span class="sc">$</span>LEVEL<span class="sc">==</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">3</span><span class="sc">+</span>(KHAttr<span class="sc">$</span>LEVEL<span class="sc">==</span><span class="dv">2</span>)<span class="sc">*</span><span class="dv">4</span><span class="sc">+</span>(KHAttr<span class="sc">$</span>LEVEL<span class="sc">==</span><span class="dv">3</span>)<span class="sc">*</span><span class="dv">20</span>),</span>
+<span id="cb71-18"><a href="visualization.html#cb71-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>.<span class="dv">8</span><span class="sc">+</span>KHAttr<span class="sc">$</span>TENURE<span class="sc">/</span><span class="dv">25</span>,</span>
+<span id="cb71-19"><a href="visualization.html#cb71-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb71-20"><a href="visualization.html#cb71-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span><span class="cn">TRUE</span>,</span>
+<span id="cb71-21"><a href="visualization.html#cb71-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="visualization.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+</div>
+<div id="scientists-collaboration-more-complex" class="section level3" number="7.7.4">
+<h3><span class="header-section-number">7.7.4</span> Scientists collaboration (more complex)</h3>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="visualization.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gender and tenure with legend</span></span>
+<span id="cb73-2"><a href="visualization.html#cb73-2" aria-hidden="true" tabindex="-1"></a>BS504Cx<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Borgatti_Scientists504_Attributes.csv&quot;</span>,</span>
+<span id="cb73-3"><a href="visualization.html#cb73-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb73-4"><a href="visualization.html#cb73-4" aria-hidden="true" tabindex="-1"></a>BS504C<span class="ot">&lt;-</span>(BS504Cx<span class="sc">&gt;</span><span class="dv">3</span>)</span>
+<span id="cb73-5"><a href="visualization.html#cb73-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-6"><a href="visualization.html#cb73-6" aria-hidden="true" tabindex="-1"></a>BS504Attr<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Borgatti_Scientists504_Attributes.csv&quot;</span>,</span>
+<span id="cb73-7"><a href="visualization.html#cb73-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb73-8"><a href="visualization.html#cb73-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-9"><a href="visualization.html#cb73-9" aria-hidden="true" tabindex="-1"></a>Tenure<span class="ot">&lt;-</span>(BS504Attr<span class="sc">$</span>Years)</span>
+<span id="cb73-10"><a href="visualization.html#cb73-10" aria-hidden="true" tabindex="-1"></a>Tenure</span></code></pre></div>
+<pre><code>##   [1] 18  2  1 16  2 14  4  2  6  3 22 34 25  7  8  5  4 47 21  9  2 15  3  2 13
+##  [26]  2 16  3  8 27  4  5  5  3 29 26  7  4 21 28  2  1 14 18 12 15 14 10 29  6
+##  [51] 10  3  8  6  3  5  4 28 24  6  2 18  1 14 12 14 11  4 22  3  7  9 24  5  9
+##  [76] 27  5  4 25  9 28  3  2 17 14 14  3  6  2  2  6 25 40  5  4 22  8 27  4  4
+## [101]  2 17 17  2 16 25  4 21  4 28  3  8 25 28  4 27 18  2 16 14 17 12  2 14 32
+## [126] 23  4 29 21  4  7 25  4 28 11 12 12  4  8 16  8  8 29  3  4 29  4  4  5  3
+## [151]  3  2 19 14  6 13  9  7 16  3 15  6  3  3 30 30  4 10  5  6  2 15 15 16  2
+## [176]  4  3  2  5 32  3  6 35  3  7 22 35  5 24 39  2  2  2 17  2 17 13 17  4  7
+## [201]  3  2 13  1 15 21  3  7  8  3  3 13 17  1 16  3 12 14  3  8  4 10  3 26  3
+## [226] 22  8  5 27  7  3  6 46 23  9  3  2  3 17 14  1 13  2 14  1  1  3 23  3 10
+## [251] 29  9  4 37  2 18  1  1 19 14 11  5  4 24  4 10 37 24 10 40 22  3  2 12 13
+## [276] 17 13  2  6  9 31 28  3  3 44  3 24 27  9  3 18 18 17 18 13  1 31  6  4  3
+## [301]  4  4 27 22 29 24  9  3  2  2 17 13 14 14 17  7 27 10 27  5  3 40  7 30 24
+## [326] 25 24 17 11  5 14  2 36  7  4 23 22 24 37  8 11  4  3  8 10  3 12  2  4 12
+## [351] 14 12 15 12 14 12  5 29 33  4  3  3  4 47 34 53 11  2  8 13 11  8 22  6 44
+## [376]  5  3  4  4  8  6  3  3  2 19  1  5  2 12  2  2  1  3 25  3  4 10 24 28 10
+## [401]  5  7  3  6  9  3  2 12 14 11  3 14  2  2 14  3  2  4 33  7  4  4  4 13  1
+## [426] 19  1  3 19 11 14 16  6  4 28  4  5 10 24 22  3  3  4  8  3 25 30 12  2 14
+## [451] 40  4  4 30 23 27  8 20 13 18 16 17  2  2 11  4  1 25 10  6 26 28  3 43 39
+## [476]  6 41 34  3  4  5 13  2 16 13  3 17  2 10 16 15  1  1  2  3  5 30  4  5 21
+## [501]  4  3  7  3</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="visualization.html#cb75-1" aria-hidden="true" tabindex="-1"></a>TenureA<span class="ot">&lt;-</span>(<span class="fu">round</span>(<span class="dv">10</span><span class="sc">*</span>(Tenure)<span class="sc">/</span><span class="fu">max</span>((Tenure))))</span>
+<span id="cb75-2"><a href="visualization.html#cb75-2" aria-hidden="true" tabindex="-1"></a>TenureA</span></code></pre></div>
+<pre><code>##   [1]  3  0  0  3  0  3  1  0  1  1  4  6  5  1  2  1  1  9  4  2  0  3  1  0  2
+##  [26]  0  3  1  2  5  1  1  1  1  5  5  1  1  4  5  0  0  3  3  2  3  3  2  5  1
+##  [51]  2  1  2  1  1  1  1  5  5  1  0  3  0  3  2  3  2  1  4  1  1  2  5  1  2
+##  [76]  5  1  1  5  2  5  1  0  3  3  3  1  1  0  0  1  5  8  1  1  4  2  5  1  1
+## [101]  0  3  3  0  3  5  1  4  1  5  1  2  5  5  1  5  3  0  3  3  3  2  0  3  6
+## [126]  4  1  5  4  1  1  5  1  5  2  2  2  1  2  3  2  2  5  1  1  5  1  1  1  1
+## [151]  1  0  4  3  1  2  2  1  3  1  3  1  1  1  6  6  1  2  1  1  0  3  3  3  0
+## [176]  1  1  0  1  6  1  1  7  1  1  4  7  1  5  7  0  0  0  3  0  3  2  3  1  1
+## [201]  1  0  2  0  3  4  1  1  2  1  1  2  3  0  3  1  2  3  1  2  1  2  1  5  1
+## [226]  4  2  1  5  1  1  1  9  4  2  1  0  1  3  3  0  2  0  3  0  0  1  4  1  2
+## [251]  5  2  1  7  0  3  0  0  4  3  2  1  1  5  1  2  7  5  2  8  4  1  0  2  2
+## [276]  3  2  0  1  2  6  5  1  1  8  1  5  5  2  1  3  3  3  3  2  0  6  1  1  1
+## [301]  1  1  5  4  5  5  2  1  0  0  3  2  3  3  3  1  5  2  5  1  1  8  1  6  5
+## [326]  5  5  3  2  1  3  0  7  1  1  4  4  5  7  2  2  1  1  2  2  1  2  0  1  2
+## [351]  3  2  3  2  3  2  1  5  6  1  1  1  1  9  6 10  2  0  2  2  2  2  4  1  8
+## [376]  1  1  1  1  2  1  1  1  0  4  0  1  0  2  0  0  0  1  5  1  1  2  5  5  2
+## [401]  1  1  1  1  2  1  0  2  3  2  1  3  0  0  3  1  0  1  6  1  1  1  1  2  0
+## [426]  4  0  1  4  2  3  3  1  1  5  1  1  2  5  4  1  1  1  2  1  5  6  2  0  3
+## [451]  8  1  1  6  4  5  2  4  2  3  3  3  0  0  2  1  0  5  2  1  5  5  1  8  7
+## [476]  1  8  6  1  1  1  2  0  3  2  1  3  0  2  3  3  0  0  0  1  1  6  1  1  4
+## [501]  1  1  1  1</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="visualization.html#cb77-1" aria-hidden="true" tabindex="-1"></a>colfunc <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green3&quot;</span>))</span>
+<span id="cb77-2"><a href="visualization.html#cb77-2" aria-hidden="true" tabindex="-1"></a>COLWB<span class="ot">&lt;-</span><span class="fu">colfunc</span>(<span class="dv">7</span>)</span>
+<span id="cb77-3"><a href="visualization.html#cb77-3" aria-hidden="true" tabindex="-1"></a>TenureA2<span class="ot">&lt;-</span>TenureA</span>
+<span id="cb77-4"><a href="visualization.html#cb77-4" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">0</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">1</span>]</span>
+<span id="cb77-5"><a href="visualization.html#cb77-5" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">1</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">2</span>]</span>
+<span id="cb77-6"><a href="visualization.html#cb77-6" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">2</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">3</span>]</span>
+<span id="cb77-7"><a href="visualization.html#cb77-7" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">3</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">4</span>]</span>
+<span id="cb77-8"><a href="visualization.html#cb77-8" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">4</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">5</span>]</span>
+<span id="cb77-9"><a href="visualization.html#cb77-9" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">5</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">6</span>]</span>
+<span id="cb77-10"><a href="visualization.html#cb77-10" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">6</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">6</span>]</span>
+<span id="cb77-11"><a href="visualization.html#cb77-11" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">7</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">7</span>]</span>
+<span id="cb77-12"><a href="visualization.html#cb77-12" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">8</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">7</span>]</span>
+<span id="cb77-13"><a href="visualization.html#cb77-13" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">9</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">7</span>]</span>
+<span id="cb77-14"><a href="visualization.html#cb77-14" aria-hidden="true" tabindex="-1"></a>TenureA2[TenureA<span class="sc">==</span><span class="dv">10</span>]<span class="ot">&lt;-</span>COLWB[<span class="dv">7</span>]</span>
+<span id="cb77-15"><a href="visualization.html#cb77-15" aria-hidden="true" tabindex="-1"></a>TenureA2</span></code></pre></div>
+<pre><code>##   [1] &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#D4F600&quot;
+##   [8] &quot;#FFFF00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#D4F600&quot;
+##  [15] &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#00CD00&quot; &quot;#55DD00&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot;
+##  [22] &quot;#7FE600&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#D4F600&quot;
+##  [29] &quot;#AAEE00&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#2AD500&quot;
+##  [36] &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#2AD500&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot;
+##  [43] &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot;
+##  [50] &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot;
+##  [57] &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot;
+##  [64] &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#D4F600&quot;
+##  [71] &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot; &quot;#D4F600&quot;
+##  [78] &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot;
+##  [85] &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#D4F600&quot;
+##  [92] &quot;#2AD500&quot; &quot;#00CD00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot;
+##  [99] &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot;
+## [106] &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot;
+## [113] &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot;
+## [120] &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#2AD500&quot; &quot;#55DD00&quot;
+## [127] &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#55DD00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#D4F600&quot;
+## [134] &quot;#2AD500&quot; &quot;#AAEE00&quot; &quot;#AAEE00&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot;
+## [141] &quot;#AAEE00&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#D4F600&quot;
+## [148] &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#55DD00&quot; &quot;#7FE600&quot;
+## [155] &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#7FE600&quot; &quot;#D4F600&quot; &quot;#7FE600&quot;
+## [162] &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot;
+## [169] &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot;
+## [176] &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot;
+## [183] &quot;#00CD00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#00CD00&quot; &quot;#D4F600&quot; &quot;#2AD500&quot;
+## [190] &quot;#00CD00&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot;
+## [197] &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#AAEE00&quot;
+## [204] &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#55DD00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot;
+## [211] &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot;
+## [218] &quot;#7FE600&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#2AD500&quot;
+## [225] &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot;
+## [232] &quot;#D4F600&quot; &quot;#00CD00&quot; &quot;#55DD00&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#D4F600&quot;
+## [239] &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot;
+## [246] &quot;#FFFF00&quot; &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot; &quot;#AAEE00&quot;
+## [253] &quot;#D4F600&quot; &quot;#00CD00&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#55DD00&quot;
+## [260] &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot;
+## [267] &quot;#00CD00&quot; &quot;#2AD500&quot; &quot;#AAEE00&quot; &quot;#00CD00&quot; &quot;#55DD00&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot;
+## [274] &quot;#AAEE00&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot;
+## [281] &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#00CD00&quot; &quot;#D4F600&quot; &quot;#2AD500&quot;
+## [288] &quot;#2AD500&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#7FE600&quot;
+## [295] &quot;#AAEE00&quot; &quot;#FFFF00&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot;
+## [302] &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#55DD00&quot; &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot;
+## [309] &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#7FE600&quot;
+## [316] &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#00CD00&quot;
+## [323] &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot;
+## [330] &quot;#D4F600&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#00CD00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#55DD00&quot;
+## [337] &quot;#55DD00&quot; &quot;#2AD500&quot; &quot;#00CD00&quot; &quot;#AAEE00&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot;
+## [344] &quot;#AAEE00&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot;
+## [351] &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot;
+## [358] &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#00CD00&quot;
+## [365] &quot;#2AD500&quot; &quot;#00CD00&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot; &quot;#AAEE00&quot; &quot;#AAEE00&quot; &quot;#AAEE00&quot;
+## [372] &quot;#AAEE00&quot; &quot;#55DD00&quot; &quot;#D4F600&quot; &quot;#00CD00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot;
+## [379] &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#55DD00&quot;
+## [386] &quot;#FFFF00&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot;
+## [393] &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot; &quot;#2AD500&quot;
+## [400] &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot;
+## [407] &quot;#FFFF00&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot;
+## [414] &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#D4F600&quot;
+## [421] &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot; &quot;#55DD00&quot; &quot;#FFFF00&quot;
+## [428] &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot;
+## [435] &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#2AD500&quot; &quot;#55DD00&quot; &quot;#D4F600&quot;
+## [442] &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#AAEE00&quot;
+## [449] &quot;#FFFF00&quot; &quot;#7FE600&quot; &quot;#00CD00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#55DD00&quot;
+## [456] &quot;#2AD500&quot; &quot;#AAEE00&quot; &quot;#55DD00&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot; &quot;#7FE600&quot; &quot;#7FE600&quot;
+## [463] &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#FFFF00&quot; &quot;#2AD500&quot; &quot;#AAEE00&quot;
+## [470] &quot;#D4F600&quot; &quot;#2AD500&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#00CD00&quot; &quot;#00CD00&quot; &quot;#D4F600&quot;
+## [477] &quot;#00CD00&quot; &quot;#2AD500&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#AAEE00&quot; &quot;#FFFF00&quot;
+## [484] &quot;#7FE600&quot; &quot;#AAEE00&quot; &quot;#D4F600&quot; &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#AAEE00&quot; &quot;#7FE600&quot;
+## [491] &quot;#7FE600&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#FFFF00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#2AD500&quot;
+## [498] &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#55DD00&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot; &quot;#D4F600&quot;</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="visualization.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_014_BS504C_gender_tenure.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb79-2"><a href="visualization.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb79-3"><a href="visualization.html#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504C, </span>
+<span id="cb79-4"><a href="visualization.html#cb79-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, </span>
+<span id="cb79-5"><a href="visualization.html#cb79-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb79-6"><a href="visualization.html#cb79-6" aria-hidden="true" tabindex="-1"></a>      <span class="co">#mode=&quot;kamadakawai&quot;,</span></span>
+<span id="cb79-7"><a href="visualization.html#cb79-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter =</span> F,</span>
+<span id="cb79-8"><a href="visualization.html#cb79-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb79-9"><a href="visualization.html#cb79-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>,</span>
+<span id="cb79-10"><a href="visualization.html#cb79-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">2</span>, </span>
+<span id="cb79-11"><a href="visualization.html#cb79-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb79-12"><a href="visualization.html#cb79-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>TenureA2,</span>
+<span id="cb79-13"><a href="visualization.html#cb79-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span><span class="dv">1</span><span class="fl">+.7</span><span class="sc">*</span>(<span class="dv">2</span><span class="sc">-</span>BS504Attr<span class="sc">$</span>Sex), </span>
+<span id="cb79-14"><a href="visualization.html#cb79-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.sides=</span>(BS504Attr<span class="sc">$</span>Sex<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">47</span><span class="sc">+</span><span class="dv">4</span>)</span>
+<span id="cb79-15"><a href="visualization.html#cb79-15" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
+<span id="cb79-16"><a href="visualization.html#cb79-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Colors&quot;</span>,<span class="st">&quot; Senior&quot;</span>, <span class="st">&quot; Junior&quot;</span>, <span class="st">&quot; &quot;</span>,<span class="st">&quot;Shapes&quot;</span>, <span class="st">&quot; Male (2)&quot;</span>, <span class="st">&quot; Female (1)&quot;</span>),</span>
+<span id="cb79-17"><a href="visualization.html#cb79-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;green3&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;black&quot;</span>,<span class="st">&quot;black&quot;</span>), </span>
+<span id="cb79-18"><a href="visualization.html#cb79-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">pch =</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">18</span>),</span>
+<span id="cb79-19"><a href="visualization.html#cb79-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">pt.cex =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">2.1</span>,<span class="fl">2.1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">1.7</span>,<span class="fl">1.9</span>), </span>
+<span id="cb79-20"><a href="visualization.html#cb79-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">1</span>, </span>
+<span id="cb79-21"><a href="visualization.html#cb79-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">text.col =</span> <span class="st">&quot;grey10&quot;</span>, </span>
+<span id="cb79-22"><a href="visualization.html#cb79-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">horiz =</span> F , </span>
+<span id="cb79-23"><a href="visualization.html#cb79-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">inset =</span> <span class="fu">c</span>(<span class="fl">0.01</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="visualization.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+</div>
+<div id="nodal-attributes-on-pfm" class="section level3" number="7.7.5">
+<h3><span class="header-section-number">7.7.5</span> Nodal attributes on PFM</h3>
+<p>=== NO DATASET ===</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="visualization.html#cb81-1" aria-hidden="true" tabindex="-1"></a>PFM<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Padgett_FlorentineFamilies_Marriage.csv&quot;</span>,</span>
+<span id="cb81-2"><a href="visualization.html#cb81-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb81-3"><a href="visualization.html#cb81-3" aria-hidden="true" tabindex="-1"></a>PFM</span></code></pre></div>
+<pre><code>##              ACCIAIUOLI ALBIZZI BARBADORI BISCHERI CASTELLANI GINORI GUADAGNI
+## ACCIAIUOLI            0       0         0        0          0      0        0
+## ALBIZZI               0       0         0        0          0      1        1
+## BARBADORI             0       0         0        0          1      0        0
+## BISCHERI              0       0         0        0          0      0        1
+## CASTELLANI            0       0         1        0          0      0        0
+## GINORI                0       1         0        0          0      0        0
+## GUADAGNI              0       1         0        1          0      0        0
+## LAMBERTESCHI          0       0         0        0          0      0        1
+## MEDICI                1       1         1        0          0      0        0
+## PAZZI                 0       0         0        0          0      0        0
+## PERUZZI               0       0         0        1          1      0        0
+## PUCCI                 0       0         0        0          0      0        0
+## RIDOLFI               0       0         0        0          0      0        0
+## SALVIATI              0       0         0        0          0      0        0
+## STROZZI               0       0         0        1          1      0        0
+## TORNABUONI            0       0         0        0          0      0        1
+##              LAMBERTESCHI MEDICI PAZZI PERUZZI PUCCI RIDOLFI SALVIATI STROZZI
+## ACCIAIUOLI              0      1     0       0     0       0        0       0
+## ALBIZZI                 0      1     0       0     0       0        0       0
+## BARBADORI               0      1     0       0     0       0        0       0
+## BISCHERI                0      0     0       1     0       0        0       1
+## CASTELLANI              0      0     0       1     0       0        0       1
+## GINORI                  0      0     0       0     0       0        0       0
+## GUADAGNI                1      0     0       0     0       0        0       0
+## LAMBERTESCHI            0      0     0       0     0       0        0       0
+## MEDICI                  0      0     0       0     0       1        1       0
+## PAZZI                   0      0     0       0     0       0        1       0
+## PERUZZI                 0      0     0       0     0       0        0       1
+## PUCCI                   0      0     0       0     0       0        0       0
+## RIDOLFI                 0      1     0       0     0       0        0       1
+## SALVIATI                0      1     1       0     0       0        0       0
+## STROZZI                 0      0     0       1     0       1        0       0
+## TORNABUONI              0      1     0       0     0       1        0       0
+##              TORNABUONI
+## ACCIAIUOLI            0
+## ALBIZZI               0
+## BARBADORI             0
+## BISCHERI              0
+## CASTELLANI            0
+## GINORI                0
+## GUADAGNI              1
+## LAMBERTESCHI          0
+## MEDICI                1
+## PAZZI                 0
+## PERUZZI               0
+## PUCCI                 0
+## RIDOLFI               1
+## SALVIATI              0
+## STROZZI               0
+## TORNABUONI            0</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="visualization.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb83-2"><a href="visualization.html#cb83-2" aria-hidden="true" tabindex="-1"></a>PFMn<span class="ot">&lt;-</span><span class="fu">as.network</span>(PFM, <span class="at">directed=</span>F)</span>
+<span id="cb83-3"><a href="visualization.html#cb83-3" aria-hidden="true" tabindex="-1"></a>DPFM<span class="ot">&lt;-</span>sna<span class="sc">::</span><span class="fu">degree</span>(PFMn)</span>
+<span id="cb83-4"><a href="visualization.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_015_PFM_labelsCHANGE.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb83-5"><a href="visualization.html#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb83-6"><a href="visualization.html#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(PFMn, </span>
+<span id="cb83-7"><a href="visualization.html#cb83-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, </span>
+<span id="cb83-8"><a href="visualization.html#cb83-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb83-9"><a href="visualization.html#cb83-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb83-10"><a href="visualization.html#cb83-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb83-11"><a href="visualization.html#cb83-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb83-12"><a href="visualization.html#cb83-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">1</span>, </span>
+<span id="cb83-13"><a href="visualization.html#cb83-13" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb83-14"><a href="visualization.html#cb83-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;deepskyblue3&quot;</span>,</span>
+<span id="cb83-15"><a href="visualization.html#cb83-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>DPFM<span class="sc">/</span><span class="dv">17</span><span class="fl">+.5</span>,</span>
+<span id="cb83-16"><a href="visualization.html#cb83-16" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb83-17"><a href="visualization.html#cb83-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
+<span id="cb83-18"><a href="visualization.html#cb83-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">3</span>, </span>
+<span id="cb83-19"><a href="visualization.html#cb83-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>DPFM<span class="sc">/</span><span class="dv">20</span><span class="fl">+.3</span>, </span>
+<span id="cb83-20"><a href="visualization.html#cb83-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.border=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="visualization.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+</div>
+</div>
+<div id="tie-strength-on-scientists-collaborations" class="section level2" number="7.8">
+<h2><span class="header-section-number">7.8</span> Tie strength on Scientists collaborations</h2>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="visualization.html#cb85-1" aria-hidden="true" tabindex="-1"></a>BS504C<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Borgatti_Scientists504_Attributes.csv&quot;</span>,</span>
+<span id="cb85-2"><a href="visualization.html#cb85-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb85-3"><a href="visualization.html#cb85-3" aria-hidden="true" tabindex="-1"></a>BS504CGT3<span class="ot">&lt;-</span>(BS504Cx<span class="sc">&gt;</span><span class="dv">3</span>)</span>
+<span id="cb85-4"><a href="visualization.html#cb85-4" aria-hidden="true" tabindex="-1"></a>BS504CGT5<span class="ot">&lt;-</span>(BS504Cx<span class="sc">&gt;</span><span class="dv">5</span>)</span>
+<span id="cb85-5"><a href="visualization.html#cb85-5" aria-hidden="true" tabindex="-1"></a>BS504CGT7<span class="ot">&lt;-</span>(BS504Cx<span class="sc">&gt;</span><span class="dv">7</span>)</span>
+<span id="cb85-6"><a href="visualization.html#cb85-6" aria-hidden="true" tabindex="-1"></a>BS504CGT9<span class="ot">&lt;-</span>(BS504Cx<span class="sc">&gt;</span><span class="dv">9</span>)</span>
+<span id="cb85-7"><a href="visualization.html#cb85-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-8"><a href="visualization.html#cb85-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-9"><a href="visualization.html#cb85-9" aria-hidden="true" tabindex="-1"></a>LOBS504<span class="ot">&lt;-</span><span class="fu">gplot</span>(BS504CGT3,</span>
+<span id="cb85-10"><a href="visualization.html#cb85-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb85-11"><a href="visualization.html#cb85-11" aria-hidden="true" tabindex="-1"></a>               <span class="co">#layout</span></span>
+<span id="cb85-12"><a href="visualization.html#cb85-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb85-13"><a href="visualization.html#cb85-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">jitter=</span>F,</span>
+<span id="cb85-14"><a href="visualization.html#cb85-14" aria-hidden="true" tabindex="-1"></a>               <span class="co">#ties</span></span>
+<span id="cb85-15"><a href="visualization.html#cb85-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>, </span>
+<span id="cb85-16"><a href="visualization.html#cb85-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">edge.lwd=</span>.<span class="dv">1</span>,</span>
+<span id="cb85-17"><a href="visualization.html#cb85-17" aria-hidden="true" tabindex="-1"></a>               <span class="co">#nodes</span></span>
+<span id="cb85-18"><a href="visualization.html#cb85-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">vertex.col=</span><span class="st">&quot;gold3&quot;</span>,</span>
+<span id="cb85-19"><a href="visualization.html#cb85-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">vertex.cex=</span>.<span class="dv">75</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="visualization.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_016_BS504C_TieStrenght3.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb86-2"><a href="visualization.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb86-3"><a href="visualization.html#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504CGT3,</span>
+<span id="cb86-4"><a href="visualization.html#cb86-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb86-5"><a href="visualization.html#cb86-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb86-6"><a href="visualization.html#cb86-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>LOBS504,</span>
+<span id="cb86-7"><a href="visualization.html#cb86-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb86-8"><a href="visualization.html#cb86-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb86-9"><a href="visualization.html#cb86-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey60&quot;</span>, </span>
+<span id="cb86-10"><a href="visualization.html#cb86-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">1</span>,</span>
+<span id="cb86-11"><a href="visualization.html#cb86-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb86-12"><a href="visualization.html#cb86-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;gold3&quot;</span>,</span>
+<span id="cb86-13"><a href="visualization.html#cb86-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>.<span class="dv">75</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-2.png" width="672" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="visualization.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span>
+<span id="cb87-2"><a href="visualization.html#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="visualization.html#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-4"><a href="visualization.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_016_BS504C_TieStrenght5.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb87-5"><a href="visualization.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb87-6"><a href="visualization.html#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504CGT5,</span>
+<span id="cb87-7"><a href="visualization.html#cb87-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb87-8"><a href="visualization.html#cb87-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb87-9"><a href="visualization.html#cb87-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>LOBS504,</span>
+<span id="cb87-10"><a href="visualization.html#cb87-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb87-11"><a href="visualization.html#cb87-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb87-12"><a href="visualization.html#cb87-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey60&quot;</span>, </span>
+<span id="cb87-13"><a href="visualization.html#cb87-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">1</span>,</span>
+<span id="cb87-14"><a href="visualization.html#cb87-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb87-15"><a href="visualization.html#cb87-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;gold3&quot;</span>,</span>
+<span id="cb87-16"><a href="visualization.html#cb87-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>.<span class="dv">75</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-3.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="visualization.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span>
+<span id="cb88-2"><a href="visualization.html#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="visualization.html#cb88-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-4"><a href="visualization.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_016_BS504C_TieStrenght7.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb88-5"><a href="visualization.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb88-6"><a href="visualization.html#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504CGT7,</span>
+<span id="cb88-7"><a href="visualization.html#cb88-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb88-8"><a href="visualization.html#cb88-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb88-9"><a href="visualization.html#cb88-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>LOBS504,</span>
+<span id="cb88-10"><a href="visualization.html#cb88-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb88-11"><a href="visualization.html#cb88-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb88-12"><a href="visualization.html#cb88-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey60&quot;</span>, </span>
+<span id="cb88-13"><a href="visualization.html#cb88-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">1</span>,</span>
+<span id="cb88-14"><a href="visualization.html#cb88-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb88-15"><a href="visualization.html#cb88-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;gold3&quot;</span>,</span>
+<span id="cb88-16"><a href="visualization.html#cb88-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>.<span class="dv">75</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-4.png" width="672" /></p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="visualization.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span>
+<span id="cb89-2"><a href="visualization.html#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-3"><a href="visualization.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_016_BS504C_TieStrenght9.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb89-4"><a href="visualization.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb89-5"><a href="visualization.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504CGT9,</span>
+<span id="cb89-6"><a href="visualization.html#cb89-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb89-7"><a href="visualization.html#cb89-7" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb89-8"><a href="visualization.html#cb89-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>LOBS504,</span>
+<span id="cb89-9"><a href="visualization.html#cb89-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb89-10"><a href="visualization.html#cb89-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb89-11"><a href="visualization.html#cb89-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey60&quot;</span>, </span>
+<span id="cb89-12"><a href="visualization.html#cb89-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">1</span>,</span>
+<span id="cb89-13"><a href="visualization.html#cb89-13" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb89-14"><a href="visualization.html#cb89-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;gold3&quot;</span>,</span>
+<span id="cb89-15"><a href="visualization.html#cb89-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>.<span class="dv">75</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-5.png" width="672" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="visualization.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+</div>
+<div id="directed-networks" class="section level2" number="7.9">
+<h2><span class="header-section-number">7.9</span> Directed networks</h2>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="visualization.html#cb91-1" aria-hidden="true" tabindex="-1"></a>KHF<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Krackhardt_HighTech_Friendship.csv&quot;</span>,</span>
+<span id="cb91-2"><a href="visualization.html#cb91-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb91-3"><a href="visualization.html#cb91-3" aria-hidden="true" tabindex="-1"></a>KHFn<span class="ot">&lt;-</span><span class="fu">as.network</span>(KHF, <span class="at">directed=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="visualization.html#cb92-1" aria-hidden="true" tabindex="-1"></a>COOKHF<span class="ot">&lt;-</span><span class="fu">gplot</span>(KHFn,</span>
+<span id="cb92-2"><a href="visualization.html#cb92-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">gmode=</span><span class="st">&quot;digraph&quot;</span>,    </span>
+<span id="cb92-3"><a href="visualization.html#cb92-3" aria-hidden="true" tabindex="-1"></a>              <span class="co">#layout</span></span>
+<span id="cb92-4"><a href="visualization.html#cb92-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">jitter=</span>F,           <span class="co"># do not allow nodes to be &quot;jittered&quot;</span></span>
+<span id="cb92-5"><a href="visualization.html#cb92-5" aria-hidden="true" tabindex="-1"></a>              <span class="co">#ties</span></span>
+<span id="cb92-6"><a href="visualization.html#cb92-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">edge.col=</span><span class="st">&quot;grey40&quot;</span>,</span>
+<span id="cb92-7"><a href="visualization.html#cb92-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">arrowhead.cex=</span>.<span class="dv">7</span>,</span>
+<span id="cb92-8"><a href="visualization.html#cb92-8" aria-hidden="true" tabindex="-1"></a>              <span class="co"># set color of ties</span></span>
+<span id="cb92-9"><a href="visualization.html#cb92-9" aria-hidden="true" tabindex="-1"></a>              <span class="co">#nodes</span></span>
+<span id="cb92-10"><a href="visualization.html#cb92-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">vertex.col=</span><span class="st">&quot;grey90&quot;</span>,   <span class="co"># set color of nodes</span></span>
+<span id="cb92-11"><a href="visualization.html#cb92-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">vertex.cex=</span><span class="fl">1.4</span>,</span>
+<span id="cb92-12"><a href="visualization.html#cb92-12" aria-hidden="true" tabindex="-1"></a>              <span class="co">#labels</span></span>
+<span id="cb92-13"><a href="visualization.html#cb92-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">displaylabels=</span>T,    <span class="co"># indicate that labels should be included</span></span>
+<span id="cb92-14"><a href="visualization.html#cb92-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">label.pos=</span><span class="dv">5</span>,        <span class="co"># indicate that labels should be given below points</span></span>
+<span id="cb92-15"><a href="visualization.html#cb92-15" aria-hidden="true" tabindex="-1"></a>              <span class="at">label.cex=</span>.<span class="dv">5</span>)       <span class="co"># indicate the size of the labels (1 is default)</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="visualization.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tiff(file=&quot;images/Fig_017b_KHF_directed.tiff&quot;, width=7, height=5, units=&quot;in&quot;, res=900)</span></span>
+<span id="cb93-2"><a href="visualization.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this defines the margins:</span></span>
+<span id="cb93-3"><a href="visualization.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb93-4"><a href="visualization.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the plot for a network function in &quot;sna&quot;</span></span>
+<span id="cb93-5"><a href="visualization.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(KHFn,</span>
+<span id="cb93-6"><a href="visualization.html#cb93-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;digraph&quot;</span>,  </span>
+<span id="cb93-7"><a href="visualization.html#cb93-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">coord=</span>COOKHF,</span>
+<span id="cb93-8"><a href="visualization.html#cb93-8" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb93-9"><a href="visualization.html#cb93-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,           <span class="co"># do not allow nodes to be &quot;jittered&quot;</span></span>
+<span id="cb93-10"><a href="visualization.html#cb93-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb93-11"><a href="visualization.html#cb93-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey30&quot;</span>,</span>
+<span id="cb93-12"><a href="visualization.html#cb93-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span><span class="dv">1</span>,</span>
+<span id="cb93-13"><a href="visualization.html#cb93-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">usecurve=</span>T,</span>
+<span id="cb93-14"><a href="visualization.html#cb93-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.curve=</span>.<span class="dv">04</span>, </span>
+<span id="cb93-15"><a href="visualization.html#cb93-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">arrowhead.cex=</span>.<span class="dv">6</span>,</span>
+<span id="cb93-16"><a href="visualization.html#cb93-16" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb93-17"><a href="visualization.html#cb93-17" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb93-18"><a href="visualization.html#cb93-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;grey90&quot;</span>,   <span class="co"># set color of nodes</span></span>
+<span id="cb93-19"><a href="visualization.html#cb93-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span><span class="fl">1.4</span>,</span>
+<span id="cb93-20"><a href="visualization.html#cb93-20" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb93-21"><a href="visualization.html#cb93-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,    <span class="co"># indicate that labels should be included</span></span>
+<span id="cb93-22"><a href="visualization.html#cb93-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">5</span>,        <span class="co"># indicate that labels should be given below points</span></span>
+<span id="cb93-23"><a href="visualization.html#cb93-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">5</span>)       <span class="co"># indicate the size of the labels (1 is default)</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-2.png" width="672" /></p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="visualization.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/16-Visualization.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Basic Measures | Advanced Social Networks</title>
+  <meta name="description" content="Chapter 2 Basic Measures | Advanced Social Networks" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Basic Measures | Advanced Social Networks" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="AuroraArctic/AdvancedSocialNetworks" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Basic Measures | Advanced Social Networks" />
+  
+  
+  
+
+<meta name="author" content="Aurora Maria Tumminello" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="cohesion-measures.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Class Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#social-network-analysis"><i class="fa fa-check"></i><b>1.1</b> Social Network Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#definition"><i class="fa fa-check"></i><b>1.1.1</b> Definition</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#social-network-representation"><i class="fa fa-check"></i><b>1.1.2</b> Social Network Representation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#types-of-networks"><i class="fa fa-check"></i><b>1.2</b> Types of networks</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#sociocentric-or-complete-network-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Sociocentric or complete network analysis</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#directed-and-undirected-networks"><i class="fa fa-check"></i><b>1.2.2</b> Directed and undirected networks</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#multiple-network-relations"><i class="fa fa-check"></i><b>1.2.3</b> Multiple network relations</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#weighted-networks"><i class="fa fa-check"></i><b>1.2.4</b> Weighted networks</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#two-mode-or-bipartite-networks"><i class="fa fa-check"></i><b>1.2.5</b> Two-mode or Bipartite networks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#levels-of-analysis"><i class="fa fa-check"></i><b>1.3</b> Levels of analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-measures.html"><a href="basic-measures.html"><i class="fa fa-check"></i><b>2</b> Basic Measures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-measures.html"><a href="basic-measures.html#degree-centrality"><i class="fa fa-check"></i><b>2.1</b> Degree centrality</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network"><i class="fa fa-check"></i><b>2.1.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network"><i class="fa fa-check"></i><b>2.1.2</b> Undirected Network</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-measures.html"><a href="basic-measures.html#density-and-average-degree"><i class="fa fa-check"></i><b>2.2</b> Density and average degree</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-1"><i class="fa fa-check"></i><b>2.2.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-1"><i class="fa fa-check"></i><b>2.2.2</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.2.3" data-path="basic-measures.html"><a href="basic-measures.html#average-degree"><i class="fa fa-check"></i><b>2.2.3</b> Average Degree</a></li>
+<li class="chapter" data-level="2.2.4" data-path="basic-measures.html"><a href="basic-measures.html#importance-of-density"><i class="fa fa-check"></i><b>2.2.4</b> Importance of density</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-measures.html"><a href="basic-measures.html#degree-centralization"><i class="fa fa-check"></i><b>2.3</b> Degree-centralization</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#direct-connections"><i class="fa fa-check"></i><b>3.1</b> Direct connections</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#density"><i class="fa fa-check"></i><b>3.1.1</b> Density</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#average-degree-1"><i class="fa fa-check"></i><b>3.1.2</b> Average Degree</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#components"><i class="fa fa-check"></i><b>3.2</b> Components</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#component-ratio"><i class="fa fa-check"></i><b>3.2.1</b> Component ratio</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#connectedness-and-fragmentation"><i class="fa fa-check"></i><b>3.2.2</b> Connectedness and fragmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cohesion-measures.html"><a href="cohesion-measures.html#geodesic"><i class="fa fa-check"></i><b>3.3</b> Geodesic</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#compactness-and-breadth"><i class="fa fa-check"></i><b>3.3.1</b> Compactness and breadth</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#k-step-approach"><i class="fa fa-check"></i><b>3.3.2</b> K-step approach</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cohesion-measures.html"><a href="cohesion-measures.html#exercises"><i class="fa fa-check"></i><b>3.4</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#comment-on-the-results-obtained"><i class="fa fa-check"></i><b>3.4.1</b> Comment on the results obtained</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="centrality.html"><a href="centrality.html"><i class="fa fa-check"></i><b>4</b> Centrality</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="centrality.html"><a href="centrality.html#degree-centrality-1"><i class="fa fa-check"></i><b>4.1</b> Degree Centrality</a></li>
+<li class="chapter" data-level="4.2" data-path="centrality.html"><a href="centrality.html#closeness-centrality"><i class="fa fa-check"></i><b>4.2</b> Closeness Centrality</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="centrality.html"><a href="centrality.html#freemans-closeness-centrality"><i class="fa fa-check"></i><b>4.2.1</b> Freeman’s closeness centrality</a></li>
+<li class="chapter" data-level="4.2.2" data-path="centrality.html"><a href="centrality.html#reciprocal-closeness-centrality"><i class="fa fa-check"></i><b>4.2.2</b> Reciprocal closeness centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="centrality.html"><a href="centrality.html#betweenness-centrality"><i class="fa fa-check"></i><b>4.3</b> Betweenness Centrality</a></li>
+<li class="chapter" data-level="4.4" data-path="centrality.html"><a href="centrality.html#resource-dependence-theory"><i class="fa fa-check"></i><b>4.4</b> Resource Dependence Theory</a></li>
+<li class="chapter" data-level="4.5" data-path="centrality.html"><a href="centrality.html#bonacich-beta-centrality"><i class="fa fa-check"></i><b>4.5</b> Bonacich Beta Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>5</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>5.1</b> Equations</a></li>
+<li class="chapter" data-level="5.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>5.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="5.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>5.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>6</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>6.1</b> Publishing</a></li>
+<li class="chapter" data-level="6.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>6.2</b> 404 pages</a></li>
+<li class="chapter" data-level="6.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>6.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="7" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>7</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visualization.html"><a href="visualization.html#prerequisites"><i class="fa fa-check"></i><b>7.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="7.2" data-path="visualization.html"><a href="visualization.html#modifying-the-layout-on-khf-network"><i class="fa fa-check"></i><b>7.2</b> Modifying the layout on KHF network</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="visualization.html"><a href="visualization.html#random-layout"><i class="fa fa-check"></i><b>7.2.1</b> Random layout</a></li>
+<li class="chapter" data-level="7.2.2" data-path="visualization.html"><a href="visualization.html#circle-layout"><i class="fa fa-check"></i><b>7.2.2</b> Circle Layout</a></li>
+<li class="chapter" data-level="7.2.3" data-path="visualization.html"><a href="visualization.html#fr-layout"><i class="fa fa-check"></i><b>7.2.3</b> FR Layout</a></li>
+<li class="chapter" data-level="7.2.4" data-path="visualization.html"><a href="visualization.html#kha-network"><i class="fa fa-check"></i><b>7.2.4</b> KHA Network</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="visualization.html"><a href="visualization.html#layout-based-on-2-continuous-attributes"><i class="fa fa-check"></i><b>7.3</b> Layout based on 2 continuous attributes</a></li>
+<li class="chapter" data-level="7.4" data-path="visualization.html"><a href="visualization.html#layout-where-points-are-grouped-based-on-nominal-attribute"><i class="fa fa-check"></i><b>7.4</b> Layout where points are grouped based on nominal attribute</a></li>
+<li class="chapter" data-level="7.5" data-path="visualization.html"><a href="visualization.html#geography---international-trade-among-countries-in-1928"><i class="fa fa-check"></i><b>7.5</b> Geography - International trade among countries in 1928</a></li>
+<li class="chapter" data-level="7.6" data-path="visualization.html"><a href="visualization.html#multidimensional-scaling"><i class="fa fa-check"></i><b>7.6</b> Multidimensional scaling</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="visualization.html"><a href="visualization.html#mds-on-primates"><i class="fa fa-check"></i><b>7.6.1</b> MDS on Primates</a></li>
+<li class="chapter" data-level="7.6.2" data-path="visualization.html"><a href="visualization.html#mds-on-valued-trade"><i class="fa fa-check"></i><b>7.6.2</b> MDS on valued trade</a></li>
+<li class="chapter" data-level="7.6.3" data-path="visualization.html"><a href="visualization.html#mds-on-geodesic-distances"><i class="fa fa-check"></i><b>7.6.3</b> MDS on geodesic distances</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="visualization.html"><a href="visualization.html#kamadakawai-and-fr-layout-khfs"><i class="fa fa-check"></i><b>7.7</b> KamadaKawai and FR layout KHFS</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="visualization.html"><a href="visualization.html#on-simulated-data"><i class="fa fa-check"></i><b>7.7.1</b> On Simulated data</a></li>
+<li class="chapter" data-level="7.7.2" data-path="visualization.html"><a href="visualization.html#scientists-collaborations"><i class="fa fa-check"></i><b>7.7.2</b> Scientists collaborations</a></li>
+<li class="chapter" data-level="7.7.3" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-khf"><i class="fa fa-check"></i><b>7.7.3</b> Nodal attributes on KHF</a></li>
+<li class="chapter" data-level="7.7.4" data-path="visualization.html"><a href="visualization.html#scientists-collaboration-more-complex"><i class="fa fa-check"></i><b>7.7.4</b> Scientists collaboration (more complex)</a></li>
+<li class="chapter" data-level="7.7.5" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-pfm"><i class="fa fa-check"></i><b>7.7.5</b> Nodal attributes on PFM</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="visualization.html"><a href="visualization.html#tie-strength-on-scientists-collaborations"><i class="fa fa-check"></i><b>7.8</b> Tie strength on Scientists collaborations</a></li>
+<li class="chapter" data-level="7.9" data-path="visualization.html"><a href="visualization.html#directed-networks"><i class="fa fa-check"></i><b>7.9</b> Directed networks</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Advanced Social Networks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic-measures" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Basic Measures</h1>
+<p>With respect to the considered level of analysis, there are some measures that can be computed for each of them.</p>
+<div id="degree-centrality" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Degree centrality</h2>
+<div id="directed-network" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Directed Network</h3>
+<p>Consider a direct network, whose adjacency matrix is not symmetric. The In degree indicates the popularity of a node, while the out degree indicates its connection with other nodes.</p>
+<p>This degree centrality can be normalized to get the proportion of outcoming/incoming connections for each node, by dividing the in/outdegree by the total number of people remaining (<span class="math inline">\(n-1\)</span>, or the maximum possible connections that a node could have):</p>
+</div>
+<div id="undirected-network" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Undirected Network</h3>
+<p>In this case, the in-degree and the out-degree are the same, since we do not distinguish the type of connections. It can be considered as a double arrow pointing to both sides.</p>
+</div>
+</div>
+<div id="density-and-average-degree" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Density and average degree</h2>
+<div id="directed-network-1" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Directed Network</h3>
+<p><span class="math display">\[
+Density = \frac{\text{Number of ties}}{\text{Number of possible ties}} =\frac{\text{Number of ties}}{n(n-1)} 
+\]</span></p>
+<p>The number of possible ties, without considering self-loops, equals <span class="math inline">\(n(n-1)\)</span>. The number of ties equals the sum of the adjacency matrix.</p>
+<aside>
+<p>💡 <em>For instance, by considering the Friends network, we can say that there are 11 ties and 6 people, so the density equals</em> <span class="math inline">\(D = 11/(6*5) = 11/30 = 0.367\)</span>.</p>
+</aside>
+<p>This number indicates the percentage of direct connections between nodes inside the network.</p>
+</div>
+<div id="undirected-network-1" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Undirected Network</h3>
+<p>In this case, the number of ties can be obtained by doubling the sum of half-matrix, since it is symmetric. The number of possible ties in this case is divided by two, since it is symmetrical and <span class="math inline">\((a,b) = (b,a)\)</span>:</p>
+<p><span class="math display">\[
+Density = \frac{\text{Number of ties}}{\text{Number of possible ties}} =\frac{\text{Number of ties}}{n(n-1)/2} 
+\]</span></p>
+<aside>
+<p>💡 <em>In the Simpsons example, the density equals</em> <span class="math inline">\(D = 18/(10*9/2) = 18/45 = 0.4\)</span></p>
+</aside>
+</div>
+<div id="average-degree" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Average Degree</h3>
+<p>Related to directed network, the average indegree equals the sum of the in-degree or out-degree over the total number of nodes inside the network:</p>
+<aside>
+<p>💡 In the Friends example, the average in-degree is <span class="math inline">\(11/6 = 1.833\)</span>, while the out-degree is <span class="math inline">\(11/6 = 1.833\)</span>.</p>
+</aside>
+<p>By considering the normalized degree, we discover that it equals the density of the network, because we initially divide by the maximum connections possible (<span class="math inline">\(n(n-1)\)</span>), and then we divide everything by the total number of nodes (<span class="math inline">\(n\)</span>), while the normalized degree is computed by dividing the degree by <span class="math inline">\(n-1\)</span>.</p>
+</div>
+<div id="importance-of-density" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Importance of density</h3>
+<p>The Density is useful whenever we need to compare networks, both of the same or different sizes. In particular, the bigger, the more important density becomes to evaluate its cohesiveness.</p>
+<p>Notice that a bigger network makes it harder to have a bigger density than a smaller one. Comparing the density of networks of different sizes can be challenging. It would be better to compare average degrees but notice that <strong>by increasing the network size and the average degree, the density reduces.</strong></p>
+</div>
+</div>
+<div id="degree-centralization" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Degree-centralization</h2>
+<p><strong>Centralization</strong> is a question about how central some nodes are compared to other nodes, it is a characteristic of the network itself. It’s related to the distribution of the centrality inside the network, while centrality is more related to the individual sphere of the nodes.</p>
+<aside>
+<p>💡 <em>The least centralized network is a ring structure, where everyone is connected to the previous and following node (in this case the centralisation is 0).
+The most centralized network is an ego one, where one node is connected to everyone and no one else is connected to nodes different from the ego (in this case the centralisation measure is far from 0).</em></p>
+</aside>
+<p>Centralisation may indicate the status of some nodes inside a network.</p>
+<div id="undirected-network-2" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Undirected Network</h3>
+<p>By taking the maximum degree inside the network, for each node, we subtract its degree to this maximum, in order to get its centralisation. The centralisation for the degree is then obtained by summing all these centralisations.</p>
+<aside>
+<p>💡 <em>Note that the maximum number of connections we could build in a centralized network is <span class="math inline">\(n-1\)</span>. In a decentralized network, if everybody has the same number of connections, the centralisation will always be 0, since the maximum will be the same for every node.</em></p>
+</aside>
+<p><img src="images/02-Basic%20Measures/Untitled.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>By considering the range between the least and the most centralized (<span class="math inline">\(0-12\)</span>), the centralisation can be finally computed by dividing the centralisation for the degree by the maximum centralisation value possible.</p>
+<aside>
+<p>💡 <em>In the example above, it would be</em> <span class="math inline">\(5/12\)</span>.</p>
+</aside>
+<p>The general formula for the centralisation is the following:</p>
+<p><span class="math display">\[
+Centralisation = \frac{\sum (\max-degree_i)}{(n-1)(n-2)}
+\]</span></p>
+</div>
+<div id="directed-network-2" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Directed Network</h3>
+<p>In this case, we detain both in and out-degree centralisation.</p>
+<p><span class="math display">\[
+In-Centralisation = \frac{\sum (\max_{in}-\text{in-degree}_i)}{(n-1)^2}
+\]</span></p>
+<p><span class="math display">\[
+Out-Centralisation = \frac{\sum (\max_{out}-\text{out-degree}_i)}{(n-1)^2}
+\]</span></p>
+<aside>
+<p>💡 Still, if we consider the Friends network, we notice that related to the out-degree centralisation, the network is kind of centralized on Rachel, which is talkative with everybody:</p>
+</aside>
+<p><span class="math display">\[
+Out-C = \frac{(5-1)+(5-0)+(5-1)+(5-5)+(5-3)+(5-1)}{5^2} = \frac{19}{25} = 0.76
+\]</span></p>
+<aside>
+<p>💡 Related to the in-degree instead, the network is decentralized. By thinking about how is more popular than other characters, nobody is the true main star of the show, despite Ross is quite less cited by other people. This means that everybody is as popular as everybody else. It is not perfect yet actually, because of Ross.</p>
+</aside>
+<p><span class="math display">\[
+In-C = \frac{(2-1)+5*(2-2)}{5^2} = \frac{1}{25} = 0.04
+\]</span></p>
+</div>
+<div id="experiment" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Experiment</h3>
+<p><em>How fast a group could make decisions together?</em></p>
+<p>Each subject was given a card, with 5 symbols from a set of 6. Each symbol appeared on 4 of the 5 cards, except for one. The group was asked to find the common symbol in the shortest time possible.</p>
+<p>The subjects communicated by writing messages that could be passed through slots in the walls of the cubicles. Four structures were proposed:</p>
+<ul>
+<li><strong>ring structure:</strong> no consistent pattern of organisations, since subjects sent messages only when receiving or work out the answer themselves;</li>
+<li><strong>straight line:</strong> most of the time the answer was sent out by the individual in the most central position;</li>
+<li><strong>cross figure:</strong> the peripheral sent information to the center, where answered arrived and were sent out.</li>
+<li><strong>t-figure:</strong> the most central figure got all the information and sent the answer. Slower than the cross, but still working.</li>
+</ul>
+<p>The most efficient structure is the T-figure. During the experiment, the person in the middle in the cross figure didn’t understand the experiment at all, therefore the information was useless. It’s the classical structure with the team leader that commands the actions to take. It actually depends on the leadership ability of the central node, otherwise there is no learning.</p>
+<p>The efficiency is given by the velocity and availability to communicate. Simple things benefit from the decentralized problems, whereas complex problems benefit from the centralized option, since the divide et impera organisation makes everything more efficient.</p>
+<p>Evaluation:</p>
+<ul>
+<li>satisfaction: ring structure;</li>
+<li>less errors: T-figure;</li>
+<li>like: ring-structure;</li>
+<li>at least one error: cross and T-figure</li>
+</ul>
+<p><strong>Aim: find a balance between efficiency and satisfaction.</strong></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cohesion-measures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-BasicMeasures.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

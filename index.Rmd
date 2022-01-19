@@ -1,0 +1,12 @@
+--- 
+title: "Advanced Social Networks"
+author: "Aurora Maria Tumminello"
+date: "A.Y. 2021-22"
+site: bookdown::bookdown_site
+documentclass: book
+link-citations: yes
+github-repo: AuroraArctic/AdvancedSocialNetworks
+classoption: [notitlepage, onecolumn, openany]
+geometry: [a4paper, bindingoffset=0mm, inner=30mm, outer=30mm, top=30mm, bottom=30mm]
+urlcolor: blue
+---
