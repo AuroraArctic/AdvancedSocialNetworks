@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 Reciprocity and transitivity | Advanced Social Networks</title>
+  <meta name="description" content="Chapter 12 Reciprocity and transitivity | Advanced Social Networks" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 12 Reciprocity and transitivity | Advanced Social Networks" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="AuroraArctic/AdvancedSocialNetworks" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 Reciprocity and transitivity | Advanced Social Networks" />
+  
+  
+  
+
+<meta name="author" content="Aurora Maria Tumminello" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="subgroups-and-structural-equivalence.html"/>
+<link rel="next" href="ergms.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Class Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#social-network-analysis"><i class="fa fa-check"></i><b>1.1</b> Social Network Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#definition"><i class="fa fa-check"></i><b>1.1.1</b> Definition</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#social-network-representation"><i class="fa fa-check"></i><b>1.1.2</b> Social Network Representation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#types-of-networks"><i class="fa fa-check"></i><b>1.2</b> Types of networks</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#sociocentric-or-complete-network-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Sociocentric or complete network analysis</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#directed-and-undirected-networks"><i class="fa fa-check"></i><b>1.2.2</b> Directed and undirected networks</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#multiple-network-relations"><i class="fa fa-check"></i><b>1.2.3</b> Multiple network relations</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#weighted-networks"><i class="fa fa-check"></i><b>1.2.4</b> Weighted networks</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#two-mode-or-bipartite-networks"><i class="fa fa-check"></i><b>1.2.5</b> Two-mode or Bipartite networks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#levels-of-analysis"><i class="fa fa-check"></i><b>1.3</b> Levels of analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-measures.html"><a href="basic-measures.html"><i class="fa fa-check"></i><b>2</b> Basic Measures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-measures.html"><a href="basic-measures.html#degree-centrality"><i class="fa fa-check"></i><b>2.1</b> Degree centrality</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network"><i class="fa fa-check"></i><b>2.1.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network"><i class="fa fa-check"></i><b>2.1.2</b> Undirected Network</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-measures.html"><a href="basic-measures.html#density-and-average-degree"><i class="fa fa-check"></i><b>2.2</b> Density and average degree</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-1"><i class="fa fa-check"></i><b>2.2.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-1"><i class="fa fa-check"></i><b>2.2.2</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.2.3" data-path="basic-measures.html"><a href="basic-measures.html#average-degree"><i class="fa fa-check"></i><b>2.2.3</b> Average Degree</a></li>
+<li class="chapter" data-level="2.2.4" data-path="basic-measures.html"><a href="basic-measures.html#importance-of-density"><i class="fa fa-check"></i><b>2.2.4</b> Importance of density</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-measures.html"><a href="basic-measures.html#degree-centralization"><i class="fa fa-check"></i><b>2.3</b> Degree-centralization</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#direct-connections"><i class="fa fa-check"></i><b>3.1</b> Direct connections</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#density"><i class="fa fa-check"></i><b>3.1.1</b> Density</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#average-degree-1"><i class="fa fa-check"></i><b>3.1.2</b> Average Degree</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#components"><i class="fa fa-check"></i><b>3.2</b> Components</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#component-ratio"><i class="fa fa-check"></i><b>3.2.1</b> Component ratio</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#connectedness-and-fragmentation"><i class="fa fa-check"></i><b>3.2.2</b> Connectedness and fragmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cohesion-measures.html"><a href="cohesion-measures.html#geodesic"><i class="fa fa-check"></i><b>3.3</b> Geodesic</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#compactness-and-breadth"><i class="fa fa-check"></i><b>3.3.1</b> Compactness and breadth</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#k-step-approach"><i class="fa fa-check"></i><b>3.3.2</b> K-step approach</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cohesion-measures.html"><a href="cohesion-measures.html#exercises"><i class="fa fa-check"></i><b>3.4</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#comment-on-the-results-obtained"><i class="fa fa-check"></i><b>3.4.1</b> Comment on the results obtained</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="centrality.html"><a href="centrality.html"><i class="fa fa-check"></i><b>4</b> Centrality</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="centrality.html"><a href="centrality.html#degree-centrality-1"><i class="fa fa-check"></i><b>4.1</b> Degree Centrality</a></li>
+<li class="chapter" data-level="4.2" data-path="centrality.html"><a href="centrality.html#closeness-centrality"><i class="fa fa-check"></i><b>4.2</b> Closeness Centrality</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="centrality.html"><a href="centrality.html#freemans-closeness-centrality"><i class="fa fa-check"></i><b>4.2.1</b> Freeman’s closeness centrality</a></li>
+<li class="chapter" data-level="4.2.2" data-path="centrality.html"><a href="centrality.html#reciprocal-closeness-centrality"><i class="fa fa-check"></i><b>4.2.2</b> Reciprocal closeness centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="centrality.html"><a href="centrality.html#betweenness-centrality"><i class="fa fa-check"></i><b>4.3</b> Betweenness Centrality</a></li>
+<li class="chapter" data-level="4.4" data-path="centrality.html"><a href="centrality.html#resource-dependence-theory"><i class="fa fa-check"></i><b>4.4</b> Resource Dependence Theory</a></li>
+<li class="chapter" data-level="4.5" data-path="centrality.html"><a href="centrality.html#bonacich-beta-centrality"><i class="fa fa-check"></i><b>4.5</b> Bonacich Beta Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html"><i class="fa fa-check"></i><b>5</b> Matrices and Beta centrality</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#matrix-algebra"><i class="fa fa-check"></i><b>5.1</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#adding-two-matrices"><i class="fa fa-check"></i><b>5.1.1</b> Adding two matrices</a></li>
+<li class="chapter" data-level="5.1.2" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#cell-multiplication"><i class="fa fa-check"></i><b>5.1.2</b> Cell Multiplication</a></li>
+<li class="chapter" data-level="5.1.3" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#matrix-multiplication-of-different-matrices"><i class="fa fa-check"></i><b>5.1.3</b> Matrix Multiplication of different matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#bonacich-beta-centrality-1"><i class="fa fa-check"></i><b>5.2</b> Bonacich Beta Centrality</a></li>
+<li class="chapter" data-level="5.3" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#graph-exercise"><i class="fa fa-check"></i><b>5.3</b> Graph exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html"><i class="fa fa-check"></i><b>6</b> Attributes based measures</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html#resourcefulness"><i class="fa fa-check"></i><b>6.1</b> Resourcefulness</a></li>
+<li class="chapter" data-level="6.2" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html#homophily"><i class="fa fa-check"></i><b>6.2</b> Homophily</a></li>
+<li class="chapter" data-level="6.3" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html#diversity"><i class="fa fa-check"></i><b>6.3</b> Diversity</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html"><i class="fa fa-check"></i><b>7</b> Triads and structural holes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#social-capital"><i class="fa fa-check"></i><b>7.1</b> Social Capital</a></li>
+<li class="chapter" data-level="7.2" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#general-balance-theory"><i class="fa fa-check"></i><b>7.2</b> General Balance Theory</a></li>
+<li class="chapter" data-level="7.3" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#heiders-balance-theory"><i class="fa fa-check"></i><b>7.3</b> Heider’s Balance Theory</a></li>
+<li class="chapter" data-level="7.4" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#granovetters-strength-of-weak-ties"><i class="fa fa-check"></i><b>7.4</b> Granovetter’s Strength of Weak Ties</a></li>
+<li class="chapter" data-level="7.5" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#simmel-and-triads"><i class="fa fa-check"></i><b>7.5</b> Simmel and triads</a></li>
+<li class="chapter" data-level="7.6" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#coleman-and-closure"><i class="fa fa-check"></i><b>7.6</b> Coleman and closure</a></li>
+<li class="chapter" data-level="7.7" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#burts-structural-holes"><i class="fa fa-check"></i><b>7.7</b> Burt’s Structural Holes</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#gould-and-fernandezs-brokerage-positions"><i class="fa fa-check"></i><b>7.7.1</b> Gould and Fernandez’s Brokerage Positions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#krackhardts-simmelian-ties"><i class="fa fa-check"></i><b>7.8</b> Krackhardt’s Simmelian Ties</a></li>
+<li class="chapter" data-level="7.9" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#small-worlds-and-key-players"><i class="fa fa-check"></i><b>7.9</b> Small worlds and key players</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#six-degrees-of-separation"><i class="fa fa-check"></i><b>7.9.1</b> Six degrees of separation</a></li>
+<li class="chapter" data-level="7.9.2" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#small-world-effect"><i class="fa fa-check"></i><b>7.9.2</b> Small World Effect</a></li>
+<li class="chapter" data-level="7.9.3" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#keyplayers"><i class="fa fa-check"></i><b>7.9.3</b> Keyplayers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html"><i class="fa fa-check"></i><b>8</b> Metrics for structural holes</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#ego-density"><i class="fa fa-check"></i><b>8.1</b> Ego density</a></li>
+<li class="chapter" data-level="8.2" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#ego-betweenness"><i class="fa fa-check"></i><b>8.2</b> Ego betweenness</a></li>
+<li class="chapter" data-level="8.3" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#constraint-index"><i class="fa fa-check"></i><b>8.3</b> Constraint index</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#pilot-example"><i class="fa fa-check"></i><b>8.3.1</b> Pilot Example</a></li>
+<li class="chapter" data-level="8.3.2" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#florencian-families-example"><i class="fa fa-check"></i><b>8.3.2</b> Florencian Families Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#exercise"><i class="fa fa-check"></i><b>8.4</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html"><i class="fa fa-check"></i><b>9</b> Statistical Tests on Nodal Level</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#classic-approach"><i class="fa fa-check"></i><b>9.1</b> Classic Approach</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#correlation"><i class="fa fa-check"></i><b>9.1.1</b> Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.2</b> Significance test</a></li>
+<li class="chapter" data-level="9.3" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.3</b> Permutation Based Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="two-mode-networks.html"><a href="two-mode-networks.html"><i class="fa fa-check"></i><b>10</b> Two mode networks</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="two-mode-networks.html"><a href="two-mode-networks.html#two-mode-data"><i class="fa fa-check"></i><b>10.1</b> Two-mode data</a></li>
+<li class="chapter" data-level="10.2" data-path="two-mode-networks.html"><a href="two-mode-networks.html#one-mode-projections"><i class="fa fa-check"></i><b>10.2</b> One-mode projections</a></li>
+<li class="chapter" data-level="10.3" data-path="two-mode-networks.html"><a href="two-mode-networks.html#bipartite"><i class="fa fa-check"></i><b>10.3</b> Bipartite</a></li>
+<li class="chapter" data-level="10.4" data-path="two-mode-networks.html"><a href="two-mode-networks.html#density-1"><i class="fa fa-check"></i><b>10.4</b> Density</a></li>
+<li class="chapter" data-level="10.5" data-path="two-mode-networks.html"><a href="two-mode-networks.html#degree-centrality-2"><i class="fa fa-check"></i><b>10.5</b> Degree Centrality</a></li>
+<li class="chapter" data-level="10.6" data-path="two-mode-networks.html"><a href="two-mode-networks.html#exercise-1"><i class="fa fa-check"></i><b>10.6</b> Exercise</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="two-mode-networks.html"><a href="two-mode-networks.html#exploration"><i class="fa fa-check"></i><b>10.6.1</b> Exploration</a></li>
+<li class="chapter" data-level="10.6.2" data-path="two-mode-networks.html"><a href="two-mode-networks.html#projections"><i class="fa fa-check"></i><b>10.6.2</b> Projections</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="two-mode-networks.html"><a href="two-mode-networks.html#closeness-centrality-1"><i class="fa fa-check"></i><b>10.7</b> Closeness centrality</a></li>
+<li class="chapter" data-level="10.8" data-path="two-mode-networks.html"><a href="two-mode-networks.html#betweenness-centrality-1"><i class="fa fa-check"></i><b>10.8</b> Betweenness Centrality</a></li>
+<li class="chapter" data-level="10.9" data-path="two-mode-networks.html"><a href="two-mode-networks.html#structural-holes"><i class="fa fa-check"></i><b>10.9</b> Structural Holes</a></li>
+<li class="chapter" data-level="10.10" data-path="two-mode-networks.html"><a href="two-mode-networks.html#attribute-based-measures"><i class="fa fa-check"></i><b>10.10</b> Attribute-based measures</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html"><i class="fa fa-check"></i><b>11</b> Subgroups and Structural Equivalence</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#subgroups"><i class="fa fa-check"></i><b>11.1</b> Subgroups</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#components-1"><i class="fa fa-check"></i><b>11.1.1</b> Components</a></li>
+<li class="chapter" data-level="11.1.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#cliques"><i class="fa fa-check"></i><b>11.1.2</b> Cliques</a></li>
+<li class="chapter" data-level="11.1.3" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#k-cliques"><i class="fa fa-check"></i><b>11.1.3</b> K-cliques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#k-clans"><i class="fa fa-check"></i><b>11.1.4</b> K-clans</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#equivalence"><i class="fa fa-check"></i><b>11.2</b> Equivalence</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#core-periphery"><i class="fa fa-check"></i><b>11.2.1</b> Core periphery</a></li>
+<li class="chapter" data-level="11.2.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#structural-equivalence"><i class="fa fa-check"></i><b>11.2.2</b> Structural equivalence</a></li>
+<li class="chapter" data-level="11.2.3" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#regular-equivalence"><i class="fa fa-check"></i><b>11.2.3</b> Regular equivalence</a></li>
+<li class="chapter" data-level="11.2.4" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#blockmodeling"><i class="fa fa-check"></i><b>11.2.4</b> Blockmodeling</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#structural-equivalence-on-r"><i class="fa fa-check"></i><b>11.3</b> Structural Equivalence on R</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#hamming-structural-equivalence"><i class="fa fa-check"></i><b>11.3.1</b> Hamming Structural Equivalence</a></li>
+<li class="chapter" data-level="11.3.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#euclidean-structural-equivalence"><i class="fa fa-check"></i><b>11.3.2</b> Euclidean Structural Equivalence</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html"><i class="fa fa-check"></i><b>12</b> Reciprocity and transitivity</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#dyads"><i class="fa fa-check"></i><b>12.1</b> Dyads</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#dyad-census"><i class="fa fa-check"></i><b>12.1.1</b> Dyad census</a></li>
+<li class="chapter" data-level="12.1.2" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#reciprocity"><i class="fa fa-check"></i><b>12.1.2</b> Reciprocity</a></li>
+<li class="chapter" data-level="12.1.3" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#on-r"><i class="fa fa-check"></i><b>12.1.3</b> On R</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#triads"><i class="fa fa-check"></i><b>12.2</b> Triads</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#triad-census"><i class="fa fa-check"></i><b>12.2.1</b> Triad Census</a></li>
+<li class="chapter" data-level="12.2.2" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#transitivity"><i class="fa fa-check"></i><b>12.2.2</b> Transitivity</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="ergms.html"><a href="ergms.html"><i class="fa fa-check"></i><b>13</b> ERGMs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="ergms.html"><a href="ergms.html#introduction-1"><i class="fa fa-check"></i><b>13.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="ergms.html"><a href="ergms.html#density---is-there-an-overall-tendency-to-build-or-refrain-from-building-ties"><i class="fa fa-check"></i><b>13.1.1</b> Density - Is there an overall tendency to build or refrain from building ties?</a></li>
+<li class="chapter" data-level="13.1.2" data-path="ergms.html"><a href="ergms.html#centralization---is-there-a-tendency-for-popular-people-to-obtain-more-ties"><i class="fa fa-check"></i><b>13.1.2</b> Centralization - Is there a tendency for popular people to obtain more ties?</a></li>
+<li class="chapter" data-level="13.1.3" data-path="ergms.html"><a href="ergms.html#clustering---is-there-a-tendency-for-triadic-closure"><i class="fa fa-check"></i><b>13.1.3</b> Clustering - Is there a tendency for triadic closure?</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="ergms.html"><a href="ergms.html#how-to-get-values-for-these-forces"><i class="fa fa-check"></i><b>13.2</b> How to get values for these forces</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="ergms.html"><a href="ergms.html#introduction-2"><i class="fa fa-check"></i><b>13.2.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="ergms.html"><a href="ergms.html#notal-attributes"><i class="fa fa-check"></i><b>13.3</b> Notal attributes</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="ergms.html"><a href="ergms.html#example-with-mpnet"><i class="fa fa-check"></i><b>13.3.1</b> Example with MPNet</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="ergms.html"><a href="ergms.html#pseudolikelihood"><i class="fa fa-check"></i><b>13.4</b> Pseudolikelihood</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="ergms.html"><a href="ergms.html#problems"><i class="fa fa-check"></i><b>13.4.1</b> Problems</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="ergms.html"><a href="ergms.html#mcmc"><i class="fa fa-check"></i><b>13.5</b> MCMC</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="ergms.html"><a href="ergms.html#introduction-3"><i class="fa fa-check"></i><b>13.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.5.2" data-path="ergms.html"><a href="ergms.html#logic"><i class="fa fa-check"></i><b>13.5.2</b> Logic</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html"><i class="fa fa-check"></i><b>14</b> Christakis and Valente</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#christakis"><i class="fa fa-check"></i><b>14.1</b> Christakis</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-clustering-for-christakis"><i class="fa fa-check"></i><b>14.1.1</b> What is clustering for Christakis?</a></li>
+<li class="chapter" data-level="14.1.2" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-are-3-potential-types-of-reasons-for-finding-clustering-of-obese-and-non-obese-people"><i class="fa fa-check"></i><b>14.1.2</b> What are 3 potential types of reasons for finding clustering of obese and non-obese people?</a></li>
+<li class="chapter" data-level="14.1.3" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-the-meaning-of-3-degrees-of-separation"><i class="fa fa-check"></i><b>14.1.3</b> What is the meaning of 3 degrees of separation?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-a-multi-centric-epidemic"><i class="fa fa-check"></i><b>14.1.4</b> What is a multi-centric epidemic?</a></li>
+<li class="chapter" data-level="14.1.5" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-might-be-potential-mechanisms-for-the-spread-of-behaviour"><i class="fa fa-check"></i><b>14.1.5</b> What might be potential mechanisms for the spread of behaviour?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#valente"><i class="fa fa-check"></i><b>14.2</b> Valente</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-the-classic-idea-of-diffusion"><i class="fa fa-check"></i><b>14.2.1</b> What is the classic idea of diffusion?</a></li>
+<li class="chapter" data-level="14.2.2" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-types-of-network-influence-weights-are-there-according-to-valente"><i class="fa fa-check"></i><b>14.2.2</b> What types of network influence weights are there according to Valente?</a></li>
+<li class="chapter" data-level="14.2.3" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#network-diffusion"><i class="fa fa-check"></i><b>14.2.3</b> Network Diffusion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="egos-network.html"><a href="egos-network.html"><i class="fa fa-check"></i><b>15</b> Ego’s Network</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="egos-network.html"><a href="egos-network.html#finding-a-research-topic"><i class="fa fa-check"></i><b>15.1</b> Finding a research topic</a></li>
+<li class="chapter" data-level="15.2" data-path="egos-network.html"><a href="egos-network.html#identify-a-research-question"><i class="fa fa-check"></i><b>15.2</b> Identify a research question</a></li>
+<li class="chapter" data-level="15.3" data-path="egos-network.html"><a href="egos-network.html#think-about-relevant-theories"><i class="fa fa-check"></i><b>15.3</b> Think about relevant theories</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="egos-network.html"><a href="egos-network.html#coleman---closure"><i class="fa fa-check"></i><b>15.3.1</b> Coleman - Closure</a></li>
+<li class="chapter" data-level="15.3.2" data-path="egos-network.html"><a href="egos-network.html#burt-and-granovetter---bridging"><i class="fa fa-check"></i><b>15.3.2</b> Burt and Granovetter - Bridging</a></li>
+<li class="chapter" data-level="15.3.3" data-path="egos-network.html"><a href="egos-network.html#nan-lin"><i class="fa fa-check"></i><b>15.3.3</b> Nan Lin</a></li>
+<li class="chapter" data-level="15.3.4" data-path="egos-network.html"><a href="egos-network.html#social-support"><i class="fa fa-check"></i><b>15.3.4</b> Social Support</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="egos-network.html"><a href="egos-network.html#data-collection"><i class="fa fa-check"></i><b>15.4</b> Data collection</a></li>
+<li class="chapter" data-level="15.5" data-path="egos-network.html"><a href="egos-network.html#from-theory-to-practice"><i class="fa fa-check"></i><b>15.5</b> From theory to practice</a></li>
+<li class="chapter" data-level="15.6" data-path="egos-network.html"><a href="egos-network.html#select-the-right-network-approach"><i class="fa fa-check"></i><b>15.6</b> Select the right network approach</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="egos-network.html"><a href="egos-network.html#ego-centric-network"><i class="fa fa-check"></i><b>15.6.1</b> Ego-centric network</a></li>
+<li class="chapter" data-level="15.6.2" data-path="egos-network.html"><a href="egos-network.html#generating-names-of-ego-networks"><i class="fa fa-check"></i><b>15.6.2</b> Generating names of ego-networks</a></li>
+<li class="chapter" data-level="15.6.3" data-path="egos-network.html"><a href="egos-network.html#how-to-collect-data"><i class="fa fa-check"></i><b>15.6.3</b> How to collect data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>16</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="visualization.html"><a href="visualization.html#prerequisites"><i class="fa fa-check"></i><b>16.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="16.2" data-path="visualization.html"><a href="visualization.html#modifying-the-layout-on-khf-network"><i class="fa fa-check"></i><b>16.2</b> Modifying the layout on KHF network</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="visualization.html"><a href="visualization.html#random-layout"><i class="fa fa-check"></i><b>16.2.1</b> Random layout</a></li>
+<li class="chapter" data-level="16.2.2" data-path="visualization.html"><a href="visualization.html#circle-layout"><i class="fa fa-check"></i><b>16.2.2</b> Circle Layout</a></li>
+<li class="chapter" data-level="16.2.3" data-path="visualization.html"><a href="visualization.html#fr-layout"><i class="fa fa-check"></i><b>16.2.3</b> FR Layout</a></li>
+<li class="chapter" data-level="16.2.4" data-path="visualization.html"><a href="visualization.html#kha-network"><i class="fa fa-check"></i><b>16.2.4</b> KHA Network</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="visualization.html"><a href="visualization.html#layout-based-on-2-continuous-attributes"><i class="fa fa-check"></i><b>16.3</b> Layout based on 2 continuous attributes</a></li>
+<li class="chapter" data-level="16.4" data-path="visualization.html"><a href="visualization.html#layout-where-points-are-grouped-based-on-nominal-attribute"><i class="fa fa-check"></i><b>16.4</b> Layout where points are grouped based on nominal attribute</a></li>
+<li class="chapter" data-level="16.5" data-path="visualization.html"><a href="visualization.html#multidimensional-scaling"><i class="fa fa-check"></i><b>16.5</b> Multidimensional scaling</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="visualization.html"><a href="visualization.html#mds-on-primates"><i class="fa fa-check"></i><b>16.5.1</b> MDS on Primates</a></li>
+<li class="chapter" data-level="16.5.2" data-path="visualization.html"><a href="visualization.html#mds-on-valued-trade"><i class="fa fa-check"></i><b>16.5.2</b> MDS on valued trade</a></li>
+<li class="chapter" data-level="16.5.3" data-path="visualization.html"><a href="visualization.html#mds-on-geodesic-distances"><i class="fa fa-check"></i><b>16.5.3</b> MDS on geodesic distances</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="visualization.html"><a href="visualization.html#kamadakawai-and-fr-layout-khfs"><i class="fa fa-check"></i><b>16.6</b> KamadaKawai and FR layout KHFS</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="visualization.html"><a href="visualization.html#on-simulated-data"><i class="fa fa-check"></i><b>16.6.1</b> On Simulated data</a></li>
+<li class="chapter" data-level="16.6.2" data-path="visualization.html"><a href="visualization.html#scientists-collaborations"><i class="fa fa-check"></i><b>16.6.2</b> Scientists collaborations</a></li>
+<li class="chapter" data-level="16.6.3" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-khf"><i class="fa fa-check"></i><b>16.6.3</b> Nodal attributes on KHF</a></li>
+<li class="chapter" data-level="16.6.4" data-path="visualization.html"><a href="visualization.html#scientists-collaboration-more-complex"><i class="fa fa-check"></i><b>16.6.4</b> Scientists collaboration (more complex)</a></li>
+<li class="chapter" data-level="16.6.5" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-pfm"><i class="fa fa-check"></i><b>16.6.5</b> Nodal attributes on PFM</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="visualization.html"><a href="visualization.html#tie-strength-on-scientists-collaborations"><i class="fa fa-check"></i><b>16.7</b> Tie strength on Scientists collaborations</a></li>
+<li class="chapter" data-level="16.8" data-path="visualization.html"><a href="visualization.html#directed-networks"><i class="fa fa-check"></i><b>16.8</b> Directed networks</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
+<li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
+<li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Advanced Social Networks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reciprocity-and-transitivity" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Reciprocity and transitivity</h1>
+<div id="dyads" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Dyads</h2>
+<div id="dyad-census" class="section level3" number="12.1.1">
+<h3><span class="header-section-number">12.1.1</span> Dyad census</h3>
+<p>With <strong>dyad census</strong>, we count how many mutual, asymmetric and null dyads there are in the network.</p>
+<p>By looking at this network, there are:</p>
+<ul>
+<li>mutual dyads: <span class="math inline">\(4\)</span>;</li>
+<li>asymmetric dyads: <span class="math inline">\(4\)</span>;</li>
+<li>null dyads: <span class="math inline">\(6*5/2 - 8 = 7\)</span> (removing all links, counting mutual dyads one time).</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-100"></span>
+<img src="images/12-Reciprocity%20and%20transitivity/Untitled.png" alt="Example of directed network" width="50%" />
+<p class="caption">
+Figure 12.1: Example of directed network
+</p>
+</div>
+<aside>
+<p>💡 <em>Get the total dyads available as <span class="math inline">\(n(n-1)/2\)</span> and then remove the total amount of dyads actually existing (sum mutual and asymmetric’s).</em></p>
+</aside>
+<p><em>Given the density, what would be the expected dyad census?</em></p>
+<ul>
+<li>Mutual dyads: <span class="math inline">\(d*d\)</span>;</li>
+<li>Asymmetric dyads: <span class="math inline">\(2d*(1-d)\)</span>;</li>
+<li>Null dyads: <span class="math inline">\((1-d)(1-d)\)</span>;</li>
+</ul>
+<p>In total, if all dyads existed in the network, the density would be:</p>
+<p><span class="math display">\[
+\begin{aligned}
+d*d+2d*(1-d)+(1-d)(1-d) \\
+= d*(d+1-d)+(1-d)*(d+1-d) \\
+= d+1-d = 1
+\end{aligned}
+\]</span></p>
+</div>
+<div id="reciprocity" class="section level3" number="12.1.2">
+<h3><span class="header-section-number">12.1.2</span> Reciprocity</h3>
+<p><em>Is there more reciprocity in the network than by chance?</em></p>
+<p>There are two indexes for computing reciprocity:</p>
+<ul>
+<li><p>Compute the number of mutual dyads in the network and compare it for the total amount of possible mutual dyads (<span class="math inline">\(2 * mutual + asymmetric\)</span>):</p>
+<p><span class="math display">\[
+  \frac{2*M}{2*M+A}
+  \]</span></p>
+<aside>
+<p>💡 <em>In the previous example, we would get <span class="math inline">\(2*4/(2*4+4) = 8/12 = 0.667\)</span>.</em></p>
+</aside>
+<aside>
+<p>💡 <em>Suppose that the previous network doesn’t have reciprocal edges, then reciprocity would be <span class="math inline">\(0/(0+8) = 0\)</span>, because the index of reciprocity would be <span class="math inline">\(2*0/(2*0+A) = 0\)</span>.
+If instead all edges are mutual, then the highest reachable value is 1, because <span class="math inline">\(2*M/(2*M+A) = 2M/(2M) = 1\)</span>.</em></p>
+</aside></li>
+<li><p>Considering the density, we would obtain the reciprocity index by:</p>
+<p><span class="math display">\[
+  \frac{2*M}{2*M+A} = \frac{2d*d}{2 d*d+2d*(1-d)} = \frac{d}{d+(1-d)} = d
+  \]</span></p></li>
+</ul>
+</div>
+<div id="on-r" class="section level3" number="12.1.3">
+<h3><span class="header-section-number">12.1.3</span> On R</h3>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="reciprocity-and-transitivity.html#cb82-1" aria-hidden="true" tabindex="-1"></a>mat6<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb82-2"><a href="reciprocity-and-transitivity.html#cb82-2" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb82-3"><a href="reciprocity-and-transitivity.html#cb82-3" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb82-4"><a href="reciprocity-and-transitivity.html#cb82-4" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
+<span id="cb82-5"><a href="reciprocity-and-transitivity.html#cb82-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,</span>
+<span id="cb82-6"><a href="reciprocity-and-transitivity.html#cb82-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">6</span>,<span class="dv">6</span>, <span class="at">byrow=</span>T)</span>
+<span id="cb82-7"><a href="reciprocity-and-transitivity.html#cb82-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-8"><a href="reciprocity-and-transitivity.html#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Dyad Census</span></span>
+<span id="cb82-9"><a href="reciprocity-and-transitivity.html#cb82-9" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">dyad.census</span>(mat6, <span class="at">g=</span><span class="cn">NULL</span>)</span></code></pre></div>
+<pre><code>##      Mut Asym Null
+## [1,]   4    4    7</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="reciprocity-and-transitivity.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Like edgewise but multiplied for m/(m+a)</span></span>
+<span id="cb84-2"><a href="reciprocity-and-transitivity.html#cb84-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">grecip</span>(mat6,<span class="at">measure=</span><span class="st">&quot;dyadic&quot;</span>)</span></code></pre></div>
+<pre><code>##       Mut 
+## 0.7333333</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="reciprocity-and-transitivity.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Edgewise (like we have seen before)</span></span>
+<span id="cb86-2"><a href="reciprocity-and-transitivity.html#cb86-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">grecip</span>(mat6,<span class="at">measure=</span><span class="st">&quot;edgewise&quot;</span>)</span></code></pre></div>
+<pre><code>##       Mut 
+## 0.6666667</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="reciprocity-and-transitivity.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Density</span></span>
+<span id="cb88-2"><a href="reciprocity-and-transitivity.html#cb88-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">gden</span>(mat6)</span></code></pre></div>
+<pre><code>## [1] 0.4</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="reciprocity-and-transitivity.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With igraph</span></span>
+<span id="cb90-2"><a href="reciprocity-and-transitivity.html#cb90-2" aria-hidden="true" tabindex="-1"></a>mat6i<span class="ot">&lt;-</span><span class="fu">graph_from_adjacency_matrix</span>(mat6,<span class="at">mode=</span><span class="fu">c</span>(<span class="st">&quot;directed&quot;</span>),<span class="at">diag=</span>F)</span>
+<span id="cb90-3"><a href="reciprocity-and-transitivity.html#cb90-3" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">reciprocity</span>(mat6i)</span></code></pre></div>
+<pre><code>## [1] 0.6666667</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="reciprocity-and-transitivity.html#cb92-1" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">edge_density</span>(mat6i)</span></code></pre></div>
+<pre><code>## [1] 0.4</code></pre>
+</div>
+</div>
+<div id="triads" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Triads</h2>
+<p><img src="images/12-Reciprocity%20and%20transitivity/Untitled%201.png" width="30%" style="display: block; margin: auto;" /></p>
+<p><img src="images/12-Reciprocity%20and%20transitivity/Untitled%202.png" width="35%" style="display: block; margin: auto;" /></p>
+<div id="triad-census" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Triad Census</h3>
+<p>According to the Davis and Leinhardt triad census, there are 16 ways to arrange a triad. The <code>sna</code> library on R helps to count how many of them there are in a network.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="reciprocity-and-transitivity.html#cb94-1" aria-hidden="true" tabindex="-1"></a>mat6<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb94-2"><a href="reciprocity-and-transitivity.html#cb94-2" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb94-3"><a href="reciprocity-and-transitivity.html#cb94-3" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb94-4"><a href="reciprocity-and-transitivity.html#cb94-4" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
+<span id="cb94-5"><a href="reciprocity-and-transitivity.html#cb94-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,</span>
+<span id="cb94-6"><a href="reciprocity-and-transitivity.html#cb94-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">6</span>,<span class="dv">6</span>, <span class="at">byrow=</span>T)</span>
+<span id="cb94-7"><a href="reciprocity-and-transitivity.html#cb94-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-8"><a href="reciprocity-and-transitivity.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Triad census</span></span>
+<span id="cb94-9"><a href="reciprocity-and-transitivity.html#cb94-9" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">triad.census</span>(mat6)</span></code></pre></div>
+<pre><code>##      003 012 102 021D 021U 021C 111D 111U 030T 030C 201 120D 120U 120C 210 300
+## [1,]   3   1   4    2    0    0    1    5    0    0   1    1    1    0   1   0</code></pre>
+<p><img src="images/12-Reciprocity%20and%20transitivity/Untitled%203.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>By considering the code output and the triad census legend, we could focus for instance on 111U triad and try to detect them:</p>
+<ul>
+<li><span class="math inline">\(a_1, a_4, a_6\)</span></li>
+<li><span class="math inline">\(a_1, a_4, a_2\)</span></li>
+<li><span class="math inline">\(a_1, a_4, a_3\)</span></li>
+<li><span class="math inline">\(a_2, a_4, a_5\)</span></li>
+<li><span class="math inline">\(a_3, a_5, a_6\)</span></li>
+</ul>
+</div>
+<div id="transitivity" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Transitivity</h3>
+<p>In order to know whether a network is transitive, we can compare the transitivity computed through <code>gtrans()</code> with the density of the network. Transitivity is computed as the ratio between a dyad and the number of dyads between these two nodes plus the number of tryads there are.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="reciprocity-and-transitivity.html#cb96-1" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">gtrans</span>(mat6)</span></code></pre></div>
+<pre><code>## [1] 0.4375</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="reciprocity-and-transitivity.html#cb98-1" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">gden</span>(mat6)</span></code></pre></div>
+<pre><code>## [1] 0.4</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="subgroups-and-structural-equivalence.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ergms.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/12-Reciprocity.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 17 Centrality Measures | Advanced Social Networks</title>
+  <meta name="description" content="Chapter 17 Centrality Measures | Advanced Social Networks" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 17 Centrality Measures | Advanced Social Networks" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="AuroraArctic/AdvancedSocialNetworks" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 17 Centrality Measures | Advanced Social Networks" />
+  
+  
+  
+
+<meta name="author" content="Aurora Maria Tumminello" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visualization.html"/>
+<link rel="next" href="statistics-about-network.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Class Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#social-network-analysis"><i class="fa fa-check"></i><b>1.1</b> Social Network Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#definition"><i class="fa fa-check"></i><b>1.1.1</b> Definition</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#social-network-representation"><i class="fa fa-check"></i><b>1.1.2</b> Social Network Representation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#types-of-networks"><i class="fa fa-check"></i><b>1.2</b> Types of networks</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#sociocentric-or-complete-network-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Sociocentric or complete network analysis</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#directed-and-undirected-networks"><i class="fa fa-check"></i><b>1.2.2</b> Directed and undirected networks</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#multiple-network-relations"><i class="fa fa-check"></i><b>1.2.3</b> Multiple network relations</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#weighted-networks"><i class="fa fa-check"></i><b>1.2.4</b> Weighted networks</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#two-mode-or-bipartite-networks"><i class="fa fa-check"></i><b>1.2.5</b> Two-mode or Bipartite networks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#levels-of-analysis"><i class="fa fa-check"></i><b>1.3</b> Levels of analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-measures.html"><a href="basic-measures.html"><i class="fa fa-check"></i><b>2</b> Basic Measures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-measures.html"><a href="basic-measures.html#degree-centrality"><i class="fa fa-check"></i><b>2.1</b> Degree centrality</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network"><i class="fa fa-check"></i><b>2.1.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network"><i class="fa fa-check"></i><b>2.1.2</b> Undirected Network</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-measures.html"><a href="basic-measures.html#density-and-average-degree"><i class="fa fa-check"></i><b>2.2</b> Density and average degree</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-1"><i class="fa fa-check"></i><b>2.2.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-1"><i class="fa fa-check"></i><b>2.2.2</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.2.3" data-path="basic-measures.html"><a href="basic-measures.html#average-degree"><i class="fa fa-check"></i><b>2.2.3</b> Average Degree</a></li>
+<li class="chapter" data-level="2.2.4" data-path="basic-measures.html"><a href="basic-measures.html#importance-of-density"><i class="fa fa-check"></i><b>2.2.4</b> Importance of density</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-measures.html"><a href="basic-measures.html#degree-centralization"><i class="fa fa-check"></i><b>2.3</b> Degree-centralization</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#direct-connections"><i class="fa fa-check"></i><b>3.1</b> Direct connections</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#density"><i class="fa fa-check"></i><b>3.1.1</b> Density</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#average-degree-1"><i class="fa fa-check"></i><b>3.1.2</b> Average Degree</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#components"><i class="fa fa-check"></i><b>3.2</b> Components</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#component-ratio"><i class="fa fa-check"></i><b>3.2.1</b> Component ratio</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#connectedness-and-fragmentation"><i class="fa fa-check"></i><b>3.2.2</b> Connectedness and fragmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cohesion-measures.html"><a href="cohesion-measures.html#geodesic"><i class="fa fa-check"></i><b>3.3</b> Geodesic</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#compactness-and-breadth"><i class="fa fa-check"></i><b>3.3.1</b> Compactness and breadth</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#k-step-approach"><i class="fa fa-check"></i><b>3.3.2</b> K-step approach</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cohesion-measures.html"><a href="cohesion-measures.html#exercises"><i class="fa fa-check"></i><b>3.4</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#comment-on-the-results-obtained"><i class="fa fa-check"></i><b>3.4.1</b> Comment on the results obtained</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="centrality.html"><a href="centrality.html"><i class="fa fa-check"></i><b>4</b> Centrality</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="centrality.html"><a href="centrality.html#degree-centrality-1"><i class="fa fa-check"></i><b>4.1</b> Degree Centrality</a></li>
+<li class="chapter" data-level="4.2" data-path="centrality.html"><a href="centrality.html#closeness-centrality"><i class="fa fa-check"></i><b>4.2</b> Closeness Centrality</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="centrality.html"><a href="centrality.html#freemans-closeness-centrality"><i class="fa fa-check"></i><b>4.2.1</b> Freeman’s closeness centrality</a></li>
+<li class="chapter" data-level="4.2.2" data-path="centrality.html"><a href="centrality.html#reciprocal-closeness-centrality"><i class="fa fa-check"></i><b>4.2.2</b> Reciprocal closeness centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="centrality.html"><a href="centrality.html#betweenness-centrality"><i class="fa fa-check"></i><b>4.3</b> Betweenness Centrality</a></li>
+<li class="chapter" data-level="4.4" data-path="centrality.html"><a href="centrality.html#resource-dependence-theory"><i class="fa fa-check"></i><b>4.4</b> Resource Dependence Theory</a></li>
+<li class="chapter" data-level="4.5" data-path="centrality.html"><a href="centrality.html#bonacich-beta-centrality"><i class="fa fa-check"></i><b>4.5</b> Bonacich Beta Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html"><i class="fa fa-check"></i><b>5</b> Matrices and Beta centrality</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#matrix-algebra"><i class="fa fa-check"></i><b>5.1</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#adding-two-matrices"><i class="fa fa-check"></i><b>5.1.1</b> Adding two matrices</a></li>
+<li class="chapter" data-level="5.1.2" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#cell-multiplication"><i class="fa fa-check"></i><b>5.1.2</b> Cell Multiplication</a></li>
+<li class="chapter" data-level="5.1.3" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#matrix-multiplication-of-different-matrices"><i class="fa fa-check"></i><b>5.1.3</b> Matrix Multiplication of different matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#bonacich-beta-centrality-1"><i class="fa fa-check"></i><b>5.2</b> Bonacich Beta Centrality</a></li>
+<li class="chapter" data-level="5.3" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#graph-exercise"><i class="fa fa-check"></i><b>5.3</b> Graph exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html"><i class="fa fa-check"></i><b>6</b> Attributes based measures</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html#resourcefulness"><i class="fa fa-check"></i><b>6.1</b> Resourcefulness</a></li>
+<li class="chapter" data-level="6.2" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html#homophily"><i class="fa fa-check"></i><b>6.2</b> Homophily</a></li>
+<li class="chapter" data-level="6.3" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html#diversity"><i class="fa fa-check"></i><b>6.3</b> Diversity</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html"><i class="fa fa-check"></i><b>7</b> Triads and structural holes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#social-capital"><i class="fa fa-check"></i><b>7.1</b> Social Capital</a></li>
+<li class="chapter" data-level="7.2" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#general-balance-theory"><i class="fa fa-check"></i><b>7.2</b> General Balance Theory</a></li>
+<li class="chapter" data-level="7.3" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#heiders-balance-theory"><i class="fa fa-check"></i><b>7.3</b> Heider’s Balance Theory</a></li>
+<li class="chapter" data-level="7.4" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#granovetters-strength-of-weak-ties"><i class="fa fa-check"></i><b>7.4</b> Granovetter’s Strength of Weak Ties</a></li>
+<li class="chapter" data-level="7.5" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#simmel-and-triads"><i class="fa fa-check"></i><b>7.5</b> Simmel and triads</a></li>
+<li class="chapter" data-level="7.6" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#coleman-and-closure"><i class="fa fa-check"></i><b>7.6</b> Coleman and closure</a></li>
+<li class="chapter" data-level="7.7" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#burts-structural-holes"><i class="fa fa-check"></i><b>7.7</b> Burt’s Structural Holes</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#gould-and-fernandezs-brokerage-positions"><i class="fa fa-check"></i><b>7.7.1</b> Gould and Fernandez’s Brokerage Positions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#krackhardts-simmelian-ties"><i class="fa fa-check"></i><b>7.8</b> Krackhardt’s Simmelian Ties</a></li>
+<li class="chapter" data-level="7.9" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#small-worlds-and-key-players"><i class="fa fa-check"></i><b>7.9</b> Small worlds and key players</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#six-degrees-of-separation"><i class="fa fa-check"></i><b>7.9.1</b> Six degrees of separation</a></li>
+<li class="chapter" data-level="7.9.2" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#small-world-effect"><i class="fa fa-check"></i><b>7.9.2</b> Small World Effect</a></li>
+<li class="chapter" data-level="7.9.3" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#keyplayers"><i class="fa fa-check"></i><b>7.9.3</b> Keyplayers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html"><i class="fa fa-check"></i><b>8</b> Metrics for structural holes</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#ego-density"><i class="fa fa-check"></i><b>8.1</b> Ego density</a></li>
+<li class="chapter" data-level="8.2" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#ego-betweenness"><i class="fa fa-check"></i><b>8.2</b> Ego betweenness</a></li>
+<li class="chapter" data-level="8.3" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#constraint-index"><i class="fa fa-check"></i><b>8.3</b> Constraint index</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#pilot-example"><i class="fa fa-check"></i><b>8.3.1</b> Pilot Example</a></li>
+<li class="chapter" data-level="8.3.2" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#florencian-families-example"><i class="fa fa-check"></i><b>8.3.2</b> Florencian Families Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#exercise"><i class="fa fa-check"></i><b>8.4</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html"><i class="fa fa-check"></i><b>9</b> Statistical Tests on Nodal Level</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#classic-approach"><i class="fa fa-check"></i><b>9.1</b> Classic Approach</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#correlation"><i class="fa fa-check"></i><b>9.1.1</b> Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.2</b> Significance test</a></li>
+<li class="chapter" data-level="9.3" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.3</b> Permutation Based Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="two-mode-networks.html"><a href="two-mode-networks.html"><i class="fa fa-check"></i><b>10</b> Two mode networks</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="two-mode-networks.html"><a href="two-mode-networks.html#two-mode-data"><i class="fa fa-check"></i><b>10.1</b> Two-mode data</a></li>
+<li class="chapter" data-level="10.2" data-path="two-mode-networks.html"><a href="two-mode-networks.html#one-mode-projections"><i class="fa fa-check"></i><b>10.2</b> One-mode projections</a></li>
+<li class="chapter" data-level="10.3" data-path="two-mode-networks.html"><a href="two-mode-networks.html#bipartite"><i class="fa fa-check"></i><b>10.3</b> Bipartite</a></li>
+<li class="chapter" data-level="10.4" data-path="two-mode-networks.html"><a href="two-mode-networks.html#density-1"><i class="fa fa-check"></i><b>10.4</b> Density</a></li>
+<li class="chapter" data-level="10.5" data-path="two-mode-networks.html"><a href="two-mode-networks.html#degree-centrality-2"><i class="fa fa-check"></i><b>10.5</b> Degree Centrality</a></li>
+<li class="chapter" data-level="10.6" data-path="two-mode-networks.html"><a href="two-mode-networks.html#exercise-1"><i class="fa fa-check"></i><b>10.6</b> Exercise</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="two-mode-networks.html"><a href="two-mode-networks.html#exploration"><i class="fa fa-check"></i><b>10.6.1</b> Exploration</a></li>
+<li class="chapter" data-level="10.6.2" data-path="two-mode-networks.html"><a href="two-mode-networks.html#projections"><i class="fa fa-check"></i><b>10.6.2</b> Projections</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="two-mode-networks.html"><a href="two-mode-networks.html#closeness-centrality-1"><i class="fa fa-check"></i><b>10.7</b> Closeness centrality</a></li>
+<li class="chapter" data-level="10.8" data-path="two-mode-networks.html"><a href="two-mode-networks.html#betweenness-centrality-1"><i class="fa fa-check"></i><b>10.8</b> Betweenness Centrality</a></li>
+<li class="chapter" data-level="10.9" data-path="two-mode-networks.html"><a href="two-mode-networks.html#structural-holes"><i class="fa fa-check"></i><b>10.9</b> Structural Holes</a></li>
+<li class="chapter" data-level="10.10" data-path="two-mode-networks.html"><a href="two-mode-networks.html#attribute-based-measures"><i class="fa fa-check"></i><b>10.10</b> Attribute-based measures</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html"><i class="fa fa-check"></i><b>11</b> Subgroups and Structural Equivalence</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#subgroups"><i class="fa fa-check"></i><b>11.1</b> Subgroups</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#components-1"><i class="fa fa-check"></i><b>11.1.1</b> Components</a></li>
+<li class="chapter" data-level="11.1.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#cliques"><i class="fa fa-check"></i><b>11.1.2</b> Cliques</a></li>
+<li class="chapter" data-level="11.1.3" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#k-cliques"><i class="fa fa-check"></i><b>11.1.3</b> K-cliques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#k-clans"><i class="fa fa-check"></i><b>11.1.4</b> K-clans</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#equivalence"><i class="fa fa-check"></i><b>11.2</b> Equivalence</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#core-periphery"><i class="fa fa-check"></i><b>11.2.1</b> Core periphery</a></li>
+<li class="chapter" data-level="11.2.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#structural-equivalence"><i class="fa fa-check"></i><b>11.2.2</b> Structural equivalence</a></li>
+<li class="chapter" data-level="11.2.3" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#regular-equivalence"><i class="fa fa-check"></i><b>11.2.3</b> Regular equivalence</a></li>
+<li class="chapter" data-level="11.2.4" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#blockmodeling"><i class="fa fa-check"></i><b>11.2.4</b> Blockmodeling</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#structural-equivalence-on-r"><i class="fa fa-check"></i><b>11.3</b> Structural Equivalence on R</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#hamming-structural-equivalence"><i class="fa fa-check"></i><b>11.3.1</b> Hamming Structural Equivalence</a></li>
+<li class="chapter" data-level="11.3.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#euclidean-structural-equivalence"><i class="fa fa-check"></i><b>11.3.2</b> Euclidean Structural Equivalence</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html"><i class="fa fa-check"></i><b>12</b> Reciprocity and transitivity</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#dyads"><i class="fa fa-check"></i><b>12.1</b> Dyads</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#dyad-census"><i class="fa fa-check"></i><b>12.1.1</b> Dyad census</a></li>
+<li class="chapter" data-level="12.1.2" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#reciprocity"><i class="fa fa-check"></i><b>12.1.2</b> Reciprocity</a></li>
+<li class="chapter" data-level="12.1.3" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#on-r"><i class="fa fa-check"></i><b>12.1.3</b> On R</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#triads"><i class="fa fa-check"></i><b>12.2</b> Triads</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#triad-census"><i class="fa fa-check"></i><b>12.2.1</b> Triad Census</a></li>
+<li class="chapter" data-level="12.2.2" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#transitivity"><i class="fa fa-check"></i><b>12.2.2</b> Transitivity</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="ergms.html"><a href="ergms.html"><i class="fa fa-check"></i><b>13</b> ERGMs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="ergms.html"><a href="ergms.html#introduction-1"><i class="fa fa-check"></i><b>13.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="ergms.html"><a href="ergms.html#density---is-there-an-overall-tendency-to-build-or-refrain-from-building-ties"><i class="fa fa-check"></i><b>13.1.1</b> Density - Is there an overall tendency to build or refrain from building ties?</a></li>
+<li class="chapter" data-level="13.1.2" data-path="ergms.html"><a href="ergms.html#centralization---is-there-a-tendency-for-popular-people-to-obtain-more-ties"><i class="fa fa-check"></i><b>13.1.2</b> Centralization - Is there a tendency for popular people to obtain more ties?</a></li>
+<li class="chapter" data-level="13.1.3" data-path="ergms.html"><a href="ergms.html#clustering---is-there-a-tendency-for-triadic-closure"><i class="fa fa-check"></i><b>13.1.3</b> Clustering - Is there a tendency for triadic closure?</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="ergms.html"><a href="ergms.html#how-to-get-values-for-these-forces"><i class="fa fa-check"></i><b>13.2</b> How to get values for these forces</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="ergms.html"><a href="ergms.html#introduction-2"><i class="fa fa-check"></i><b>13.2.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="ergms.html"><a href="ergms.html#notal-attributes"><i class="fa fa-check"></i><b>13.3</b> Notal attributes</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="ergms.html"><a href="ergms.html#example-with-mpnet"><i class="fa fa-check"></i><b>13.3.1</b> Example with MPNet</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="ergms.html"><a href="ergms.html#pseudolikelihood"><i class="fa fa-check"></i><b>13.4</b> Pseudolikelihood</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="ergms.html"><a href="ergms.html#problems"><i class="fa fa-check"></i><b>13.4.1</b> Problems</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="ergms.html"><a href="ergms.html#mcmc"><i class="fa fa-check"></i><b>13.5</b> MCMC</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="ergms.html"><a href="ergms.html#introduction-3"><i class="fa fa-check"></i><b>13.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.5.2" data-path="ergms.html"><a href="ergms.html#logic"><i class="fa fa-check"></i><b>13.5.2</b> Logic</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html"><i class="fa fa-check"></i><b>14</b> Christakis and Valente</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#christakis"><i class="fa fa-check"></i><b>14.1</b> Christakis</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-clustering-for-christakis"><i class="fa fa-check"></i><b>14.1.1</b> What is clustering for Christakis?</a></li>
+<li class="chapter" data-level="14.1.2" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-are-3-potential-types-of-reasons-for-finding-clustering-of-obese-and-non-obese-people"><i class="fa fa-check"></i><b>14.1.2</b> What are 3 potential types of reasons for finding clustering of obese and non-obese people?</a></li>
+<li class="chapter" data-level="14.1.3" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-the-meaning-of-3-degrees-of-separation"><i class="fa fa-check"></i><b>14.1.3</b> What is the meaning of 3 degrees of separation?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-a-multi-centric-epidemic"><i class="fa fa-check"></i><b>14.1.4</b> What is a multi-centric epidemic?</a></li>
+<li class="chapter" data-level="14.1.5" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-might-be-potential-mechanisms-for-the-spread-of-behaviour"><i class="fa fa-check"></i><b>14.1.5</b> What might be potential mechanisms for the spread of behaviour?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#valente"><i class="fa fa-check"></i><b>14.2</b> Valente</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-the-classic-idea-of-diffusion"><i class="fa fa-check"></i><b>14.2.1</b> What is the classic idea of diffusion?</a></li>
+<li class="chapter" data-level="14.2.2" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-types-of-network-influence-weights-are-there-according-to-valente"><i class="fa fa-check"></i><b>14.2.2</b> What types of network influence weights are there according to Valente?</a></li>
+<li class="chapter" data-level="14.2.3" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#network-diffusion"><i class="fa fa-check"></i><b>14.2.3</b> Network Diffusion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="egos-network.html"><a href="egos-network.html"><i class="fa fa-check"></i><b>15</b> Ego’s Network</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="egos-network.html"><a href="egos-network.html#finding-a-research-topic"><i class="fa fa-check"></i><b>15.1</b> Finding a research topic</a></li>
+<li class="chapter" data-level="15.2" data-path="egos-network.html"><a href="egos-network.html#identify-a-research-question"><i class="fa fa-check"></i><b>15.2</b> Identify a research question</a></li>
+<li class="chapter" data-level="15.3" data-path="egos-network.html"><a href="egos-network.html#think-about-relevant-theories"><i class="fa fa-check"></i><b>15.3</b> Think about relevant theories</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="egos-network.html"><a href="egos-network.html#coleman---closure"><i class="fa fa-check"></i><b>15.3.1</b> Coleman - Closure</a></li>
+<li class="chapter" data-level="15.3.2" data-path="egos-network.html"><a href="egos-network.html#burt-and-granovetter---bridging"><i class="fa fa-check"></i><b>15.3.2</b> Burt and Granovetter - Bridging</a></li>
+<li class="chapter" data-level="15.3.3" data-path="egos-network.html"><a href="egos-network.html#nan-lin"><i class="fa fa-check"></i><b>15.3.3</b> Nan Lin</a></li>
+<li class="chapter" data-level="15.3.4" data-path="egos-network.html"><a href="egos-network.html#social-support"><i class="fa fa-check"></i><b>15.3.4</b> Social Support</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="egos-network.html"><a href="egos-network.html#data-collection"><i class="fa fa-check"></i><b>15.4</b> Data collection</a></li>
+<li class="chapter" data-level="15.5" data-path="egos-network.html"><a href="egos-network.html#from-theory-to-practice"><i class="fa fa-check"></i><b>15.5</b> From theory to practice</a></li>
+<li class="chapter" data-level="15.6" data-path="egos-network.html"><a href="egos-network.html#select-the-right-network-approach"><i class="fa fa-check"></i><b>15.6</b> Select the right network approach</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="egos-network.html"><a href="egos-network.html#ego-centric-network"><i class="fa fa-check"></i><b>15.6.1</b> Ego-centric network</a></li>
+<li class="chapter" data-level="15.6.2" data-path="egos-network.html"><a href="egos-network.html#generating-names-of-ego-networks"><i class="fa fa-check"></i><b>15.6.2</b> Generating names of ego-networks</a></li>
+<li class="chapter" data-level="15.6.3" data-path="egos-network.html"><a href="egos-network.html#how-to-collect-data"><i class="fa fa-check"></i><b>15.6.3</b> How to collect data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>16</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="visualization.html"><a href="visualization.html#prerequisites"><i class="fa fa-check"></i><b>16.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="16.2" data-path="visualization.html"><a href="visualization.html#modifying-the-layout-on-khf-network"><i class="fa fa-check"></i><b>16.2</b> Modifying the layout on KHF network</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="visualization.html"><a href="visualization.html#random-layout"><i class="fa fa-check"></i><b>16.2.1</b> Random layout</a></li>
+<li class="chapter" data-level="16.2.2" data-path="visualization.html"><a href="visualization.html#circle-layout"><i class="fa fa-check"></i><b>16.2.2</b> Circle Layout</a></li>
+<li class="chapter" data-level="16.2.3" data-path="visualization.html"><a href="visualization.html#fr-layout"><i class="fa fa-check"></i><b>16.2.3</b> FR Layout</a></li>
+<li class="chapter" data-level="16.2.4" data-path="visualization.html"><a href="visualization.html#kha-network"><i class="fa fa-check"></i><b>16.2.4</b> KHA Network</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="visualization.html"><a href="visualization.html#layout-based-on-2-continuous-attributes"><i class="fa fa-check"></i><b>16.3</b> Layout based on 2 continuous attributes</a></li>
+<li class="chapter" data-level="16.4" data-path="visualization.html"><a href="visualization.html#layout-where-points-are-grouped-based-on-nominal-attribute"><i class="fa fa-check"></i><b>16.4</b> Layout where points are grouped based on nominal attribute</a></li>
+<li class="chapter" data-level="16.5" data-path="visualization.html"><a href="visualization.html#multidimensional-scaling"><i class="fa fa-check"></i><b>16.5</b> Multidimensional scaling</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="visualization.html"><a href="visualization.html#mds-on-primates"><i class="fa fa-check"></i><b>16.5.1</b> MDS on Primates</a></li>
+<li class="chapter" data-level="16.5.2" data-path="visualization.html"><a href="visualization.html#mds-on-valued-trade"><i class="fa fa-check"></i><b>16.5.2</b> MDS on valued trade</a></li>
+<li class="chapter" data-level="16.5.3" data-path="visualization.html"><a href="visualization.html#mds-on-geodesic-distances"><i class="fa fa-check"></i><b>16.5.3</b> MDS on geodesic distances</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="visualization.html"><a href="visualization.html#kamadakawai-and-fr-layout-khfs"><i class="fa fa-check"></i><b>16.6</b> KamadaKawai and FR layout KHFS</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="visualization.html"><a href="visualization.html#on-simulated-data"><i class="fa fa-check"></i><b>16.6.1</b> On Simulated data</a></li>
+<li class="chapter" data-level="16.6.2" data-path="visualization.html"><a href="visualization.html#scientists-collaborations"><i class="fa fa-check"></i><b>16.6.2</b> Scientists collaborations</a></li>
+<li class="chapter" data-level="16.6.3" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-khf"><i class="fa fa-check"></i><b>16.6.3</b> Nodal attributes on KHF</a></li>
+<li class="chapter" data-level="16.6.4" data-path="visualization.html"><a href="visualization.html#scientists-collaboration-more-complex"><i class="fa fa-check"></i><b>16.6.4</b> Scientists collaboration (more complex)</a></li>
+<li class="chapter" data-level="16.6.5" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-pfm"><i class="fa fa-check"></i><b>16.6.5</b> Nodal attributes on PFM</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="visualization.html"><a href="visualization.html#tie-strength-on-scientists-collaborations"><i class="fa fa-check"></i><b>16.7</b> Tie strength on Scientists collaborations</a></li>
+<li class="chapter" data-level="16.8" data-path="visualization.html"><a href="visualization.html#directed-networks"><i class="fa fa-check"></i><b>16.8</b> Directed networks</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
+<li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
+<li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Advanced Social Networks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="centrality-measures" class="section level1" number="17">
+<h1><span class="header-section-number">Chapter 17</span> Centrality Measures</h1>
+<div id="scientists-example" class="section level2" number="17.1">
+<h2><span class="header-section-number">17.1</span> Scientists example</h2>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="centrality-measures.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb144-2"><a href="centrality-measures.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="centrality-measures.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SCIENTISTS COLLABORATION</span></span>
+<span id="cb144-4"><a href="centrality-measures.html#cb144-4" aria-hidden="true" tabindex="-1"></a>BS504Cx<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Borgatti_Scientists504_Collaboration.csv&quot;</span>,</span>
+<span id="cb144-5"><a href="centrality-measures.html#cb144-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb144-6"><a href="centrality-measures.html#cb144-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-7"><a href="centrality-measures.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Pick only those who have at least 3 collabs</span></span>
+<span id="cb144-8"><a href="centrality-measures.html#cb144-8" aria-hidden="true" tabindex="-1"></a>BS504C<span class="ot">&lt;-</span>(BS504Cx<span class="sc">&gt;</span><span class="dv">3</span>)</span>
+<span id="cb144-9"><a href="centrality-measures.html#cb144-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-10"><a href="centrality-measures.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the collaborations</span></span>
+<span id="cb144-11"><a href="centrality-measures.html#cb144-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb144-12"><a href="centrality-measures.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504C, </span>
+<span id="cb144-13"><a href="centrality-measures.html#cb144-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb144-14"><a href="centrality-measures.html#cb144-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb144-15"><a href="centrality-measures.html#cb144-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;kamadakawai&quot;</span>,</span>
+<span id="cb144-16"><a href="centrality-measures.html#cb144-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb144-17"><a href="centrality-measures.html#cb144-17" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb144-18"><a href="centrality-measures.html#cb144-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>, </span>
+<span id="cb144-19"><a href="centrality-measures.html#cb144-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">1</span>,</span>
+<span id="cb144-20"><a href="centrality-measures.html#cb144-20" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb144-21"><a href="centrality-measures.html#cb144-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb144-22"><a href="centrality-measures.html#cb144-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>.<span class="dv">75</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="centrality-measures.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting attributes</span></span>
+<span id="cb145-2"><a href="centrality-measures.html#cb145-2" aria-hidden="true" tabindex="-1"></a>BS504Attr<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Borgatti_Scientists504_Attributes.csv&quot;</span>,</span>
+<span id="cb145-3"><a href="centrality-measures.html#cb145-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb145-4"><a href="centrality-measures.html#cb145-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-5"><a href="centrality-measures.html#cb145-5" aria-hidden="true" tabindex="-1"></a>Tenure<span class="ot">&lt;-</span>(BS504Attr<span class="sc">$</span>Years) <span class="co"># Years attribute</span></span>
+<span id="cb145-6"><a href="centrality-measures.html#cb145-6" aria-hidden="true" tabindex="-1"></a>TenureA<span class="ot">&lt;-</span>(<span class="fu">round</span>(<span class="dv">10</span><span class="sc">*</span>(Tenure)<span class="sc">/</span><span class="fu">max</span>((Tenure)))) <span class="co"># Normalizing years</span></span>
+<span id="cb145-7"><a href="centrality-measures.html#cb145-7" aria-hidden="true" tabindex="-1"></a>colfunc <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#B78FB3&quot;</span>, <span class="st">&quot;#22BFAC&quot;</span>)) <span class="co"># color palette</span></span>
+<span id="cb145-8"><a href="centrality-measures.html#cb145-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-9"><a href="centrality-measures.html#cb145-9" aria-hidden="true" tabindex="-1"></a>COLWB<span class="ot">&lt;-</span><span class="fu">colfunc</span>(<span class="dv">7</span>) <span class="co"># 7 colors</span></span>
+<span id="cb145-10"><a href="centrality-measures.html#cb145-10" aria-hidden="true" tabindex="-1"></a>vertex_color <span class="ot">=</span> <span class="fu">ifelse</span>(TenureA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>),COLWB[<span class="dv">6</span>],</span>
+<span id="cb145-11"><a href="centrality-measures.html#cb145-11" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">ifelse</span>(TenureA<span class="sc">&gt;=</span><span class="dv">7</span>, COLWB[<span class="dv">7</span>],COLWB[TenureA<span class="sc">+</span><span class="dv">1</span>]))</span>
+<span id="cb145-12"><a href="centrality-measures.html#cb145-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-13"><a href="centrality-measures.html#cb145-13" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb145-14"><a href="centrality-measures.html#cb145-14" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504C, </span>
+<span id="cb145-15"><a href="centrality-measures.html#cb145-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, </span>
+<span id="cb145-16"><a href="centrality-measures.html#cb145-16" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb145-17"><a href="centrality-measures.html#cb145-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;kamadakawai&quot;</span>,</span>
+<span id="cb145-18"><a href="centrality-measures.html#cb145-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter =</span> F,</span>
+<span id="cb145-19"><a href="centrality-measures.html#cb145-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb145-20"><a href="centrality-measures.html#cb145-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>,</span>
+<span id="cb145-21"><a href="centrality-measures.html#cb145-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">2</span>, </span>
+<span id="cb145-22"><a href="centrality-measures.html#cb145-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb145-23"><a href="centrality-measures.html#cb145-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>vertex_color, <span class="co"># color</span></span>
+<span id="cb145-24"><a href="centrality-measures.html#cb145-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span><span class="dv">1</span>,<span class="co">#1+.7*(2-BS504Attr$Sex), </span></span>
+<span id="cb145-25"><a href="centrality-measures.html#cb145-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.sides=</span>BS504Attr<span class="sc">$</span>Sex<span class="dv">-1</span><span class="sc">*</span><span class="dv">47</span><span class="sc">+</span><span class="dv">3</span>)</span>
+<span id="cb145-26"><a href="centrality-measures.html#cb145-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-27"><a href="centrality-measures.html#cb145-27" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
+<span id="cb145-28"><a href="centrality-measures.html#cb145-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Colors&quot;</span>,<span class="st">&quot; Senior&quot;</span>, <span class="st">&quot; Junior&quot;</span>, <span class="st">&quot; &quot;</span>,<span class="st">&quot;Shapes&quot;</span>, <span class="st">&quot; Male&quot;</span>, <span class="st">&quot; Female&quot;</span>),</span>
+<span id="cb145-29"><a href="centrality-measures.html#cb145-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;#B78FB3&quot;</span>,<span class="st">&quot;#22BFAC&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;black&quot;</span>,<span class="st">&quot;black&quot;</span>), </span>
+<span id="cb145-30"><a href="centrality-measures.html#cb145-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb145-31"><a href="centrality-measures.html#cb145-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">18</span>),</span>
+<span id="cb145-32"><a href="centrality-measures.html#cb145-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">pt.cex =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">2.1</span>,<span class="fl">2.1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">1.7</span>,<span class="fl">1.9</span>), </span>
+<span id="cb145-33"><a href="centrality-measures.html#cb145-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">1</span>, </span>
+<span id="cb145-34"><a href="centrality-measures.html#cb145-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">text.col =</span> <span class="st">&quot;grey10&quot;</span>, </span>
+<span id="cb145-35"><a href="centrality-measures.html#cb145-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">horiz =</span> F , </span>
+<span id="cb145-36"><a href="centrality-measures.html#cb145-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">inset =</span> <span class="fu">c</span>(<span class="fl">0.01</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-153-1.png" width="672" />
+## Florentine Families</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="centrality-measures.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FLORENTINE FAMILIES</span></span>
+<span id="cb146-2"><a href="centrality-measures.html#cb146-2" aria-hidden="true" tabindex="-1"></a>PFM<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Padgett_FlorentineFamilies_Marriage.csv&quot;</span>,</span>
+<span id="cb146-3"><a href="centrality-measures.html#cb146-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb146-4"><a href="centrality-measures.html#cb146-4" aria-hidden="true" tabindex="-1"></a>PFMn<span class="ot">&lt;-</span><span class="fu">as.network</span>(PFM, <span class="at">directed=</span>F)</span>
+<span id="cb146-5"><a href="centrality-measures.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(PFMn, </span>
+<span id="cb146-6"><a href="centrality-measures.html#cb146-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb146-7"><a href="centrality-measures.html#cb146-7" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb146-8"><a href="centrality-measures.html#cb146-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb146-9"><a href="centrality-measures.html#cb146-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb146-10"><a href="centrality-measures.html#cb146-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb146-11"><a href="centrality-measures.html#cb146-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>,</span>
+<span id="cb146-12"><a href="centrality-measures.html#cb146-12" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb146-13"><a href="centrality-measures.html#cb146-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb146-14"><a href="centrality-measures.html#cb146-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb146-15"><a href="centrality-measures.html#cb146-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb146-16"><a href="centrality-measures.html#cb146-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb146-17"><a href="centrality-measures.html#cb146-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="centrality-measures.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add attributes file and use wealth to change size of nodes (vertex.cex)</span></span>
+<span id="cb147-2"><a href="centrality-measures.html#cb147-2" aria-hidden="true" tabindex="-1"></a>PFA<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Padgett_FlorentineFamilies_Attributes.csv&quot;</span>,</span>
+<span id="cb147-3"><a href="centrality-measures.html#cb147-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb147-4"><a href="centrality-measures.html#cb147-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-5"><a href="centrality-measures.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Color palette</span></span>
+<span id="cb147-6"><a href="centrality-measures.html#cb147-6" aria-hidden="true" tabindex="-1"></a>n_colors<span class="ot">&lt;-</span><span class="fu">max</span>(PFA<span class="sc">$</span>Priors)<span class="sc">-</span><span class="fu">min</span>(PFA<span class="sc">$</span>Priors)<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb147-7"><a href="centrality-measures.html#cb147-7" aria-hidden="true" tabindex="-1"></a>colfunc <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#FFD670&quot;</span>, <span class="st">&quot;#70D6FF&quot;</span>))</span>
+<span id="cb147-8"><a href="centrality-measures.html#cb147-8" aria-hidden="true" tabindex="-1"></a>colors<span class="ot">&lt;-</span><span class="fu">colfunc</span>(n_colors)</span>
+<span id="cb147-9"><a href="centrality-measures.html#cb147-9" aria-hidden="true" tabindex="-1"></a>vertex_colors<span class="ot">&lt;-</span>colors[PFA<span class="sc">$</span>Priors<span class="sc">+</span><span class="dv">1</span>]</span>
+<span id="cb147-10"><a href="centrality-measures.html#cb147-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-11"><a href="centrality-measures.html#cb147-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb147-12"><a href="centrality-measures.html#cb147-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(PFMn, </span>
+<span id="cb147-13"><a href="centrality-measures.html#cb147-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb147-14"><a href="centrality-measures.html#cb147-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb147-15"><a href="centrality-measures.html#cb147-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb147-16"><a href="centrality-measures.html#cb147-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb147-17"><a href="centrality-measures.html#cb147-17" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb147-18"><a href="centrality-measures.html#cb147-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey20&quot;</span>,</span>
+<span id="cb147-19"><a href="centrality-measures.html#cb147-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb147-20"><a href="centrality-measures.html#cb147-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>vertex_colors,</span>
+<span id="cb147-21"><a href="centrality-measures.html#cb147-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>PFA<span class="sc">$</span>Wealth<span class="sc">/</span><span class="dv">80</span><span class="sc">+</span><span class="dv">1</span>,</span>
+<span id="cb147-22"><a href="centrality-measures.html#cb147-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb147-23"><a href="centrality-measures.html#cb147-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb147-24"><a href="centrality-measures.html#cb147-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb147-25"><a href="centrality-measures.html#cb147-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="centrality-measures.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate centrality measures</span></span>
+<span id="cb148-2"><a href="centrality-measures.html#cb148-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-3"><a href="centrality-measures.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Degree</span></span>
+<span id="cb148-4"><a href="centrality-measures.html#cb148-4" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] 1 3 2 3 3 1 4 1 6 1 3 0 3 2 4 3</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="centrality-measures.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Betweenness centrality</span></span>
+<span id="cb150-2"><a href="centrality-measures.html#cb150-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">betweenness</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">cmode=</span><span class="st">&quot;undirected&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1]  0.000000 19.333333  8.500000  9.500000  5.000000  0.000000 23.166667
+##  [8]  0.000000 47.500000  0.000000  2.000000  0.000000 10.333333 13.000000
+## [15]  9.333333  8.333333</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="centrality-measures.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Bonacich Power Centrality</span></span>
+<span id="cb152-2"><a href="centrality-measures.html#cb152-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">bonpow</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">exponent=</span><span class="dv">0</span>)</span></code></pre></div>
+<pre><code>##   ACCIAIUOLI      ALBIZZI    BARBADORI     BISCHERI   CASTELLANI       GINORI 
+##    0.3455474    1.0366421    0.6910947    1.0366421    1.0366421    0.3455474 
+##     GUADAGNI LAMBERTESCHI       MEDICI        PAZZI      PERUZZI        PUCCI 
+##    1.3821895    0.3455474    2.0732842    0.3455474    1.0366421    0.0000000 
+##      RIDOLFI     SALVIATI      STROZZI   TORNABUONI 
+##    1.0366421    0.6910947    1.3821895    1.0366421</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="centrality-measures.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Constraint index</span></span>
+<span id="cb154-2"><a href="centrality-measures.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb154-3"><a href="centrality-measures.html#cb154-3" aria-hidden="true" tabindex="-1"></a>PFM_i<span class="ot">&lt;-</span><span class="fu">graph_from_adjacency_matrix</span>(<span class="fu">as.matrix</span>(PFM),<span class="at">mode=</span><span class="st">&quot;undirected&quot;</span>, <span class="at">diag=</span>F)</span>
+<span id="cb154-4"><a href="centrality-measures.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="fu">constraint</span>(PFM_i)</span></code></pre></div>
+<pre><code>##   ACCIAIUOLI      ALBIZZI    BARBADORI     BISCHERI   CASTELLANI       GINORI 
+##    1.0000000    0.3333333    0.5000000    0.4822531    0.4822531    1.0000000 
+##     GUADAGNI LAMBERTESCHI       MEDICI        PAZZI      PERUZZI        PUCCI 
+##    0.2500000    1.0000000    0.2098765    1.0000000    0.6558642          NaN 
+##      RIDOLFI     SALVIATI      STROZZI   TORNABUONI 
+##    0.4598765    0.5000000    0.4583333    0.4598765</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="centrality-measures.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical tests for significance</span></span>
+<span id="cb156-2"><a href="centrality-measures.html#cb156-2" aria-hidden="true" tabindex="-1"></a>PFMn.Deg<span class="ot">&lt;-</span>sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span>
+<span id="cb156-3"><a href="centrality-measures.html#cb156-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-4"><a href="centrality-measures.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFMn.Deg,PFA<span class="sc">$</span>Priors) <span class="co"># Number of families vs Priors</span></span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  PFMn.Deg and PFA$Priors
+## t = 2.4519, df = 14, p-value = 0.02794
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.07193331 0.82079537
+## sample estimates:
+##       cor 
+## 0.5480948</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="centrality-measures.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFMn.Deg,PFA<span class="sc">$</span>Wealth) <span class="co"># Number or families vs Wealth</span></span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  PFMn.Deg and PFA$Wealth
+## t = 2.5225, df = 14, p-value = 0.02438
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.08755017 0.82585806
+## sample estimates:
+##       cor 
+## 0.5589956</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="centrality-measures.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFA<span class="sc">$</span>Priors,PFA<span class="sc">$</span>Wealth) <span class="co"># Priors vs Wealth</span></span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  PFA$Priors and PFA$Wealth
+## t = 1.7401, df = 14, p-value = 0.1038
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.09356713  0.75878748
+## sample estimates:
+##       cor 
+## 0.4216972</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="centrality-measures.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear Models</span></span>
+<span id="cb162-2"><a href="centrality-measures.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="do">## One of them</span></span>
+<span id="cb162-3"><a href="centrality-measures.html#cb162-3" aria-hidden="true" tabindex="-1"></a>M1<span class="ot">&lt;-</span><span class="fu">lm</span>(PFMn.Deg<span class="sc">~</span>PFA<span class="sc">$</span>Priors)</span>
+<span id="cb162-4"><a href="centrality-measures.html#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = PFMn.Deg ~ PFA$Priors)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.36244 -0.69127 -0.02179  0.70515  2.63756 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)  1.67341    0.46887   3.569  0.00308 **
+## PFA$Priors   0.03187    0.01300   2.452  0.02794 * 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.303 on 14 degrees of freedom
+## Multiple R-squared:  0.3004, Adjusted R-squared:  0.2504 
+## F-statistic: 6.012 on 1 and 14 DF,  p-value: 0.02794</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="centrality-measures.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Both of them</span></span>
+<span id="cb164-2"><a href="centrality-measures.html#cb164-2" aria-hidden="true" tabindex="-1"></a>M2<span class="ot">&lt;-</span><span class="fu">lm</span>(PFMn.Deg<span class="sc">~</span>PFA<span class="sc">$</span>Priors<span class="sc">+</span>PFA<span class="sc">$</span>Wealth)</span>
+<span id="cb164-3"><a href="centrality-measures.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = PFMn.Deg ~ PFA$Priors + PFA$Wealth)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.5677 -0.9423 -0.1498  0.8269  2.1718 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept) 1.234029   0.507067   2.434   0.0301 *
+## PFA$Priors  0.022091   0.013414   1.647   0.1235  
+## PFA$Wealth  0.016282   0.009419   1.729   0.1075  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.22 on 13 degrees of freedom
+## Multiple R-squared:  0.4312, Adjusted R-squared:  0.3436 
+## F-statistic: 4.927 on 2 and 13 DF,  p-value: 0.02555</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="centrality-measures.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bonacich Centrality</span></span>
+<span id="cb166-2"><a href="centrality-measures.html#cb166-2" aria-hidden="true" tabindex="-1"></a>exponents <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">0.1</span>))</span>
+<span id="cb166-3"><a href="centrality-measures.html#cb166-3" aria-hidden="true" tabindex="-1"></a>bonpow_results <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb166-4"><a href="centrality-measures.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(e <span class="cf">in</span> exponents){</span>
+<span id="cb166-5"><a href="centrality-measures.html#cb166-5" aria-hidden="true" tabindex="-1"></a>   bonpow_results <span class="ot">=</span> <span class="fu">append</span>(bonpow_results,</span>
+<span id="cb166-6"><a href="centrality-measures.html#cb166-6" aria-hidden="true" tabindex="-1"></a>                           sna<span class="sc">::</span><span class="fu">bonpow</span>(PFA, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">exponent=</span>e))</span>
+<span id="cb166-7"><a href="centrality-measures.html#cb166-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb166-8"><a href="centrality-measures.html#cb166-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-9"><a href="centrality-measures.html#cb166-9" aria-hidden="true" tabindex="-1"></a>bonpow_results</span></code></pre></div>
+<pre><code>##   [1]  0.66599220  1.03706233  0.61168749  0.59844465  0.55718716  0.36268738
+##   [7]  0.40565924  0.49342506  1.92559593  0.49233450  1.14333639  0.03524465
+##  [13]  0.67830976  0.49996422  2.33947465  0.49233450  1.18542586  1.18252142
+##  [19]  1.18771345  0.66658902  1.03975147  0.61308190  0.60015013  0.55459647
+##  [25]  0.36328787  0.40299361  0.49367360  1.92156285  0.49483865  1.13992714
+##  [31]  0.03526240  0.67985259  0.49975011  2.34548141  0.49483865  1.18267067
+##  [37]  1.17925063  1.18636720  0.66757972  1.04422138  0.61537556  0.60297093
+##  [43]  0.55025388  0.36427010  0.39853374  0.49406104  1.91475473  0.49899145
+##  [49]  1.13419739  0.03529007  0.68241288  0.49938567  2.35542232  0.49899145
+##  [55]  1.17783046  1.17373725  1.18462203  0.66956093  1.05316136  0.61985568
+##  [61]  0.60854878  0.54142617  0.36616493  0.38950261  0.49472594  1.90071643
+##  [67]  0.50724782  1.12248815  0.03533757  0.68751574  0.49862614  2.37510938
+##  [73]  0.50724782  1.16721338  1.16247375  1.18303284  0.67578486  1.08090357
+##  [79]  0.63253174  0.62510907  0.51266766  0.37126346  0.36045071  0.49558996
+##  [85]  1.85290662  0.53221252  1.08371220  0.03539928  0.70315997  0.49602013
+##  [91]  2.43395074  0.53221252  1.12744020  1.12658185  1.19480669  0.30657075
+##  [97]  0.49051319  0.32543664  0.30657075  0.28298838  0.19337539  0.20280834
+## [103]  0.26412249  0.99045933  0.25940602  0.58012618  0.01886589  0.32543664
+## [109]  0.23582365  1.17440178  0.25940602  3.21191813  1.95733630  1.04705701
+## [115] -0.64796865 -0.96236020 -0.57234658 -0.55104954 -0.62352114 -0.34533779
+## [121] -0.47458609 -0.48483440 -2.02468460 -0.42417328 -1.22906213 -0.03463103
+## [127] -0.63511540 -0.50387948 -2.17188000 -0.42417328 -1.21453873 -1.25133105
+## [133] -1.29158074 -0.65684160 -0.99714275 -0.59040787 -0.57285068 -0.59390590
+## [139] -0.35334132 -0.44372625 -0.48892700 -1.98106426 -0.45523146 -1.19107656
+## [145] -0.03492336 -0.65526334 -0.50260361 -2.24932513 -0.45523146 -1.21185475
+## [151] -1.22525478 -1.23034712 -0.65923664 -1.00725175 -0.59581903 -0.57932687
+## [157] -0.58489745 -0.35573745 -0.43435180 -0.49014648 -1.96767530 -0.46454699
+## [163] -1.17944727 -0.03501046 -0.66111589 -0.50204182 -2.27217498 -0.46454699
+## [169] -1.20771778 -1.21563490 -1.21603722 -0.66036700 -1.01212166 -0.59843406
+## [175] -0.58245718 -0.58049022 -0.35689266 -0.42977131 -0.49072511 -1.96108611
+## [181] -0.46906576 -1.17374117 -0.03505179 -0.66393284 -0.50174333 -2.28320367
+## [187] -0.46906576 -1.20511891 -1.21068500 -1.20989535 -0.66102758 -1.01499436
+## [193] -0.59997643 -0.58430507 -0.57786938 -0.35757279 -0.42704976 -0.49106163
+## [199] -1.95715293 -0.47173847 -1.17034213 -0.03507583 -0.66559348 -0.50155920
+## [205] -2.28971059 -0.47173847 -1.20339652 -1.20767299 -1.20652369</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="statistics-about-network.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/17-Centrality_measures.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

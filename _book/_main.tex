@@ -198,7 +198,7 @@ In a social network, we can find:
 
 \end{figure}
 
-\begin{table}[h]
+\begin{table}[h!]
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -1991,7 +1991,7 @@ Let's try to compute the index with some families:
     BS &= (p_{BS}+p_{BP}*p_{PS}+p_{BG}*p_{GS})^2\\
     &= (1/3+1/3*1/3+1/3*0)^2 = 0.1975\\
     BP &= (p_{BP}+p_{BG}*p_{GP}+p_{BS}*p_{SP})^2 \\&= (1/3+1/3*0+1/3*1/4)^2 = 0.1736\\
-    \text{Constraint index} = BG+BS+BP = 0.4823
+    \text{Constraint index} &= BG+BS+BP = 0.4823
     \end{aligned}
     \]
 \end{itemize}
@@ -4202,6 +4202,8 @@ In order to collect data for ego-networks:
   Target method.
 \end{itemize}
 
+\part{Laboratory}
+
 \hypertarget{visualization}{%
 \chapter{Visualization}\label{visualization}}
 
@@ -4256,7 +4258,7 @@ In the end it is turned into a network object.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 1. Read in the friendship network for Krackhardt\textquotesingle{}s high{-}tech managers:}
-\NormalTok{KHF }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"./Datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
+\NormalTok{KHF }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
                           \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 
 
@@ -4276,7 +4278,6 @@ and finish with \texttt{dev.off()}, which closes the image file for changes.
 \begin{Highlighting}[]
 \CommentTok{\# 4. Create and save visualization}
 \CommentTok{\# tiff(file="images/Fig\_01\_KHFS\_Random.tiff", width=7, height=5, units="in", res=900)}
-
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)) }\CommentTok{\# Margin deletion}
 \FunctionTok{gplot}\NormalTok{(KHFSn,}
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,      }\CommentTok{\# undirected network}
@@ -4305,7 +4306,7 @@ The use of random position may be risky because of links overlapping and too clo
 \hypertarget{circle-layout}{%
 \subsection{Circle Layout}\label{circle-layout}}
 
-For a circle layout, it is necessary to change \texttt{mode} into \texttt{"cirlce"}.
+For a circle layout, it is necessary to change \texttt{mode} into \texttt{"circle"}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4370,8 +4371,9 @@ The following network is more dense than the previous.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Read in the advice network for Krackhardt\textquotesingle{}s high{-}tech managers:}
-\NormalTok{KHA}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Advice.csv"}\NormalTok{,}
+\NormalTok{KHA}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Advice.csv"}\NormalTok{,}
                         \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
+
 \CommentTok{\# Symmetrize the matrix using the minimum approach, so an advice tie}
 \CommentTok{\# is only considered if both ask each other for advice:}
 \NormalTok{KHAS}\OtherTok{\textless{}{-}}\NormalTok{KHA}\SpecialCharTok{*}\FunctionTok{t}\NormalTok{(KHA)}
@@ -4379,7 +4381,6 @@ The following network is more dense than the previous.
 \CommentTok{\# Turn this into a "network" object:}
 \NormalTok{KHASn}\OtherTok{\textless{}{-}}\FunctionTok{as.network}\NormalTok{(KHAS, }\AttributeTok{directed=}\NormalTok{F)}
 
-\CommentTok{\#tiff(file="images/Fig\_04\_KHAS\_FR.tiff", width=7, height=5, units="in", res=900)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(KHASn, }
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
@@ -4398,13 +4399,6 @@ The following network is more dense than the previous.
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-122-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
-
 We could also build a function to plot a network:
 
 \begin{Shaded}
@@ -4438,11 +4432,11 @@ We could also build a function to plot a network:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Read data and convert it into matrix}
-\NormalTok{WPJ }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Wolfe\_Primates\_JointPresence.csv"}\NormalTok{,}
+\NormalTok{WPJ }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Wolfe\_Primates\_JointPresence.csv"}\NormalTok{,}
                           \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 
 \CommentTok{\# Read attributes}
-\NormalTok{WPAttr }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Wolfe\_Primates\_Attributes.csv"}\NormalTok{,}
+\NormalTok{WPAttr }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Wolfe\_Primates\_Attributes.csv"}\NormalTok{,}
                    \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
 
 \CommentTok{\# Rescale attributes so they range from 0 to 1}
@@ -4489,7 +4483,6 @@ Now let's start drawing, remembering that:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# tiff(file="images/Fig\_05\_WPJ\_coordAgeRank6W.tiff", width=5, height=6, units="in", res=900)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(WPJ6W}\SpecialCharTok{*}\FloatTok{1.1}\NormalTok{,}
       \AttributeTok{gmode=}\StringTok{"digraph"}\NormalTok{, }
@@ -4520,12 +4513,6 @@ Now let's start drawing, remembering that:
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-126-1.pdf}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# dev.off()}
-\end{Highlighting}
-\end{Shaded}
-
 \hypertarget{layout-where-points-are-grouped-based-on-nominal-attribute}{%
 \section{Layout where points are grouped based on nominal attribute}\label{layout-where-points-are-grouped-based-on-nominal-attribute}}
 
@@ -4535,13 +4522,13 @@ First of all, we're going to import the datasets and convert them into networks 
 \begin{Highlighting}[]
 \CommentTok{\# 1. Convert datasets into networks}
 \DocumentationTok{\#\# Convert the KHA dataset into a network}
-\NormalTok{KHA}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Advice.csv"}\NormalTok{,}
+\NormalTok{KHA}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Advice.csv"}\NormalTok{,}
                         \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 \NormalTok{KHAS}\OtherTok{\textless{}{-}}\NormalTok{KHA}\SpecialCharTok{*}\FunctionTok{t}\NormalTok{(KHA)}
 \NormalTok{KHASn}\OtherTok{\textless{}{-}}\FunctionTok{as.network}\NormalTok{(KHAS, }\AttributeTok{directed=}\NormalTok{F)}
 
 \DocumentationTok{\#\# Convert the KHF dataset into a network}
-\NormalTok{KHF}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
+\NormalTok{KHF}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
                         \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 \NormalTok{KHFS}\OtherTok{\textless{}{-}}\NormalTok{KHF}\SpecialCharTok{*}\FunctionTok{t}\NormalTok{(KHF)}
 \NormalTok{KHFSn}\OtherTok{\textless{}{-}}\FunctionTok{as.network}\NormalTok{(KHFS, }\AttributeTok{directed=}\NormalTok{F)}
@@ -4553,7 +4540,7 @@ Then, we can create a network with ties within departments to define positions. 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 2. Create a network with ties within department to define positions}
-\NormalTok{KHAttr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Attributes.csv"}\NormalTok{,}
+\NormalTok{KHAttr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Attributes.csv"}\NormalTok{,}
                  \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
 \NormalTok{DEPS}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(KHAttr}\SpecialCharTok{$}\NormalTok{DEPT,}\FunctionTok{nrow}\NormalTok{(KHA),}\FunctionTok{nrow}\NormalTok{(KHA))}
 \NormalTok{DEPSIM}\OtherTok{\textless{}{-}}\NormalTok{DEPS}\SpecialCharTok{==}\FunctionTok{t}\NormalTok{(DEPS)}
@@ -4575,7 +4562,6 @@ We can get nodes coordinates by plotting them based on their department similari
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 4. Draw the friendship network using the coordinates got from nominal friendship}
-\CommentTok{\# tiff(file="images/Fig\_06\_KHFS\_Department1.tiff", width=5, height=7, units="in", res=900)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(KHFSn,}
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
@@ -4598,13 +4584,6 @@ We can get nodes coordinates by plotting them based on their department similari
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# dev.off()}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# tiff(file="images/Fig\_06\_KHAS\_Department1.tiff", width=5, height=7, units="in", res=900)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(KHASn,}
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
@@ -4624,24 +4603,16 @@ We can get nodes coordinates by plotting them based on their department similari
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-131-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# dev.off()}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{geography---international-trade-among-countries-in-1928}{%
-\section{Geography - International trade among countries in 1928}\label{geography---international-trade-among-countries-in-1928}}
+\#\# Geography - International trade among countries in 1928
 
 In this case, nodes are positioned based on the geographic location of their capitals. Canada and the US have been slightly moved to the West to make the trade between European countries more visible.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 1. Dataset conversion into network}
-\NormalTok{STE}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Savage\_TransactionFlows\_ExportsPerc.csv"}\NormalTok{,}
+\NormalTok{STE}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Savage\_TransactionFlows\_ExportsPerc.csv"}\NormalTok{,}
                         \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
-\NormalTok{STAttr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Savage\_TransactionFlows\_Attributes.csv"}\NormalTok{,}
+\NormalTok{STAttr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Savage\_TransactionFlows\_Attributes.csv"}\NormalTok{,}
                  \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
 
 \CommentTok{\# 2. Consider Latitude and Longitude}
@@ -4670,7 +4641,6 @@ In this case, nodes are positioned based on the geographic location of their cap
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 6. Visualizing the map}
-\CommentTok{\#tiff(file="images/Fig\_07\_STE\_Trade1928\_Geogr.tiff", width=8, height=4, units="in", res=900)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(STESGT20, }
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
@@ -4686,12 +4656,6 @@ In this case, nodes are positioned based on the geographic location of their cap
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-133-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{multidimensional-scaling}{%
 \section{Multidimensional scaling}\label{multidimensional-scaling}}
@@ -4752,7 +4716,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{STE}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Savage\_TransactionFlows\_ExportsPerc.csv"}\NormalTok{,}
+\NormalTok{STE}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Savage\_TransactionFlows\_ExportsPerc.csv"}\NormalTok{,}
                         \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 \CommentTok{\# Symmetrized using product}
 \NormalTok{STES}\OtherTok{\textless{}{-}}\NormalTok{(STE}\SpecialCharTok{*}\FunctionTok{t}\NormalTok{(STE))}
@@ -4770,7 +4734,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 
 \NormalTok{STESGT20\_Coord}\OtherTok{\textless{}{-}}\FunctionTok{cmdscale}\NormalTok{((}\FunctionTok{max}\NormalTok{(STE)}\SpecialCharTok{*}\FloatTok{1.002}\SpecialCharTok{{-}}\NormalTok{STE)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{, }\AttributeTok{eig=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{k =} \DecValTok{2}\NormalTok{)}
 \CommentTok{\#STESGT20\_Coord\textless{}{-}cmdscale(STE{-}STE, eig=TRUE, k = 2)}
-\CommentTok{\#tiff(file="images/Fig\_08\_STESGT20\_mds.tiff", width=6, height=5, units="in", res=900)}
+
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(STESGT20, }
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
@@ -4792,18 +4756,12 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-135-1.pdf}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
-
 \hypertarget{mds-on-geodesic-distances}{%
 \subsection{MDS on geodesic distances}\label{mds-on-geodesic-distances}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{KHA}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Advice.csv"}\NormalTok{,}
+\NormalTok{KHA}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Advice.csv"}\NormalTok{,}
                         \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 \NormalTok{KHAS}\OtherTok{\textless{}{-}}\NormalTok{KHA}\SpecialCharTok{*}\FunctionTok{t}\NormalTok{(KHA)}
 \NormalTok{KHASn}\OtherTok{\textless{}{-}}\FunctionTok{as.network}\NormalTok{(KHAS, }\AttributeTok{directed=}\NormalTok{F)}
@@ -4869,7 +4827,6 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#tiff(file="images/Fig\_09\_GeoDKHA\_MDS.tiff", width=7, height=5, units="in", res=900)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(KHASn,}
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
@@ -4888,12 +4845,6 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-136-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{kamadakawai-and-fr-layout-khfs}{%
 \section{KamadaKawai and FR layout KHFS}\label{kamadakawai-and-fr-layout-khfs}}
@@ -4915,24 +4866,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \NormalTok{mat8[}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{]}\OtherTok{\textless{}{-}}\DecValTok{1}
 \NormalTok{mat8[}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{]}\OtherTok{\textless{}{-}}\DecValTok{1}
 \NormalTok{mat8s}\OtherTok{\textless{}{-}}\NormalTok{(mat8}\SpecialCharTok{+}\FunctionTok{t}\NormalTok{(mat8))}\SpecialCharTok{\textgreater{}}\DecValTok{0}
-\NormalTok{mat8s}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]
-## [1,] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
-## [2,]  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-## [3,] FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE
-## [4,] FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE
-## [5,] FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE
-## [6,] FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE FALSE
-## [7,] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
-## [8,] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{gplot}\NormalTok{(mat8, }
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
       \CommentTok{\#layout}
@@ -4974,13 +4908,14 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \hypertarget{scientists-collaborations}{%
 \subsection{Scientists collaborations}\label{scientists-collaborations}}
 
+In the next chunk, the aim is to separated into two clusters those scientists that have more than 3 years of experience in their studies from those who do not. As can be seen from the plot, two groups are obtained: one with no edges and the other where every node is connected with the center.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{BS504Cx}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Borgatti\_Scientists504\_Attributes.csv"}\NormalTok{,}
+\NormalTok{BS504Cx}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Borgatti\_Scientists504\_Attributes.csv"}\NormalTok{,}
                             \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 \NormalTok{BS504C}\OtherTok{\textless{}{-}}\NormalTok{(BS504Cx}\SpecialCharTok{\textgreater{}}\DecValTok{3}\NormalTok{)}
 
-\CommentTok{\#tiff(file="images/Fig\_011b\_BS504C\_KK.tiff", width=7, height=5, units="in", res=900)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(BS504C, }
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
@@ -4998,41 +4933,19 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-138-1.pdf}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
-
 \hypertarget{nodal-attributes-on-khf}{%
 \subsection{Nodal attributes on KHF}\label{nodal-attributes-on-khf}}
 
+Let's consider scientists' tenure. If we aim to plot the variation in terms of tenure among scientists, size can be a choice:
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{KHF}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
+\NormalTok{KHF}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
                         \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 \NormalTok{KHFS}\OtherTok{\textless{}{-}}\NormalTok{KHF}\SpecialCharTok{*}\FunctionTok{t}\NormalTok{(KHF)}
-\NormalTok{KHAttr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Attributes.csv"}\NormalTok{,}
+\NormalTok{KHAttr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Attributes.csv"}\NormalTok{,}
                  \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
-\FunctionTok{table}\NormalTok{(KHAttr}\SpecialCharTok{$}\NormalTok{TENURE)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## 
-##        0.25 3.332999945 4.666999817 4.833000183 5.416999817         7.5 
-##           1           1           1           1           1           1 
-## 8.416999817 8.916999817 9.083000183        9.25 9.333000183 10.41699982 
-##           1           1           1           1           1           1 
-## 11.33300018 11.66699982 12.41699982        12.5       12.75 19.58300018 
-##           1           1           1           1           1           1 
-##          27          28          30 
-##           1           1           1
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#tiff(file="images/Fig\_011\_KHF\_LEVELTENURE.tiff", width=7, height=5, units="in", res=900)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(KHFS, }
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
@@ -5053,32 +4966,25 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-139-1.pdf}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
+Now, the same plot is proposed again with:
+
+\begin{itemize}
+\tightlist
+\item
+  level as shape and colour;
+\item
+  tenure as size.
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# type sides of nodes}
-\NormalTok{KHF}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
+\NormalTok{KHF}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
                         \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 \NormalTok{KHFS}\OtherTok{\textless{}{-}}\NormalTok{KHF}\SpecialCharTok{*}\FunctionTok{t}\NormalTok{(KHF)}
-\NormalTok{KHAttr}\SpecialCharTok{$}\NormalTok{AGE}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##  [1] 33 42 40 33 32 59 55 34 62 37 46 34 48 43 40 27 30 33 32 38 36
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{KHAttr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Attributes.csv"}\NormalTok{,}
+\NormalTok{KHAttr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Attributes.csv"}\NormalTok{,}
                  \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
 
-\CommentTok{\#tiff(file="images/Fig\_013\_KHF\_DEPARTMENT.tiff", width=7, height=5, units="in", res=900)}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(KHFS, }
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
@@ -5101,183 +5007,44 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-140-1.pdf}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
-
 \hypertarget{scientists-collaboration-more-complex}{%
 \subsection{Scientists collaboration (more complex)}\label{scientists-collaboration-more-complex}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Gender and tenure with legend}
-\NormalTok{BS504Cx}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Borgatti\_Scientists504\_Attributes.csv"}\NormalTok{,}
+\NormalTok{BS504Cx}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Borgatti\_Scientists504\_Attributes.csv"}\NormalTok{,}
                             \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
 \NormalTok{BS504C}\OtherTok{\textless{}{-}}\NormalTok{(BS504Cx}\SpecialCharTok{\textgreater{}}\DecValTok{3}\NormalTok{)}
 
-\NormalTok{BS504Attr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Borgatti\_Scientists504\_Attributes.csv"}\NormalTok{,}
+\NormalTok{BS504Attr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Borgatti\_Scientists504\_Attributes.csv"}\NormalTok{,}
                     \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get the years}
 \NormalTok{Tenure}\OtherTok{\textless{}{-}}\NormalTok{(BS504Attr}\SpecialCharTok{$}\NormalTok{Years)}
-\NormalTok{Tenure}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-##   [1] 18  2  1 16  2 14  4  2  6  3 22 34 25  7  8  5  4 47 21  9  2 15  3  2 13
-##  [26]  2 16  3  8 27  4  5  5  3 29 26  7  4 21 28  2  1 14 18 12 15 14 10 29  6
-##  [51] 10  3  8  6  3  5  4 28 24  6  2 18  1 14 12 14 11  4 22  3  7  9 24  5  9
-##  [76] 27  5  4 25  9 28  3  2 17 14 14  3  6  2  2  6 25 40  5  4 22  8 27  4  4
-## [101]  2 17 17  2 16 25  4 21  4 28  3  8 25 28  4 27 18  2 16 14 17 12  2 14 32
-## [126] 23  4 29 21  4  7 25  4 28 11 12 12  4  8 16  8  8 29  3  4 29  4  4  5  3
-## [151]  3  2 19 14  6 13  9  7 16  3 15  6  3  3 30 30  4 10  5  6  2 15 15 16  2
-## [176]  4  3  2  5 32  3  6 35  3  7 22 35  5 24 39  2  2  2 17  2 17 13 17  4  7
-## [201]  3  2 13  1 15 21  3  7  8  3  3 13 17  1 16  3 12 14  3  8  4 10  3 26  3
-## [226] 22  8  5 27  7  3  6 46 23  9  3  2  3 17 14  1 13  2 14  1  1  3 23  3 10
-## [251] 29  9  4 37  2 18  1  1 19 14 11  5  4 24  4 10 37 24 10 40 22  3  2 12 13
-## [276] 17 13  2  6  9 31 28  3  3 44  3 24 27  9  3 18 18 17 18 13  1 31  6  4  3
-## [301]  4  4 27 22 29 24  9  3  2  2 17 13 14 14 17  7 27 10 27  5  3 40  7 30 24
-## [326] 25 24 17 11  5 14  2 36  7  4 23 22 24 37  8 11  4  3  8 10  3 12  2  4 12
-## [351] 14 12 15 12 14 12  5 29 33  4  3  3  4 47 34 53 11  2  8 13 11  8 22  6 44
-## [376]  5  3  4  4  8  6  3  3  2 19  1  5  2 12  2  2  1  3 25  3  4 10 24 28 10
-## [401]  5  7  3  6  9  3  2 12 14 11  3 14  2  2 14  3  2  4 33  7  4  4  4 13  1
-## [426] 19  1  3 19 11 14 16  6  4 28  4  5 10 24 22  3  3  4  8  3 25 30 12  2 14
-## [451] 40  4  4 30 23 27  8 20 13 18 16 17  2  2 11  4  1 25 10  6 26 28  3 43 39
-## [476]  6 41 34  3  4  5 13  2 16 13  3 17  2 10 16 15  1  1  2  3  5 30  4  5 21
-## [501]  4  3  7  3
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
+\CommentTok{\# Normalize the tenure by the maximum and consider the integer number of years}
 \NormalTok{TenureA}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\DecValTok{10}\SpecialCharTok{*}\NormalTok{(Tenure)}\SpecialCharTok{/}\FunctionTok{max}\NormalTok{((Tenure))))}
-\NormalTok{TenureA}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-##   [1]  3  0  0  3  0  3  1  0  1  1  4  6  5  1  2  1  1  9  4  2  0  3  1  0  2
-##  [26]  0  3  1  2  5  1  1  1  1  5  5  1  1  4  5  0  0  3  3  2  3  3  2  5  1
-##  [51]  2  1  2  1  1  1  1  5  5  1  0  3  0  3  2  3  2  1  4  1  1  2  5  1  2
-##  [76]  5  1  1  5  2  5  1  0  3  3  3  1  1  0  0  1  5  8  1  1  4  2  5  1  1
-## [101]  0  3  3  0  3  5  1  4  1  5  1  2  5  5  1  5  3  0  3  3  3  2  0  3  6
-## [126]  4  1  5  4  1  1  5  1  5  2  2  2  1  2  3  2  2  5  1  1  5  1  1  1  1
-## [151]  1  0  4  3  1  2  2  1  3  1  3  1  1  1  6  6  1  2  1  1  0  3  3  3  0
-## [176]  1  1  0  1  6  1  1  7  1  1  4  7  1  5  7  0  0  0  3  0  3  2  3  1  1
-## [201]  1  0  2  0  3  4  1  1  2  1  1  2  3  0  3  1  2  3  1  2  1  2  1  5  1
-## [226]  4  2  1  5  1  1  1  9  4  2  1  0  1  3  3  0  2  0  3  0  0  1  4  1  2
-## [251]  5  2  1  7  0  3  0  0  4  3  2  1  1  5  1  2  7  5  2  8  4  1  0  2  2
-## [276]  3  2  0  1  2  6  5  1  1  8  1  5  5  2  1  3  3  3  3  2  0  6  1  1  1
-## [301]  1  1  5  4  5  5  2  1  0  0  3  2  3  3  3  1  5  2  5  1  1  8  1  6  5
-## [326]  5  5  3  2  1  3  0  7  1  1  4  4  5  7  2  2  1  1  2  2  1  2  0  1  2
-## [351]  3  2  3  2  3  2  1  5  6  1  1  1  1  9  6 10  2  0  2  2  2  2  4  1  8
-## [376]  1  1  1  1  2  1  1  1  0  4  0  1  0  2  0  0  0  1  5  1  1  2  5  5  2
-## [401]  1  1  1  1  2  1  0  2  3  2  1  3  0  0  3  1  0  1  6  1  1  1  1  2  0
-## [426]  4  0  1  4  2  3  3  1  1  5  1  1  2  5  4  1  1  1  2  1  5  6  2  0  3
-## [451]  8  1  1  6  4  5  2  4  2  3  3  3  0  0  2  1  0  5  2  1  5  5  1  8  7
-## [476]  1  8  6  1  1  1  2  0  3  2  1  3  0  2  3  3  0  0  0  1  1  6  1  1  4
-## [501]  1  1  1  1
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{colfunc }\OtherTok{\textless{}{-}} \FunctionTok{colorRampPalette}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{, }\StringTok{"green3"}\NormalTok{))}
+\CommentTok{\# Create a color palette }
+\NormalTok{colfunc }\OtherTok{\textless{}{-}} \FunctionTok{colorRampPalette}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"lightpink"}\NormalTok{, }\StringTok{"cornflowerblue"}\NormalTok{))}
 \NormalTok{COLWB}\OtherTok{\textless{}{-}}\FunctionTok{colfunc}\NormalTok{(}\DecValTok{7}\NormalTok{)}
+
+\CommentTok{\# Assign colors to different tenures}
 \NormalTok{TenureA2}\OtherTok{\textless{}{-}}\NormalTok{TenureA}
 \NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{0}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{1}\NormalTok{]}
 \NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{2}\NormalTok{]}
 \NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{2}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{3}\NormalTok{]}
 \NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{3}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{4}\NormalTok{]}
 \NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{4}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{5}\NormalTok{]}
-\NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{5}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{6}\NormalTok{]}
-\NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{6}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{6}\NormalTok{]}
-\NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{7}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{7}\NormalTok{]}
-\NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{8}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{7}\NormalTok{]}
-\NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{9}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{7}\NormalTok{]}
-\NormalTok{TenureA2[TenureA}\SpecialCharTok{==}\DecValTok{10}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{7}\NormalTok{]}
-\NormalTok{TenureA2}
-\end{Highlighting}
-\end{Shaded}
+\NormalTok{TenureA2[TenureA }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{)]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{6}\NormalTok{]}
+\NormalTok{TenureA2[TenureA }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{10}\NormalTok{)]}\OtherTok{\textless{}{-}}\NormalTok{COLWB[}\DecValTok{7}\NormalTok{]}
 
-\begin{verbatim}
-##   [1] "#7FE600" "#FFFF00" "#FFFF00" "#7FE600" "#FFFF00" "#7FE600" "#D4F600"
-##   [8] "#FFFF00" "#D4F600" "#D4F600" "#55DD00" "#2AD500" "#2AD500" "#D4F600"
-##  [15] "#AAEE00" "#D4F600" "#D4F600" "#00CD00" "#55DD00" "#AAEE00" "#FFFF00"
-##  [22] "#7FE600" "#D4F600" "#FFFF00" "#AAEE00" "#FFFF00" "#7FE600" "#D4F600"
-##  [29] "#AAEE00" "#2AD500" "#D4F600" "#D4F600" "#D4F600" "#D4F600" "#2AD500"
-##  [36] "#2AD500" "#D4F600" "#D4F600" "#55DD00" "#2AD500" "#FFFF00" "#FFFF00"
-##  [43] "#7FE600" "#7FE600" "#AAEE00" "#7FE600" "#7FE600" "#AAEE00" "#2AD500"
-##  [50] "#D4F600" "#AAEE00" "#D4F600" "#AAEE00" "#D4F600" "#D4F600" "#D4F600"
-##  [57] "#D4F600" "#2AD500" "#2AD500" "#D4F600" "#FFFF00" "#7FE600" "#FFFF00"
-##  [64] "#7FE600" "#AAEE00" "#7FE600" "#AAEE00" "#D4F600" "#55DD00" "#D4F600"
-##  [71] "#D4F600" "#AAEE00" "#2AD500" "#D4F600" "#AAEE00" "#2AD500" "#D4F600"
-##  [78] "#D4F600" "#2AD500" "#AAEE00" "#2AD500" "#D4F600" "#FFFF00" "#7FE600"
-##  [85] "#7FE600" "#7FE600" "#D4F600" "#D4F600" "#FFFF00" "#FFFF00" "#D4F600"
-##  [92] "#2AD500" "#00CD00" "#D4F600" "#D4F600" "#55DD00" "#AAEE00" "#2AD500"
-##  [99] "#D4F600" "#D4F600" "#FFFF00" "#7FE600" "#7FE600" "#FFFF00" "#7FE600"
-## [106] "#2AD500" "#D4F600" "#55DD00" "#D4F600" "#2AD500" "#D4F600" "#AAEE00"
-## [113] "#2AD500" "#2AD500" "#D4F600" "#2AD500" "#7FE600" "#FFFF00" "#7FE600"
-## [120] "#7FE600" "#7FE600" "#AAEE00" "#FFFF00" "#7FE600" "#2AD500" "#55DD00"
-## [127] "#D4F600" "#2AD500" "#55DD00" "#D4F600" "#D4F600" "#2AD500" "#D4F600"
-## [134] "#2AD500" "#AAEE00" "#AAEE00" "#AAEE00" "#D4F600" "#AAEE00" "#7FE600"
-## [141] "#AAEE00" "#AAEE00" "#2AD500" "#D4F600" "#D4F600" "#2AD500" "#D4F600"
-## [148] "#D4F600" "#D4F600" "#D4F600" "#D4F600" "#FFFF00" "#55DD00" "#7FE600"
-## [155] "#D4F600" "#AAEE00" "#AAEE00" "#D4F600" "#7FE600" "#D4F600" "#7FE600"
-## [162] "#D4F600" "#D4F600" "#D4F600" "#2AD500" "#2AD500" "#D4F600" "#AAEE00"
-## [169] "#D4F600" "#D4F600" "#FFFF00" "#7FE600" "#7FE600" "#7FE600" "#FFFF00"
-## [176] "#D4F600" "#D4F600" "#FFFF00" "#D4F600" "#2AD500" "#D4F600" "#D4F600"
-## [183] "#00CD00" "#D4F600" "#D4F600" "#55DD00" "#00CD00" "#D4F600" "#2AD500"
-## [190] "#00CD00" "#FFFF00" "#FFFF00" "#FFFF00" "#7FE600" "#FFFF00" "#7FE600"
-## [197] "#AAEE00" "#7FE600" "#D4F600" "#D4F600" "#D4F600" "#FFFF00" "#AAEE00"
-## [204] "#FFFF00" "#7FE600" "#55DD00" "#D4F600" "#D4F600" "#AAEE00" "#D4F600"
-## [211] "#D4F600" "#AAEE00" "#7FE600" "#FFFF00" "#7FE600" "#D4F600" "#AAEE00"
-## [218] "#7FE600" "#D4F600" "#AAEE00" "#D4F600" "#AAEE00" "#D4F600" "#2AD500"
-## [225] "#D4F600" "#55DD00" "#AAEE00" "#D4F600" "#2AD500" "#D4F600" "#D4F600"
-## [232] "#D4F600" "#00CD00" "#55DD00" "#AAEE00" "#D4F600" "#FFFF00" "#D4F600"
-## [239] "#7FE600" "#7FE600" "#FFFF00" "#AAEE00" "#FFFF00" "#7FE600" "#FFFF00"
-## [246] "#FFFF00" "#D4F600" "#55DD00" "#D4F600" "#AAEE00" "#2AD500" "#AAEE00"
-## [253] "#D4F600" "#00CD00" "#FFFF00" "#7FE600" "#FFFF00" "#FFFF00" "#55DD00"
-## [260] "#7FE600" "#AAEE00" "#D4F600" "#D4F600" "#2AD500" "#D4F600" "#AAEE00"
-## [267] "#00CD00" "#2AD500" "#AAEE00" "#00CD00" "#55DD00" "#D4F600" "#FFFF00"
-## [274] "#AAEE00" "#AAEE00" "#7FE600" "#AAEE00" "#FFFF00" "#D4F600" "#AAEE00"
-## [281] "#2AD500" "#2AD500" "#D4F600" "#D4F600" "#00CD00" "#D4F600" "#2AD500"
-## [288] "#2AD500" "#AAEE00" "#D4F600" "#7FE600" "#7FE600" "#7FE600" "#7FE600"
-## [295] "#AAEE00" "#FFFF00" "#2AD500" "#D4F600" "#D4F600" "#D4F600" "#D4F600"
-## [302] "#D4F600" "#2AD500" "#55DD00" "#2AD500" "#2AD500" "#AAEE00" "#D4F600"
-## [309] "#FFFF00" "#FFFF00" "#7FE600" "#AAEE00" "#7FE600" "#7FE600" "#7FE600"
-## [316] "#D4F600" "#2AD500" "#AAEE00" "#2AD500" "#D4F600" "#D4F600" "#00CD00"
-## [323] "#D4F600" "#2AD500" "#2AD500" "#2AD500" "#2AD500" "#7FE600" "#AAEE00"
-## [330] "#D4F600" "#7FE600" "#FFFF00" "#00CD00" "#D4F600" "#D4F600" "#55DD00"
-## [337] "#55DD00" "#2AD500" "#00CD00" "#AAEE00" "#AAEE00" "#D4F600" "#D4F600"
-## [344] "#AAEE00" "#AAEE00" "#D4F600" "#AAEE00" "#FFFF00" "#D4F600" "#AAEE00"
-## [351] "#7FE600" "#AAEE00" "#7FE600" "#AAEE00" "#7FE600" "#AAEE00" "#D4F600"
-## [358] "#2AD500" "#2AD500" "#D4F600" "#D4F600" "#D4F600" "#D4F600" "#00CD00"
-## [365] "#2AD500" "#00CD00" "#AAEE00" "#FFFF00" "#AAEE00" "#AAEE00" "#AAEE00"
-## [372] "#AAEE00" "#55DD00" "#D4F600" "#00CD00" "#D4F600" "#D4F600" "#D4F600"
-## [379] "#D4F600" "#AAEE00" "#D4F600" "#D4F600" "#D4F600" "#FFFF00" "#55DD00"
-## [386] "#FFFF00" "#D4F600" "#FFFF00" "#AAEE00" "#FFFF00" "#FFFF00" "#FFFF00"
-## [393] "#D4F600" "#2AD500" "#D4F600" "#D4F600" "#AAEE00" "#2AD500" "#2AD500"
-## [400] "#AAEE00" "#D4F600" "#D4F600" "#D4F600" "#D4F600" "#AAEE00" "#D4F600"
-## [407] "#FFFF00" "#AAEE00" "#7FE600" "#AAEE00" "#D4F600" "#7FE600" "#FFFF00"
-## [414] "#FFFF00" "#7FE600" "#D4F600" "#FFFF00" "#D4F600" "#2AD500" "#D4F600"
-## [421] "#D4F600" "#D4F600" "#D4F600" "#AAEE00" "#FFFF00" "#55DD00" "#FFFF00"
-## [428] "#D4F600" "#55DD00" "#AAEE00" "#7FE600" "#7FE600" "#D4F600" "#D4F600"
-## [435] "#2AD500" "#D4F600" "#D4F600" "#AAEE00" "#2AD500" "#55DD00" "#D4F600"
-## [442] "#D4F600" "#D4F600" "#AAEE00" "#D4F600" "#2AD500" "#2AD500" "#AAEE00"
-## [449] "#FFFF00" "#7FE600" "#00CD00" "#D4F600" "#D4F600" "#2AD500" "#55DD00"
-## [456] "#2AD500" "#AAEE00" "#55DD00" "#AAEE00" "#7FE600" "#7FE600" "#7FE600"
-## [463] "#FFFF00" "#FFFF00" "#AAEE00" "#D4F600" "#FFFF00" "#2AD500" "#AAEE00"
-## [470] "#D4F600" "#2AD500" "#2AD500" "#D4F600" "#00CD00" "#00CD00" "#D4F600"
-## [477] "#00CD00" "#2AD500" "#D4F600" "#D4F600" "#D4F600" "#AAEE00" "#FFFF00"
-## [484] "#7FE600" "#AAEE00" "#D4F600" "#7FE600" "#FFFF00" "#AAEE00" "#7FE600"
-## [491] "#7FE600" "#FFFF00" "#FFFF00" "#FFFF00" "#D4F600" "#D4F600" "#2AD500"
-## [498] "#D4F600" "#D4F600" "#55DD00" "#D4F600" "#D4F600" "#D4F600" "#D4F600"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#tiff(file="images/Fig\_014\_BS504C\_gender\_tenure.tiff", width=7, height=5, units="in", res=900)}
+\CommentTok{\# Plot }
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(BS504C, }
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{, }
@@ -5293,7 +5060,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
       \AttributeTok{vertex.sides=}\NormalTok{(BS504Attr}\SpecialCharTok{$}\NormalTok{Sex}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{*}\DecValTok{47}\SpecialCharTok{+}\DecValTok{4}\NormalTok{)}
 \FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}
        \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Colors"}\NormalTok{,}\StringTok{" Senior"}\NormalTok{, }\StringTok{" Junior"}\NormalTok{, }\StringTok{" "}\NormalTok{,}\StringTok{"Shapes"}\NormalTok{, }\StringTok{" Male (2)"}\NormalTok{, }\StringTok{" Female (1)"}\NormalTok{),}
-       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"white"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"green3"}\NormalTok{,}\StringTok{"white"}\NormalTok{,}\StringTok{"white"}\NormalTok{,}\StringTok{"black"}\NormalTok{,}\StringTok{"black"}\NormalTok{), }
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"white"}\NormalTok{,}\StringTok{"lightpink"}\NormalTok{,}\StringTok{"cornflowerblue"}\NormalTok{,}\StringTok{"white"}\NormalTok{,}\StringTok{"white"}\NormalTok{,}\StringTok{"black"}\NormalTok{,}\StringTok{"black"}\NormalTok{), }
        \AttributeTok{bty =} \StringTok{"n"}\NormalTok{, }\AttributeTok{pch =}\FunctionTok{c}\NormalTok{(}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{18}\NormalTok{),}
        \AttributeTok{pt.cex =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{2.1}\NormalTok{,}\FloatTok{2.1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{1.7}\NormalTok{,}\FloatTok{1.9}\NormalTok{), }
        \AttributeTok{cex =} \DecValTok{1}\NormalTok{, }
@@ -5303,87 +5070,22 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-141-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-142-1.pdf}
 
 \hypertarget{nodal-attributes-on-pfm}{%
 \subsection{Nodal attributes on PFM}\label{nodal-attributes-on-pfm}}
 
-=== NO DATASET ===
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{PFM}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Padgett\_FlorentineFamilies\_Marriage.csv"}\NormalTok{,}
+\NormalTok{PFM}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Padgett\_FlorentineFamilies\_Marriage.csv"}\NormalTok{,}
                         \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
-\NormalTok{PFM}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-##              ACCIAIUOLI ALBIZZI BARBADORI BISCHERI CASTELLANI GINORI GUADAGNI
-## ACCIAIUOLI            0       0         0        0          0      0        0
-## ALBIZZI               0       0         0        0          0      1        1
-## BARBADORI             0       0         0        0          1      0        0
-## BISCHERI              0       0         0        0          0      0        1
-## CASTELLANI            0       0         1        0          0      0        0
-## GINORI                0       1         0        0          0      0        0
-## GUADAGNI              0       1         0        1          0      0        0
-## LAMBERTESCHI          0       0         0        0          0      0        1
-## MEDICI                1       1         1        0          0      0        0
-## PAZZI                 0       0         0        0          0      0        0
-## PERUZZI               0       0         0        1          1      0        0
-## PUCCI                 0       0         0        0          0      0        0
-## RIDOLFI               0       0         0        0          0      0        0
-## SALVIATI              0       0         0        0          0      0        0
-## STROZZI               0       0         0        1          1      0        0
-## TORNABUONI            0       0         0        0          0      0        1
-##              LAMBERTESCHI MEDICI PAZZI PERUZZI PUCCI RIDOLFI SALVIATI STROZZI
-## ACCIAIUOLI              0      1     0       0     0       0        0       0
-## ALBIZZI                 0      1     0       0     0       0        0       0
-## BARBADORI               0      1     0       0     0       0        0       0
-## BISCHERI                0      0     0       1     0       0        0       1
-## CASTELLANI              0      0     0       1     0       0        0       1
-## GINORI                  0      0     0       0     0       0        0       0
-## GUADAGNI                1      0     0       0     0       0        0       0
-## LAMBERTESCHI            0      0     0       0     0       0        0       0
-## MEDICI                  0      0     0       0     0       1        1       0
-## PAZZI                   0      0     0       0     0       0        1       0
-## PERUZZI                 0      0     0       0     0       0        0       1
-## PUCCI                   0      0     0       0     0       0        0       0
-## RIDOLFI                 0      1     0       0     0       0        0       1
-## SALVIATI                0      1     1       0     0       0        0       0
-## STROZZI                 0      0     0       1     0       1        0       0
-## TORNABUONI              0      1     0       0     0       1        0       0
-##              TORNABUONI
-## ACCIAIUOLI            0
-## ALBIZZI               0
-## BARBADORI             0
-## BISCHERI              0
-## CASTELLANI            0
-## GINORI                0
-## GUADAGNI              1
-## LAMBERTESCHI          0
-## MEDICI                1
-## PAZZI                 0
-## PERUZZI               0
-## PUCCI                 0
-## RIDOLFI               1
-## SALVIATI              0
-## STROZZI               0
-## TORNABUONI            0
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(sna)}
 \NormalTok{PFMn}\OtherTok{\textless{}{-}}\FunctionTok{as.network}\NormalTok{(PFM, }\AttributeTok{directed=}\NormalTok{F)}
+
+\CommentTok{\# Compute the degree of the network}
 \NormalTok{DPFM}\OtherTok{\textless{}{-}}\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{degree}\NormalTok{(PFMn)}
-\CommentTok{\#tiff(file="images/Fig\_015\_PFM\_labelsCHANGE.tiff", width=7, height=5, units="in", res=900)}
+
+\CommentTok{\# Plot the network, where the size relies on the degree of every node}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(PFMn, }
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{, }
@@ -5393,7 +5095,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
       \AttributeTok{edge.col=}\StringTok{"grey70"}\NormalTok{,}
       \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{, }
       \CommentTok{\#nodes}
-      \AttributeTok{vertex.col=}\StringTok{"deepskyblue3"}\NormalTok{,}
+      \AttributeTok{vertex.col=}\StringTok{"cornflowerblue"}\NormalTok{,}
       \AttributeTok{vertex.cex=}\NormalTok{DPFM}\SpecialCharTok{/}\DecValTok{17}\FloatTok{+.5}\NormalTok{,}
       \CommentTok{\#labels}
       \AttributeTok{displaylabels=}\ConstantTok{TRUE}\NormalTok{, }
@@ -5403,165 +5105,37 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-142-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-143-1.pdf}
 
 \hypertarget{tie-strength-on-scientists-collaborations}{%
 \section{Tie strength on Scientists collaborations}\label{tie-strength-on-scientists-collaborations}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{BS504C}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Borgatti\_Scientists504\_Attributes.csv"}\NormalTok{,}
+\NormalTok{BS504C}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Borgatti\_Scientists504\_Attributes.csv"}\NormalTok{,}
                            \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
+
+\CommentTok{\# Filtering different years of experience}
 \NormalTok{BS504CGT3}\OtherTok{\textless{}{-}}\NormalTok{(BS504Cx}\SpecialCharTok{\textgreater{}}\DecValTok{3}\NormalTok{)}
 \NormalTok{BS504CGT5}\OtherTok{\textless{}{-}}\NormalTok{(BS504Cx}\SpecialCharTok{\textgreater{}}\DecValTok{5}\NormalTok{)}
 \NormalTok{BS504CGT7}\OtherTok{\textless{}{-}}\NormalTok{(BS504Cx}\SpecialCharTok{\textgreater{}}\DecValTok{7}\NormalTok{)}
 \NormalTok{BS504CGT9}\OtherTok{\textless{}{-}}\NormalTok{(BS504Cx}\SpecialCharTok{\textgreater{}}\DecValTok{9}\NormalTok{)}
-
-
-\NormalTok{LOBS504}\OtherTok{\textless{}{-}}\FunctionTok{gplot}\NormalTok{(BS504CGT3,}
-               \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
-               \CommentTok{\#layout}
-               \AttributeTok{mode=}\StringTok{"fruchtermanreingold"}\NormalTok{,}
-               \AttributeTok{jitter=}\NormalTok{F,}
-               \CommentTok{\#ties}
-               \AttributeTok{edge.col=}\StringTok{"grey70"}\NormalTok{, }
-               \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{,}
-               \CommentTok{\#nodes}
-               \AttributeTok{vertex.col=}\StringTok{"gold3"}\NormalTok{,}
-               \AttributeTok{vertex.cex=}\NormalTok{.}\DecValTok{75}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-143-1.pdf}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#tiff(file="images/Fig\_016\_BS504C\_TieStrenght3.tiff", width=7, height=5, units="in", res=900)}
+\CommentTok{\# 3 years of experience}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(BS504CGT3,}
       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
-      \CommentTok{\#layout}
-      \AttributeTok{coord=}\NormalTok{LOBS504,}
       \AttributeTok{jitter=}\NormalTok{F,}
       \CommentTok{\#ties}
-      \AttributeTok{edge.col=}\StringTok{"grey60"}\NormalTok{, }
+      \AttributeTok{edge.col=}\StringTok{"grey70"}\NormalTok{, }
       \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{,}
       \CommentTok{\#nodes}
-      \AttributeTok{vertex.col=}\StringTok{"gold3"}\NormalTok{,}
+      \AttributeTok{vertex.col=}\StringTok{"cornflowerblue"}\NormalTok{,}
       \AttributeTok{vertex.cex=}\NormalTok{.}\DecValTok{75}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-143-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-
-
-\CommentTok{\#tiff(file="images/Fig\_016\_BS504C\_TieStrenght5.tiff", width=7, height=5, units="in", res=900)}
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
-\FunctionTok{gplot}\NormalTok{(BS504CGT5,}
-      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
-      \CommentTok{\#layout}
-      \AttributeTok{coord=}\NormalTok{LOBS504,}
-      \AttributeTok{jitter=}\NormalTok{F,}
-      \CommentTok{\#ties}
-      \AttributeTok{edge.col=}\StringTok{"grey60"}\NormalTok{, }
-      \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{,}
-      \CommentTok{\#nodes}
-      \AttributeTok{vertex.col=}\StringTok{"gold3"}\NormalTok{,}
-      \AttributeTok{vertex.cex=}\NormalTok{.}\DecValTok{75}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-143-3.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-
-
-\CommentTok{\#tiff(file="images/Fig\_016\_BS504C\_TieStrenght7.tiff", width=7, height=5, units="in", res=900)}
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
-\FunctionTok{gplot}\NormalTok{(BS504CGT7,}
-      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
-      \CommentTok{\#layout}
-      \AttributeTok{coord=}\NormalTok{LOBS504,}
-      \AttributeTok{jitter=}\NormalTok{F,}
-      \CommentTok{\#ties}
-      \AttributeTok{edge.col=}\StringTok{"grey60"}\NormalTok{, }
-      \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{,}
-      \CommentTok{\#nodes}
-      \AttributeTok{vertex.col=}\StringTok{"gold3"}\NormalTok{,}
-      \AttributeTok{vertex.cex=}\NormalTok{.}\DecValTok{75}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-143-4.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-
-\CommentTok{\#tiff(file="images/Fig\_016\_BS504C\_TieStrenght9.tiff", width=7, height=5, units="in", res=900)}
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
-\FunctionTok{gplot}\NormalTok{(BS504CGT9,}
-      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
-      \CommentTok{\#layout}
-      \AttributeTok{coord=}\NormalTok{LOBS504,}
-      \AttributeTok{jitter=}\NormalTok{F,}
-      \CommentTok{\#ties}
-      \AttributeTok{edge.col=}\StringTok{"grey60"}\NormalTok{, }
-      \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{,}
-      \CommentTok{\#nodes}
-      \AttributeTok{vertex.col=}\StringTok{"gold3"}\NormalTok{,}
-      \AttributeTok{vertex.cex=}\NormalTok{.}\DecValTok{75}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-143-5.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\#dev.off()}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{directed-networks}{%
-\section{Directed networks}\label{directed-networks}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{KHF}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
-                        \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
-\NormalTok{KHFn}\OtherTok{\textless{}{-}}\FunctionTok{as.network}\NormalTok{(KHF, }\AttributeTok{directed=}\NormalTok{T)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{COOKHF}\OtherTok{\textless{}{-}}\FunctionTok{gplot}\NormalTok{(KHFn,}
-              \AttributeTok{gmode=}\StringTok{"digraph"}\NormalTok{,    }
-              \CommentTok{\#layout}
-              \AttributeTok{jitter=}\NormalTok{F,           }\CommentTok{\# do not allow nodes to be "jittered"}
-              \CommentTok{\#ties}
-              \AttributeTok{edge.col=}\StringTok{"grey40"}\NormalTok{,}
-              \AttributeTok{arrowhead.cex=}\NormalTok{.}\DecValTok{7}\NormalTok{,}
-              \CommentTok{\# set color of ties}
-              \CommentTok{\#nodes}
-              \AttributeTok{vertex.col=}\StringTok{"grey90"}\NormalTok{,   }\CommentTok{\# set color of nodes}
-              \AttributeTok{vertex.cex=}\FloatTok{1.4}\NormalTok{,}
-              \CommentTok{\#labels}
-              \AttributeTok{displaylabels=}\NormalTok{T,    }\CommentTok{\# indicate that labels should be included}
-              \AttributeTok{label.pos=}\DecValTok{5}\NormalTok{,        }\CommentTok{\# indicate that labels should be given below points}
-              \AttributeTok{label.cex=}\NormalTok{.}\DecValTok{5}\NormalTok{)       }\CommentTok{\# indicate the size of the labels (1 is default)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5569,10 +5143,74 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#tiff(file="images/Fig\_017b\_KHF\_directed.tiff", width=7, height=5, units="in", res=900)}
-\CommentTok{\# this defines the margins:}
+\CommentTok{\# 5 Years of experience}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
-\CommentTok{\# this is the plot for a network function in "sna"}
+\FunctionTok{gplot}\NormalTok{(BS504CGT5,}
+      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
+      \CommentTok{\#layout}
+      \AttributeTok{jitter=}\NormalTok{F,}
+      \CommentTok{\#ties}
+      \AttributeTok{edge.col=}\StringTok{"grey60"}\NormalTok{, }
+      \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{,}
+      \CommentTok{\#nodes}
+      \AttributeTok{vertex.col=}\StringTok{"cornflowerblue"}\NormalTok{,}
+      \AttributeTok{vertex.cex=}\NormalTok{.}\DecValTok{75}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-146-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 7 Years of experience}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\FunctionTok{gplot}\NormalTok{(BS504CGT7,}
+      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
+      \AttributeTok{jitter=}\NormalTok{F,}
+      \CommentTok{\#ties}
+      \AttributeTok{edge.col=}\StringTok{"grey60"}\NormalTok{, }
+      \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{,}
+      \CommentTok{\#nodes}
+      \AttributeTok{vertex.col=}\StringTok{"cornflowerblue"}\NormalTok{,}
+      \AttributeTok{vertex.cex=}\NormalTok{.}\DecValTok{75}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-147-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 9 years of experience}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\FunctionTok{gplot}\NormalTok{(BS504CGT9,}
+      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
+      \AttributeTok{jitter=}\NormalTok{F,}
+      \CommentTok{\#ties}
+      \AttributeTok{edge.col=}\StringTok{"grey60"}\NormalTok{, }
+      \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{,}
+      \CommentTok{\#nodes}
+      \AttributeTok{vertex.col=}\StringTok{"cornflowerblue"}\NormalTok{,}
+      \AttributeTok{vertex.cex=}\NormalTok{.}\DecValTok{75}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-148-1.pdf}
+
+\hypertarget{directed-networks}{%
+\section{Directed networks}\label{directed-networks}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{KHF}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/Krackhardt\_HighTech\_Friendship.csv"}\NormalTok{,}
+                        \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
+\NormalTok{KHFn}\OtherTok{\textless{}{-}}\FunctionTok{as.network}\NormalTok{(KHF, }\AttributeTok{directed=}\NormalTok{T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plotting points based on their coordinates}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
 \FunctionTok{gplot}\NormalTok{(KHFn,}
       \AttributeTok{gmode=}\StringTok{"digraph"}\NormalTok{,  }
       \AttributeTok{coord=}\NormalTok{COOKHF,}
@@ -5580,13 +5218,13 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
       \AttributeTok{jitter=}\NormalTok{F,           }\CommentTok{\# do not allow nodes to be "jittered"}
       \CommentTok{\#ties}
       \AttributeTok{edge.col=}\StringTok{"grey30"}\NormalTok{,}
-      \AttributeTok{edge.lwd=}\DecValTok{1}\NormalTok{,}
+      \AttributeTok{edge.lwd=}\FloatTok{0.2}\NormalTok{,}
       \AttributeTok{usecurve=}\NormalTok{T,}
       \AttributeTok{edge.curve=}\NormalTok{.}\DecValTok{04}\NormalTok{, }
-      \AttributeTok{arrowhead.cex=}\NormalTok{.}\DecValTok{6}\NormalTok{,}
+      \AttributeTok{arrowhead.cex=}\NormalTok{.}\DecValTok{4}\NormalTok{,}
       
       \CommentTok{\#nodes}
-      \AttributeTok{vertex.col=}\StringTok{"grey90"}\NormalTok{,   }\CommentTok{\# set color of nodes}
+      \AttributeTok{vertex.col=}\StringTok{"lightpink"}\NormalTok{,   }\CommentTok{\# set color of nodes}
       \AttributeTok{vertex.cex=}\FloatTok{1.4}\NormalTok{,}
       \CommentTok{\#labels}
       \AttributeTok{displaylabels=}\NormalTok{T,    }\CommentTok{\# indicate that labels should be included}
@@ -5595,7 +5233,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-145-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-151-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5603,5 +5241,1373 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{centrality-measures}{%
+\chapter{Centrality Measures}\label{centrality-measures}}
+
+\hypertarget{scientists-example}{%
+\section{Scientists example}\label{scientists-example}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sna)}
+
+\CommentTok{\# SCIENTISTS COLLABORATION}
+\NormalTok{BS504Cx}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Borgatti\_Scientists504\_Collaboration.csv"}\NormalTok{,}
+                            \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
+
+\CommentTok{\# Pick only those who have at least 3 collabs}
+\NormalTok{BS504C}\OtherTok{\textless{}{-}}\NormalTok{(BS504Cx}\SpecialCharTok{\textgreater{}}\DecValTok{3}\NormalTok{)}
+
+\CommentTok{\# Plotting the collaborations}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\FunctionTok{gplot}\NormalTok{(BS504C, }
+      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
+      \CommentTok{\#layout}
+      \AttributeTok{mode=}\StringTok{"kamadakawai"}\NormalTok{,}
+      \AttributeTok{jitter=}\NormalTok{F,}
+      \CommentTok{\#ties}
+      \AttributeTok{edge.col=}\StringTok{"grey80"}\NormalTok{, }
+      \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{1}\NormalTok{,}
+      \CommentTok{\#nodes}
+      \AttributeTok{vertex.col=}\StringTok{"cornflowerblue"}\NormalTok{,}
+      \AttributeTok{vertex.cex=}\NormalTok{.}\DecValTok{75}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-152-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Inserting attributes}
+\NormalTok{BS504Attr}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Borgatti\_Scientists504\_Attributes.csv"}\NormalTok{,}
+                    \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
+
+\NormalTok{Tenure}\OtherTok{\textless{}{-}}\NormalTok{(BS504Attr}\SpecialCharTok{$}\NormalTok{Years) }\CommentTok{\# Years attribute}
+\NormalTok{TenureA}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{round}\NormalTok{(}\DecValTok{10}\SpecialCharTok{*}\NormalTok{(Tenure)}\SpecialCharTok{/}\FunctionTok{max}\NormalTok{((Tenure)))) }\CommentTok{\# Normalizing years}
+\NormalTok{colfunc }\OtherTok{\textless{}{-}} \FunctionTok{colorRampPalette}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"\#B78FB3"}\NormalTok{, }\StringTok{"\#22BFAC"}\NormalTok{)) }\CommentTok{\# color palette}
+
+\NormalTok{COLWB}\OtherTok{\textless{}{-}}\FunctionTok{colfunc}\NormalTok{(}\DecValTok{7}\NormalTok{) }\CommentTok{\# 7 colors}
+\NormalTok{vertex\_color }\OtherTok{=} \FunctionTok{ifelse}\NormalTok{(TenureA }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{),COLWB[}\DecValTok{6}\NormalTok{],}
+                      \FunctionTok{ifelse}\NormalTok{(TenureA}\SpecialCharTok{\textgreater{}=}\DecValTok{7}\NormalTok{, COLWB[}\DecValTok{7}\NormalTok{],COLWB[TenureA}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]))}
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\FunctionTok{gplot}\NormalTok{(BS504C, }
+      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{, }
+      \CommentTok{\#layout}
+      \AttributeTok{mode=}\StringTok{"kamadakawai"}\NormalTok{,}
+      \AttributeTok{jitter =}\NormalTok{ F,}
+      \CommentTok{\#ties}
+      \AttributeTok{edge.col=}\StringTok{"grey80"}\NormalTok{,}
+      \AttributeTok{edge.lwd=}\NormalTok{.}\DecValTok{2}\NormalTok{, }
+      \CommentTok{\#nodes}
+      \AttributeTok{vertex.col=}\NormalTok{vertex\_color, }\CommentTok{\# color}
+      \AttributeTok{vertex.cex=}\DecValTok{1}\NormalTok{,}\CommentTok{\#1+.7*(2{-}BS504Attr$Sex), }
+      \AttributeTok{vertex.sides=}\NormalTok{BS504Attr}\SpecialCharTok{$}\NormalTok{Sex}\DecValTok{{-}1}\SpecialCharTok{*}\DecValTok{47}\SpecialCharTok{+}\DecValTok{3}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}
+       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Colors"}\NormalTok{,}\StringTok{" Senior"}\NormalTok{, }\StringTok{" Junior"}\NormalTok{, }\StringTok{" "}\NormalTok{,}\StringTok{"Shapes"}\NormalTok{, }\StringTok{" Male"}\NormalTok{, }\StringTok{" Female"}\NormalTok{),}
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"white"}\NormalTok{,}\StringTok{"\#B78FB3"}\NormalTok{,}\StringTok{"\#22BFAC"}\NormalTok{,}\StringTok{"white"}\NormalTok{,}\StringTok{"white"}\NormalTok{,}\StringTok{"black"}\NormalTok{,}\StringTok{"black"}\NormalTok{), }
+       \AttributeTok{bty =} \StringTok{"n"}\NormalTok{, }
+       \AttributeTok{pch =}\FunctionTok{c}\NormalTok{(}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{18}\NormalTok{),}
+       \AttributeTok{pt.cex =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{2.1}\NormalTok{,}\FloatTok{2.1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{1.7}\NormalTok{,}\FloatTok{1.9}\NormalTok{), }
+       \AttributeTok{cex =} \DecValTok{1}\NormalTok{, }
+       \AttributeTok{text.col =} \StringTok{"grey10"}\NormalTok{, }
+       \AttributeTok{horiz =}\NormalTok{ F , }
+       \AttributeTok{inset =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.01}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-153-1.pdf}
+\#\# Florentine Families
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# FLORENTINE FAMILIES}
+\NormalTok{PFM}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Padgett\_FlorentineFamilies\_Marriage.csv"}\NormalTok{,}
+                        \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
+\NormalTok{PFMn}\OtherTok{\textless{}{-}}\FunctionTok{as.network}\NormalTok{(PFM, }\AttributeTok{directed=}\NormalTok{F)}
+\FunctionTok{gplot}\NormalTok{(PFMn, }
+      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
+      \CommentTok{\#layout}
+      \AttributeTok{mode=}\StringTok{"fruchtermanreingold"}\NormalTok{,}
+      \AttributeTok{jitter=}\NormalTok{F,}
+      \CommentTok{\#ties}
+      \AttributeTok{edge.col=}\StringTok{"grey80"}\NormalTok{,}
+      \CommentTok{\#nodes}
+      \AttributeTok{vertex.col=}\StringTok{"cornflowerblue"}\NormalTok{,}
+      \CommentTok{\#labels}
+      \AttributeTok{displaylabels=}\NormalTok{T,}
+      \AttributeTok{label.pos=}\DecValTok{1}\NormalTok{,}
+      \AttributeTok{label.cex=}\NormalTok{.}\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-154-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add attributes file and use wealth to change size of nodes (vertex.cex)}
+\NormalTok{PFA}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Padgett\_FlorentineFamilies\_Attributes.csv"}\NormalTok{,}
+               \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Color palette}
+\NormalTok{n\_colors}\OtherTok{\textless{}{-}}\FunctionTok{max}\NormalTok{(PFA}\SpecialCharTok{$}\NormalTok{Priors)}\SpecialCharTok{{-}}\FunctionTok{min}\NormalTok{(PFA}\SpecialCharTok{$}\NormalTok{Priors)}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{colfunc }\OtherTok{\textless{}{-}} \FunctionTok{colorRampPalette}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"\#FFD670"}\NormalTok{, }\StringTok{"\#70D6FF"}\NormalTok{))}
+\NormalTok{colors}\OtherTok{\textless{}{-}}\FunctionTok{colfunc}\NormalTok{(n\_colors)}
+\NormalTok{vertex\_colors}\OtherTok{\textless{}{-}}\NormalTok{colors[PFA}\SpecialCharTok{$}\NormalTok{Priors}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\FunctionTok{gplot}\NormalTok{(PFMn, }
+      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
+      \CommentTok{\#layout}
+      \AttributeTok{mode=}\StringTok{"fruchtermanreingold"}\NormalTok{,}
+      \AttributeTok{jitter=}\NormalTok{F,}
+      \CommentTok{\#ties}
+      \AttributeTok{edge.col=}\StringTok{"grey20"}\NormalTok{,}
+      \CommentTok{\#nodes}
+      \AttributeTok{vertex.col=}\NormalTok{vertex\_colors,}
+      \AttributeTok{vertex.cex=}\NormalTok{PFA}\SpecialCharTok{$}\NormalTok{Wealth}\SpecialCharTok{/}\DecValTok{80}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,}
+      \CommentTok{\#labels}
+      \AttributeTok{displaylabels=}\NormalTok{T,}
+      \AttributeTok{label.pos=}\DecValTok{1}\NormalTok{,}
+      \AttributeTok{label.cex=}\NormalTok{.}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-155-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate centrality measures}
+
+\DocumentationTok{\#\# Degree}
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{degree}\NormalTok{(PFMn, }\AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 3 2 3 3 1 4 1 6 1 3 0 3 2 4 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Betweenness centrality}
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{betweenness}\NormalTok{(PFMn, }\AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{, }\AttributeTok{cmode=}\StringTok{"undirected"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  0.000000 19.333333  8.500000  9.500000  5.000000  0.000000 23.166667
+##  [8]  0.000000 47.500000  0.000000  2.000000  0.000000 10.333333 13.000000
+## [15]  9.333333  8.333333
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Bonacich Power Centrality}
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{bonpow}\NormalTok{(PFMn, }\AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{, }\AttributeTok{exponent=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ACCIAIUOLI      ALBIZZI    BARBADORI     BISCHERI   CASTELLANI       GINORI 
+##    0.3455474    1.0366421    0.6910947    1.0366421    1.0366421    0.3455474 
+##     GUADAGNI LAMBERTESCHI       MEDICI        PAZZI      PERUZZI        PUCCI 
+##    1.3821895    0.3455474    2.0732842    0.3455474    1.0366421    0.0000000 
+##      RIDOLFI     SALVIATI      STROZZI   TORNABUONI 
+##    1.0366421    0.6910947    1.3821895    1.0366421
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Constraint index}
+\FunctionTok{library}\NormalTok{(igraph)}
+\NormalTok{PFM\_i}\OtherTok{\textless{}{-}}\FunctionTok{graph\_from\_adjacency\_matrix}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(PFM),}\AttributeTok{mode=}\StringTok{"undirected"}\NormalTok{, }\AttributeTok{diag=}\NormalTok{F)}
+\FunctionTok{constraint}\NormalTok{(PFM\_i)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ACCIAIUOLI      ALBIZZI    BARBADORI     BISCHERI   CASTELLANI       GINORI 
+##    1.0000000    0.3333333    0.5000000    0.4822531    0.4822531    1.0000000 
+##     GUADAGNI LAMBERTESCHI       MEDICI        PAZZI      PERUZZI        PUCCI 
+##    0.2500000    1.0000000    0.2098765    1.0000000    0.6558642          NaN 
+##      RIDOLFI     SALVIATI      STROZZI   TORNABUONI 
+##    0.4598765    0.5000000    0.4583333    0.4598765
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Statistical tests for significance}
+\NormalTok{PFMn.Deg}\OtherTok{\textless{}{-}}\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{degree}\NormalTok{(PFMn, }\AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{)}
+
+\FunctionTok{cor.test}\NormalTok{(PFMn.Deg,PFA}\SpecialCharTok{$}\NormalTok{Priors) }\CommentTok{\# Number of families vs Priors}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  PFMn.Deg and PFA$Priors
+## t = 2.4519, df = 14, p-value = 0.02794
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.07193331 0.82079537
+## sample estimates:
+##       cor 
+## 0.5480948
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor.test}\NormalTok{(PFMn.Deg,PFA}\SpecialCharTok{$}\NormalTok{Wealth) }\CommentTok{\# Number or families vs Wealth}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  PFMn.Deg and PFA$Wealth
+## t = 2.5225, df = 14, p-value = 0.02438
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.08755017 0.82585806
+## sample estimates:
+##       cor 
+## 0.5589956
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor.test}\NormalTok{(PFA}\SpecialCharTok{$}\NormalTok{Priors,PFA}\SpecialCharTok{$}\NormalTok{Wealth) }\CommentTok{\# Priors vs Wealth}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  PFA$Priors and PFA$Wealth
+## t = 1.7401, df = 14, p-value = 0.1038
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.09356713  0.75878748
+## sample estimates:
+##       cor 
+## 0.4216972
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Linear Models}
+\DocumentationTok{\#\# One of them}
+\NormalTok{M1}\OtherTok{\textless{}{-}}\FunctionTok{lm}\NormalTok{(PFMn.Deg}\SpecialCharTok{\textasciitilde{}}\NormalTok{PFA}\SpecialCharTok{$}\NormalTok{Priors)}
+\FunctionTok{summary}\NormalTok{(M1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = PFMn.Deg ~ PFA$Priors)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.36244 -0.69127 -0.02179  0.70515  2.63756 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)  1.67341    0.46887   3.569  0.00308 **
+## PFA$Priors   0.03187    0.01300   2.452  0.02794 * 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.303 on 14 degrees of freedom
+## Multiple R-squared:  0.3004, Adjusted R-squared:  0.2504 
+## F-statistic: 6.012 on 1 and 14 DF,  p-value: 0.02794
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Both of them}
+\NormalTok{M2}\OtherTok{\textless{}{-}}\FunctionTok{lm}\NormalTok{(PFMn.Deg}\SpecialCharTok{\textasciitilde{}}\NormalTok{PFA}\SpecialCharTok{$}\NormalTok{Priors}\SpecialCharTok{+}\NormalTok{PFA}\SpecialCharTok{$}\NormalTok{Wealth)}
+\FunctionTok{summary}\NormalTok{(M2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = PFMn.Deg ~ PFA$Priors + PFA$Wealth)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.5677 -0.9423 -0.1498  0.8269  2.1718 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)  
+## (Intercept) 1.234029   0.507067   2.434   0.0301 *
+## PFA$Priors  0.022091   0.013414   1.647   0.1235  
+## PFA$Wealth  0.016282   0.009419   1.729   0.1075  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.22 on 13 degrees of freedom
+## Multiple R-squared:  0.4312, Adjusted R-squared:  0.3436 
+## F-statistic: 4.927 on 2 and 13 DF,  p-value: 0.02555
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Bonacich Centrality}
+\NormalTok{exponents }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.1}\NormalTok{))}
+\NormalTok{bonpow\_results }\OtherTok{=} \FunctionTok{c}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{(e }\ControlFlowTok{in}\NormalTok{ exponents)\{}
+\NormalTok{   bonpow\_results }\OtherTok{=} \FunctionTok{append}\NormalTok{(bonpow\_results,}
+\NormalTok{                           sna}\SpecialCharTok{::}\FunctionTok{bonpow}\NormalTok{(PFA, }\AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{, }\AttributeTok{exponent=}\NormalTok{e))}
+\NormalTok{\}}
+
+\NormalTok{bonpow\_results}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  0.66599220  1.03706233  0.61168749  0.59844465  0.55718716  0.36268738
+##   [7]  0.40565924  0.49342506  1.92559593  0.49233450  1.14333639  0.03524465
+##  [13]  0.67830976  0.49996422  2.33947465  0.49233450  1.18542586  1.18252142
+##  [19]  1.18771345  0.66658902  1.03975147  0.61308190  0.60015013  0.55459647
+##  [25]  0.36328787  0.40299361  0.49367360  1.92156285  0.49483865  1.13992714
+##  [31]  0.03526240  0.67985259  0.49975011  2.34548141  0.49483865  1.18267067
+##  [37]  1.17925063  1.18636720  0.66757972  1.04422138  0.61537556  0.60297093
+##  [43]  0.55025388  0.36427010  0.39853374  0.49406104  1.91475473  0.49899145
+##  [49]  1.13419739  0.03529007  0.68241288  0.49938567  2.35542232  0.49899145
+##  [55]  1.17783046  1.17373725  1.18462203  0.66956093  1.05316136  0.61985568
+##  [61]  0.60854878  0.54142617  0.36616493  0.38950261  0.49472594  1.90071643
+##  [67]  0.50724782  1.12248815  0.03533757  0.68751574  0.49862614  2.37510938
+##  [73]  0.50724782  1.16721338  1.16247375  1.18303284  0.67578486  1.08090357
+##  [79]  0.63253174  0.62510907  0.51266766  0.37126346  0.36045071  0.49558996
+##  [85]  1.85290662  0.53221252  1.08371220  0.03539928  0.70315997  0.49602013
+##  [91]  2.43395074  0.53221252  1.12744020  1.12658185  1.19480669  0.30657075
+##  [97]  0.49051319  0.32543664  0.30657075  0.28298838  0.19337539  0.20280834
+## [103]  0.26412249  0.99045933  0.25940602  0.58012618  0.01886589  0.32543664
+## [109]  0.23582365  1.17440178  0.25940602  3.21191813  1.95733630  1.04705701
+## [115] -0.64796865 -0.96236020 -0.57234658 -0.55104954 -0.62352114 -0.34533779
+## [121] -0.47458609 -0.48483440 -2.02468460 -0.42417328 -1.22906213 -0.03463103
+## [127] -0.63511540 -0.50387948 -2.17188000 -0.42417328 -1.21453873 -1.25133105
+## [133] -1.29158074 -0.65684160 -0.99714275 -0.59040787 -0.57285068 -0.59390590
+## [139] -0.35334132 -0.44372625 -0.48892700 -1.98106426 -0.45523146 -1.19107656
+## [145] -0.03492336 -0.65526334 -0.50260361 -2.24932513 -0.45523146 -1.21185475
+## [151] -1.22525478 -1.23034712 -0.65923664 -1.00725175 -0.59581903 -0.57932687
+## [157] -0.58489745 -0.35573745 -0.43435180 -0.49014648 -1.96767530 -0.46454699
+## [163] -1.17944727 -0.03501046 -0.66111589 -0.50204182 -2.27217498 -0.46454699
+## [169] -1.20771778 -1.21563490 -1.21603722 -0.66036700 -1.01212166 -0.59843406
+## [175] -0.58245718 -0.58049022 -0.35689266 -0.42977131 -0.49072511 -1.96108611
+## [181] -0.46906576 -1.17374117 -0.03505179 -0.66393284 -0.50174333 -2.28320367
+## [187] -0.46906576 -1.20511891 -1.21068500 -1.20989535 -0.66102758 -1.01499436
+## [193] -0.59997643 -0.58430507 -0.57786938 -0.35757279 -0.42704976 -0.49106163
+## [199] -1.95715293 -0.47173847 -1.17034213 -0.03507583 -0.66559348 -0.50155920
+## [205] -2.28971059 -0.47173847 -1.20339652 -1.20767299 -1.20652369
+\end{verbatim}
+
+\hypertarget{statistics-about-network}{%
+\chapter{Statistics about network}\label{statistics-about-network}}
+
+\hypertarget{florentine-families}{%
+\section{Florentine Families}\label{florentine-families}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Libraries import}
+\FunctionTok{library}\NormalTok{(sna)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\CommentTok{\# Data import}
+\NormalTok{PFM}\OtherTok{\textless{}{-}}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Padgett\_FlorentineFamilies\_Marriage.csv"}\NormalTok{,}
+                        \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
+\NormalTok{PFA}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/Padgett\_FlorentineFamilies\_Attributes.csv"}\NormalTok{,}
+              \AttributeTok{stringsAsFactors=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Converting the matrix into network}
+\NormalTok{PFMn}\OtherTok{\textless{}{-}}\FunctionTok{as.network}\NormalTok{(PFM, }\AttributeTok{directed=}\NormalTok{F)}
+
+\FunctionTok{summary}\NormalTok{(PFMn)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Network attributes:
+##   vertices = 16
+##   directed = FALSE
+##   hyper = FALSE
+##   loops = FALSE
+##   multiple = FALSE
+##   bipartite = FALSE
+##  total edges = 20 
+##    missing edges = 0 
+##    non-missing edges = 20 
+##  density = 0.1666667 
+## 
+## Vertex attributes:
+##   vertex.names:
+##    character valued attribute
+##    16 valid vertex names
+## 
+## No edge attributes
+## 
+## Network edgelist matrix:
+##       [,1] [,2]
+##  [1,]    9    1
+##  [2,]    6    2
+##  [3,]    7    2
+##  [4,]    9    2
+##  [5,]    5    3
+##  [6,]    9    3
+##  [7,]    7    4
+##  [8,]   11    4
+##  [9,]   15    4
+## [10,]   11    5
+## [11,]   15    5
+## [12,]    8    7
+## [13,]   16    7
+## [14,]   13    9
+## [15,]   14    9
+## [16,]   16    9
+## [17,]   14   10
+## [18,]   15   11
+## [19,]   15   13
+## [20,]   16   13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Working on nodes colors...}
+\DocumentationTok{\#\# Defining the number of colors necessary to map wealth }
+\NormalTok{n\_colors}\OtherTok{\textless{}{-}}\FunctionTok{max}\NormalTok{(PFA}\SpecialCharTok{$}\NormalTok{Priors)}\SpecialCharTok{{-}}\FunctionTok{min}\NormalTok{(PFA}\SpecialCharTok{$}\NormalTok{Priors)}\SpecialCharTok{+}\DecValTok{1}
+
+\DocumentationTok{\#\# Create a function to generate a palette}
+\NormalTok{colfunc }\OtherTok{\textless{}{-}} \FunctionTok{colorRampPalette}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"\#B78FB3"}\NormalTok{, }\StringTok{"\#22BFAC"}\NormalTok{))}
+
+\DocumentationTok{\#\# Generate range}
+\NormalTok{vertex\_color}\OtherTok{\textless{}{-}}\FunctionTok{colfunc}\NormalTok{(n\_colors)[PFA}\SpecialCharTok{$}\NormalTok{Priors}\SpecialCharTok{{-}}\FunctionTok{min}\NormalTok{(PFA}\SpecialCharTok{$}\NormalTok{Priors)}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\CommentTok{\# Plotting the families based on their wealth}
+\FunctionTok{gplot}\NormalTok{(PFMn, }
+      \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
+      \CommentTok{\#layout}
+      \AttributeTok{mode=}\StringTok{"fruchtermanreingold"}\NormalTok{,}
+      \AttributeTok{jitter=}\NormalTok{F,}
+      \CommentTok{\#ties}
+      \AttributeTok{edge.col=}\StringTok{"grey70"}\NormalTok{,}
+      \CommentTok{\#nodes}
+      \AttributeTok{vertex.col=}\NormalTok{vertex\_color,}
+      \AttributeTok{vertex.cex=}\NormalTok{PFA}\SpecialCharTok{$}\NormalTok{Wealth}\SpecialCharTok{/}\DecValTok{80}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,}
+      \CommentTok{\#labels}
+      \AttributeTok{displaylabels=}\NormalTok{T,}
+      \AttributeTok{label.pos=}\DecValTok{1}\NormalTok{,}
+      \AttributeTok{label.cex=}\NormalTok{.}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-161-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Degree}
+\FunctionTok{as.data.frame}\NormalTok{(sna}\SpecialCharTok{::}\FunctionTok{degree}\NormalTok{(PFMn, }\AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{), }\FunctionTok{rownames}\NormalTok{(PFM))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              sna::degree(PFMn, gmode = "graph")
+## ACCIAIUOLI                                    1
+## ALBIZZI                                       3
+## BARBADORI                                     2
+## BISCHERI                                      3
+## CASTELLANI                                    3
+## GINORI                                        1
+## GUADAGNI                                      4
+## LAMBERTESCHI                                  1
+## MEDICI                                        6
+## PAZZI                                         1
+## PERUZZI                                       3
+## PUCCI                                         0
+## RIDOLFI                                       3
+## SALVIATI                                      2
+## STROZZI                                       4
+## TORNABUONI                                    3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PFMn.Deg}\OtherTok{\textless{}{-}}\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{degree}\NormalTok{(PFMn, }\AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\# STATISTICAL TESTS}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\DocumentationTok{\#\# Correlation test between degree and priors}
+\FunctionTok{cor.test}\NormalTok{(PFMn.Deg,PFA}\SpecialCharTok{$}\NormalTok{Priors) }\CommentTok{\# positive correlation}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  PFMn.Deg and PFA$Priors
+## t = 2.4519, df = 14, p-value = 0.02794
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.07193331 0.82079537
+## sample estimates:
+##       cor 
+## 0.5480948
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Linear Model}
+\NormalTok{M1}\OtherTok{\textless{}{-}}\FunctionTok{lm}\NormalTok{(PFMn.Deg}\SpecialCharTok{\textasciitilde{}}\NormalTok{PFA}\SpecialCharTok{$}\NormalTok{Priors) }
+\FunctionTok{summary}\NormalTok{(M1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = PFMn.Deg ~ PFA$Priors)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.36244 -0.69127 -0.02179  0.70515  2.63756 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)  1.67341    0.46887   3.569  0.00308 **
+## PFA$Priors   0.03187    0.01300   2.452  0.02794 * 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.303 on 14 degrees of freedom
+## Multiple R-squared:  0.3004, Adjusted R-squared:  0.2504 
+## F-statistic: 6.012 on 1 and 14 DF,  p-value: 0.02794
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# PERMUTATION BASED APPROACH}
+
+\DocumentationTok{\#\# Data preparation}
+\NormalTok{PFA.P}\OtherTok{\textless{}{-}}\NormalTok{PFA}\SpecialCharTok{$}\NormalTok{Priors}
+\FunctionTok{sample}\NormalTok{(PFA.P) }\CommentTok{\# Sample of priors with no replacement}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 42 22 12  0  0  0 53 53 65 21  0 38  0 74  0 35
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sample\_matrix}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\ConstantTok{NA}\NormalTok{,}\DecValTok{1000}\NormalTok{,}\DecValTok{1}\NormalTok{) }\CommentTok{\# Initializing the matrix}
+
+\ControlFlowTok{for}\NormalTok{ (k }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{))}
+\NormalTok{\{}
+\NormalTok{  PFA.P\_PERM}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(PFA.P) }\CommentTok{\# Permutation of Priors}
+  \CommentTok{\# Compute correlation between degree and Priors permuted}
+\NormalTok{  sample\_matrix[k,}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\FunctionTok{cor}\NormalTok{(PFMn.Deg,PFA.P\_PERM) }
+\NormalTok{\}}
+
+\DocumentationTok{\#\# Information of the Matrix with correlations}
+\FunctionTok{summary}\NormalTok{(sample\_matrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        V1           
+##  Min.   :-0.725948  
+##  1st Qu.:-0.179136  
+##  Median : 0.000000  
+##  Mean   : 0.006182  
+##  3rd Qu.: 0.194527  
+##  Max.   : 0.749889
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Plotting the correlation trend among samplings}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\FunctionTok{hist}\NormalTok{(sample\_matrix, }\AttributeTok{breaks=}\DecValTok{50}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-164-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Sum }
+\NormalTok{(corRealValue}\OtherTok{\textless{}{-}}\FunctionTok{cor}\NormalTok{(PFMn.Deg,PFA}\SpecialCharTok{$}\NormalTok{Priors)) }\CommentTok{\# Actual correlation with no sampling}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5480948
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(sample\_matrix}\SpecialCharTok{\textgreater{}=}\NormalTok{corRealValue)}\SpecialCharTok{/}\DecValTok{1000} \CommentTok{\# Mean correlation above actual cor}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.016
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(sample\_matrix}\SpecialCharTok{\textless{}={-}}\NormalTok{corRealValue)}\SpecialCharTok{/}\DecValTok{1000} \CommentTok{\# Mean correlation below actual cor}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.007
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Summing them}
+\FunctionTok{sum}\NormalTok{(sample\_matrix}\SpecialCharTok{\textgreater{}=}\NormalTok{corRealValue)}\SpecialCharTok{/}\DecValTok{1000} \SpecialCharTok{+} \FunctionTok{sum}\NormalTok{(sample\_matrix}\SpecialCharTok{\textless{}={-}}\NormalTok{corRealValue)}\SpecialCharTok{/}\DecValTok{1000}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.023
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Consinder the absolute number of correlation}
+\FunctionTok{sum}\NormalTok{(sample\_matrix}\SpecialCharTok{\textgreater{}=}\FunctionTok{abs}\NormalTok{(corRealValue))}\SpecialCharTok{/}\DecValTok{1000}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.016
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(sample\_matrix}\SpecialCharTok{\textless{}={-}}\FunctionTok{abs}\NormalTok{(corRealValue))}\SpecialCharTok{/}\DecValTok{1000}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.007
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(sample\_matrix}\SpecialCharTok{\textgreater{}=}\FunctionTok{abs}\NormalTok{(corRealValue))}\SpecialCharTok{/}\DecValTok{1000} \SpecialCharTok{+} \FunctionTok{sum}\NormalTok{(sample\_matrix}\SpecialCharTok{\textless{}={-}}\FunctionTok{abs}\NormalTok{(corRealValue))}\SpecialCharTok{/}\DecValTok{1000}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.023
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# SPECIFIC DATA SAMPLING}
+\NormalTok{x1}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+\NormalTok{y1}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(x1,y1)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-166-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(x1,y1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5859543
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor.test}\NormalTok{(x1,y1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  x1 and y1
+## t = 2.5049, df = 12, p-value = 0.02767
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.08035754 0.85173373
+## sample estimates:
+##       cor 
+## 0.5859543
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Initializing output as matrix that does not follow a }
+\CommentTok{\# normal distribution through permutation based approaches}
+\NormalTok{OUTPUT}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\ConstantTok{NA}\NormalTok{,}\DecValTok{20000}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (k }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{20000}\NormalTok{))}
+\NormalTok{\{}
+\NormalTok{  x1\_PERM}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(x1)}
+\NormalTok{  OUTPUT[k,}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\FunctionTok{cor}\NormalTok{(y1,x1\_PERM)}
+\NormalTok{\}}
+\FunctionTok{hist}\NormalTok{(OUTPUT, }\AttributeTok{nclass=}\DecValTok{20}\NormalTok{, }\AttributeTok{prob=}\NormalTok{T)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-166-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# 95\%{-}CI}
+\FunctionTok{mean}\NormalTok{(OUTPUT)}\SpecialCharTok{+}\FunctionTok{sd}\NormalTok{(OUTPUT)}\SpecialCharTok{*}\FloatTok{1.96}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5403791
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(OUTPUT)}\SpecialCharTok{{-}}\FunctionTok{sd}\NormalTok{(OUTPUT)}\SpecialCharTok{*}\FloatTok{1.96}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.538797
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# 2 approaches}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FunctionTok{min}\NormalTok{(OUTPUT), }\FunctionTok{max}\NormalTok{(OUTPUT), }\AttributeTok{length =} \DecValTok{40}\NormalTok{)}
+\NormalTok{f }\OtherTok{\textless{}{-}} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(OUTPUT), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(OUTPUT))}
+
+\FunctionTok{hist}\NormalTok{(OUTPUT, }\AttributeTok{nclass=}\DecValTok{20}\NormalTok{, }\AttributeTok{prob=}\NormalTok{T, }\AttributeTok{col=}\StringTok{"cornflowerblue"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(x, f, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }\AttributeTok{type =} \StringTok{"b"}\NormalTok{)}
+
+\FunctionTok{curve}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean=}\FunctionTok{mean}\NormalTok{(OUTPUT), }\AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(OUTPUT)), }
+      \AttributeTok{col=}\StringTok{"darkblue"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{add=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{sum}\NormalTok{(OUTPUT}\SpecialCharTok{\textgreater{}}\FunctionTok{cor}\NormalTok{(x1,y1))}\SpecialCharTok{/}\DecValTok{20000}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.0589
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{cor}\NormalTok{(x1,y1), }\AttributeTok{lwd=}\DecValTok{3}\NormalTok{, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-167-1.pdf}
+
+\hypertarget{two-mode-projections}{%
+\chapter{Two-mode projections}\label{two-mode-projections}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\# TWO{-}MODE PROJECTIONS}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\FunctionTok{library}\NormalTok{(sna)}
+
+\CommentTok{\# Importing data}
+\NormalTok{DSAm }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}
+    \StringTok{"Datasets/Davis\_SouthernWomen\_Attendance.csv"}\NormalTok{,}
+    \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{row.names=}\DecValTok{1}\NormalTok{))}
+
+
+\CommentTok{\# Limit letters to the first two letters}
+\NormalTok{DSAmS}\OtherTok{\textless{}{-}}\NormalTok{DSAm}
+\CommentTok{\#Change names in new object}
+\FunctionTok{rownames}\NormalTok{(DSAmS)}\OtherTok{\textless{}{-}}\FunctionTok{substring}\NormalTok{(}\FunctionTok{rownames}\NormalTok{(DSAm),}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\CommentTok{\# Now draw the network}
+\FunctionTok{gplot}\NormalTok{(DSAmS, }\AttributeTok{displaylabels=}\ConstantTok{TRUE}\NormalTok{, }
+      \AttributeTok{usearrows=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{gmode=}\StringTok{"twomode"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-168-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\# ONE MODE PROJECTIONS}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\NormalTok{DSAmS}\SpecialCharTok{\%*\%}\FunctionTok{t}\NormalTok{(DSAmS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    EV LA TH BR CH FR EL PE RU VE MY KA SY NO HE DO OL FL
+## EV  8  6  7  6  3  4  3  3  3  2  2  2  2  2  1  2  1  1
+## LA  6  7  6  6  3  4  4  2  3  2  1  1  2  2  2  1  0  0
+## TH  7  6  8  6  4  4  4  3  4  3  2  2  3  3  2  2  1  1
+## BR  6  6  6  7  4  4  4  2  3  2  1  1  2  2  2  1  0  0
+## CH  3  3  4  4  4  2  2  0  2  1  0  0  1  1  1  0  0  0
+## FR  4  4  4  4  2  4  3  2  2  1  1  1  1  1  1  1  0  0
+## EL  3  4  4  4  2  3  4  2  3  2  1  1  2  2  2  1  0  0
+## PE  3  2  3  2  0  2  2  3  2  2  2  2  2  2  1  2  1  1
+## RU  3  3  4  3  2  2  3  2  4  3  2  2  3  2  2  2  1  1
+## VE  2  2  3  2  1  1  2  2  3  4  3  3  4  3  3  2  1  1
+## MY  2  1  2  1  0  1  1  2  2  3  4  4  4  3  3  2  1  1
+## KA  2  1  2  1  0  1  1  2  2  3  4  6  6  5  3  2  1  1
+## SY  2  2  3  2  1  1  2  2  3  4  4  6  7  6  4  2  1  1
+## NO  2  2  3  2  1  1  2  2  2  3  3  5  6  8  4  1  2  2
+## HE  1  2  2  2  1  1  2  1  2  3  3  3  4  4  5  1  1  1
+## DO  2  1  2  1  0  1  1  2  2  2  2  2  2  1  1  2  1  1
+## OL  1  0  1  0  0  0  0  1  1  1  1  1  1  2  1  1  2  2
+## FL  1  0  1  0  0  0  0  1  1  1  1  1  1  2  1  1  2  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t}\NormalTok{(DSAmS)}\SpecialCharTok{\%*\%}\NormalTok{DSAmS}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     E01 E02 E03 E04 E05 E06 E07 E08 E09 E10 E11 E12 E13 E14
+## E01   3   2   3   2   3   3   2   3   1   0   0   0   0   0
+## E02   2   3   3   2   3   3   2   3   2   0   0   0   0   0
+## E03   3   3   6   4   6   5   4   5   2   0   0   0   0   0
+## E04   2   2   4   4   4   3   3   3   2   0   0   0   0   0
+## E05   3   3   6   4   8   6   6   7   3   0   0   0   0   0
+## E06   3   3   5   3   6   8   5   7   4   1   1   1   1   1
+## E07   2   2   4   3   6   5  10   8   5   3   2   4   2   2
+## E08   3   3   5   3   7   7   8  14   9   4   1   5   2   2
+## E09   1   2   2   2   3   4   5   9  12   4   3   5   3   3
+## E10   0   0   0   0   0   1   3   4   4   5   2   5   3   3
+## E11   0   0   0   0   0   1   2   1   3   2   4   2   1   1
+## E12   0   0   0   0   0   1   4   5   5   5   2   6   3   3
+## E13   0   0   0   0   0   1   2   2   3   3   1   3   3   3
+## E14   0   0   0   0   0   1   2   2   3   3   1   3   3   3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(DSAmS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3531746
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example dataset}
+\NormalTok{scientists\_papers}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                            \DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                            \DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                            \DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                            \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+                            \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+                          \DecValTok{6}\NormalTok{,}\DecValTok{8}\NormalTok{,}\AttributeTok{byrow=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(scientists\_papers)}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"a1"}\NormalTok{,}\StringTok{"a2"}\NormalTok{,}\StringTok{"a3"}\NormalTok{,}\StringTok{"a4"}\NormalTok{,}\StringTok{"a5"}\NormalTok{,}\StringTok{"a6"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(scientists\_papers)}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"e1"}\NormalTok{,}\StringTok{"e2"}\NormalTok{,}\StringTok{"e3"}\NormalTok{,}\StringTok{"e4"}\NormalTok{,}\StringTok{"e5"}\NormalTok{,}\StringTok{"e6"}\NormalTok{,}\StringTok{"e7"}\NormalTok{,}\StringTok{"e8"}\NormalTok{)}
+\FunctionTok{gplot}\NormalTok{(scientists\_papers, }\AttributeTok{displaylabels=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{usearrows=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{gmode=}\StringTok{"twomode"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-170-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rowSums}\NormalTok{(scientists\_papers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## a1 a2 a3 a4 a5 a6 
+##  1  2  2  3  6  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colSums}\NormalTok{(scientists\_papers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## e1 e2 e3 e4 e5 e6 e7 e8 
+##  4  2  2  2  1  1  2  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Example of valued network}
+\NormalTok{MATRIX2V}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                   \DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+                   \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}
+                   \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{,}
+                   \DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+                   \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{4}\NormalTok{),}\DecValTok{6}\NormalTok{,}\DecValTok{4}\NormalTok{, }\AttributeTok{byrow=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(MATRIX2V)}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"c"}\NormalTok{,}\StringTok{"d"}\NormalTok{,}\StringTok{"e"}\NormalTok{,}\StringTok{"f"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(MATRIX2V)}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"w"}\NormalTok{,}\StringTok{"x"}\NormalTok{,}\StringTok{"y"}\NormalTok{,}\StringTok{"z"}\NormalTok{)}
+\FunctionTok{gplot}\NormalTok{(MATRIX2V, }\AttributeTok{displaylabels=}\ConstantTok{TRUE}\NormalTok{, }
+      \AttributeTok{usearrows=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{gmode=}\StringTok{"twomode"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-171-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gplot}\NormalTok{(MATRIX2V, }\AttributeTok{displaylabels=}\ConstantTok{TRUE}\NormalTok{, }
+      \AttributeTok{usearrows=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{gmode=}\StringTok{"twomode"}\NormalTok{,}\AttributeTok{edge.lwd=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-172-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Centrality Measures about Authors}
+\FunctionTok{rowSums}\NormalTok{(scientists\_papers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## a1 a2 a3 a4 a5 a6 
+##  1  2  2  3  6  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rowSums}\NormalTok{(scientists\_papers)}\SpecialCharTok{/}\FunctionTok{NCOL}\NormalTok{(scientists\_papers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    a1    a2    a3    a4    a5    a6 
+## 0.125 0.250 0.250 0.375 0.750 0.250
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Centrality Measures about Papers}
+\FunctionTok{colSums}\NormalTok{(scientists\_papers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## e1 e2 e3 e4 e5 e6 e7 e8 
+##  4  2  2  2  1  1  2  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colSums}\NormalTok{(scientists\_papers)}\SpecialCharTok{/}\FunctionTok{NROW}\NormalTok{(scientists\_papers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        e1        e2        e3        e4        e5        e6        e7        e8 
+## 0.6666667 0.3333333 0.3333333 0.3333333 0.1666667 0.1666667 0.3333333 0.3333333
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Proportion of participation of authors for each paper}
+\FunctionTok{t}\NormalTok{(scientists\_papers)}\SpecialCharTok{/}\FunctionTok{colSums}\NormalTok{(scientists\_papers)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      a1   a2   a3   a4  a5  a6
+## e1 0.25 0.25 0.25 0.25 0.0 0.0
+## e2 0.00 0.00 0.50 0.50 0.0 0.0
+## e3 0.00 0.00 0.00 0.50 0.5 0.0
+## e4 0.00 0.50 0.00 0.00 0.5 0.0
+## e5 0.00 0.00 0.00 0.00 1.0 0.0
+## e6 0.00 0.00 0.00 0.00 1.0 0.0
+## e7 0.00 0.00 0.00 0.00 0.5 0.5
+## e8 0.00 0.00 0.00 0.00 0.5 0.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Same but transposed}
+\FunctionTok{t}\NormalTok{(}\FunctionTok{t}\NormalTok{(scientists\_papers)}\SpecialCharTok{/}\FunctionTok{colSums}\NormalTok{(scientists\_papers))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      e1  e2  e3  e4 e5 e6  e7  e8
+## a1 0.25 0.0 0.0 0.0  0  0 0.0 0.0
+## a2 0.25 0.0 0.0 0.5  0  0 0.0 0.0
+## a3 0.25 0.5 0.0 0.0  0  0 0.0 0.0
+## a4 0.25 0.5 0.5 0.0  0  0 0.0 0.0
+## a5 0.00 0.0 0.5 0.5  1  1 0.5 0.5
+## a6 0.00 0.0 0.0 0.0  0  0 0.5 0.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Percentage of participation into papers}
+\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{t}\NormalTok{(}\FunctionTok{t}\NormalTok{(scientists\_papers)}\SpecialCharTok{/}\FunctionTok{colSums}\NormalTok{(scientists\_papers)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   a1   a2   a3   a4   a5   a6 
+## 0.25 0.75 0.75 1.25 4.00 1.00
+\end{verbatim}
+
+\hypertarget{subgroups-and-equivalence}{%
+\chapter{Subgroups and equivalence}\label{subgroups-and-equivalence}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sna)}
+
+\NormalTok{network}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
+  \DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{),}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{)}
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\FunctionTok{gplot}\NormalTok{(network,}
+      \AttributeTok{displaylabels=}\ConstantTok{TRUE}\NormalTok{,}
+      \AttributeTok{edge.lwd=}\FloatTok{0.5}\NormalTok{,}
+      \AttributeTok{vertex.lty =} \FloatTok{0.5}\NormalTok{,}
+      \AttributeTok{usearrows=}\ConstantTok{FALSE}\NormalTok{, }
+      \AttributeTok{gmode=}\StringTok{"graph"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-176-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{clique.census}\NormalTok{(network, }\AttributeTok{mode =} \StringTok{"graph"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $clique.count
+##   Agg v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19
+## 1   2  0  0  0  0  0  0  0  1  0   0   0   0   1   0   0   0   0   0   0
+## 2   7  0  0  0  0  0  0  0  0  1   1   3   1   0   1   2   2   2   1   0
+## 3   3  1  0  1  1  1  1  1  0  0   0   0   0   0   1   0   0   0   1   1
+## 4   1  1  1  1  0  0  1  0  0  0   0   0   0   0   0   0   0   0   0   0
+## 
+## $cliques
+## $cliques[[1]]
+## $cliques[[1]][[1]]
+## [1] 13
+## 
+## $cliques[[1]][[2]]
+## [1] 8
+## 
+## 
+## $cliques[[2]]
+## $cliques[[2]][[1]]
+## [1] 17 18
+## 
+## $cliques[[2]][[2]]
+## [1] 16 17
+## 
+## $cliques[[2]][[3]]
+## [1] 15 16
+## 
+## $cliques[[2]][[4]]
+## [1] 14 15
+## 
+## $cliques[[2]][[5]]
+## [1] 11 12
+## 
+## $cliques[[2]][[6]]
+## [1] 10 11
+## 
+## $cliques[[2]][[7]]
+## [1]  9 11
+## 
+## 
+## $cliques[[3]]
+## $cliques[[3]][[1]]
+## [1] 14 18 19
+## 
+## $cliques[[3]][[2]]
+## [1] 1 6 7
+## 
+## $cliques[[3]][[3]]
+## [1] 3 4 5
+## 
+## 
+## $cliques[[4]]
+## $cliques[[4]][[1]]
+## [1] 1 2 3 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Equivalence}
+\NormalTok{network\_2}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{),}\DecValTok{8}\NormalTok{,}\DecValTok{8}\NormalTok{,}\AttributeTok{byrow=}\NormalTok{T)}
+
+\CommentTok{\# Hamming Structural Equivalence}
+\NormalTok{network\_2\_SEH}\OtherTok{\textless{}{-}}\FunctionTok{sedist}\NormalTok{(network\_2, }\AttributeTok{method=}\StringTok{"hamming"}\NormalTok{)}
+\NormalTok{network\_2\_SEH}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+## [1,]    0    4    2    4    4    4    1    1
+## [2,]    4    0    6    4    2    2    3    3
+## [3,]    2    6    0    2    4    4    3    3
+## [4,]    4    4    2    0    2    2    3    3
+## [5,]    4    2    4    2    0    0    5    5
+## [6,]    4    2    4    2    0    0    5    5
+## [7,]    1    3    3    3    5    5    0    0
+## [8,]    1    3    3    3    5    5    0    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Clustering on hamming distance}
+\NormalTok{network\_2\_SEHD}\OtherTok{\textless{}{-}}\FunctionTok{as.dist}\NormalTok{(network\_2\_SEH)}
+\NormalTok{network\_2\_SEHD\_HC}\OtherTok{\textless{}{-}}\FunctionTok{hclust}\NormalTok{(network\_2\_SEHD,}\AttributeTok{method=}\StringTok{"complete"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(network\_2\_SEHD\_HC)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-179-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Euclidean Structural Equivalence}
+\NormalTok{network\_2\_SEE}\OtherTok{\textless{}{-}}\FunctionTok{sedist}\NormalTok{(network\_2, }\AttributeTok{method=}\StringTok{"euclidean"}\NormalTok{)}
+\NormalTok{network\_2\_SEE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
+## [1,] 0.000000 2.000000 1.414214 2.000000 2.000000 2.000000 1.000000 1.000000
+## [2,] 2.000000 0.000000 2.449490 2.000000 1.414214 1.414214 1.732051 1.732051
+## [3,] 1.414214 2.449490 0.000000 1.414214 2.000000 2.000000 1.732051 1.732051
+## [4,] 2.000000 2.000000 1.414214 0.000000 1.414214 1.414214 1.732051 1.732051
+## [5,] 2.000000 1.414214 2.000000 1.414214 0.000000 0.000000 2.236068 2.236068
+## [6,] 2.000000 1.414214 2.000000 1.414214 0.000000 0.000000 2.236068 2.236068
+## [7,] 1.000000 1.732051 1.732051 1.732051 2.236068 2.236068 0.000000 0.000000
+## [8,] 1.000000 1.732051 1.732051 1.732051 2.236068 2.236068 0.000000 0.000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Clustering on euclidean distance}
+\NormalTok{network\_2\_SEED}\OtherTok{\textless{}{-}}\FunctionTok{as.dist}\NormalTok{(network\_2\_SEE)}
+\NormalTok{network\_2\_SEED\_HC}\OtherTok{\textless{}{-}}\FunctionTok{hclust}\NormalTok{(network\_2\_SEED,}\AttributeTok{method=}\StringTok{"complete"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(network\_2\_SEED\_HC)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-181-1.pdf}
+
+\hypertarget{dyads-and-triads}{%
+\chapter{Dyads and triads}\label{dyads-and-triads}}
+
+\hypertarget{dyads-1}{%
+\section{Dyads}\label{dyads-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\# DYAD}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\NormalTok{mat6}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+               \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+               \DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+               \DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+               \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+               \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{),}\DecValTok{6}\NormalTok{,}\DecValTok{6}\NormalTok{, }\AttributeTok{byrow=}\NormalTok{T)}
+
+\CommentTok{\# Dyad Census}
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{dyad.census}\NormalTok{(mat6, }\AttributeTok{g=}\ConstantTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Mut Asym Null
+## [1,]   4    4    7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Like edgewise but multiplied for m/(m+a)}
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{grecip}\NormalTok{(mat6,}\AttributeTok{measure=}\StringTok{"dyadic"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Mut 
+## 0.7333333
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Edgewise (like we have seen before)}
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{grecip}\NormalTok{(mat6,}\AttributeTok{measure=}\StringTok{"edgewise"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Mut 
+## 0.6666667
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Density}
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{gden}\NormalTok{(mat6)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# With igraph}
+\FunctionTok{library}\NormalTok{(igraph)}
+\NormalTok{mat6i}\OtherTok{\textless{}{-}}\FunctionTok{graph\_from\_adjacency\_matrix}\NormalTok{(mat6,}\AttributeTok{mode=}\FunctionTok{c}\NormalTok{(}\StringTok{"directed"}\NormalTok{),}\AttributeTok{diag=}\NormalTok{F)}
+\NormalTok{igraph}\SpecialCharTok{::}\FunctionTok{reciprocity}\NormalTok{(mat6i)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6666667
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{igraph}\SpecialCharTok{::}\FunctionTok{edge\_density}\NormalTok{(mat6i)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4
+\end{verbatim}
+
+\hypertarget{triads-1}{%
+\chapter{Triads}\label{triads-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\# TRIAD}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\NormalTok{mat6}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+               \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+               \DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+               \DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+               \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+               \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{),}\DecValTok{6}\NormalTok{,}\DecValTok{6}\NormalTok{, }\AttributeTok{byrow=}\NormalTok{T)}
+
+\CommentTok{\# Triad census}
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{triad.census}\NormalTok{(mat6)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      003 012 102 021D 021U 021C 111D 111U 030T 030C 201 120D 120U 120C 210 300
+## [1,]   3   1   4    2    0    0    1    5    0    0   1    1    1    0   1   0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{gtrans}\NormalTok{(mat6)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4375
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{gden}\NormalTok{(mat6)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Check if it\textquotesingle{}s random}
+\NormalTok{RG100}\OtherTok{\textless{}{-}}\NormalTok{sna}\SpecialCharTok{::}\FunctionTok{rgraph}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{100}\NormalTok{,}\AttributeTok{tprob=}\NormalTok{.}\DecValTok{2}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(sna}\SpecialCharTok{::}\FunctionTok{gden}\NormalTok{(RG100))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-191-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(sna}\SpecialCharTok{::}\FunctionTok{gtrans}\NormalTok{(RG100))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-191-2.pdf}
 
 \end{document}

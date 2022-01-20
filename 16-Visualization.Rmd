@@ -721,8 +721,6 @@ BS504CGT9<-(BS504Cx>9)
 par(mar=c(0,0,0,0))
 gplot(BS504CGT3,
       gmode="graph",
-      #layout
-      coord=LOBS504,
       jitter=F,
       #ties
       edge.col="grey70", 
@@ -739,7 +737,6 @@ par(mar=c(0,0,0,0))
 gplot(BS504CGT5,
       gmode="graph",
       #layout
-      coord=LOBS504,
       jitter=F,
       #ties
       edge.col="grey60", 
@@ -755,8 +752,6 @@ gplot(BS504CGT5,
 par(mar=c(0,0,0,0))
 gplot(BS504CGT7,
       gmode="graph",
-      #layout
-      coord=LOBS504,
       jitter=F,
       #ties
       edge.col="grey60", 
@@ -772,8 +767,6 @@ gplot(BS504CGT7,
 par(mar=c(0,0,0,0))
 gplot(BS504CGT9,
       gmode="graph",
-      #layout
-      coord=LOBS504,
       jitter=F,
       #ties
       edge.col="grey60", 

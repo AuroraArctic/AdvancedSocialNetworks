@@ -70,7 +70,7 @@ knitr::include_graphics("images/01-Introduction/Untitled.png")
 ```
 
 
-\begin{table}[h]
+\begin{table}[h!]
 \centering
 \begin{tabular}{@{}lll@{}}
 \toprule

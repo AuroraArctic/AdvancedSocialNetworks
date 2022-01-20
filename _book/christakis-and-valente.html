@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 14 Christakis and Valente | Advanced Social Networks</title>
+  <meta name="description" content="Chapter 14 Christakis and Valente | Advanced Social Networks" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 14 Christakis and Valente | Advanced Social Networks" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="AuroraArctic/AdvancedSocialNetworks" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 14 Christakis and Valente | Advanced Social Networks" />
+  
+  
+  
+
+<meta name="author" content="Aurora Maria Tumminello" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ergms.html"/>
+<link rel="next" href="egos-network.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Class Notes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#social-network-analysis"><i class="fa fa-check"></i><b>1.1</b> Social Network Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#definition"><i class="fa fa-check"></i><b>1.1.1</b> Definition</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#social-network-representation"><i class="fa fa-check"></i><b>1.1.2</b> Social Network Representation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#types-of-networks"><i class="fa fa-check"></i><b>1.2</b> Types of networks</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#sociocentric-or-complete-network-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Sociocentric or complete network analysis</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#directed-and-undirected-networks"><i class="fa fa-check"></i><b>1.2.2</b> Directed and undirected networks</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#multiple-network-relations"><i class="fa fa-check"></i><b>1.2.3</b> Multiple network relations</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#weighted-networks"><i class="fa fa-check"></i><b>1.2.4</b> Weighted networks</a></li>
+<li class="chapter" data-level="1.2.5" data-path="introduction.html"><a href="introduction.html#two-mode-or-bipartite-networks"><i class="fa fa-check"></i><b>1.2.5</b> Two-mode or Bipartite networks</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#levels-of-analysis"><i class="fa fa-check"></i><b>1.3</b> Levels of analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-measures.html"><a href="basic-measures.html"><i class="fa fa-check"></i><b>2</b> Basic Measures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-measures.html"><a href="basic-measures.html#degree-centrality"><i class="fa fa-check"></i><b>2.1</b> Degree centrality</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network"><i class="fa fa-check"></i><b>2.1.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network"><i class="fa fa-check"></i><b>2.1.2</b> Undirected Network</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-measures.html"><a href="basic-measures.html#density-and-average-degree"><i class="fa fa-check"></i><b>2.2</b> Density and average degree</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-1"><i class="fa fa-check"></i><b>2.2.1</b> Directed Network</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-1"><i class="fa fa-check"></i><b>2.2.2</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.2.3" data-path="basic-measures.html"><a href="basic-measures.html#average-degree"><i class="fa fa-check"></i><b>2.2.3</b> Average Degree</a></li>
+<li class="chapter" data-level="2.2.4" data-path="basic-measures.html"><a href="basic-measures.html#importance-of-density"><i class="fa fa-check"></i><b>2.2.4</b> Importance of density</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-measures.html"><a href="basic-measures.html#degree-centralization"><i class="fa fa-check"></i><b>2.3</b> Degree-centralization</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#direct-connections"><i class="fa fa-check"></i><b>3.1</b> Direct connections</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#density"><i class="fa fa-check"></i><b>3.1.1</b> Density</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#average-degree-1"><i class="fa fa-check"></i><b>3.1.2</b> Average Degree</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#components"><i class="fa fa-check"></i><b>3.2</b> Components</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#component-ratio"><i class="fa fa-check"></i><b>3.2.1</b> Component ratio</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#connectedness-and-fragmentation"><i class="fa fa-check"></i><b>3.2.2</b> Connectedness and fragmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cohesion-measures.html"><a href="cohesion-measures.html#geodesic"><i class="fa fa-check"></i><b>3.3</b> Geodesic</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#compactness-and-breadth"><i class="fa fa-check"></i><b>3.3.1</b> Compactness and breadth</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cohesion-measures.html"><a href="cohesion-measures.html#k-step-approach"><i class="fa fa-check"></i><b>3.3.2</b> K-step approach</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cohesion-measures.html"><a href="cohesion-measures.html#exercises"><i class="fa fa-check"></i><b>3.4</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cohesion-measures.html"><a href="cohesion-measures.html#comment-on-the-results-obtained"><i class="fa fa-check"></i><b>3.4.1</b> Comment on the results obtained</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="centrality.html"><a href="centrality.html"><i class="fa fa-check"></i><b>4</b> Centrality</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="centrality.html"><a href="centrality.html#degree-centrality-1"><i class="fa fa-check"></i><b>4.1</b> Degree Centrality</a></li>
+<li class="chapter" data-level="4.2" data-path="centrality.html"><a href="centrality.html#closeness-centrality"><i class="fa fa-check"></i><b>4.2</b> Closeness Centrality</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="centrality.html"><a href="centrality.html#freemans-closeness-centrality"><i class="fa fa-check"></i><b>4.2.1</b> Freeman’s closeness centrality</a></li>
+<li class="chapter" data-level="4.2.2" data-path="centrality.html"><a href="centrality.html#reciprocal-closeness-centrality"><i class="fa fa-check"></i><b>4.2.2</b> Reciprocal closeness centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="centrality.html"><a href="centrality.html#betweenness-centrality"><i class="fa fa-check"></i><b>4.3</b> Betweenness Centrality</a></li>
+<li class="chapter" data-level="4.4" data-path="centrality.html"><a href="centrality.html#resource-dependence-theory"><i class="fa fa-check"></i><b>4.4</b> Resource Dependence Theory</a></li>
+<li class="chapter" data-level="4.5" data-path="centrality.html"><a href="centrality.html#bonacich-beta-centrality"><i class="fa fa-check"></i><b>4.5</b> Bonacich Beta Centrality</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html"><i class="fa fa-check"></i><b>5</b> Matrices and Beta centrality</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#matrix-algebra"><i class="fa fa-check"></i><b>5.1</b> Matrix Algebra</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#adding-two-matrices"><i class="fa fa-check"></i><b>5.1.1</b> Adding two matrices</a></li>
+<li class="chapter" data-level="5.1.2" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#cell-multiplication"><i class="fa fa-check"></i><b>5.1.2</b> Cell Multiplication</a></li>
+<li class="chapter" data-level="5.1.3" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#matrix-multiplication-of-different-matrices"><i class="fa fa-check"></i><b>5.1.3</b> Matrix Multiplication of different matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#bonacich-beta-centrality-1"><i class="fa fa-check"></i><b>5.2</b> Bonacich Beta Centrality</a></li>
+<li class="chapter" data-level="5.3" data-path="matrices-and-beta-centrality.html"><a href="matrices-and-beta-centrality.html#graph-exercise"><i class="fa fa-check"></i><b>5.3</b> Graph exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html"><i class="fa fa-check"></i><b>6</b> Attributes based measures</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html#resourcefulness"><i class="fa fa-check"></i><b>6.1</b> Resourcefulness</a></li>
+<li class="chapter" data-level="6.2" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html#homophily"><i class="fa fa-check"></i><b>6.2</b> Homophily</a></li>
+<li class="chapter" data-level="6.3" data-path="attributes-based-measures.html"><a href="attributes-based-measures.html#diversity"><i class="fa fa-check"></i><b>6.3</b> Diversity</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html"><i class="fa fa-check"></i><b>7</b> Triads and structural holes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#social-capital"><i class="fa fa-check"></i><b>7.1</b> Social Capital</a></li>
+<li class="chapter" data-level="7.2" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#general-balance-theory"><i class="fa fa-check"></i><b>7.2</b> General Balance Theory</a></li>
+<li class="chapter" data-level="7.3" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#heiders-balance-theory"><i class="fa fa-check"></i><b>7.3</b> Heider’s Balance Theory</a></li>
+<li class="chapter" data-level="7.4" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#granovetters-strength-of-weak-ties"><i class="fa fa-check"></i><b>7.4</b> Granovetter’s Strength of Weak Ties</a></li>
+<li class="chapter" data-level="7.5" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#simmel-and-triads"><i class="fa fa-check"></i><b>7.5</b> Simmel and triads</a></li>
+<li class="chapter" data-level="7.6" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#coleman-and-closure"><i class="fa fa-check"></i><b>7.6</b> Coleman and closure</a></li>
+<li class="chapter" data-level="7.7" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#burts-structural-holes"><i class="fa fa-check"></i><b>7.7</b> Burt’s Structural Holes</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#gould-and-fernandezs-brokerage-positions"><i class="fa fa-check"></i><b>7.7.1</b> Gould and Fernandez’s Brokerage Positions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#krackhardts-simmelian-ties"><i class="fa fa-check"></i><b>7.8</b> Krackhardt’s Simmelian Ties</a></li>
+<li class="chapter" data-level="7.9" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#small-worlds-and-key-players"><i class="fa fa-check"></i><b>7.9</b> Small worlds and key players</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#six-degrees-of-separation"><i class="fa fa-check"></i><b>7.9.1</b> Six degrees of separation</a></li>
+<li class="chapter" data-level="7.9.2" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#small-world-effect"><i class="fa fa-check"></i><b>7.9.2</b> Small World Effect</a></li>
+<li class="chapter" data-level="7.9.3" data-path="triads-and-structural-holes.html"><a href="triads-and-structural-holes.html#keyplayers"><i class="fa fa-check"></i><b>7.9.3</b> Keyplayers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html"><i class="fa fa-check"></i><b>8</b> Metrics for structural holes</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#ego-density"><i class="fa fa-check"></i><b>8.1</b> Ego density</a></li>
+<li class="chapter" data-level="8.2" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#ego-betweenness"><i class="fa fa-check"></i><b>8.2</b> Ego betweenness</a></li>
+<li class="chapter" data-level="8.3" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#constraint-index"><i class="fa fa-check"></i><b>8.3</b> Constraint index</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#pilot-example"><i class="fa fa-check"></i><b>8.3.1</b> Pilot Example</a></li>
+<li class="chapter" data-level="8.3.2" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#florencian-families-example"><i class="fa fa-check"></i><b>8.3.2</b> Florencian Families Example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="metrics-for-structural-holes.html"><a href="metrics-for-structural-holes.html#exercise"><i class="fa fa-check"></i><b>8.4</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html"><i class="fa fa-check"></i><b>9</b> Statistical Tests on Nodal Level</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#classic-approach"><i class="fa fa-check"></i><b>9.1</b> Classic Approach</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#correlation"><i class="fa fa-check"></i><b>9.1.1</b> Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.2</b> Significance test</a></li>
+<li class="chapter" data-level="9.3" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.3</b> Permutation Based Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="two-mode-networks.html"><a href="two-mode-networks.html"><i class="fa fa-check"></i><b>10</b> Two mode networks</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="two-mode-networks.html"><a href="two-mode-networks.html#two-mode-data"><i class="fa fa-check"></i><b>10.1</b> Two-mode data</a></li>
+<li class="chapter" data-level="10.2" data-path="two-mode-networks.html"><a href="two-mode-networks.html#one-mode-projections"><i class="fa fa-check"></i><b>10.2</b> One-mode projections</a></li>
+<li class="chapter" data-level="10.3" data-path="two-mode-networks.html"><a href="two-mode-networks.html#bipartite"><i class="fa fa-check"></i><b>10.3</b> Bipartite</a></li>
+<li class="chapter" data-level="10.4" data-path="two-mode-networks.html"><a href="two-mode-networks.html#density-1"><i class="fa fa-check"></i><b>10.4</b> Density</a></li>
+<li class="chapter" data-level="10.5" data-path="two-mode-networks.html"><a href="two-mode-networks.html#degree-centrality-2"><i class="fa fa-check"></i><b>10.5</b> Degree Centrality</a></li>
+<li class="chapter" data-level="10.6" data-path="two-mode-networks.html"><a href="two-mode-networks.html#exercise-1"><i class="fa fa-check"></i><b>10.6</b> Exercise</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="two-mode-networks.html"><a href="two-mode-networks.html#exploration"><i class="fa fa-check"></i><b>10.6.1</b> Exploration</a></li>
+<li class="chapter" data-level="10.6.2" data-path="two-mode-networks.html"><a href="two-mode-networks.html#projections"><i class="fa fa-check"></i><b>10.6.2</b> Projections</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="two-mode-networks.html"><a href="two-mode-networks.html#closeness-centrality-1"><i class="fa fa-check"></i><b>10.7</b> Closeness centrality</a></li>
+<li class="chapter" data-level="10.8" data-path="two-mode-networks.html"><a href="two-mode-networks.html#betweenness-centrality-1"><i class="fa fa-check"></i><b>10.8</b> Betweenness Centrality</a></li>
+<li class="chapter" data-level="10.9" data-path="two-mode-networks.html"><a href="two-mode-networks.html#structural-holes"><i class="fa fa-check"></i><b>10.9</b> Structural Holes</a></li>
+<li class="chapter" data-level="10.10" data-path="two-mode-networks.html"><a href="two-mode-networks.html#attribute-based-measures"><i class="fa fa-check"></i><b>10.10</b> Attribute-based measures</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html"><i class="fa fa-check"></i><b>11</b> Subgroups and Structural Equivalence</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#subgroups"><i class="fa fa-check"></i><b>11.1</b> Subgroups</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#components-1"><i class="fa fa-check"></i><b>11.1.1</b> Components</a></li>
+<li class="chapter" data-level="11.1.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#cliques"><i class="fa fa-check"></i><b>11.1.2</b> Cliques</a></li>
+<li class="chapter" data-level="11.1.3" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#k-cliques"><i class="fa fa-check"></i><b>11.1.3</b> K-cliques</a></li>
+<li class="chapter" data-level="11.1.4" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#k-clans"><i class="fa fa-check"></i><b>11.1.4</b> K-clans</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#equivalence"><i class="fa fa-check"></i><b>11.2</b> Equivalence</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#core-periphery"><i class="fa fa-check"></i><b>11.2.1</b> Core periphery</a></li>
+<li class="chapter" data-level="11.2.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#structural-equivalence"><i class="fa fa-check"></i><b>11.2.2</b> Structural equivalence</a></li>
+<li class="chapter" data-level="11.2.3" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#regular-equivalence"><i class="fa fa-check"></i><b>11.2.3</b> Regular equivalence</a></li>
+<li class="chapter" data-level="11.2.4" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#blockmodeling"><i class="fa fa-check"></i><b>11.2.4</b> Blockmodeling</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#structural-equivalence-on-r"><i class="fa fa-check"></i><b>11.3</b> Structural Equivalence on R</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#hamming-structural-equivalence"><i class="fa fa-check"></i><b>11.3.1</b> Hamming Structural Equivalence</a></li>
+<li class="chapter" data-level="11.3.2" data-path="subgroups-and-structural-equivalence.html"><a href="subgroups-and-structural-equivalence.html#euclidean-structural-equivalence"><i class="fa fa-check"></i><b>11.3.2</b> Euclidean Structural Equivalence</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html"><i class="fa fa-check"></i><b>12</b> Reciprocity and transitivity</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#dyads"><i class="fa fa-check"></i><b>12.1</b> Dyads</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#dyad-census"><i class="fa fa-check"></i><b>12.1.1</b> Dyad census</a></li>
+<li class="chapter" data-level="12.1.2" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#reciprocity"><i class="fa fa-check"></i><b>12.1.2</b> Reciprocity</a></li>
+<li class="chapter" data-level="12.1.3" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#on-r"><i class="fa fa-check"></i><b>12.1.3</b> On R</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#triads"><i class="fa fa-check"></i><b>12.2</b> Triads</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#triad-census"><i class="fa fa-check"></i><b>12.2.1</b> Triad Census</a></li>
+<li class="chapter" data-level="12.2.2" data-path="reciprocity-and-transitivity.html"><a href="reciprocity-and-transitivity.html#transitivity"><i class="fa fa-check"></i><b>12.2.2</b> Transitivity</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="ergms.html"><a href="ergms.html"><i class="fa fa-check"></i><b>13</b> ERGMs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="ergms.html"><a href="ergms.html#introduction-1"><i class="fa fa-check"></i><b>13.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="ergms.html"><a href="ergms.html#density---is-there-an-overall-tendency-to-build-or-refrain-from-building-ties"><i class="fa fa-check"></i><b>13.1.1</b> Density - Is there an overall tendency to build or refrain from building ties?</a></li>
+<li class="chapter" data-level="13.1.2" data-path="ergms.html"><a href="ergms.html#centralization---is-there-a-tendency-for-popular-people-to-obtain-more-ties"><i class="fa fa-check"></i><b>13.1.2</b> Centralization - Is there a tendency for popular people to obtain more ties?</a></li>
+<li class="chapter" data-level="13.1.3" data-path="ergms.html"><a href="ergms.html#clustering---is-there-a-tendency-for-triadic-closure"><i class="fa fa-check"></i><b>13.1.3</b> Clustering - Is there a tendency for triadic closure?</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="ergms.html"><a href="ergms.html#how-to-get-values-for-these-forces"><i class="fa fa-check"></i><b>13.2</b> How to get values for these forces</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="ergms.html"><a href="ergms.html#introduction-2"><i class="fa fa-check"></i><b>13.2.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="ergms.html"><a href="ergms.html#notal-attributes"><i class="fa fa-check"></i><b>13.3</b> Notal attributes</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="ergms.html"><a href="ergms.html#example-with-mpnet"><i class="fa fa-check"></i><b>13.3.1</b> Example with MPNet</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="ergms.html"><a href="ergms.html#pseudolikelihood"><i class="fa fa-check"></i><b>13.4</b> Pseudolikelihood</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="ergms.html"><a href="ergms.html#problems"><i class="fa fa-check"></i><b>13.4.1</b> Problems</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="ergms.html"><a href="ergms.html#mcmc"><i class="fa fa-check"></i><b>13.5</b> MCMC</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="ergms.html"><a href="ergms.html#introduction-3"><i class="fa fa-check"></i><b>13.5.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.5.2" data-path="ergms.html"><a href="ergms.html#logic"><i class="fa fa-check"></i><b>13.5.2</b> Logic</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html"><i class="fa fa-check"></i><b>14</b> Christakis and Valente</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#christakis"><i class="fa fa-check"></i><b>14.1</b> Christakis</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-clustering-for-christakis"><i class="fa fa-check"></i><b>14.1.1</b> What is clustering for Christakis?</a></li>
+<li class="chapter" data-level="14.1.2" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-are-3-potential-types-of-reasons-for-finding-clustering-of-obese-and-non-obese-people"><i class="fa fa-check"></i><b>14.1.2</b> What are 3 potential types of reasons for finding clustering of obese and non-obese people?</a></li>
+<li class="chapter" data-level="14.1.3" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-the-meaning-of-3-degrees-of-separation"><i class="fa fa-check"></i><b>14.1.3</b> What is the meaning of 3 degrees of separation?</a></li>
+<li class="chapter" data-level="14.1.4" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-a-multi-centric-epidemic"><i class="fa fa-check"></i><b>14.1.4</b> What is a multi-centric epidemic?</a></li>
+<li class="chapter" data-level="14.1.5" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-might-be-potential-mechanisms-for-the-spread-of-behaviour"><i class="fa fa-check"></i><b>14.1.5</b> What might be potential mechanisms for the spread of behaviour?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#valente"><i class="fa fa-check"></i><b>14.2</b> Valente</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-is-the-classic-idea-of-diffusion"><i class="fa fa-check"></i><b>14.2.1</b> What is the classic idea of diffusion?</a></li>
+<li class="chapter" data-level="14.2.2" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#what-types-of-network-influence-weights-are-there-according-to-valente"><i class="fa fa-check"></i><b>14.2.2</b> What types of network influence weights are there according to Valente?</a></li>
+<li class="chapter" data-level="14.2.3" data-path="christakis-and-valente.html"><a href="christakis-and-valente.html#network-diffusion"><i class="fa fa-check"></i><b>14.2.3</b> Network Diffusion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="egos-network.html"><a href="egos-network.html"><i class="fa fa-check"></i><b>15</b> Ego’s Network</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="egos-network.html"><a href="egos-network.html#finding-a-research-topic"><i class="fa fa-check"></i><b>15.1</b> Finding a research topic</a></li>
+<li class="chapter" data-level="15.2" data-path="egos-network.html"><a href="egos-network.html#identify-a-research-question"><i class="fa fa-check"></i><b>15.2</b> Identify a research question</a></li>
+<li class="chapter" data-level="15.3" data-path="egos-network.html"><a href="egos-network.html#think-about-relevant-theories"><i class="fa fa-check"></i><b>15.3</b> Think about relevant theories</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="egos-network.html"><a href="egos-network.html#coleman---closure"><i class="fa fa-check"></i><b>15.3.1</b> Coleman - Closure</a></li>
+<li class="chapter" data-level="15.3.2" data-path="egos-network.html"><a href="egos-network.html#burt-and-granovetter---bridging"><i class="fa fa-check"></i><b>15.3.2</b> Burt and Granovetter - Bridging</a></li>
+<li class="chapter" data-level="15.3.3" data-path="egos-network.html"><a href="egos-network.html#nan-lin"><i class="fa fa-check"></i><b>15.3.3</b> Nan Lin</a></li>
+<li class="chapter" data-level="15.3.4" data-path="egos-network.html"><a href="egos-network.html#social-support"><i class="fa fa-check"></i><b>15.3.4</b> Social Support</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="egos-network.html"><a href="egos-network.html#data-collection"><i class="fa fa-check"></i><b>15.4</b> Data collection</a></li>
+<li class="chapter" data-level="15.5" data-path="egos-network.html"><a href="egos-network.html#from-theory-to-practice"><i class="fa fa-check"></i><b>15.5</b> From theory to practice</a></li>
+<li class="chapter" data-level="15.6" data-path="egos-network.html"><a href="egos-network.html#select-the-right-network-approach"><i class="fa fa-check"></i><b>15.6</b> Select the right network approach</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="egos-network.html"><a href="egos-network.html#ego-centric-network"><i class="fa fa-check"></i><b>15.6.1</b> Ego-centric network</a></li>
+<li class="chapter" data-level="15.6.2" data-path="egos-network.html"><a href="egos-network.html#generating-names-of-ego-networks"><i class="fa fa-check"></i><b>15.6.2</b> Generating names of ego-networks</a></li>
+<li class="chapter" data-level="15.6.3" data-path="egos-network.html"><a href="egos-network.html#how-to-collect-data"><i class="fa fa-check"></i><b>15.6.3</b> How to collect data?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>16</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="visualization.html"><a href="visualization.html#prerequisites"><i class="fa fa-check"></i><b>16.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="16.2" data-path="visualization.html"><a href="visualization.html#modifying-the-layout-on-khf-network"><i class="fa fa-check"></i><b>16.2</b> Modifying the layout on KHF network</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="visualization.html"><a href="visualization.html#random-layout"><i class="fa fa-check"></i><b>16.2.1</b> Random layout</a></li>
+<li class="chapter" data-level="16.2.2" data-path="visualization.html"><a href="visualization.html#circle-layout"><i class="fa fa-check"></i><b>16.2.2</b> Circle Layout</a></li>
+<li class="chapter" data-level="16.2.3" data-path="visualization.html"><a href="visualization.html#fr-layout"><i class="fa fa-check"></i><b>16.2.3</b> FR Layout</a></li>
+<li class="chapter" data-level="16.2.4" data-path="visualization.html"><a href="visualization.html#kha-network"><i class="fa fa-check"></i><b>16.2.4</b> KHA Network</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="visualization.html"><a href="visualization.html#layout-based-on-2-continuous-attributes"><i class="fa fa-check"></i><b>16.3</b> Layout based on 2 continuous attributes</a></li>
+<li class="chapter" data-level="16.4" data-path="visualization.html"><a href="visualization.html#layout-where-points-are-grouped-based-on-nominal-attribute"><i class="fa fa-check"></i><b>16.4</b> Layout where points are grouped based on nominal attribute</a></li>
+<li class="chapter" data-level="16.5" data-path="visualization.html"><a href="visualization.html#multidimensional-scaling"><i class="fa fa-check"></i><b>16.5</b> Multidimensional scaling</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="visualization.html"><a href="visualization.html#mds-on-primates"><i class="fa fa-check"></i><b>16.5.1</b> MDS on Primates</a></li>
+<li class="chapter" data-level="16.5.2" data-path="visualization.html"><a href="visualization.html#mds-on-valued-trade"><i class="fa fa-check"></i><b>16.5.2</b> MDS on valued trade</a></li>
+<li class="chapter" data-level="16.5.3" data-path="visualization.html"><a href="visualization.html#mds-on-geodesic-distances"><i class="fa fa-check"></i><b>16.5.3</b> MDS on geodesic distances</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="visualization.html"><a href="visualization.html#kamadakawai-and-fr-layout-khfs"><i class="fa fa-check"></i><b>16.6</b> KamadaKawai and FR layout KHFS</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="visualization.html"><a href="visualization.html#on-simulated-data"><i class="fa fa-check"></i><b>16.6.1</b> On Simulated data</a></li>
+<li class="chapter" data-level="16.6.2" data-path="visualization.html"><a href="visualization.html#scientists-collaborations"><i class="fa fa-check"></i><b>16.6.2</b> Scientists collaborations</a></li>
+<li class="chapter" data-level="16.6.3" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-khf"><i class="fa fa-check"></i><b>16.6.3</b> Nodal attributes on KHF</a></li>
+<li class="chapter" data-level="16.6.4" data-path="visualization.html"><a href="visualization.html#scientists-collaboration-more-complex"><i class="fa fa-check"></i><b>16.6.4</b> Scientists collaboration (more complex)</a></li>
+<li class="chapter" data-level="16.6.5" data-path="visualization.html"><a href="visualization.html#nodal-attributes-on-pfm"><i class="fa fa-check"></i><b>16.6.5</b> Nodal attributes on PFM</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="visualization.html"><a href="visualization.html#tie-strength-on-scientists-collaborations"><i class="fa fa-check"></i><b>16.7</b> Tie strength on Scientists collaborations</a></li>
+<li class="chapter" data-level="16.8" data-path="visualization.html"><a href="visualization.html#directed-networks"><i class="fa fa-check"></i><b>16.8</b> Directed networks</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
+<li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
+<li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Advanced Social Networks</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="christakis-and-valente" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Christakis and Valente</h1>
+<div id="christakis" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Christakis</h2>
+<div id="what-is-clustering-for-christakis" class="section level3" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> What is clustering for Christakis?</h3>
+<p>A cluster is a group of people who are connected and are similar in characteristics.</p>
+<aside>
+<p>🌐 <em>For instance, Christakis detects obese and non-obese people.</em></p>
+</aside>
+</div>
+<div id="what-are-3-potential-types-of-reasons-for-finding-clustering-of-obese-and-non-obese-people" class="section level3" number="14.1.2">
+<h3><span class="header-section-number">14.1.2</span> What are 3 potential types of reasons for finding clustering of obese and non-obese people?</h3>
+<ul>
+<li><p>Induction effect or Social Contagion: spread from a person to a person</p>
+<aside>
+<p>🌐 <em>if your friends gain weight, you gain weight, and you then, in turn, impact other friends. Because we conform and we change our idea about what acceptable body size is.</em></p>
+</aside>
+<aside>
+<p>🚬 <em>if your friends smoke, you might start smoking.</em></p>
+</aside></li>
+<li><p>Homophily effect: birds of a feather flock together</p>
+<aside>
+<p>🌐 <em>form a tie because we have a similar body size, to begin with, or similar interest in exercise (etc.) that might predict our body size.</em></p>
+</aside>
+<aside>
+<p>🚬 <em>Friendship emerging as a result of smoking behaviour.</em></p>
+</aside></li>
+<li><p>Confounding factor: it confounds our ability to figure out what’s going on</p>
+<aside>
+<p>🌐 <em>something happening in a cluster’s environment (e.g. a gym opening, which makes all members of the cluster lose weight, or a fast-food restaurant opening, which makes all members gain weight).</em></p>
+</aside>
+<aside>
+<p>🚬 <em>Environment makes both of us start/stop smoking (like an anti-smoking advertisement, or new laws that impacts one group but not another).</em></p>
+</aside></li>
+</ul>
+<p>Some examples that can be applied to these three reasons are:</p>
+<ul>
+<li>movies preferences</li>
+<li>happiness</li>
+<li>smiling</li>
+<li>eating fast food</li>
+<li>…</li>
+</ul>
+</div>
+<div id="what-is-the-meaning-of-3-degrees-of-separation" class="section level3" number="14.1.3">
+<h3><span class="header-section-number">14.1.3</span> What is the meaning of 3 degrees of separation?</h3>
+<p>This here shows, on the Y-axis, the increase in the probability that a person is obese given that a social contact of theirs is obese and, on the X-axis, the degrees of separation between the two people. According to Christakis, there are three degrees of separation that hold for many traits, in particular, obesity:</p>
+<p><img src="images/14-Christakis%20and%20Valente/Untitled.png" width="50%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>If your friends are obese you have about a 45% higher likelihood of being obese yourself;</li>
+<li>if your friend’s friends are obese you have about a 25% higher likelihood;</li>
+<li>if your friend’s friend’s friends are obese you have about a 10% higher likelihood;</li>
+<li>up to 3 degrees of separation is there a real relation between your body size and that person’s body size (not really any more at 4 degrees away).</li>
+</ul>
+</div>
+<div id="what-is-a-multi-centric-epidemic" class="section level3" number="14.1.4">
+<h3><span class="header-section-number">14.1.4</span> What is a multi-centric epidemic?</h3>
+<p>Obesity is a <strong>multicentric epidemic</strong> since there is no patient zero of this epidemic. In general, lots of people are doing things at the same time and if we focus on a certain phenomenon, we may notice that there may be a key player, but no central node that indicates the starting node.</p>
+<aside>
+<p>🏦 <em>For instance, the 2008 crash was due to a single bank, therefore it was a uni-centric epidemic.</em></p>
+</aside>
+<aside>
+<p>💼 <em>For instance, the unemployment crisis is instead a multicentric epidemic, since there is no starting node for this phenomenon.</em></p>
+</aside>
+<aside>
+<p>🦠 <em>Also, the coronavirus had a patient zero that started to diffuse the pandemic. However, inside each new country, there’s a single patient zero, therefore it is a multi-centric epidemic.</em></p>
+</aside>
+</div>
+<div id="what-might-be-potential-mechanisms-for-the-spread-of-behaviour" class="section level3" number="14.1.5">
+<h3><span class="header-section-number">14.1.5</span> What might be potential mechanisms for the spread of behaviour?</h3>
+<p>Alter’s appearance or behaviour changes:</p>
+<ul>
+<li><p>ego’s behaviour</p>
+<aside>
+<p>🚬 <em>For instance, related to smoking, seeing other people smoke makes us smoke.</em></p>
+</aside>
+<aside>
+<p>😷 <em>Related to mask-wearing, we notice other people wearing masks, friends specifically, and we change our behaviour accordingly.</em></p>
+</aside></li>
+<li><p>ego’s expectations or perceptions of norms.</p>
+<aside>
+<p>🚬 <em>For instance, related to smoking, we are convinced by arguments from others about what is normal and expected. Life is short and there are so many other dangers, you should worry about smoking.</em></p>
+</aside>
+<aside>
+<p>😷 <em>Related to mask-wearing, we notice contagion graphs, indications in shops and public places and people may tell us to wear the mask and that we can enter only if we wear it. That’s how our behaviour changes.</em></p>
+</aside></li>
+</ul>
+</div>
+</div>
+<div id="valente" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Valente</h2>
+<p>This speak is about the adoption of new ideas or practices that flows through interpersonal contacts. In particular, he speaks about:</p>
+<ul>
+<li>models of the diffusion of innovations;</li>
+<li>network models for diffusion (Network models of change);</li>
+<li>network interventions (Network models for a change).</li>
+</ul>
+<div id="what-is-the-classic-idea-of-diffusion" class="section level3" number="14.2.1">
+<h3><span class="header-section-number">14.2.1</span> What is the classic idea of diffusion?</h3>
+<p>Studying how networks influence behaviour moves us from theories about networks to network theory. New ideas and practices originate enter communities from some external source (e.g. mass media, labour exchanges, cosmopolitan contact, technical shifts). Adoption of the new idea or practice then flows through <strong>interpersonal contact networks</strong>.</p>
+<p>Diffusion happens out of interpersonal contact, persuasion and communication modelling. Diffusion occurs over time, usually following a trend studied in the Economy about the adoption of new products or technology, where there are nearly adopters, then diffusion and in the end the large common use/adoption of a behaviour.</p>
+<p><img src="images/14-Christakis%20and%20Valente/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Valente created mathematical models of the diffusion of innovations in different situations: for external and internal influence and when the external communications are mixed with person-to-person contact. However, it is far more interesting to study the processes that occur amongst people in the network.</p>
+<p>Therefore, Valente created a hypothetical community of people and the percentage of diffusion when adopters persuade non-adopters at a rate of one per cent. When this happens, we get the S-shape curve described above. But this is wrong since there’s no network in this. Once we start to see there’s clustering in the network, we notice that it all goes in a different way. In a random way, we get the S-shape, in a real network, there are some moments where the diffusion speeds up or slows down, deviating from the model.</p>
+<p><img src="images/14-Christakis%20and%20Valente/Untitled%202.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="what-types-of-network-influence-weights-are-there-according-to-valente" class="section level3" number="14.2.2">
+<h3><span class="header-section-number">14.2.2</span> What types of network influence weights are there according to Valente?</h3>
+<p>Valente also describes the generative engine for understanding how networks influence behaviour.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Direct influence</strong></p>
+<p>When you’re exposed to people with different behaviours, you are more likely to change your behaviour. Not only actual use but also perceived use influences behaviour.</p>
+<aside>
+<p>🌐 <em>For instance, if in a network of people there are non-users and users and they interact with each other it is likely that all of them become users.</em></p>
+</aside></li>
+</ol>
+<p><img src="images/14-Christakis%20and%20Valente/Untitled%203.png" width="50%" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p><strong>Indirect ties</strong></p>
+<p>Indirect exposures may matter in influencing others, but there’s kinda debate if there’s really an effect and how does it work. It varies by network and behaviour type. We need some quality data study to make any statement about the role of indirect influences.</p></li>
+<li><p><strong>Structural equivalent ties</strong></p>
+<p>On the other hand, structural equivalence can matter according to Burt. We might be influenced by other people too who we’re not connected, but occupy the same position in the network and therefore we tend to monitor their behaviour and situation. In some cases, competition might be there (e.g. compete for the attention of a friend) or not (e.g. occupy friendship positions and be influenced one another through direct communication).</p></li>
+<li><p><strong>Tie strength</strong></p>
+<p>Stronger ties exert a stronger influence on ego than weaker ties. They have more influence on the ego’s behaviour than those he/she sees less frequently since they have a less emotional relationship with them.</p>
+<p>Weak ties are important for information spread and rumours, but when it comes to behavioural change, strong ties make the difference.</p></li>
+<li><p><strong>Simmelian ties</strong></p>
+<p>Empirically, simmelian ties also affect people. Suppose A and B are connected together and they have a stronger influence on the ego with respect to C or F which are not connected to any other node in the ego network. Therefore, the social environment matters a lot in terms of the amount of influence that alters can exert on egos.</p>
+<p>If all my friends are friends with each other, their behaviours are more likely to influence me than if my friends are not friends with one another, because their decisions, behaviours and communications are all reinforcing one another rather than being disparate.</p></li>
+<li><p><strong>Density weighted or Centrality Measures</strong></p>
+<p>We can weigh our influences by using centrality measures, which also allows us to understand who’s the ego in the network and if this fact is associated with his/her traits. The most used centrality measures are degree (in and out), closest and between centrality. There are over 100 centrality measures to use.</p></li>
+<li><p><strong>Degree weighted</strong></p></li>
+<li><p><strong>Joint participation</strong></p>
+<p>Whenever two or more nodes in the network participate jointly in an event, the influence on one another on its behavioural change is stronger than if they participate individually in the event.</p></li>
+</ol>
+<p><img src="images/14-Christakis%20and%20Valente/Untitled%204.png" width="50%" style="display: block; margin: auto;" /></p>
+<ol start="9" style="list-style-type: decimal">
+<li><p><strong>Attribute weighted</strong></p>
+<p>In diffusion theory there’s the thought that homophily is associated with a greater social influence: if we’re similar, the flow of information and communication is easier and more frequent.</p>
+<p>There may be some behaviours that are actually attribute specific, therefore it is more likely that the influence would occur when people are similar on the attribute.</p></li>
+<li><p><strong>Thresholds</strong></p>
+<p>Some people are willing to adopt a new behavior when a minority or none of their network partners are willing to (e.g. early adopters that discover all the new features and they communicate interesting facts inside the network). Other people wait until their network is filled with users before they’re willing to try something (e.g. late adopters that need to adapt inside the network in order to homologate and gain benefits).</p>
+<p>People late in the diffusion process are late because of their position in the network, which gives them access to the behaviour or the information very late in the process. It still may happen to be connected to early adopters despite being late adopters.</p></li>
+</ol>
+</div>
+<div id="network-diffusion" class="section level3" number="14.2.3">
+<h3><span class="header-section-number">14.2.3</span> Network Diffusion</h3>
+<p>It is possible to use a <code>NetdiffuseR</code> package to track the diffusion of information. In particular, as shown in the image below, in red there are new adopters, while in blue continuing users and in grey users that do not use or have a behaviour.</p>
+<p><img src="images/14-Christakis%20and%20Valente/Untitled%205.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><strong>What happens over time during the diffusion process?</strong></p>
+<ul>
+<li>external influence (e.g. media, advertisement, travel), whose effect decreases over time. As more people adopt, we do not worry about external influence;</li>
+<li>selection, which is very high in the beginning , because in the beginning nobody does nothing in my network. Over time, as the community fills with adopters, we don’t need to make changes in the network in order to have people being consistent with the ego’s behaviour;</li>
+<li>influence should increase over time: as the behaviour becomes normative, as there are more adopters, I’m more likely to change my behaviour;</li>
+<li>opinion leaders, whose trend varies, when the behaviour is normative and compatible with the community. When it is not culturally compatible, opinion leaders delay their adoption.</li>
+</ul>
+<p><img src="images/14-Christakis%20and%20Valente/Untitled%206.png" width="50%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ergms.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="egos-network.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/14-ChristakisValente.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -215,7 +215,7 @@ knitr::include_graphics("images/08-Metrics for structural holes/Untitled 5.png")
     BS &= (p_{BS}+p_{BP}*p_{PS}+p_{BG}*p_{GS})^2\\
     &= (1/3+1/3*1/3+1/3*0)^2 = 0.1975\\
     BP &= (p_{BP}+p_{BG}*p_{GP}+p_{BS}*p_{SP})^2 \\&= (1/3+1/3*0+1/3*1/4)^2 = 0.1736\\
-    \text{Constraint index} = BG+BS+BP = 0.4823
+    \text{Constraint index} &= BG+BS+BP = 0.4823
     \end{aligned}
     $$
     

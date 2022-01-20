@@ -1,9 +1,9 @@
-##########################
-# STATISTICS
-##########################
 
-# FLORENTINE FAMILIES
+# Statistics about network
 
+## Florentine Families
+
+```{r message=FALSE, warning=FALSE}
 # Libraries import
 library(sna)
 library(tidyverse)
@@ -17,6 +17,11 @@ PFA<-read.csv("Datasets/Padgett_FlorentineFamilies_Attributes.csv",
 # Converting the matrix into network
 PFMn<-as.network(PFM, directed=F)
 
+summary(PFMn)
+```
+
+
+```{r}
 # Working on nodes colors...
 ## Defining the number of colors necessary to map wealth 
 n_colors<-max(PFA$Priors)-min(PFA$Priors)+1
@@ -27,6 +32,7 @@ colfunc <- colorRampPalette(c("#B78FB3", "#22BFAC"))
 ## Generate range
 vertex_color<-colfunc(n_colors)[PFA$Priors-min(PFA$Priors)+1]
 
+par(mar = c(0,0,0,0))
 # Plotting the families based on their wealth
 gplot(PFMn, 
       gmode="graph",
@@ -42,13 +48,17 @@ gplot(PFMn,
       displaylabels=T,
       label.pos=1,
       label.cex=.7)
+```
 
 
+```{r}
 # Degree
 as.data.frame(sna::degree(PFMn, gmode="graph"), rownames(PFM))
 PFMn.Deg<-sna::degree(PFMn, gmode="graph")
+```
 
 
+```{r}
 ############################
 # STATISTICAL TESTS
 ############################
@@ -59,7 +69,10 @@ cor.test(PFMn.Deg,PFA$Priors) # positive correlation
 ## Linear Model
 M1<-lm(PFMn.Deg~PFA$Priors) 
 summary(M1)
+```
 
+
+```{r}
 # PERMUTATION BASED APPROACH
 
 ## Data preparation
@@ -81,7 +94,10 @@ summary(sample_matrix)
 ## Plotting the correlation trend among samplings
 par(mar=c(3,3,3,3))
 hist(sample_matrix, breaks=50)
+```
 
+
+```{r}
 ## Sum 
 (corRealValue<-cor(PFMn.Deg,PFA$Priors)) # Actual correlation with no sampling
 sum(sample_matrix>=corRealValue)/1000 # Mean correlation above actual cor
@@ -93,8 +109,11 @@ sum(sample_matrix>=corRealValue)/1000 + sum(sample_matrix<=-corRealValue)/1000
 # Consinder the absolute number of correlation
 sum(sample_matrix>=abs(corRealValue))/1000
 sum(sample_matrix<=-abs(corRealValue))/1000
-sum(sample_matrix>=abs(corRealValue))/1000 + sum(OUTPUT<=-abs(corRealValue))/1000
+sum(sample_matrix>=abs(corRealValue))/1000 + sum(sample_matrix<=-abs(corRealValue))/1000
+```
 
+
+```{r}
 # SPECIFIC DATA SAMPLING
 x1<-c(7,8,6,7,0,8,9,7,8,5,9,7,8,7)
 y1<-c(5,6,7,9,0,4,6,5,6,7,6,7,7,9)
@@ -115,7 +134,10 @@ hist(OUTPUT, nclass=20, prob=T)
 ## 95%-CI
 mean(OUTPUT)+sd(OUTPUT)*1.96
 mean(OUTPUT)-sd(OUTPUT)*1.96
+```
 
+
+```{r}
 ## 2 approaches
 x <- seq(min(OUTPUT), max(OUTPUT), length = 40)
 f <- dnorm(x, mean = mean(OUTPUT), sd = sd(OUTPUT))
@@ -128,3 +150,4 @@ curve(dnorm(x, mean=mean(OUTPUT), sd=sd(OUTPUT)),
 sum(OUTPUT>cor(x1,y1))/20000
 
 abline(v=cor(x1,y1), lwd=3, col="red")
+```

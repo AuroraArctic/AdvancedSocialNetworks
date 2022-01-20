@@ -1,0 +1,81 @@
+# Subgroups and equivalence
+
+```{r}
+library(sna)
+
+network<-matrix(c(
+  0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
+  1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
+  1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0),19,19)
+
+par(mar = c(0,0,0,0))
+gplot(network,
+      displaylabels=TRUE,
+      edge.lwd=0.5,
+      vertex.lty = 0.5,
+      usearrows=FALSE, 
+      gmode="graph"
+)
+```
+
+
+```{r}
+clique.census(network, mode = "graph")
+```
+
+
+```{r}
+# Equivalence
+network_2<-matrix(c(
+  0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,
+  1,0,0,0,1,1,0,0,
+  0,1,0,0,1,1,0,0,
+  0,1,0,0,0,1,0,0,
+  0,1,0,0,1,0,0,0,
+  0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0),8,8,byrow=T)
+
+# Hamming Structural Equivalence
+network_2_SEH<-sedist(network_2, method="hamming")
+network_2_SEH
+```
+
+
+```{r}
+## Clustering on hamming distance
+network_2_SEHD<-as.dist(network_2_SEH)
+network_2_SEHD_HC<-hclust(network_2_SEHD,method="complete")
+plot(network_2_SEHD_HC)
+```
+
+
+```{r}
+# Euclidean Structural Equivalence
+network_2_SEE<-sedist(network_2, method="euclidean")
+network_2_SEE
+```
+
+
+```{r}
+## Clustering on euclidean distance
+network_2_SEED<-as.dist(network_2_SEE)
+network_2_SEED_HC<-hclust(network_2_SEED,method="complete")
+plot(network_2_SEED_HC)
+```
