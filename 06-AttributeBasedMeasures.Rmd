@@ -101,7 +101,7 @@ $$
 knitr::include_graphics("images/06-Attributes based measures/Untitled 4.png")
 ```
 
-Whenever we have high b and c, we have atrophy, tendency to choose different people from us; whenever a and d are high, homophily increases. 
+Whenever we have high b and c, we have eterophily, tendency to choose different people from us; whenever a and d are high, homophily increases. 
 
 <aside>
 💡 *In the second network, b tends to prefer women to men, since she excludes most of the men from her connections. There's a high tendency to homophily. 

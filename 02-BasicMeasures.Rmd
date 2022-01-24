@@ -189,7 +189,7 @@ $$
 In-C = \frac{(2-1)+5*(2-2)}{5^2} = \frac{1}{25} = 0.04
 $$
 
-### Experiment
+### Experiment of Bavelas and Leavitt
 
 *💡 How fast a group could make decisions together?*
 
