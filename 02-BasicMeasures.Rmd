@@ -98,30 +98,32 @@ Density = \frac{\text{Number of ties}}{\text{Number of possible ties}} =\frac{\t
 $$
 
 <aside>
-💡 *In the Simpsons example, the density equals* $D = 18/(10*9/2) = 18/45 = 0.4$
+💡 *In the Simpsons example, where there are 18 edges and 10 nodes, the density equals* $D = 18/(10*9/2) = 18/45 = 0.4$.
 
 </aside>
 
 ### Average Degree
 
-Related to directed network, the average indegree equals the sum of the in-degree or out-degree over the total number of nodes inside the network: 
+Related to directed network, the average in-degree equals the sum of the in-degree or out-degree over the total number of nodes inside the network: 
 
 <aside>
-💡 In the Friends example, the average in-degree is $11/6 = 1.833$, while the out-degree is $11/6 = 1.833$.
+💡 *In the Friends example, the average in-degree is $11/6 = 1.833$, while the out-degree is* $11/6 = 1.833$.
 
 </aside>
 
-By considering the normalized degree, we discover that it equals the density of the network, because we initially divide by the maximum connections possible ($n(n-1)$), and then we divide everything by the total number of nodes ($n$), while the normalized degree is computed by dividing the degree by $n-1$. 
+The normalized degree of each node is computed by dividing the in and out-degree by $n-1$. 
+
+The normalized in degree and the out degree will give in the end the same sum. In particular, their mean equals the density of the entire network: in the density computation, total edges are divided by $n(n-1)$, while in the normalized degree, everything is normalized by $n-1$ and then the average requires another division over $n$,
 
 ### Importance of density
 
-The Density is useful whenever we need to compare networks, both of the same or different sizes. In particular, the bigger, the more important density becomes to evaluate its cohesiveness. 
+The **density** is useful whenever we need to compare networks, whether same or different sizes. In particular, the bigger, the more important density becomes to evaluate its cohesiveness. 
 
 Notice that a bigger network makes it harder to have a bigger density than a smaller one. Comparing the density of networks of different sizes can be challenging. It would be better to compare average degrees but notice that **by increasing the network size and the average degree, the density reduces.** 
 
 ## Degree-centralization
 
-**Centralization** is a question about how central some nodes are compared to other nodes, it is a characteristic of the network itself. It's related to the distribution of the centrality inside the network, while centrality is more related to the individual sphere of the nodes. 
+**Centralization** is a question about how central some nodes are compared to other nodes and therefore can be considered as a characteristic of the network itself. It is related to the distribution of the centrality inside the network, while centrality is more related to the individual sphere of the nodes. 
 
 <aside>
 💡 *The least centralized network is a ring structure, where everyone is connected to the previous and following node (in this case the centralisation is 0). 
@@ -144,7 +146,7 @@ By taking the maximum degree inside the network, for each node, we subtract its 
 knitr::include_graphics("images/02-Basic Measures/Untitled.png")
 ```
 
-By considering the range between the least and the most centralized ($0-12$), the centralisation can be finally computed by dividing the centralisation for the degree by the maximum centralisation value possible.
+By considering the range between the least and the most centralized (i.e. $[0,12]$), the centralisation can be finally computed by dividing the centralisation for the degree by the maximum centralisation value possible.
 
 <aside>
 💡 *In the example above, it would be* $5/12$.
@@ -159,7 +161,7 @@ $$
 
 ### Directed Network
 
-In this case, we detain both in and out-degree centralisation. 
+In the case of a directed network, we detain both in and out-degree centralisation. 
 
 $$
 In-Centralisation = \frac{\sum (\max_{in}-\text{in-degree}_i)}{(n-1)^2}
@@ -170,7 +172,7 @@ Out-Centralisation = \frac{\sum (\max_{out}-\text{out-degree}_i)}{(n-1)^2}
 $$
 
 <aside>
-💡 Still, if we consider the Friends network, we notice that related to the out-degree centralisation, the network is kind of centralized on Rachel, which is talkative with everybody:
+💡 *Still, if we consider Friends' network, we notice that related to the out-degree centralisation, the network is kind of centralized on Rachel, which is talkative with everybody:*
 
 </aside>
 
@@ -189,7 +191,7 @@ $$
 
 ### Experiment
 
-*How fast a group could make decisions together?*
+*💡 How fast a group could make decisions together?*
 
 Each subject was given a card, with 5 symbols from a set of 6. Each symbol appeared on 4 of the 5 cards, except for one. The group was asked to find the common symbol in the shortest time possible. 
 

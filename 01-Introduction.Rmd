@@ -86,7 +86,6 @@ Words          & Used together       & All tweets on a specific topic \\ \bottom
 \label{tab:network_example}
 \end{table}
 
-
 ### Social Network Representation
 
 A usual representation for networks is the **Adjacency matrix**, a square matrix that can be reciprocal (mirrored) or not (different if we swap columns and rows). Generally, self-loops do not make sense, therefore in certain situations, we can just ignore them by inserting a 0. Whenever there is a tie linking two nodes, we insert a 1. 
@@ -110,7 +109,7 @@ An extension to the ego network approach is to continue iterating and expanding 
 
 <aside>
 💡 *Normally, friendships is an undirected network, since it is mutual, but not all people we define as such will agree with us, since they may have other priorities people to think to. 
-Friendship requires frequent meetings, trust, long-term relationships. Friendship is a concept that requires specific behaviours and expectations.*
+Friendship requires frequent meetings, trust, long-term relationships. It is a concept that requires specific behaviours and expectations.*
 
 </aside>
 

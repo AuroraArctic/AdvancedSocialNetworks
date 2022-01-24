@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -458,7 +459,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <ul>
 <li><strong>Social capital:</strong> seen as social relations and networks;</li>
-<li>Capital: can be financial, human, cultural etc. We can define also who owns it;</li>
+<li><strong>Capital</strong>: can be financial, human, cultural etc. We can define also who owns it;</li>
 <li><strong>Competitive Advantage</strong>: it means that who detains it has some benefits; whenever there are no more benefits related to a relationship, we talk about social liabilities. Benefits tend to have a positive effect on the entire network (i.e. tautology).</li>
 </ul>
 </blockquote>
@@ -528,7 +529,7 @@ available.
 <p>💁️ Proposition: If there are 2 strong ties between 3 people, then there will also be at least a weak tie between the others. Therefore, they know each other, despite not being good friends. This theory is based on a probabilistic assumption, therefore it may not happen all the time.</p>
 </aside>
 <p>A <strong>forbidden triad</strong> is defined as a combination of two strong ties and a missing tie that links the missing two nodes.</p>
-<p>Consider the following example, we can detect three communities, with no structural bridge with strong ties. Weak ties are important because of the cross social circles to get unique information. This means that information is spread between social circles via weak ties.</p>
+<p>Consider the following example, we can detect three communities, with no structural bridge with strong ties. Weak ties are important because they cross social circles to get unique information. This means that information is spread between social circles via weak ties.</p>
 <p>About the importance of acquaintances in social networks:</p>
 <p><img src="images/07-Triads%20and%20structural%20holes/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
 <blockquote>
@@ -595,12 +596,14 @@ it not for the existence of weak ties.
 <h3><span class="header-section-number">7.9.3</span> Keyplayers</h3>
 <p>Information only reaches the direct contacts of a person.</p>
 <aside>
-<p>💡 We want to reach as many people as possible and we can choose the persons to which we can communicate the information. Who would we choose?
-1 person: 7
-2 persons: 9, 4
-3 persons: 12, 2, 16, to reach everyone except for 18
-4 persons: 12, 42 16, 18
-We’re trying to choose non redundant links to reach as many nodes as possible.
+<p>💡 We want to reach as many people as possible and we can choose the persons to which we can communicate the information. Who would we choose?</p>
+<ul>
+<li>1 person: 7</li>
+<li>2 persons: 9, 4</li>
+<li>3 persons: 12, 2, 16, to reach everyone except for 18</li>
+<li>4 persons: 12, 42 16, 18</li>
+</ul>
+<p>We’re trying to choose non redundant links to reach as many nodes as possible.
 What if we remove these nodes? Will we still be able to reach them all? Without 9, 7 and 4, we will have three clusters, guided by 12, 2 and 16.</p>
 </aside>
 

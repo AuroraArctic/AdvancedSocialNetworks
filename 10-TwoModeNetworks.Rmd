@@ -1,6 +1,5 @@
 # Two mode networks
 
-
 ## Two-mode data
 
 Whenever we focus on two-mode networks, we put effort on ties, not on actors, where there are two types of actors. As with 1-mode networks, we need to specify the boundary of the network:
@@ -13,19 +12,20 @@ library(sna)
 DSAm <- as.matrix(read.csv(
   "datasets/Davis_SouthernWomen_Attendance.csv",
   stringsAsFactors = FALSE, row.names=1))
-DSAm
 
-#if you want to limit the names to the first 
-#two letters, us the following:
-#Copy object
 DSAmS<-DSAm
 #Change names in new object
 rownames(DSAmS)<-substring(rownames(DSAm),1,2)
-DSAmS
 
 #Now draw the network
-gplot(DSAmS, displaylabels=TRUE, 
-      usearrows=FALSE, gmode="twomode")
+par(mar = c(0,0,0,0))
+gplot(DSAmS, 
+      displaylabels=TRUE, 
+      usearrows=FALSE, 
+      edge.col = "grey70",
+      gmode="twomode",
+      vertex.cex = 0.5,
+      label.cex = 0.7)
 ```
 
 ## One-mode projections
@@ -48,11 +48,12 @@ knitr::include_graphics("images/10-Two mode networks/Untitled.png")
 ```
 
 <aside>
-💡 *What is the best approach to represent the level of overlapping?
+💡 *What is the best approach to represent the level of overlapping?*
+
 - Sum of unique events shared by all actors over the total number of events;
 - Unique events shared over the sum of degrees of all actors;
 - Unique events shared over the minimum degree of all actors;
-- Unique events shared over the maximum degree of all actors;*
+- Unique events shared over the maximum degree of all actors.
 
 </aside>
 
@@ -88,7 +89,7 @@ knitr::include_graphics("images/10-Two mode networks/Untitled 3.png")
 
 ## Degree Centrality
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='40%', fig.cap="Example of network with scientists and papers"}
 knitr::include_graphics("images/10-Two mode networks/Untitled 4.png")
 ```
 
@@ -98,24 +99,30 @@ Consider a network with scientists and papers, where $n_a$ defines the number of
     
     $$
     \begin{aligned}
-    A_1 = 1 \\
-    A_2 = A_3 = A_6 = 2 \\
-    A_4 = 3 \\
-    A_5 = 6
+    A_1 &= 1 \\
+    A_2 &= A_3 = A_6 = 2 \\
+    A_4 &= 3 \\
+    A_5 &= 6
     \end{aligned}
     $$
     
     ```{r}
     scientists_papers<-matrix(c(1,0,0,0,0,0,0,0,
-    					        1,0,0,1,0,0,0,0,
-    					        1,1,0,0,0,0,0,0,
-    					        1,1,1,0,0,0,0,0,
-    					        0,0,1,1,1,1,1,1,
-    					        0,0,0,0,0,0,1,1),
-    						    6,8,byrow=TRUE)
+                                1,0,0,1,0,0,0,0,
+                                1,1,0,0,0,0,0,0,
+                                1,1,1,0,0,0,0,0,
+                                0,0,1,1,1,1,1,1,
+                                0,0,0,0,0,0,1,1),
+                              6,8,byrow=TRUE)
     rownames(scientists_papers)<-c("a1","a2","a3","a4","a5","a6")
     colnames(scientists_papers)<-c("e1","e2","e3","e4","e5","e6","e7","e8")
-    gplot(scientists_papers, displaylabels=TRUE, usearrows=FALSE, gmode="twomode")
+    gplot(scientists_papers, 
+          displaylabels=TRUE, 
+          usearrows=FALSE, 
+          gmode="twomode",
+          edge.col = "grey70",
+          vertex.cex = 1,
+          label.cex = 1)
     rowSums(scientists_papers) # Scientists Degree
     colSums(scientists_papers) # Papers Degree
     ```
@@ -129,7 +136,7 @@ Consider a network with scientists and papers, where $n_a$ defines the number of
     rowSums(scientists_papers)/NCOL(scientists_papers)
     
     # Proportion of papers collaboration in scientific community 
-    colSums(scientists_papers)/NROW(scientists_papers)
+    round(colSums(scientists_papers)/NROW(scientists_papers),3)
     ```
     
 - *What is $A$’s total contribution to all publications ($E$) taking into account the contribution of co-authors?*
@@ -150,13 +157,15 @@ Consider a network with scientists and papers, where $n_a$ defines the number of
     Take the previous value and divide it for the total number of papers in which he/she collaborated (which was the first column). 
     
     ```{r}
-    (rowSums(t(t(scientists_papers)/
-                 colSums(scientists_papers))))/
-      rowSums(scientists_papers) # Scientists Degree
+    round((
+      rowSums(
+        t(
+          t(
+            scientists_papers)/colSums(scientists_papers))))/
+        rowSums(scientists_papers),3) 
     ```
     
-
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Contribution of each author"}
 knitr::include_graphics("images/10-Two mode networks/Untitled 5.png")
 ```
 - *In total how many unique co-authors does $A$ have?*
@@ -176,7 +185,7 @@ knitr::include_graphics("images/10-Two mode networks/Untitled 5.png")
         
     2. Proportion of all authors
         
-        Divide the number of co-authors by the maximum number obtainable ($N_a -1$). 
+        Divide the number of co-authors by the maximum number obtainable ($N_a -1 = 6-1 = 5$).
         
         <aside>
         $A \quad N\quad P\\
@@ -299,7 +308,7 @@ knitr::include_graphics("images/10-Two mode networks/Untitled 11.png")
 
 <aside>
 💡 *For instance, in this example, we would have the projection above, highlighting:
-$A_5 \rightarrow 1/3, A_2=A_3, =A_3=A_4= A_1\rightarrow 1$ .*
+$A_5 \rightarrow 1/3, A_2=A_3, A_3=A_4= A_1\rightarrow 1$ .*
 
 </aside>
 

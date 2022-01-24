@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -455,60 +456,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>defined by events to which actors participate, missing other events to which those actors attended;</li>
 <li>by actors, to include some events, missing the other actors that attended those events.</li>
 </ul>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="two-mode-networks.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
-<span id="cb42-2"><a href="two-mode-networks.html#cb42-2" aria-hidden="true" tabindex="-1"></a>DSAm <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(</span>
-<span id="cb42-3"><a href="two-mode-networks.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;datasets/Davis_SouthernWomen_Attendance.csv&quot;</span>,</span>
-<span id="cb42-4"><a href="two-mode-networks.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
-<span id="cb42-5"><a href="two-mode-networks.html#cb42-5" aria-hidden="true" tabindex="-1"></a>DSAm</span></code></pre></div>
-<pre><code>##           E01 E02 E03 E04 E05 E06 E07 E08 E09 E10 E11 E12 E13 E14
-## EVELYN      1   1   1   1   1   1   0   1   1   0   0   0   0   0
-## LAURA       1   1   1   0   1   1   1   1   0   0   0   0   0   0
-## THERESA     0   1   1   1   1   1   1   1   1   0   0   0   0   0
-## BRENDA      1   0   1   1   1   1   1   1   0   0   0   0   0   0
-## CHARLOTTE   0   0   1   1   1   0   1   0   0   0   0   0   0   0
-## FRANCES     0   0   1   0   1   1   0   1   0   0   0   0   0   0
-## ELEANOR     0   0   0   0   1   1   1   1   0   0   0   0   0   0
-## PEARL       0   0   0   0   0   1   0   1   1   0   0   0   0   0
-## RUTH        0   0   0   0   1   0   1   1   1   0   0   0   0   0
-## VERNE       0   0   0   0   0   0   1   1   1   0   0   1   0   0
-## MYRNA       0   0   0   0   0   0   0   1   1   1   0   1   0   0
-## KATHERINE   0   0   0   0   0   0   0   1   1   1   0   1   1   1
-## SYLVIA      0   0   0   0   0   0   1   1   1   1   0   1   1   1
-## NORA        0   0   0   0   0   1   1   0   1   1   1   1   1   1
-## HELEN       0   0   0   0   0   0   1   1   0   1   1   1   0   0
-## DOROTHY     0   0   0   0   0   0   0   1   1   0   0   0   0   0
-## OLIVIA      0   0   0   0   0   0   0   0   1   0   1   0   0   0
-## FLORA       0   0   0   0   0   0   0   0   1   0   1   0   0   0</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="two-mode-networks.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#if you want to limit the names to the first </span></span>
-<span id="cb44-2"><a href="two-mode-networks.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">#two letters, us the following:</span></span>
-<span id="cb44-3"><a href="two-mode-networks.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Copy object</span></span>
-<span id="cb44-4"><a href="two-mode-networks.html#cb44-4" aria-hidden="true" tabindex="-1"></a>DSAmS<span class="ot">&lt;-</span>DSAm</span>
-<span id="cb44-5"><a href="two-mode-networks.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Change names in new object</span></span>
-<span id="cb44-6"><a href="two-mode-networks.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(DSAmS)<span class="ot">&lt;-</span><span class="fu">substring</span>(<span class="fu">rownames</span>(DSAm),<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb44-7"><a href="two-mode-networks.html#cb44-7" aria-hidden="true" tabindex="-1"></a>DSAmS</span></code></pre></div>
-<pre><code>##    E01 E02 E03 E04 E05 E06 E07 E08 E09 E10 E11 E12 E13 E14
-## EV   1   1   1   1   1   1   0   1   1   0   0   0   0   0
-## LA   1   1   1   0   1   1   1   1   0   0   0   0   0   0
-## TH   0   1   1   1   1   1   1   1   1   0   0   0   0   0
-## BR   1   0   1   1   1   1   1   1   0   0   0   0   0   0
-## CH   0   0   1   1   1   0   1   0   0   0   0   0   0   0
-## FR   0   0   1   0   1   1   0   1   0   0   0   0   0   0
-## EL   0   0   0   0   1   1   1   1   0   0   0   0   0   0
-## PE   0   0   0   0   0   1   0   1   1   0   0   0   0   0
-## RU   0   0   0   0   1   0   1   1   1   0   0   0   0   0
-## VE   0   0   0   0   0   0   1   1   1   0   0   1   0   0
-## MY   0   0   0   0   0   0   0   1   1   1   0   1   0   0
-## KA   0   0   0   0   0   0   0   1   1   1   0   1   1   1
-## SY   0   0   0   0   0   0   1   1   1   1   0   1   1   1
-## NO   0   0   0   0   0   1   1   0   1   1   1   1   1   1
-## HE   0   0   0   0   0   0   1   1   0   1   1   1   0   0
-## DO   0   0   0   0   0   0   0   1   1   0   0   0   0   0
-## OL   0   0   0   0   0   0   0   0   1   0   1   0   0   0
-## FL   0   0   0   0   0   0   0   0   1   0   1   0   0   0</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="two-mode-networks.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Now draw the network</span></span>
-<span id="cb46-2"><a href="two-mode-networks.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(DSAmS, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
-<span id="cb46-3"><a href="two-mode-networks.html#cb46-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="two-mode-networks.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb43-2"><a href="two-mode-networks.html#cb43-2" aria-hidden="true" tabindex="-1"></a>DSAm <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(</span>
+<span id="cb43-3"><a href="two-mode-networks.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;datasets/Davis_SouthernWomen_Attendance.csv&quot;</span>,</span>
+<span id="cb43-4"><a href="two-mode-networks.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb43-5"><a href="two-mode-networks.html#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="two-mode-networks.html#cb43-6" aria-hidden="true" tabindex="-1"></a>DSAmS<span class="ot">&lt;-</span>DSAm</span>
+<span id="cb43-7"><a href="two-mode-networks.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Change names in new object</span></span>
+<span id="cb43-8"><a href="two-mode-networks.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(DSAmS)<span class="ot">&lt;-</span><span class="fu">substring</span>(<span class="fu">rownames</span>(DSAm),<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb43-9"><a href="two-mode-networks.html#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="two-mode-networks.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Now draw the network</span></span>
+<span id="cb43-11"><a href="two-mode-networks.html#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb43-12"><a href="two-mode-networks.html#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(DSAmS, </span>
+<span id="cb43-13"><a href="two-mode-networks.html#cb43-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
+<span id="cb43-14"><a href="two-mode-networks.html#cb43-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">usearrows=</span><span class="cn">FALSE</span>, </span>
+<span id="cb43-15"><a href="two-mode-networks.html#cb43-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col =</span> <span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb43-16"><a href="two-mode-networks.html#cb43-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>,</span>
+<span id="cb43-17"><a href="two-mode-networks.html#cb43-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb43-18"><a href="two-mode-networks.html#cb43-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex =</span> <span class="fl">0.7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 </div>
 <div id="one-mode-projections" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> One-mode projections</h2>
@@ -518,8 +484,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Compute the transpose of this matrix;</li>
 <li>Multiply the first matrix with the second one to compute two steps paths from a node to another.</li>
 </ol>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="two-mode-networks.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-mode projection</span></span>
-<span id="cb47-2"><a href="two-mode-networks.html#cb47-2" aria-hidden="true" tabindex="-1"></a>DSAmS<span class="sc">%*%</span><span class="fu">t</span>(DSAmS) <span class="co"># Matrix multiplication</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="two-mode-networks.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-mode projection</span></span>
+<span id="cb44-2"><a href="two-mode-networks.html#cb44-2" aria-hidden="true" tabindex="-1"></a>DSAmS<span class="sc">%*%</span><span class="fu">t</span>(DSAmS) <span class="co"># Matrix multiplication</span></span></code></pre></div>
 <pre><code>##    EV LA TH BR CH FR EL PE RU VE MY KA SY NO HE DO OL FL
 ## EV  8  6  7  6  3  4  3  3  3  2  2  2  2  2  1  2  1  1
 ## LA  6  7  6  6  3  4  4  2  3  2  1  1  2  2  2  1  0  0
@@ -539,7 +505,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## DO  2  1  2  1  0  1  1  2  2  2  2  2  2  1  1  2  1  1
 ## OL  1  0  1  0  0  0  0  1  1  1  1  1  1  2  1  1  2  2
 ## FL  1  0  1  0  0  0  0  1  1  1  1  1  1  2  1  1  2  2</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="two-mode-networks.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(DSAmS)<span class="sc">%*%</span>DSAmS <span class="co"># on the other verse</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="two-mode-networks.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(DSAmS)<span class="sc">%*%</span>DSAmS <span class="co"># on the other verse</span></span></code></pre></div>
 <pre><code>##     E01 E02 E03 E04 E05 E06 E07 E08 E09 E10 E11 E12 E13 E14
 ## E01   3   2   3   2   3   3   2   3   1   0   0   0   0   0
 ## E02   2   3   3   2   3   3   2   3   2   0   0   0   0   0
@@ -557,11 +523,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## E14   0   0   0   0   0   1   2   2   3   3   1   3   3   3</code></pre>
 <p><img src="images/10-Two%20mode%20networks/Untitled.png" width="50%" style="display: block; margin: auto;" /></p>
 <aside>
-<p>💡 <em>What is the best approach to represent the level of overlapping?
-- Sum of unique events shared by all actors over the total number of events;
-- Unique events shared over the sum of degrees of all actors;
-- Unique events shared over the minimum degree of all actors;
-- Unique events shared over the maximum degree of all actors;</em></p>
+<p>💡 <em>What is the best approach to represent the level of overlapping?</em></p>
+<ul>
+<li>Sum of unique events shared by all actors over the total number of events;</li>
+<li>Unique events shared over the sum of degrees of all actors;</li>
+<li>Unique events shared over the minimum degree of all actors;</li>
+<li>Unique events shared over the maximum degree of all actors.</li>
+</ul>
 </aside>
 <aside>
 <p>💡 <em>With One-mode projections, we lose data. Check the example below.</em></p>
@@ -576,57 +544,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="density-1" class="section level2" number="10.4">
 <h2><span class="header-section-number">10.4</span> Density</h2>
 <p>To compute the density of a two-mode network, compute the total number of edges and divide it for the maximum number of edges there could be.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="two-mode-networks.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the degree of a two-mode network</span></span>
-<span id="cb51-2"><a href="two-mode-networks.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DSAmS)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="two-mode-networks.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the degree of a two-mode network</span></span>
+<span id="cb48-2"><a href="two-mode-networks.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DSAmS)</span></code></pre></div>
 <pre><code>## [1] 0.3531746</code></pre>
 <p><img src="images/10-Two%20mode%20networks/Untitled%203.png" width="50%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="degree-centrality-2" class="section level2" number="10.5">
 <h2><span class="header-section-number">10.5</span> Degree Centrality</h2>
-<p><img src="images/10-Two%20mode%20networks/Untitled%204.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-63"></span>
+<img src="images/10-Two%20mode%20networks/Untitled%204.png" alt="Example of network with scientists and papers" width="40%" />
+<p class="caption">
+Figure 10.1: Example of network with scientists and papers
+</p>
+</div>
 <p>Consider a network with scientists and papers, where <span class="math inline">\(n_a\)</span> defines the number of scientists and <span class="math inline">\(n_e\)</span> defines the number of papers. It is possible to compute:</p>
 <ul>
 <li><p><em>How many publications (<span class="math inline">\(E\)</span>) does each person (<span class="math inline">\(A\)</span>) have?</em></p>
 <p><span class="math display">\[
   \begin{aligned}
-  A_1 = 1 \\
-  A_2 = A_3 = A_6 = 2 \\
-  A_4 = 3 \\
-  A_5 = 6
+  A_1 &amp;= 1 \\
+  A_2 &amp;= A_3 = A_6 = 2 \\
+  A_4 &amp;= 3 \\
+  A_5 &amp;= 6
   \end{aligned}
   \]</span></p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="two-mode-networks.html#cb53-1" aria-hidden="true" tabindex="-1"></a>scientists_papers<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb53-2"><a href="two-mode-networks.html#cb53-2" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb53-3"><a href="two-mode-networks.html#cb53-3" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb53-4"><a href="two-mode-networks.html#cb53-4" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb53-5"><a href="two-mode-networks.html#cb53-5" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
-<span id="cb53-6"><a href="two-mode-networks.html#cb53-6" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
-<span id="cb53-7"><a href="two-mode-networks.html#cb53-7" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">6</span>,<span class="dv">8</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb53-8"><a href="two-mode-networks.html#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(scientists_papers)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;a2&quot;</span>,<span class="st">&quot;a3&quot;</span>,<span class="st">&quot;a4&quot;</span>,<span class="st">&quot;a5&quot;</span>,<span class="st">&quot;a6&quot;</span>)</span>
-<span id="cb53-9"><a href="two-mode-networks.html#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(scientists_papers)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;e1&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;e3&quot;</span>,<span class="st">&quot;e4&quot;</span>,<span class="st">&quot;e5&quot;</span>,<span class="st">&quot;e6&quot;</span>,<span class="st">&quot;e7&quot;</span>,<span class="st">&quot;e8&quot;</span>)</span>
-<span id="cb53-10"><a href="two-mode-networks.html#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(scientists_papers, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="two-mode-networks.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers) <span class="co"># Scientists Degree</span></span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="two-mode-networks.html#cb50-1" aria-hidden="true" tabindex="-1"></a>scientists_papers<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb50-2"><a href="two-mode-networks.html#cb50-2" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb50-3"><a href="two-mode-networks.html#cb50-3" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb50-4"><a href="two-mode-networks.html#cb50-4" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb50-5"><a href="two-mode-networks.html#cb50-5" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
+<span id="cb50-6"><a href="two-mode-networks.html#cb50-6" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb50-7"><a href="two-mode-networks.html#cb50-7" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">6</span>,<span class="dv">8</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb50-8"><a href="two-mode-networks.html#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(scientists_papers)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;a2&quot;</span>,<span class="st">&quot;a3&quot;</span>,<span class="st">&quot;a4&quot;</span>,<span class="st">&quot;a5&quot;</span>,<span class="st">&quot;a6&quot;</span>)</span>
+<span id="cb50-9"><a href="two-mode-networks.html#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(scientists_papers)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;e1&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;e3&quot;</span>,<span class="st">&quot;e4&quot;</span>,<span class="st">&quot;e5&quot;</span>,<span class="st">&quot;e6&quot;</span>,<span class="st">&quot;e7&quot;</span>,<span class="st">&quot;e8&quot;</span>)</span>
+<span id="cb50-10"><a href="two-mode-networks.html#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(scientists_papers, </span>
+<span id="cb50-11"><a href="two-mode-networks.html#cb50-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
+<span id="cb50-12"><a href="two-mode-networks.html#cb50-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">usearrows=</span><span class="cn">FALSE</span>, </span>
+<span id="cb50-13"><a href="two-mode-networks.html#cb50-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>,</span>
+<span id="cb50-14"><a href="two-mode-networks.html#cb50-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col =</span> <span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb50-15"><a href="two-mode-networks.html#cb50-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex =</span> <span class="dv">1</span>,</span>
+<span id="cb50-16"><a href="two-mode-networks.html#cb50-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="two-mode-networks.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers) <span class="co"># Scientists Degree</span></span></code></pre></div>
 <pre><code>## a1 a2 a3 a4 a5 a6 
 ##  1  2  2  3  6  2</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="two-mode-networks.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(scientists_papers) <span class="co"># Papers Degree</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="two-mode-networks.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(scientists_papers) <span class="co"># Papers Degree</span></span></code></pre></div>
 <pre><code>## e1 e2 e3 e4 e5 e6 e7 e8 
 ##  4  2  2  2  1  1  2  2</code></pre></li>
 <li><p><em>In what proportion of all publications (<span class="math inline">\(E\)</span>) was a person (<span class="math inline">\(A\)</span>) involved?</em></p>
 <p>Divide the previous number for the total number of publications <span class="math inline">\(n_e\)</span> to obtain the proportion of collaboration in all papers.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="two-mode-networks.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of scientists participation in papers</span></span>
-<span id="cb58-2"><a href="two-mode-networks.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers)<span class="sc">/</span><span class="fu">NCOL</span>(scientists_papers)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="two-mode-networks.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of scientists participation in papers</span></span>
+<span id="cb55-2"><a href="two-mode-networks.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers)<span class="sc">/</span><span class="fu">NCOL</span>(scientists_papers)</span></code></pre></div>
 <pre><code>##    a1    a2    a3    a4    a5    a6 
 ## 0.125 0.250 0.250 0.375 0.750 0.250</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="two-mode-networks.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of papers collaboration in scientific community </span></span>
-<span id="cb60-2"><a href="two-mode-networks.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(scientists_papers)<span class="sc">/</span><span class="fu">NROW</span>(scientists_papers)</span></code></pre></div>
-<pre><code>##        e1        e2        e3        e4        e5        e6        e7        e8 
-## 0.6666667 0.3333333 0.3333333 0.3333333 0.1666667 0.1666667 0.3333333 0.3333333</code></pre></li>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="two-mode-networks.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of papers collaboration in scientific community </span></span>
+<span id="cb57-2"><a href="two-mode-networks.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">colSums</span>(scientists_papers)<span class="sc">/</span><span class="fu">NROW</span>(scientists_papers),<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##    e1    e2    e3    e4    e5    e6    e7    e8 
+## 0.667 0.333 0.333 0.333 0.167 0.167 0.333 0.333</code></pre></li>
 <li><p><em>What is <span class="math inline">\(A\)</span>’s total contribution to all publications (<span class="math inline">\(E\)</span>) taking into account the contribution of co-authors?</em></p>
 <p>When computing the proportion, we consider the number of colleagues that collaborate on a specific paper. If a scientist works on more papers at a time (suppose <span class="math inline">\(A_2)\)</span>, we just sum up that proportion. In a short way, compute the proportion of people that worked in a paper and then compute row sums of those proportions.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="two-mode-networks.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get column sum = 1 and row sum equal </span></span>
-<span id="cb62-2"><a href="two-mode-networks.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the total contribution considering coauthors</span></span>
-<span id="cb62-3"><a href="two-mode-networks.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers))</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="two-mode-networks.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get column sum = 1 and row sum equal </span></span>
+<span id="cb59-2"><a href="two-mode-networks.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the total contribution considering coauthors</span></span>
+<span id="cb59-3"><a href="two-mode-networks.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers))</span></code></pre></div>
 <pre><code>##      e1  e2  e3  e4 e5 e6  e7  e8
 ## a1 0.25 0.0 0.0 0.0  0  0 0.0 0.0
 ## a2 0.25 0.0 0.0 0.5  0  0 0.0 0.0
@@ -634,80 +613,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## a4 0.25 0.5 0.5 0.0  0  0 0.0 0.0
 ## a5 0.00 0.0 0.5 0.5  1  1 0.5 0.5
 ## a6 0.00 0.0 0.0 0.0  0  0 0.5 0.5</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="two-mode-networks.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Total contribution to all papers by author</span></span>
-<span id="cb64-2"><a href="two-mode-networks.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(<span class="fu">t</span>(<span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers)))</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="two-mode-networks.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Total contribution to all papers by author</span></span>
+<span id="cb61-2"><a href="two-mode-networks.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(<span class="fu">t</span>(<span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers)))</span></code></pre></div>
 <pre><code>##   a1   a2   a3   a4   a5   a6 
 ## 0.25 0.75 0.75 1.25 4.00 1.00</code></pre></li>
 <li><p><em>What is <span class="math inline">\(A\)</span>’s average contribution to all publications (<span class="math inline">\(E\)</span>) taking into account the contribution of co-authors?</em></p>
 <p>Take the previous value and divide it for the total number of papers in which he/she collaborated (which was the first column).</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="two-mode-networks.html#cb66-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">rowSums</span>(<span class="fu">t</span>(<span class="fu">t</span>(scientists_papers)<span class="sc">/</span></span>
-<span id="cb66-2"><a href="two-mode-networks.html#cb66-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">colSums</span>(scientists_papers))))<span class="sc">/</span></span>
-<span id="cb66-3"><a href="two-mode-networks.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(scientists_papers) <span class="co"># Scientists Degree</span></span></code></pre></div>
-<pre><code>##        a1        a2        a3        a4        a5        a6 
-## 0.2500000 0.3750000 0.3750000 0.4166667 0.6666667 0.5000000</code></pre></li>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="two-mode-networks.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>((</span>
+<span id="cb63-2"><a href="two-mode-networks.html#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(</span>
+<span id="cb63-3"><a href="two-mode-networks.html#cb63-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t</span>(</span>
+<span id="cb63-4"><a href="two-mode-networks.html#cb63-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">t</span>(</span>
+<span id="cb63-5"><a href="two-mode-networks.html#cb63-5" aria-hidden="true" tabindex="-1"></a>        scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers))))<span class="sc">/</span></span>
+<span id="cb63-6"><a href="two-mode-networks.html#cb63-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowSums</span>(scientists_papers),<span class="dv">3</span>) </span></code></pre></div>
+<pre><code>##    a1    a2    a3    a4    a5    a6 
+## 0.250 0.375 0.375 0.417 0.667 0.500</code></pre></li>
 </ul>
-<p><img src="images/10-Two%20mode%20networks/Untitled%205.png" width="50%" style="display: block; margin: auto;" />
-- <em>In total how many unique co-authors does <span class="math inline">\(A\)</span> have?</em>
-1. Number of co-authors</p>
-<pre><code>    Just count the neighbours of the authors, independently from the event $E$, so just consider the one-way projection of the network. We will get the numbers below, noticing that $A_2$ and $A_4$ are the most central nodes in the network. 
-    
-    &lt;aside&gt;
-    $A_1 \quad 3\\
-    A_2 \quad 4\\
-    A_3 \quad 3\\
-    A_4 \quad 4\\
-    A_5 \quad 3\\
-    A_6 \quad 1$
-    
-    &lt;/aside&gt;
-    
-2. Proportion of all authors
-    
-    Divide the number of co-authors by the maximum number obtainable ($N_a -1$). 
-    
-    &lt;aside&gt;
-    $A \quad N\quad P\\
-    A_1 \quad 3 \quad 0.60\\
-    A_2 \quad 4 \quad 0.80\\
-    A_3 \quad 3\quad 0.60\\
-    A_4 \quad 4\quad 0.80\\
-    A_5 \quad 3\quad 0.60\\
-    A_6 \quad 1 \quad 0.20$
-    
-    &lt;/aside&gt;
-    
-3. Number of multiple co-authors
-    
-    *In total how many co-authors does $A$ have on all papers (irrespective of whether they are the same or not, so counting multiple times same people if authors had multiple collaborations)?*
-    
-    &lt;aside&gt;
-    $A \quad N\quad P \quad NM\\
-    A_1 \quad 3 \quad 0.60\quad 3\\
-    A_2 \quad 4 \quad 0.80\quad 4\\
-    A_3 \quad 3\quad 0.60\quad 4\\
-    A_4 \quad 4\quad 0.80\quad 5\\
-    A_5 \quad 3\quad 0.60\quad 4\\
-    A_6 \quad 1 \quad 0.20\quad 2$
-    
-    &lt;/aside&gt;
-    
-4. The average number of co-authors on a paper
-    
-    Divide the number of co-authors (point 1) by the number of papers per author (first column in the original table).  
-    
-    &lt;aside&gt;
-    $A \quad N\quad P \quad Nm\quad NP\\
-    A_1 \quad 3 \quad 0.60\quad 3\quad 3\\
-    A_2 \quad 4 \quad 0.80\quad 4\quad 2\\
-    A_3 \quad 3\quad 0.60\quad 4\quad 2\\
-    A_4 \quad 4\quad 0.80\quad 5\quad 1.33\\
-    A_5 \quad 3\quad 0.60\quad 4\quad 0.67\\
-    A_6 \quad 1 \quad 0.20\quad 2\quad 1$
-    
-    &lt;/aside&gt;
-    
-    The last column may indicate that $A_1, A_2, A_3$ collaborate more, while $A_5$ tends to produce its own ideas. 
-    </code></pre>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-68"></span>
+<img src="images/10-Two%20mode%20networks/Untitled%205.png" alt="Contribution of each author" width="50%" />
+<p class="caption">
+Figure 10.2: Contribution of each author
+</p>
+</div>
+<ul>
+<li><em>In total how many unique co-authors does <span class="math inline">\(A\)</span> have?</em>
+<ol style="list-style-type: decimal">
+<li><p>Number of co-authors</p>
+<p>Just count the neighbours of the authors, independently from the event <span class="math inline">\(E\)</span>, so just consider the one-way projection of the network. We will get the numbers below, noticing that <span class="math inline">\(A_2\)</span> and <span class="math inline">\(A_4\)</span> are the most central nodes in the network.</p>
+<aside>
+<p><span class="math inline">\(A_1 \quad 3\\  A_2 \quad 4\\  A_3 \quad 3\\  A_4 \quad 4\\  A_5 \quad 3\\  A_6 \quad 1\)</span></p>
+</aside></li>
+<li><p>Proportion of all authors</p>
+<p>Divide the number of co-authors by the maximum number obtainable (<span class="math inline">\(N_a -1 = 6-1 = 5\)</span>).</p>
+<aside>
+<p><span class="math inline">\(A \quad N\quad P\\  A_1 \quad 3 \quad 0.60\\  A_2 \quad 4 \quad 0.80\\  A_3 \quad 3\quad 0.60\\  A_4 \quad 4\quad 0.80\\  A_5 \quad 3\quad 0.60\\  A_6 \quad 1 \quad 0.20\)</span></p>
+</aside></li>
+<li><p>Number of multiple co-authors</p>
+<p><em>In total how many co-authors does <span class="math inline">\(A\)</span> have on all papers (irrespective of whether they are the same or not, so counting multiple times same people if authors had multiple collaborations)?</em></p>
+<aside>
+<p><span class="math inline">\(A \quad N\quad P \quad NM\\  A_1 \quad 3 \quad 0.60\quad 3\\  A_2 \quad 4 \quad 0.80\quad 4\\  A_3 \quad 3\quad 0.60\quad 4\\  A_4 \quad 4\quad 0.80\quad 5\\  A_5 \quad 3\quad 0.60\quad 4\\  A_6 \quad 1 \quad 0.20\quad 2\)</span></p>
+</aside></li>
+<li><p>The average number of co-authors on a paper</p>
+<p>Divide the number of co-authors (point 1) by the number of papers per author (first column in the original table).</p>
+<aside>
+<p><span class="math inline">\(A \quad N\quad P \quad Nm\quad NP\\  A_1 \quad 3 \quad 0.60\quad 3\quad 3\\  A_2 \quad 4 \quad 0.80\quad 4\quad 2\\  A_3 \quad 3\quad 0.60\quad 4\quad 2\\  A_4 \quad 4\quad 0.80\quad 5\quad 1.33\\  A_5 \quad 3\quad 0.60\quad 4\quad 0.67\\  A_6 \quad 1 \quad 0.20\quad 2\quad 1\)</span></p>
+</aside>
+<p>The last column may indicate that <span class="math inline">\(A_1, A_2, A_3\)</span> collaborate more, while <span class="math inline">\(A_5\)</span> tends to produce its own ideas.</p></li>
+</ol></li>
+</ul>
 </div>
 <div id="exercise-1" class="section level2" number="10.6">
 <h2><span class="header-section-number">10.6</span> Exercise</h2>
@@ -761,7 +713,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="images/10-Two%20mode%20networks/Untitled%2011.png" width="50%" style="display: block; margin: auto;" /></p>
 <aside>
 <p>💡 <em>For instance, in this example, we would have the projection above, highlighting:
-<span class="math inline">\(A_5 \rightarrow 1/3, A_2=A_3, =A_3=A_4= A_1\rightarrow 1\)</span> .</em></p>
+<span class="math inline">\(A_5 \rightarrow 1/3, A_2=A_3, A_3=A_4= A_1\rightarrow 1\)</span> .</em></p>
 </aside>
 </div>
 <div id="attribute-based-measures" class="section level2" number="10.10">

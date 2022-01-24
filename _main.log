@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.12) (preloaded format=xelatex 2021.1.13)  20 JAN 2022 14:35
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 20.12) (preloaded format=xelatex 2021.1.13)  24 JAN 2022 14:02
 entering extended mode
 **./_main.tex
 (_main.tex
@@ -971,85 +971,75 @@ Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text
 [11]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 💡 in font [lmroman10-italic]:mapping=tex-text;!
 [12]
 Chapter 3.
 Missing character: There is no ⚛ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ️ in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ⚛ in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ️ in font [lmroman10-regular]:mapping=tex-text;!
-File: images/03-Cohesion measures/Untitled.png Graphic file (type bmp)
-<images/03-Cohesion measures/Untitled.png>
+File: _main_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-3-1.pdf>
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ⚛ in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ️ in font [lmroman10-regular]:mapping=tex-text;!
 [13
 
 ]
 Missing character: There is no ⚛ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ️ in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-File: images/03-Cohesion measures/Untitled 1.png Graphic file (type bmp)
-<images/03-Cohesion measures/Untitled 1.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 Missing character: There is no ⚛ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ️ in font [lmroman10-regular]:mapping=tex-text;!
-File: images/03-Cohesion measures/Untitled 2.png Graphic file (type bmp)
-<images/03-Cohesion measures/Untitled 2.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: images/03-Cohesion measures/Untitled 3.png Graphic file (type bmp)
-<images/03-Cohesion measures/Untitled 3.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 Missing character: There is no ⚛ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ️ in font [lmroman10-regular]:mapping=tex-text;!
 [14]
 Missing character: There is no ⚛ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ️ in font [lmroman10-regular]:mapping=tex-text;!
+File: images/03-Cohesion measures/Untitled 2.png Graphic file (type bmp)
+<images/03-Cohesion measures/Untitled 2.png>
+File: images/03-Cohesion measures/Untitled 3.png Graphic file (type bmp)
+<images/03-Cohesion measures/Untitled 3.png>
+Missing character: There is no ⚛ in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ️ in font [lmroman10-regular]:mapping=tex-text;!
 [15]
+Missing character: There is no ⚛ in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ️ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 [16] [17]
 Chapter 4.
 File: images/04-Centrality/Untitled.png Graphic file (type bmp)
 <images/04-Centrality/Untitled.png>
-[18
-
-]
 File: images/04-Centrality/Untitled 1.png Graphic file (type bmp)
 <images/04-Centrality/Untitled 1.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 File: images/04-Centrality/Untitled 2.png Graphic file (type bmp)
 <images/04-Centrality/Untitled 2.png>
-[19]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[18
+
+] [19]
 File: images/04-Centrality/Untitled 3.png Graphic file (type bmp)
 <images/04-Centrality/Untitled 3.png>
 File: images/04-Centrality/Untitled 4.png Graphic file (type bmp)
 <images/04-Centrality/Untitled 4.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [20]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[21]
 File: images/04-Centrality/Untitled 5.png Graphic file (type bmp)
 <images/04-Centrality/Untitled 5.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/04-Centrality/Untitled 6.png Graphic file (type bmp)
 <images/04-Centrality/Untitled 6.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[21] [22]
+[22] [23]
 File: images/04-Centrality/Untitled 7.png Graphic file (type bmp)
 <images/04-Centrality/Untitled 7.png>
-[23]
+[24]
 Chapter 5.
 File: images/05-Matrices and Beta centrality/Untitled.png Graphic file (type bm
 p)
@@ -1057,10 +1047,7 @@ p)
 File: images/05-Matrices and Beta centrality/Untitled 1.png Graphic file (type 
 bmp)
 <images/05-Matrices and Beta centrality/Untitled 1.png>
-
-Underfull \vbox (badness 2158) has occurred while \output is active []
-
-[24
+[25
 
 ]
 File: images/05-Matrices and Beta centrality/Untitled 2.png Graphic file (type 
@@ -1069,42 +1056,46 @@ bmp)
 File: images/05-Matrices and Beta centrality/Untitled 3.png Graphic file (type 
 bmp)
 <images/05-Matrices and Beta centrality/Untitled 3.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+[26]
 File: images/05-Matrices and Beta centrality/Untitled 4.png Graphic file (type 
 bmp)
 <images/05-Matrices and Beta centrality/Untitled 4.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: images/05-Matrices and Beta centrality/Untitled 5.png Graphic file (type 
 bmp)
 <images/05-Matrices and Beta centrality/Untitled 5.png>
+[27]
+Missing character: There is no 𝛽 in font [lmroman10-regular]:mapping=tex-text;!
+File: _main_files/figure-latex/unnamed-chunk-28-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-28-1.pdf>
+[28]
+Missing character: There is no 𝛽 in font [lmroman10-regular]:mapping=tex-text;!
+File: _main_files/figure-latex/unnamed-chunk-29-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-29-1.pdf>
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \vbox (badness 4569) has occurred while \output is active []
 
-[25] [26]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 2846) detected at line 1243
+[29] [30]
+Overfull \hbox (3.70865pt too wide) in paragraph at lines 1428--1428
+[]\TU/lmtt/m/n/10 ##         a         b         c         d         e         
+f         g         h[] 
  []
 
 
-Underfull \vbox (badness 2818) has occurred while \output is active []
+Overfull \hbox (3.70865pt too wide) in paragraph at lines 1428--1428
+[]\TU/lmtt/m/n/10 ## 0.0408331 0.0408331 0.0408331 0.2293779 0.0408331 0.040833
+1 0.0408331 0.2293779[] 
+ []
 
-[27] [28] [29]
+[31]
 Chapter 6.
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/06-Attributes based measures/Untitled.png Graphic file (type bmp)
 <images/06-Attributes based measures/Untitled.png>
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1350.
+               Default added (so using `tbp') on input line 1465.
 
-[30
+[32
 
 ]
 File: images/06-Attributes based measures/Untitled 1.png Graphic file (type bmp
@@ -1116,15 +1107,18 @@ Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text
 File: images/06-Attributes based measures/Untitled 2.png Graphic file (type bmp
 )
 <images/06-Attributes based measures/Untitled 2.png>
-[31]
 File: images/06-Attributes based measures/Untitled 3.png Graphic file (type bmp
 )
 <images/06-Attributes based measures/Untitled 3.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[33]
 File: images/06-Attributes based measures/Untitled 4.png Graphic file (type bmp
 )
 <images/06-Attributes based measures/Untitled 4.png>
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[32]
+[34]
 File: images/06-Attributes based measures/Untitled 5.png Graphic file (type bmp
 )
 <images/06-Attributes based measures/Untitled 5.png>
@@ -1132,9 +1126,9 @@ File: images/06-Attributes based measures/Untitled 6.png Graphic file (type bmp
 )
 <images/06-Attributes based measures/Untitled 6.png>
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[33]
+[35]
 Chapter 7.
-[34
+[36
 
 ]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
@@ -1149,12 +1143,12 @@ mp)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[35]
+[37]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/07-Triads and structural holes/Untitled 2.png Graphic file (type b
 mp)
 <images/07-Triads and structural holes/Untitled 2.png>
-[36]
+[38]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/07-Triads and structural holes/Untitled 3.png Graphic file (type b
 mp)
@@ -1165,37 +1159,37 @@ mp)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[37]
+[39]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[38]
+[40]
 Chapter 8.
+File: _main_files/figure-latex/unnamed-chunk-43-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-43-1.pdf>
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[39
+[41
 
 ]
+Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+[42]
 File: images/08-Metrics for structural holes/Untitled.png Graphic file (type bm
 p)
 <images/08-Metrics for structural holes/Untitled.png>
 File: images/08-Metrics for structural holes/Untitled 1.png Graphic file (type 
 bmp)
 <images/08-Metrics for structural holes/Untitled 1.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[40]
+[43]
 File: images/08-Metrics for structural holes/Untitled 2.png Graphic file (type 
 bmp)
 <images/08-Metrics for structural holes/Untitled 2.png>
 File: images/08-Metrics for structural holes/Untitled 3.png Graphic file (type 
 bmp)
 <images/08-Metrics for structural holes/Untitled 3.png>
-[41]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+[44]
 File: images/08-Metrics for structural holes/Untitled 4.png Graphic file (type 
 bmp)
 <images/08-Metrics for structural holes/Untitled 4.png>
@@ -1203,9 +1197,9 @@ File: images/08-Metrics for structural holes/Untitled 5.png Graphic file (type
 bmp)
 <images/08-Metrics for structural holes/Untitled 5.png>
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \vbox (badness 5133) has occurred while \output is active []
 
-[42]
+[45]
 File: images/08-Metrics for structural holes/Untitled 6.png Graphic file (type 
 bmp)
 <images/08-Metrics for structural holes/Untitled 6.png>
@@ -1213,77 +1207,61 @@ Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text
 File: images/08-Metrics for structural holes/08-constraint_index_example.png Gr
 aphic file (type bmp)
 <images/08-Metrics for structural holes/08-constraint_index_example.png>
-[43] [44]
+[46] [47]
 Chapter 9.
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[45
+[48
 
-] [46]
+] [49]
 Chapter 10.
-[47
+File: _main_files/figure-latex/unnamed-chunk-56-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-56-1.pdf>
 
-]
-File: _main_files/figure-latex/unnamed-chunk-57-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-57-1.pdf>
-[48]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[50
+
+] [51]
 File: images/10-Two mode networks/Untitled.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled.png>
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[49]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/10-Two mode networks/Untitled 1.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 1.png>
 File: images/10-Two mode networks/Untitled 2.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 2.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[52]
 File: images/10-Two mode networks/Untitled 3.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 3.png>
 File: images/10-Two mode networks/Untitled 4.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 4.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[50]
-File: _main_files/figure-latex/unnamed-chunk-65-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-65-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[51]
-Overfull \hbox (28.70865pt too wide) in paragraph at lines 2478--2478
- []\TU/lmtt/m/n/10 ##        e1        e2        e3        e4        e5        
-e6        e7        e8[] 
- []
-
-
-Overfull \hbox (28.70865pt too wide) in paragraph at lines 2478--2478
- []\TU/lmtt/m/n/10 ## 0.6666667 0.3333333 0.3333333 0.3333333 0.1666667 0.16666
-67 0.3333333 0.3333333[] 
- []
-
-[52]
+[53]
+File: _main_files/figure-latex/unnamed-chunk-64-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-64-1.pdf>
+[54]
 File: images/10-Two mode networks/Untitled 5.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 5.png>
-[53]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[55]
 File: images/10-Two mode networks/Untitled 6.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 6.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[56]
 File: images/10-Two mode networks/Untitled 7.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 7.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: images/10-Two mode networks/Untitled 8.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 8.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 File: images/10-Two mode networks/Untitled 9.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 9.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[54]
+[57]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[55]
 File: images/10-Two mode networks/Untitled 10.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 10.png>
 File: images/10-Two mode networks/Untitled 11.png Graphic file (type bmp)
@@ -1291,87 +1269,74 @@ File: images/10-Two mode networks/Untitled 11.png Graphic file (type bmp)
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/10-Two mode networks/Untitled 12.png Graphic file (type bmp)
 <images/10-Two mode networks/Untitled 12.png>
-File: images/10-Two mode networks/Untitled 13.png Graphic file (type bmp)
-<images/10-Two mode networks/Untitled 13.png>
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[56]
-File: images/10-Two mode networks/Untitled 14.png Graphic file (type bmp)
-<images/10-Two mode networks/Untitled 14.png>
-[57]
-Chapter 11.
-Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-File: images/11-Subgroups and Structural Equivalence/Untitled.png Graphic file 
-(type bmp)
-<images/11-Subgroups and Structural Equivalence/Untitled.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-File: images/11-Subgroups and Structural Equivalence/Untitled 1.png Graphic fil
-e (type bmp)
-<images/11-Subgroups and Structural Equivalence/Untitled 1.png>
-[58
+File: images/10-Two mode networks/Untitled 13.png Graphic file (type bmp)
+<images/10-Two mode networks/Untitled 13.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+File: images/10-Two mode networks/Untitled 14.png Graphic file (type bmp)
+<images/10-Two mode networks/Untitled 14.png>
+[58] [59]
+Chapter 11.
+File: _main_files/figure-latex/unnamed-chunk-78-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-78-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[60
 
 ]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+File: images/11-Subgroups and Structural Equivalence/Untitled 1.png Graphic fil
+e (type bmp)
+<images/11-Subgroups and Structural Equivalence/Untitled 1.png>
+Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
+[61]
 File: images/11-Subgroups and Structural Equivalence/12-network.png Graphic fil
 e (type bmp)
 <images/11-Subgroups and Structural Equivalence/12-network.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[59] [60]
+[62]
 File: images/11-Subgroups and Structural Equivalence/Untitled 2.png Graphic fil
 e (type bmp)
 <images/11-Subgroups and Structural Equivalence/Untitled 2.png>
-File: images/11-Subgroups and Structural Equivalence/Untitled 3.png Graphic fil
-e (type bmp)
-<images/11-Subgroups and Structural Equivalence/Untitled 3.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \vbox (badness 1082) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[61]
+[63]
+File: images/11-Subgroups and Structural Equivalence/Untitled 3.png Graphic fil
+e (type bmp)
+<images/11-Subgroups and Structural Equivalence/Untitled 3.png>
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/11-Subgroups and Structural Equivalence/Untitled 4.png Graphic fil
 e (type bmp)
 <images/11-Subgroups and Structural Equivalence/Untitled 4.png>
+[64]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/11-Subgroups and Structural Equivalence/Untitled 5.png Graphic fil
 e (type bmp)
 <images/11-Subgroups and Structural Equivalence/Untitled 5.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[62]
+[65]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/11-Subgroups and Structural Equivalence/Untitled 6.png Graphic fil
 e (type bmp)
 <images/11-Subgroups and Structural Equivalence/Untitled 6.png>
-[63]
 File: images/11-Subgroups and Structural Equivalence/Untitled 7.png Graphic fil
 e (type bmp)
 <images/11-Subgroups and Structural Equivalence/Untitled 7.png>
-File: _main_files/figure-latex/unnamed-chunk-92-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-92-1.pdf>
-File: images/11-Subgroups and Structural Equivalence/Untitled 8.png Graphic fil
-e (type bmp)
-<images/11-Subgroups and Structural Equivalence/Untitled 8.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \vbox (badness 2057) has occurred while \output is active []
-
-[64]
-File: _main_files/figure-latex/unnamed-chunk-94-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-94-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[65]
+[66]
+File: _main_files/figure-latex/unnamed-chunk-90-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-90-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-91-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-91-1.pdf>
+[67]
 File: images/11-Subgroups and Structural Equivalence/Untitled 9.png Graphic fil
 e (type bmp)
 <images/11-Subgroups and Structural Equivalence/Untitled 9.png>
@@ -1382,75 +1347,62 @@ le (type bmp)
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 3180.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 3301.
 
 LaTeX Font Warning: Font shape `TU/lmtt/bx/it' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 3180.
+(Font)              Font shape `TU/lmtt/b/sl' tried instead on input line 3301.
 
 
-File: _main_files/figure-latex/unnamed-chunk-98-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-98-1.pdf>
-File: images/11-Subgroups and Structural Equivalence/Untitled 11.png Graphic fi
-le (type bmp)
-<images/11-Subgroups and Structural Equivalence/Untitled 11.png>
+File: _main_files/figure-latex/unnamed-chunk-95-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-95-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[66]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[67] [68]
+[68] [69]
 Chapter 12.
 File: images/12-Reciprocity and transitivity/Untitled.png Graphic file (type bm
 p)
 <images/12-Reciprocity and transitivity/Untitled.png>
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[69
+[70
 
 ]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[70]
-File: images/12-Reciprocity and transitivity/Untitled 1.png Graphic file (type 
-bmp)
-<images/12-Reciprocity and transitivity/Untitled 1.png>
-File: images/12-Reciprocity and transitivity/Untitled 2.png Graphic file (type 
-bmp)
-<images/12-Reciprocity and transitivity/Untitled 2.png>
+[71]
+File: _main_files/figure-latex/unnamed-chunk-97-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-97-1.pdf>
+[72]
 File: images/12-Reciprocity and transitivity/Untitled 3.png Graphic file (type 
 bmp)
 <images/12-Reciprocity and transitivity/Untitled 3.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[71] [72]
+[73]
 Chapter 13.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 3471.
+(Font)              scaled to size 10.0pt on input line 3583.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 7.0pt on input line 3471.
+(Font)              scaled to size 7.0pt on input line 3583.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 5.0pt on input line 3471.
+(Font)              scaled to size 5.0pt on input line 3583.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 10.00092pt on input line 3471.
+(Font)              scaled to size 10.00092pt on input line 3583.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 7.00064pt on input line 3471.
+(Font)              scaled to size 7.00064pt on input line 3583.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 5.00046pt on input line 3471.
+(Font)              scaled to size 5.00046pt on input line 3583.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 9.99893pt on input line 3471.
+(Font)              scaled to size 9.99893pt on input line 3583.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 6.99925pt on input line 3471.
+(Font)              scaled to size 6.99925pt on input line 3583.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 4.99947pt on input line 3471.
+(Font)              scaled to size 4.99947pt on input line 3583.
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/13-ERGMs/Untitled.png Graphic file (type bmp)
 <images/13-ERGMs/Untitled.png>
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[73
+[74
 
 ]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
@@ -1458,16 +1410,11 @@ File: images/13-ERGMs/Untitled 1.png Graphic file (type bmp)
 <images/13-ERGMs/Untitled 1.png>
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
-[74]
+[75]
 Missing character: There is no 💡 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/13-ERGMs/Untitled 2.png Graphic file (type bmp)
 <images/13-ERGMs/Untitled 2.png>
-[75]
-Overfull \hbox (374.59637pt too wide) detected at line 3652
-[] [] [][]  [] [][][]  [] [][]
- []
-
-[76] [77]
+[76] [77] [78]
 Chapter 14.
 Missing character: There is no 🌐 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 🌐 in font [lmroman10-regular]:mapping=tex-text;!
@@ -1476,7 +1423,7 @@ Missing character: There is no 🌐 in font [lmroman10-regular]:mapping=tex-text
 Missing character: There is no 🚬 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 🌐 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 🚬 in font [lmroman10-regular]:mapping=tex-text;!
-[78
+[79
 
 ]
 File: images/14-Christakis and Valente/Untitled.png Graphic file (type bmp)
@@ -1488,203 +1435,223 @@ Missing character: There is no 🚬 in font [lmroman10-regular]:mapping=tex-text
 Missing character: There is no 😷 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 🚬 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 😷 in font [lmroman10-regular]:mapping=tex-text;!
-[79]
+[80]
 File: images/14-Christakis and Valente/Untitled 1.png Graphic file (type bmp)
 <images/14-Christakis and Valente/Untitled 1.png>
 File: images/14-Christakis and Valente/Untitled 2.png Graphic file (type bmp)
 <images/14-Christakis and Valente/Untitled 2.png>
-[80]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Missing character: There is no 🌐 in font [lmroman10-regular]:mapping=tex-text;!
 File: images/14-Christakis and Valente/Untitled 3.png Graphic file (type bmp)
 <images/14-Christakis and Valente/Untitled 3.png>
-[81]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[81] [82]
 File: images/14-Christakis and Valente/Untitled 4.png Graphic file (type bmp)
 <images/14-Christakis and Valente/Untitled 4.png>
 File: images/14-Christakis and Valente/Untitled 5.png Graphic file (type bmp)
 <images/14-Christakis and Valente/Untitled 5.png>
-[82]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 File: images/14-Christakis and Valente/Untitled 6.png Graphic file (type bmp)
 <images/14-Christakis and Valente/Untitled 6.png>
-[83]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[83] [84]
 Chapter 15.
 Missing character: There is no ❓ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ❓ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ❓ in font [lmroman10-regular]:mapping=tex-text;!
-[84
+[85
 
-] [85]
+] [86]
 Missing character: There is no ❓ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ❓ in font [lmroman10-regular]:mapping=tex-text;!
-[86] [87] [88
+[87] [88] [89
 
 ]
 Chapter 16.
-[89
+[90
 
 ]
-File: _main_files/figure-latex/unnamed-chunk-119-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-119-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-113-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-113-1.pdf>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1248) has occurred while \output is active []
 
-[90]
-File: _main_files/figure-latex/unnamed-chunk-120-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-120-1.pdf>
 [91]
-File: _main_files/figure-latex/unnamed-chunk-121-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-121-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-114-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-114-1.pdf>
 [92]
-File: _main_files/figure-latex/unnamed-chunk-122-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-122-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-115-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-115-1.pdf>
+[93]
+File: _main_files/figure-latex/unnamed-chunk-116-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-116-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 4401--4403
+Underfull \hbox (badness 10000) in paragraph at lines 4507--4509
 [][]
  []
 
-File: _main_files/figure-latex/unnamed-chunk-123-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-123-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-117-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-117-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[93] [94]
-Overfull \hbox (26.83366pt too wide) in paragraph at lines 4477--4479
+[94] [95]
+Overfull \hbox (26.83366pt too wide) in paragraph at lines 4585--4587
 []\TU/lmr/m/n/10 the edge color is given by the mapping color based on their nu
 mber of links: \TU/lmtt/m/n/10 edge.col=WPJ6W.Color\TU/lmr/m/n/10 ; 
  []
 
-File: _main_files/figure-latex/unnamed-chunk-126-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-126-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-120-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-120-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[95] [96]
-File: _main_files/figure-latex/unnamed-chunk-129-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-129-1.pdf>
-File: _main_files/figure-latex/unnamed-chunk-130-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-130-1.pdf>
+[96] [97]
+File: _main_files/figure-latex/unnamed-chunk-123-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-123-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-124-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-124-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[97]
-File: _main_files/figure-latex/unnamed-chunk-131-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-131-1.pdf>
+[98]
+File: _main_files/figure-latex/unnamed-chunk-125-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-125-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 4605--4607
+Underfull \hbox (badness 10000) in paragraph at lines 4715--4717
 [][]
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[98] [99]
-File: _main_files/figure-latex/unnamed-chunk-133-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-133-1.pdf>
-[100]
-File: _main_files/figure-latex/unnamed-chunk-134-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-134-1.pdf>
+[99] [100]
+File: _main_files/figure-latex/unnamed-chunk-127-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-127-1.pdf>
 [101]
-File: _main_files/figure-latex/unnamed-chunk-135-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-135-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-128-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-128-1.pdf>
+
+Overfull \vbox (0.9023pt too high) detected at line 4858
+ []
+
+[102]
+File: _main_files/figure-latex/unnamed-chunk-129-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-129-1.pdf>
+
+Underfull \vbox (badness 2828) has occurred while \output is active []
+
+[103]
+Underfull \vbox (badness 1867) has occurred while \output is active []
+
+[104]
+File: _main_files/figure-latex/unnamed-chunk-130-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-130-1.pdf>
+[105]
+File: _main_files/figure-latex/unnamed-chunk-131-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-131-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-131-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-131-2.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[102] [103]
+[106]
+File: _main_files/figure-latex/unnamed-chunk-132-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-132-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[107]
+File: _main_files/figure-latex/unnamed-chunk-133-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-133-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[108]
+Overfull \vbox (1.58939pt too high) detected at line 5113
+ []
+
+[109]
+File: _main_files/figure-latex/unnamed-chunk-134-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-134-1.pdf>
+[110]
 File: _main_files/figure-latex/unnamed-chunk-136-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-136-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[104] [105]
+[111]
 File: _main_files/figure-latex/unnamed-chunk-137-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-137-1.pdf>
-File: _main_files/figure-latex/unnamed-chunk-137-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-137-2.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[106]
-File: _main_files/figure-latex/unnamed-chunk-138-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-138-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[107]
+[112]
 File: _main_files/figure-latex/unnamed-chunk-139-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-139-1.pdf>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 5267
+ []
 
-[108]
-File: _main_files/figure-latex/unnamed-chunk-140-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-140-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[109] [110]
-File: _main_files/figure-latex/unnamed-chunk-142-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-142-1.pdf>
-[111]
-File: _main_files/figure-latex/unnamed-chunk-143-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-143-1.pdf>
-[112]
-File: _main_files/figure-latex/unnamed-chunk-145-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-145-1.pdf>
-File: _main_files/figure-latex/unnamed-chunk-146-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-146-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [113]
-File: _main_files/figure-latex/unnamed-chunk-147-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-147-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-140-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-140-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-141-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-141-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [114]
-File: _main_files/figure-latex/unnamed-chunk-148-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-148-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-142-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-142-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [115]
-File: _main_files/figure-latex/unnamed-chunk-151-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-151-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-145-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-145-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [116] [117]
 Chapter 17.
-File: _main_files/figure-latex/unnamed-chunk-152-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-152-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-146-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-146-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [118
 
 ]
-Underfull \vbox (badness 10000) detected at line 5318
+Underfull \vbox (badness 10000) detected at line 5420
  []
 
 
-Overfull \vbox (1.52939pt too high) detected at line 5318
+Overfull \vbox (1.52939pt too high) detected at line 5420
  []
 
 [119]
-File: _main_files/figure-latex/unnamed-chunk-153-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-153-1.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 5320--5322
-[][]
- []
-
-File: _main_files/figure-latex/unnamed-chunk-154-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-154-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-147-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-147-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-148-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-148-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [120]
-File: _main_files/figure-latex/unnamed-chunk-155-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-155-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-149-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-149-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1696,106 +1663,99 @@ Chapter 18.
 [126
 
 ]
+File: _main_files/figure-latex/unnamed-chunk-155-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-155-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[127] [128] [129]
+File: _main_files/figure-latex/unnamed-chunk-158-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-158-1.pdf>
+[130]
+File: _main_files/figure-latex/unnamed-chunk-160-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-160-1.pdf>
+[131]
+File: _main_files/figure-latex/unnamed-chunk-160-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-160-2.pdf>
 File: _main_files/figure-latex/unnamed-chunk-161-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-161-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[127] [128] [129]
-File: _main_files/figure-latex/unnamed-chunk-164-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-164-1.pdf>
-[130]
-File: _main_files/figure-latex/unnamed-chunk-166-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-166-1.pdf>
-[131]
-File: _main_files/figure-latex/unnamed-chunk-166-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-166-2.pdf>
-File: _main_files/figure-latex/unnamed-chunk-167-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-167-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 [132] [133]
 Chapter 19.
-File: _main_files/figure-latex/unnamed-chunk-168-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-168-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-162-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-162-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [134
 
 ] [135]
-File: _main_files/figure-latex/unnamed-chunk-170-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-170-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-164-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-164-1.pdf>
 [136]
-File: _main_files/figure-latex/unnamed-chunk-171-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-171-1.pdf>
-File: _main_files/figure-latex/unnamed-chunk-172-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-172-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-165-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-165-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-166-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-166-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [137]
-Overfull \hbox (3.70865pt too wide) in paragraph at lines 6238--6238
+Overfull \hbox (3.70865pt too wide) in paragraph at lines 6360--6360
 []\TU/lmtt/m/n/10 ##        e1        e2        e3        e4        e5        e
 6        e7        e8[] 
  []
 
 
-Overfull \hbox (3.70865pt too wide) in paragraph at lines 6238--6238
+Overfull \hbox (3.70865pt too wide) in paragraph at lines 6360--6360
 []\TU/lmtt/m/n/10 ## 0.6666667 0.3333333 0.3333333 0.3333333 0.1666667 0.166666
 7 0.3333333 0.3333333[] 
  []
 
 [138] [139]
 Chapter 20.
-File: _main_files/figure-latex/unnamed-chunk-176-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-176-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-170-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-170-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [140
 
 ] [141]
-File: _main_files/figure-latex/unnamed-chunk-179-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-179-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-173-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-173-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-175-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-175-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[142]
-File: _main_files/figure-latex/unnamed-chunk-181-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-181-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[143] [144]
+[142] [143]
 Chapter 21.
-[145
-
-] [146]
-Chapter 22.
-File: _main_files/figure-latex/unnamed-chunk-191-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-191-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[147
+[144
 
 ]
-File: _main_files/figure-latex/unnamed-chunk-191-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-191-2.pdf>
-[148] (_main.aux)
+File: _main_files/figure-latex/unnamed-chunk-185-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-185-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[145]
+File: _main_files/figure-latex/unnamed-chunk-185-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-185-2.pdf>
+[146] (_main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20689 strings out of 412095
- 390974 string characters out of 2847043
- 884893 words of memory out of 3000000
- 39945 multiletter control sequences out of 15000+200000
+ 20669 strings out of 412095
+ 389204 string characters out of 2847043
+ 882824 words of memory out of 3000000
+ 39919 multiletter control sequences out of 15000+200000
  411406 words of font info for 98 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
- 94i,13n,118p,707b,482s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 94i,13n,118p,707b,543s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on _main.pdf (148 pages).
+Output written on _main.pdf (146 pages).

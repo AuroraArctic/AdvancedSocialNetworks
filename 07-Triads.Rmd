@@ -1,6 +1,5 @@
 # Triads and structural holes
 
-
 *Aim: Focus on the individual level, in particular on triads (groups of three people).*  
 
 ## Social Capital
@@ -10,7 +9,7 @@
 
 > 
 - **Social capital:** seen as social relations and networks;
-- Capital: can be financial, human, cultural etc. We can define also who owns it;
+- **Capital**: can be financial, human, cultural etc. We can define also who owns it;
 - **Competitive Advantage**: it means that who detains it has some benefits; whenever there are no more benefits related to a relationship, we talk about social liabilities. Benefits tend to have a positive effect on the entire network (i.e. tautology).
 
 - Individuals benefits from social capital
@@ -90,7 +89,7 @@ In this theory, we do not focus on positive/negative ties, but on their strength
 
 A **forbidden triad** is defined as a combination of two strong ties and a missing tie that links the missing two nodes. 
 
-Consider the following example, we can detect three communities, with no structural bridge with strong ties. Weak ties are important because of the cross social circles to get unique information. This means that information is spread between social circles via weak ties. 
+Consider the following example, we can detect three communities, with no structural bridge with strong ties. Weak ties are important because they cross social circles to get unique information. This means that information is spread between social circles via weak ties. 
 
 About the importance of acquaintances in social networks:
 
@@ -176,10 +175,12 @@ Information only reaches the direct contacts of a person.
 
 <aside>
 💡 We want to reach as many people as possible and we can choose the persons to which we can communicate the information. Who would we choose?
-1 person: 7
-2 persons: 9, 4 
-3 persons: 12, 2, 16, to reach everyone except for 18
-4 persons: 12, 42 16, 18
+
+- 1 person: 7
+- 2 persons: 9, 4 
+- 3 persons: 12, 2, 16, to reach everyone except for 18
+- 4 persons: 12, 42 16, 18
+
 We're trying to choose non redundant links to reach as many nodes as possible. 
 What if we remove these nodes? Will we still be able to reach them all? Without 9, 7 and 4, we will have three clusters, guided by 12, 2 and 16.
 

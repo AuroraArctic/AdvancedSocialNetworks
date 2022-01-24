@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -448,22 +449,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="statistics-about-network" class="section level1" number="18">
 <h1><span class="header-section-number">Chapter 18</span> Statistics about network</h1>
-<div id="florentine-families" class="section level2" number="18.1">
+<div id="florentine-families-1" class="section level2" number="18.1">
 <h2><span class="header-section-number">18.1</span> Florentine Families</h2>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="statistics-about-network.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries import</span></span>
-<span id="cb168-2"><a href="statistics-about-network.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
-<span id="cb168-3"><a href="statistics-about-network.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb168-4"><a href="statistics-about-network.html#cb168-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-5"><a href="statistics-about-network.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Data import</span></span>
-<span id="cb168-6"><a href="statistics-about-network.html#cb168-6" aria-hidden="true" tabindex="-1"></a>PFM<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Padgett_FlorentineFamilies_Marriage.csv&quot;</span>,</span>
-<span id="cb168-7"><a href="statistics-about-network.html#cb168-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
-<span id="cb168-8"><a href="statistics-about-network.html#cb168-8" aria-hidden="true" tabindex="-1"></a>PFA<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Padgett_FlorentineFamilies_Attributes.csv&quot;</span>,</span>
-<span id="cb168-9"><a href="statistics-about-network.html#cb168-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
-<span id="cb168-10"><a href="statistics-about-network.html#cb168-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-11"><a href="statistics-about-network.html#cb168-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting the matrix into network</span></span>
-<span id="cb168-12"><a href="statistics-about-network.html#cb168-12" aria-hidden="true" tabindex="-1"></a>PFMn<span class="ot">&lt;-</span><span class="fu">as.network</span>(PFM, <span class="at">directed=</span>F)</span>
-<span id="cb168-13"><a href="statistics-about-network.html#cb168-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb168-14"><a href="statistics-about-network.html#cb168-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PFMn)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="statistics-about-network.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries import</span></span>
+<span id="cb161-2"><a href="statistics-about-network.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb161-3"><a href="statistics-about-network.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb161-4"><a href="statistics-about-network.html#cb161-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-5"><a href="statistics-about-network.html#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Data import</span></span>
+<span id="cb161-6"><a href="statistics-about-network.html#cb161-6" aria-hidden="true" tabindex="-1"></a>PFM<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;datasets/Padgett_FlorentineFamilies_Marriage.csv&quot;</span>,</span>
+<span id="cb161-7"><a href="statistics-about-network.html#cb161-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb161-8"><a href="statistics-about-network.html#cb161-8" aria-hidden="true" tabindex="-1"></a>PFA<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;datasets/Padgett_FlorentineFamilies_Attributes.csv&quot;</span>,</span>
+<span id="cb161-9"><a href="statistics-about-network.html#cb161-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb161-10"><a href="statistics-about-network.html#cb161-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-11"><a href="statistics-about-network.html#cb161-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting the matrix into network</span></span>
+<span id="cb161-12"><a href="statistics-about-network.html#cb161-12" aria-hidden="true" tabindex="-1"></a>PFMn<span class="ot">&lt;-</span><span class="fu">as.network</span>(PFM, <span class="at">directed=</span>F)</span>
+<span id="cb161-13"><a href="statistics-about-network.html#cb161-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-14"><a href="statistics-about-network.html#cb161-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PFMn)</span></code></pre></div>
 <pre><code>## Network attributes:
 ##   vertices = 16
 ##   directed = FALSE
@@ -505,59 +506,116 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [18,]   15   11
 ## [19,]   15   13
 ## [20,]   16   13</code></pre>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="statistics-about-network.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Working on nodes colors...</span></span>
-<span id="cb170-2"><a href="statistics-about-network.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Defining the number of colors necessary to map wealth </span></span>
-<span id="cb170-3"><a href="statistics-about-network.html#cb170-3" aria-hidden="true" tabindex="-1"></a>n_colors<span class="ot">&lt;-</span><span class="fu">max</span>(PFA<span class="sc">$</span>Priors)<span class="sc">-</span><span class="fu">min</span>(PFA<span class="sc">$</span>Priors)<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb170-4"><a href="statistics-about-network.html#cb170-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-5"><a href="statistics-about-network.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Create a function to generate a palette</span></span>
-<span id="cb170-6"><a href="statistics-about-network.html#cb170-6" aria-hidden="true" tabindex="-1"></a>colfunc <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#B78FB3&quot;</span>, <span class="st">&quot;#22BFAC&quot;</span>))</span>
-<span id="cb170-7"><a href="statistics-about-network.html#cb170-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-8"><a href="statistics-about-network.html#cb170-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate range</span></span>
-<span id="cb170-9"><a href="statistics-about-network.html#cb170-9" aria-hidden="true" tabindex="-1"></a>vertex_color<span class="ot">&lt;-</span><span class="fu">colfunc</span>(n_colors)[PFA<span class="sc">$</span>Priors<span class="sc">-</span><span class="fu">min</span>(PFA<span class="sc">$</span>Priors)<span class="sc">+</span><span class="dv">1</span>]</span>
-<span id="cb170-10"><a href="statistics-about-network.html#cb170-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-11"><a href="statistics-about-network.html#cb170-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb170-12"><a href="statistics-about-network.html#cb170-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the families based on their wealth</span></span>
-<span id="cb170-13"><a href="statistics-about-network.html#cb170-13" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(PFMn, </span>
-<span id="cb170-14"><a href="statistics-about-network.html#cb170-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
-<span id="cb170-15"><a href="statistics-about-network.html#cb170-15" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
-<span id="cb170-16"><a href="statistics-about-network.html#cb170-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
-<span id="cb170-17"><a href="statistics-about-network.html#cb170-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
-<span id="cb170-18"><a href="statistics-about-network.html#cb170-18" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
-<span id="cb170-19"><a href="statistics-about-network.html#cb170-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>,</span>
-<span id="cb170-20"><a href="statistics-about-network.html#cb170-20" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
-<span id="cb170-21"><a href="statistics-about-network.html#cb170-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>vertex_color,</span>
-<span id="cb170-22"><a href="statistics-about-network.html#cb170-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>PFA<span class="sc">$</span>Wealth<span class="sc">/</span><span class="dv">80</span><span class="sc">+</span><span class="dv">1</span>,</span>
-<span id="cb170-23"><a href="statistics-about-network.html#cb170-23" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
-<span id="cb170-24"><a href="statistics-about-network.html#cb170-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
-<span id="cb170-25"><a href="statistics-about-network.html#cb170-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
-<span id="cb170-26"><a href="statistics-about-network.html#cb170-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="statistics-about-network.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree</span></span>
-<span id="cb171-2"><a href="statistics-about-network.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>), <span class="fu">rownames</span>(PFM))</span></code></pre></div>
-<pre><code>##              sna::degree(PFMn, gmode = &quot;graph&quot;)
-## ACCIAIUOLI                                    1
-## ALBIZZI                                       3
-## BARBADORI                                     2
-## BISCHERI                                      3
-## CASTELLANI                                    3
-## GINORI                                        1
-## GUADAGNI                                      4
-## LAMBERTESCHI                                  1
-## MEDICI                                        6
-## PAZZI                                         1
-## PERUZZI                                       3
-## PUCCI                                         0
-## RIDOLFI                                       3
-## SALVIATI                                      2
-## STROZZI                                       4
-## TORNABUONI                                    3</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="statistics-about-network.html#cb173-1" aria-hidden="true" tabindex="-1"></a>PFMn.Deg<span class="ot">&lt;-</span>sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="statistics-about-network.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="do">############################</span></span>
-<span id="cb174-2"><a href="statistics-about-network.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="co"># STATISTICAL TESTS</span></span>
-<span id="cb174-3"><a href="statistics-about-network.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="do">############################</span></span>
-<span id="cb174-4"><a href="statistics-about-network.html#cb174-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-5"><a href="statistics-about-network.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation test between degree and priors</span></span>
-<span id="cb174-6"><a href="statistics-about-network.html#cb174-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFMn.Deg,PFA<span class="sc">$</span>Priors) <span class="co"># positive correlation</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="statistics-about-network.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Working on nodes colors...</span></span>
+<span id="cb163-2"><a href="statistics-about-network.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Defining the number of colors necessary to map wealth </span></span>
+<span id="cb163-3"><a href="statistics-about-network.html#cb163-3" aria-hidden="true" tabindex="-1"></a>n_colors<span class="ot">&lt;-</span><span class="fu">max</span>(PFA<span class="sc">$</span>Priors)<span class="sc">-</span><span class="fu">min</span>(PFA<span class="sc">$</span>Priors)<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb163-4"><a href="statistics-about-network.html#cb163-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-5"><a href="statistics-about-network.html#cb163-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Create a function to generate a palette</span></span>
+<span id="cb163-6"><a href="statistics-about-network.html#cb163-6" aria-hidden="true" tabindex="-1"></a>colfunc <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#B78FB3&quot;</span>, <span class="st">&quot;#22BFAC&quot;</span>))</span>
+<span id="cb163-7"><a href="statistics-about-network.html#cb163-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-8"><a href="statistics-about-network.html#cb163-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Generate range</span></span>
+<span id="cb163-9"><a href="statistics-about-network.html#cb163-9" aria-hidden="true" tabindex="-1"></a>vertex_color<span class="ot">&lt;-</span><span class="fu">colfunc</span>(n_colors)[PFA<span class="sc">$</span>Priors<span class="sc">-</span><span class="fu">min</span>(PFA<span class="sc">$</span>Priors)<span class="sc">+</span><span class="dv">1</span>]</span>
+<span id="cb163-10"><a href="statistics-about-network.html#cb163-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-11"><a href="statistics-about-network.html#cb163-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb163-12"><a href="statistics-about-network.html#cb163-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the families based on their wealth</span></span>
+<span id="cb163-13"><a href="statistics-about-network.html#cb163-13" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(PFMn, </span>
+<span id="cb163-14"><a href="statistics-about-network.html#cb163-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb163-15"><a href="statistics-about-network.html#cb163-15" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb163-16"><a href="statistics-about-network.html#cb163-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb163-17"><a href="statistics-about-network.html#cb163-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb163-18"><a href="statistics-about-network.html#cb163-18" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb163-19"><a href="statistics-about-network.html#cb163-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey70&quot;</span>,</span>
+<span id="cb163-20"><a href="statistics-about-network.html#cb163-20" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb163-21"><a href="statistics-about-network.html#cb163-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>vertex_color,</span>
+<span id="cb163-22"><a href="statistics-about-network.html#cb163-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>PFA<span class="sc">$</span>Wealth<span class="sc">/</span><span class="dv">80</span><span class="sc">+</span><span class="dv">1</span>,</span>
+<span id="cb163-23"><a href="statistics-about-network.html#cb163-23" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb163-24"><a href="statistics-about-network.html#cb163-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb163-25"><a href="statistics-about-network.html#cb163-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb163-26"><a href="statistics-about-network.html#cb163-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="statistics-about-network.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Degree</span></span>
+<span id="cb164-2"><a href="statistics-about-network.html#cb164-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">as.data.frame</span>(sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>), <span class="fu">rownames</span>(PFM)))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">sna::degree(PFMn, gmode = “graph”)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ACCIAIUOLI</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">ALBIZZI</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">BARBADORI</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">BISCHERI</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">CASTELLANI</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">GINORI</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">GUADAGNI</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">LAMBERTESCHI</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">MEDICI</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="left">PAZZI</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">PERUZZI</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">PUCCI</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">RIDOLFI</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">SALVIATI</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">STROZZI</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">TORNABUONI</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="statistics-about-network.html#cb165-1" aria-hidden="true" tabindex="-1"></a>PFMn.Deg<span class="ot">&lt;-</span>sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="statistics-about-network.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="do">############################</span></span>
+<span id="cb166-2"><a href="statistics-about-network.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="co"># STATISTICAL TESTS</span></span>
+<span id="cb166-3"><a href="statistics-about-network.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="do">############################</span></span>
+<span id="cb166-4"><a href="statistics-about-network.html#cb166-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-5"><a href="statistics-about-network.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation test between degree and priors</span></span>
+<span id="cb166-6"><a href="statistics-about-network.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFMn.Deg,PFA<span class="sc">$</span>Priors) <span class="co"># positive correlation</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -569,9 +627,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##       cor 
 ## 0.5480948</code></pre>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="statistics-about-network.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Linear Model</span></span>
-<span id="cb176-2"><a href="statistics-about-network.html#cb176-2" aria-hidden="true" tabindex="-1"></a>M1<span class="ot">&lt;-</span><span class="fu">lm</span>(PFMn.Deg<span class="sc">~</span>PFA<span class="sc">$</span>Priors) </span>
-<span id="cb176-3"><a href="statistics-about-network.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M1)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="statistics-about-network.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Linear Model</span></span>
+<span id="cb168-2"><a href="statistics-about-network.html#cb168-2" aria-hidden="true" tabindex="-1"></a>M1<span class="ot">&lt;-</span><span class="fu">lm</span>(PFMn.Deg<span class="sc">~</span>PFA<span class="sc">$</span>Priors) </span>
+<span id="cb168-3"><a href="statistics-about-network.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = PFMn.Deg ~ PFA$Priors)
@@ -590,59 +648,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 1.303 on 14 degrees of freedom
 ## Multiple R-squared:  0.3004, Adjusted R-squared:  0.2504 
 ## F-statistic: 6.012 on 1 and 14 DF,  p-value: 0.02794</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="statistics-about-network.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PERMUTATION BASED APPROACH</span></span>
-<span id="cb178-2"><a href="statistics-about-network.html#cb178-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-3"><a href="statistics-about-network.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Data preparation</span></span>
-<span id="cb178-4"><a href="statistics-about-network.html#cb178-4" aria-hidden="true" tabindex="-1"></a>PFA.P<span class="ot">&lt;-</span>PFA<span class="sc">$</span>Priors</span>
-<span id="cb178-5"><a href="statistics-about-network.html#cb178-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(PFA.P) <span class="co"># Sample of priors with no replacement</span></span></code></pre></div>
-<pre><code>##  [1]  0 42  0  0 53  0 53 65 35  0 12  0 22 38 74 21</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="statistics-about-network.html#cb180-1" aria-hidden="true" tabindex="-1"></a>sample_matrix<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="cn">NA</span>,<span class="dv">1000</span>,<span class="dv">1</span>) <span class="co"># Initializing the matrix</span></span>
-<span id="cb180-2"><a href="statistics-about-network.html#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-3"><a href="statistics-about-network.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>))</span>
-<span id="cb180-4"><a href="statistics-about-network.html#cb180-4" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb180-5"><a href="statistics-about-network.html#cb180-5" aria-hidden="true" tabindex="-1"></a>  PFA.P_PERM<span class="ot">&lt;-</span><span class="fu">sample</span>(PFA.P) <span class="co"># Permutation of Priors</span></span>
-<span id="cb180-6"><a href="statistics-about-network.html#cb180-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute correlation between degree and Priors permuted</span></span>
-<span id="cb180-7"><a href="statistics-about-network.html#cb180-7" aria-hidden="true" tabindex="-1"></a>  sample_matrix[k,<span class="dv">1</span>]<span class="ot">&lt;-</span><span class="fu">cor</span>(PFMn.Deg,PFA.P_PERM) </span>
-<span id="cb180-8"><a href="statistics-about-network.html#cb180-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb180-9"><a href="statistics-about-network.html#cb180-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-10"><a href="statistics-about-network.html#cb180-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Information of the Matrix with correlations</span></span>
-<span id="cb180-11"><a href="statistics-about-network.html#cb180-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sample_matrix)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="statistics-about-network.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PERMUTATION BASED APPROACH</span></span>
+<span id="cb170-2"><a href="statistics-about-network.html#cb170-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-3"><a href="statistics-about-network.html#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Data preparation</span></span>
+<span id="cb170-4"><a href="statistics-about-network.html#cb170-4" aria-hidden="true" tabindex="-1"></a>PFA.P<span class="ot">&lt;-</span>PFA<span class="sc">$</span>Priors</span>
+<span id="cb170-5"><a href="statistics-about-network.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(PFA.P) <span class="co"># Sample of priors with no replacement</span></span></code></pre></div>
+<pre><code>##  [1]  0 42 65 38 53 21  0  0  0 12 22  0 53 35  0 74</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="statistics-about-network.html#cb172-1" aria-hidden="true" tabindex="-1"></a>sample_matrix<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="cn">NA</span>,<span class="dv">1000</span>,<span class="dv">1</span>) <span class="co"># Initializing the matrix</span></span>
+<span id="cb172-2"><a href="statistics-about-network.html#cb172-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-3"><a href="statistics-about-network.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>))</span>
+<span id="cb172-4"><a href="statistics-about-network.html#cb172-4" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb172-5"><a href="statistics-about-network.html#cb172-5" aria-hidden="true" tabindex="-1"></a>  PFA.P_PERM<span class="ot">&lt;-</span><span class="fu">sample</span>(PFA.P) <span class="co"># Permutation of Priors</span></span>
+<span id="cb172-6"><a href="statistics-about-network.html#cb172-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute correlation between degree and Priors permuted</span></span>
+<span id="cb172-7"><a href="statistics-about-network.html#cb172-7" aria-hidden="true" tabindex="-1"></a>  sample_matrix[k,<span class="dv">1</span>]<span class="ot">&lt;-</span><span class="fu">cor</span>(PFMn.Deg,PFA.P_PERM) </span>
+<span id="cb172-8"><a href="statistics-about-network.html#cb172-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb172-9"><a href="statistics-about-network.html#cb172-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-10"><a href="statistics-about-network.html#cb172-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Information of the Matrix with correlations</span></span>
+<span id="cb172-11"><a href="statistics-about-network.html#cb172-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sample_matrix)</span></code></pre></div>
 <pre><code>##        V1           
-##  Min.   :-0.686615  
-##  1st Qu.:-0.184693  
-##  Median :-0.005985  
-##  Mean   :-0.005204  
-##  3rd Qu.: 0.168875  
-##  Max.   : 0.734498</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="statistics-about-network.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plotting the correlation trend among samplings</span></span>
-<span id="cb182-2"><a href="statistics-about-network.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb182-3"><a href="statistics-about-network.html#cb182-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_matrix, <span class="at">breaks=</span><span class="dv">50</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="statistics-about-network.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sum </span></span>
-<span id="cb183-2"><a href="statistics-about-network.html#cb183-2" aria-hidden="true" tabindex="-1"></a>(corRealValue<span class="ot">&lt;-</span><span class="fu">cor</span>(PFMn.Deg,PFA<span class="sc">$</span>Priors)) <span class="co"># Actual correlation with no sampling</span></span></code></pre></div>
+##  Min.   :-0.609659  
+##  1st Qu.:-0.185549  
+##  Median :-0.010261  
+##  Mean   : 0.002817  
+##  3rd Qu.: 0.181273  
+##  Max.   : 0.840526</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="statistics-about-network.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plotting the correlation trend among samplings</span></span>
+<span id="cb174-2"><a href="statistics-about-network.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb174-3"><a href="statistics-about-network.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_matrix, <span class="at">breaks=</span><span class="dv">50</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="statistics-about-network.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Sum </span></span>
+<span id="cb175-2"><a href="statistics-about-network.html#cb175-2" aria-hidden="true" tabindex="-1"></a>(corRealValue<span class="ot">&lt;-</span><span class="fu">cor</span>(PFMn.Deg,PFA<span class="sc">$</span>Priors)) <span class="co"># Actual correlation with no sampling</span></span></code></pre></div>
 <pre><code>## [1] 0.5480948</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="statistics-about-network.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&gt;=</span>corRealValue)<span class="sc">/</span><span class="dv">1000</span> <span class="co"># Mean correlation above actual cor</span></span></code></pre></div>
-<pre><code>## [1] 0.018</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="statistics-about-network.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&lt;=-</span>corRealValue)<span class="sc">/</span><span class="dv">1000</span> <span class="co"># Mean correlation below actual cor</span></span></code></pre></div>
-<pre><code>## [1] 0.014</code></pre>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="statistics-about-network.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summing them</span></span>
-<span id="cb189-2"><a href="statistics-about-network.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&gt;=</span>corRealValue)<span class="sc">/</span><span class="dv">1000</span> <span class="sc">+</span> <span class="fu">sum</span>(sample_matrix<span class="sc">&lt;=-</span>corRealValue)<span class="sc">/</span><span class="dv">1000</span></span></code></pre></div>
-<pre><code>## [1] 0.032</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="statistics-about-network.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Consinder the absolute number of correlation</span></span>
-<span id="cb191-2"><a href="statistics-about-network.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&gt;=</span><span class="fu">abs</span>(corRealValue))<span class="sc">/</span><span class="dv">1000</span></span></code></pre></div>
-<pre><code>## [1] 0.018</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="statistics-about-network.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&lt;=-</span><span class="fu">abs</span>(corRealValue))<span class="sc">/</span><span class="dv">1000</span></span></code></pre></div>
-<pre><code>## [1] 0.014</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="statistics-about-network.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&gt;=</span><span class="fu">abs</span>(corRealValue))<span class="sc">/</span><span class="dv">1000</span> <span class="sc">+</span> <span class="fu">sum</span>(sample_matrix<span class="sc">&lt;=-</span><span class="fu">abs</span>(corRealValue))<span class="sc">/</span><span class="dv">1000</span></span></code></pre></div>
-<pre><code>## [1] 0.032</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="statistics-about-network.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SPECIFIC DATA SAMPLING</span></span>
-<span id="cb197-2"><a href="statistics-about-network.html#cb197-2" aria-hidden="true" tabindex="-1"></a>x1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">0</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">7</span>)</span>
-<span id="cb197-3"><a href="statistics-about-network.html#cb197-3" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
-<span id="cb197-4"><a href="statistics-about-network.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1,y1)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="statistics-about-network.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x1,y1)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="statistics-about-network.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&gt;=</span>corRealValue)<span class="sc">/</span><span class="dv">1000</span> <span class="co"># Mean correlation above actual cor</span></span></code></pre></div>
+<pre><code>## [1] 0.019</code></pre>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="statistics-about-network.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&lt;=-</span>corRealValue)<span class="sc">/</span><span class="dv">1000</span> <span class="co"># Mean correlation below actual cor</span></span></code></pre></div>
+<pre><code>## [1] 0.008</code></pre>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="statistics-about-network.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summing them</span></span>
+<span id="cb181-2"><a href="statistics-about-network.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&gt;=</span>corRealValue)<span class="sc">/</span><span class="dv">1000</span> <span class="sc">+</span> <span class="fu">sum</span>(sample_matrix<span class="sc">&lt;=-</span>corRealValue)<span class="sc">/</span><span class="dv">1000</span></span></code></pre></div>
+<pre><code>## [1] 0.027</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="statistics-about-network.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Consinder the absolute number of correlation</span></span>
+<span id="cb183-2"><a href="statistics-about-network.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&gt;=</span><span class="fu">abs</span>(corRealValue))<span class="sc">/</span><span class="dv">1000</span></span></code></pre></div>
+<pre><code>## [1] 0.019</code></pre>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="statistics-about-network.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&lt;=-</span><span class="fu">abs</span>(corRealValue))<span class="sc">/</span><span class="dv">1000</span></span></code></pre></div>
+<pre><code>## [1] 0.008</code></pre>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="statistics-about-network.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sample_matrix<span class="sc">&gt;=</span><span class="fu">abs</span>(corRealValue))<span class="sc">/</span><span class="dv">1000</span> <span class="sc">+</span> <span class="fu">sum</span>(sample_matrix<span class="sc">&lt;=-</span><span class="fu">abs</span>(corRealValue))<span class="sc">/</span><span class="dv">1000</span></span></code></pre></div>
+<pre><code>## [1] 0.027</code></pre>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="statistics-about-network.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SPECIFIC DATA SAMPLING</span></span>
+<span id="cb189-2"><a href="statistics-about-network.html#cb189-2" aria-hidden="true" tabindex="-1"></a>x1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">0</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">7</span>)</span>
+<span id="cb189-3"><a href="statistics-about-network.html#cb189-3" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">9</span>)</span>
+<span id="cb189-4"><a href="statistics-about-network.html#cb189-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1,y1)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="statistics-about-network.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x1,y1)</span></code></pre></div>
 <pre><code>## [1] 0.5859543</code></pre>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="statistics-about-network.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x1,y1)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="statistics-about-network.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x1,y1)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -654,34 +712,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##       cor 
 ## 0.5859543</code></pre>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="statistics-about-network.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing output as matrix that does not follow a </span></span>
-<span id="cb202-2"><a href="statistics-about-network.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="co"># normal distribution through permutation based approaches</span></span>
-<span id="cb202-3"><a href="statistics-about-network.html#cb202-3" aria-hidden="true" tabindex="-1"></a>OUTPUT<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="cn">NA</span>,<span class="dv">20000</span>,<span class="dv">1</span>)</span>
-<span id="cb202-4"><a href="statistics-about-network.html#cb202-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20000</span>))</span>
-<span id="cb202-5"><a href="statistics-about-network.html#cb202-5" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb202-6"><a href="statistics-about-network.html#cb202-6" aria-hidden="true" tabindex="-1"></a>  x1_PERM<span class="ot">&lt;-</span><span class="fu">sample</span>(x1)</span>
-<span id="cb202-7"><a href="statistics-about-network.html#cb202-7" aria-hidden="true" tabindex="-1"></a>  OUTPUT[k,<span class="dv">1</span>]<span class="ot">&lt;-</span><span class="fu">cor</span>(y1,x1_PERM)</span>
-<span id="cb202-8"><a href="statistics-about-network.html#cb202-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb202-9"><a href="statistics-about-network.html#cb202-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(OUTPUT, <span class="at">nclass=</span><span class="dv">20</span>, <span class="at">prob=</span>T)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-166-2.png" width="672" /></p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="statistics-about-network.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 95%-CI</span></span>
-<span id="cb203-2"><a href="statistics-about-network.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OUTPUT)<span class="sc">+</span><span class="fu">sd</span>(OUTPUT)<span class="sc">*</span><span class="fl">1.96</span></span></code></pre></div>
-<pre><code>## [1] 0.5365286</code></pre>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="statistics-about-network.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OUTPUT)<span class="sc">-</span><span class="fu">sd</span>(OUTPUT)<span class="sc">*</span><span class="fl">1.96</span></span></code></pre></div>
-<pre><code>## [1] -0.5380413</code></pre>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="statistics-about-network.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 approaches</span></span>
-<span id="cb207-2"><a href="statistics-about-network.html#cb207-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(OUTPUT), <span class="fu">max</span>(OUTPUT), <span class="at">length =</span> <span class="dv">40</span>)</span>
-<span id="cb207-3"><a href="statistics-about-network.html#cb207-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="fu">mean</span>(OUTPUT), <span class="at">sd =</span> <span class="fu">sd</span>(OUTPUT))</span>
-<span id="cb207-4"><a href="statistics-about-network.html#cb207-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb207-5"><a href="statistics-about-network.html#cb207-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(OUTPUT, <span class="at">nclass=</span><span class="dv">20</span>, <span class="at">prob=</span>T, <span class="at">col=</span><span class="st">&quot;cornflowerblue&quot;</span>)</span>
-<span id="cb207-6"><a href="statistics-about-network.html#cb207-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, f, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
-<span id="cb207-7"><a href="statistics-about-network.html#cb207-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb207-8"><a href="statistics-about-network.html#cb207-8" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(OUTPUT), <span class="at">sd=</span><span class="fu">sd</span>(OUTPUT)), </span>
-<span id="cb207-9"><a href="statistics-about-network.html#cb207-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span>
-<span id="cb207-10"><a href="statistics-about-network.html#cb207-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(OUTPUT<span class="sc">&gt;</span><span class="fu">cor</span>(x1,y1))<span class="sc">/</span><span class="dv">20000</span></span></code></pre></div>
-<pre><code>## [1] 0.0578</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="statistics-about-network.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">cor</span>(x1,y1), <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="statistics-about-network.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing output as matrix that does not follow a </span></span>
+<span id="cb194-2"><a href="statistics-about-network.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="co"># normal distribution through permutation based approaches</span></span>
+<span id="cb194-3"><a href="statistics-about-network.html#cb194-3" aria-hidden="true" tabindex="-1"></a>OUTPUT<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="cn">NA</span>,<span class="dv">20000</span>,<span class="dv">1</span>)</span>
+<span id="cb194-4"><a href="statistics-about-network.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20000</span>))</span>
+<span id="cb194-5"><a href="statistics-about-network.html#cb194-5" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb194-6"><a href="statistics-about-network.html#cb194-6" aria-hidden="true" tabindex="-1"></a>  x1_PERM<span class="ot">&lt;-</span><span class="fu">sample</span>(x1)</span>
+<span id="cb194-7"><a href="statistics-about-network.html#cb194-7" aria-hidden="true" tabindex="-1"></a>  OUTPUT[k,<span class="dv">1</span>]<span class="ot">&lt;-</span><span class="fu">cor</span>(y1,x1_PERM)</span>
+<span id="cb194-8"><a href="statistics-about-network.html#cb194-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb194-9"><a href="statistics-about-network.html#cb194-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(OUTPUT, <span class="at">nclass=</span><span class="dv">20</span>, <span class="at">prob=</span>T)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-160-2.png" width="672" /></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="statistics-about-network.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 95%-CI</span></span>
+<span id="cb195-2"><a href="statistics-about-network.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OUTPUT)<span class="sc">+</span><span class="fu">sd</span>(OUTPUT)<span class="sc">*</span><span class="fl">1.96</span></span></code></pre></div>
+<pre><code>## [1] 0.5455275</code></pre>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="statistics-about-network.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OUTPUT)<span class="sc">-</span><span class="fu">sd</span>(OUTPUT)<span class="sc">*</span><span class="fl">1.96</span></span></code></pre></div>
+<pre><code>## [1] -0.5450525</code></pre>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="statistics-about-network.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 approaches</span></span>
+<span id="cb199-2"><a href="statistics-about-network.html#cb199-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(OUTPUT), <span class="fu">max</span>(OUTPUT), <span class="at">length =</span> <span class="dv">40</span>)</span>
+<span id="cb199-3"><a href="statistics-about-network.html#cb199-3" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="fu">mean</span>(OUTPUT), <span class="at">sd =</span> <span class="fu">sd</span>(OUTPUT))</span>
+<span id="cb199-4"><a href="statistics-about-network.html#cb199-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-5"><a href="statistics-about-network.html#cb199-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(OUTPUT, <span class="at">nclass=</span><span class="dv">20</span>, <span class="at">prob=</span>T, <span class="at">col=</span><span class="st">&quot;cornflowerblue&quot;</span>)</span>
+<span id="cb199-6"><a href="statistics-about-network.html#cb199-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, f, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb199-7"><a href="statistics-about-network.html#cb199-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-8"><a href="statistics-about-network.html#cb199-8" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(OUTPUT), <span class="at">sd=</span><span class="fu">sd</span>(OUTPUT)), </span>
+<span id="cb199-9"><a href="statistics-about-network.html#cb199-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;darkblue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span>
+<span id="cb199-10"><a href="statistics-about-network.html#cb199-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(OUTPUT<span class="sc">&gt;</span><span class="fu">cor</span>(x1,y1))<span class="sc">/</span><span class="dv">20000</span></span></code></pre></div>
+<pre><code>## [1] 0.06115</code></pre>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="statistics-about-network.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">cor</span>(x1,y1), <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
 
 </div>
 </div>

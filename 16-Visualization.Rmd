@@ -64,7 +64,9 @@ and finish with `dev.off()`, which closes the image file for changes.
 
 ```{r}
 # 4. Create and save visualization
-# tiff(file="images/Fig_01_KHFS_Random.tiff", width=7, height=5, units="in", res=900)
+# tiff(file="images/Fig_01_KHFS_Random.tiff", 
+#      width=7, height=5,
+#      units="in", res=900)
 par(mar=c(0,0,0,0)) # Margin deletion
 gplot(KHFSn,
       gmode="graph",      # undirected network
@@ -87,7 +89,6 @@ The use of random position may be risky because of links overlapping and too clo
 For a circle layout, it is necessary to change `mode` into `"circle"`. 
 
 ```{r}
-# tiff(file="images/Fig_02_KHFS_Circle.tiff", width=7, height=5, units="in", res=900)
 par(mar=c(0,0,0,0))
 gplot(KHFSn, 
       gmode="digraph",
@@ -97,14 +98,14 @@ gplot(KHFSn,
       vertex.col="cornflowerblue",
       displaylabels=T,
       label.pos=1,
-      label.cex=.7)
-# dev.off()
+      label.cex=.7,
+      arrowhead.cex = 0.5)
 ```
 
 ### FR Layout
 
+
 ```{r}
-# tiff(file="images/Fig_03_KHFS_FR.tiff", width=7, height=5, units="in", res=900)
 par(mar=c(0,0,0,0))
 gplot(KHFSn, 
       gmode="graph",
@@ -115,16 +116,16 @@ gplot(KHFSn,
       edge.col="grey80",
       #nodes
       vertex.col="cornflowerblue",
+      vertex.cex = 1,
       #labels
       displaylabels=T,
       label.pos=1,
       label.cex=.7)
-# dev.off()
 ```
 
 ### KHA Network
 
-The following network is more dense than the previous. 
+The following network is denser than the previous, since we multiply the matrix for its transpose, indicating
 
 ```{r}
 # Read in the advice network for Krackhardt's high-tech managers:
@@ -136,7 +137,7 @@ KHA<-as.matrix(read.csv("datasets/Krackhardt_HighTech_Advice.csv",
 KHAS<-KHA*t(KHA)
 
 # Turn this into a "network" object:
-KHASn<-as.network(KHAS, directed=F)
+KHASn<-as.network(KHAS, directed=T)
 
 par(mar=c(0,0,0,0))
 gplot(KHASn, 
@@ -195,7 +196,9 @@ WPCOORD <- matrix(c(WP.AGE,WP.RANK),
                   dim(WPJ)[1],2)
 
 # Consider drawing only "relatively strong" ties
-WPJ6W <- (WPJ>5)*(WPJ-5) # Only consider a tie in tie matrix, but only if major than 5 and then rescale it by removing 5
+WPJ6W <- (WPJ>5)*(WPJ-5) 
+# Only consider a tie in tie matrix, but only 
+# if major than 5 and then rescale it by removing 5
 ```
 
 In the next step, we're going to make darker ties for those links where primates interacted more with each other (from grey40 to grey90). 
@@ -278,12 +281,14 @@ We can get nodes coordinates by plotting them based on their department similari
 
 ```{r}
 # 3. Get coordinates
+par(mar = c(0,0,0,0))
 DEP_COORD<-gplot(DEPSIM, 
                  displaylabels=T)
 ```
 
 ```{r}
-# 4. Draw the friendship network using the coordinates got from nominal friendship
+# 4. Draw the friendship network using 
+#    the coordinates got from nominal friendship
 par(mar=c(0,0,0,0))
 gplot(KHFSn,
       gmode="graph",
@@ -392,7 +397,6 @@ for (k in (1:max(WPJ6W)))
 }
 
 # 4. Draw
-# tiff(file="images/Fig_08_WPJ6W_mds.tiff", width=6, height=5, units="in", res=900)
 par(mar=c(0,0,0,0))
 gplot(WPJ6W*1.1,
       gmode="graph", 
@@ -408,7 +412,6 @@ gplot(WPJ6W*1.1,
       displaylabels=T, 
       label.pos=1,
       label.cex=.7)
-# dev.off()
 ```
 
 ### MDS on valued trade 
@@ -601,9 +604,13 @@ gplot(KHFS,
       edge.col="grey30",
       edge.lwd=.4,
       #nodes
-      vertex.col=(KHAttr$LEVEL==1)*1+(KHAttr$LEVEL==2)*7+(KHAttr$LEVEL==3)*0,
+      vertex.col=((KHAttr$LEVEL==1)*1+
+                    (KHAttr$LEVEL==2)*7+
+                    (KHAttr$LEVEL==3)*0),
       # Define symbols
-      vertex.sides=((KHAttr$LEVEL==1)*3+(KHAttr$LEVEL==2)*4+(KHAttr$LEVEL==3)*20),
+      vertex.sides=((KHAttr$LEVEL==1)*3+
+                      (KHAttr$LEVEL==2)*4+
+                      (KHAttr$LEVEL==3)*20),
       vertex.cex=.8+KHAttr$TENURE/25,
       #labels
       displaylabels=TRUE,
@@ -658,6 +665,7 @@ gplot(BS504C,
       vertex.col=TenureA2,
       vertex.cex=1+.7*(2-BS504Attr$Sex), 
       vertex.sides=(BS504Attr$Sex-1)*47+4)
+
 legend("topright",
        legend = c("Colors"," Senior", " Junior", " ","Shapes", " Male (2)", " Female (1)"),
        col = c("white","lightpink","cornflowerblue","white","white","black","black"), 
@@ -828,5 +836,4 @@ gplot(KHFn,
       displaylabels=T,    # indicate that labels should be included
       label.pos=5,        # indicate that labels should be given below points
       label.cex=.5)       # indicate the size of the labels (1 is default)
-#dev.off()
 ```

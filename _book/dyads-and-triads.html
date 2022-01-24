@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="subgroups-and-equivalence.html"/>
-<link rel="next" href="triads-1.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -450,38 +451,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 21</span> Dyads and triads</h1>
 <div id="dyads-1" class="section level2" number="21.1">
 <h2><span class="header-section-number">21.1</span> Dyads</h2>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="dyads-and-triads.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
-<span id="cb247-2"><a href="dyads-and-triads.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DYAD</span></span>
-<span id="cb247-3"><a href="dyads-and-triads.html#cb247-3" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
-<span id="cb247-4"><a href="dyads-and-triads.html#cb247-4" aria-hidden="true" tabindex="-1"></a>mat6<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb247-5"><a href="dyads-and-triads.html#cb247-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb247-6"><a href="dyads-and-triads.html#cb247-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb247-7"><a href="dyads-and-triads.html#cb247-7" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
-<span id="cb247-8"><a href="dyads-and-triads.html#cb247-8" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,</span>
-<span id="cb247-9"><a href="dyads-and-triads.html#cb247-9" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">6</span>,<span class="dv">6</span>, <span class="at">byrow=</span>T)</span>
-<span id="cb247-10"><a href="dyads-and-triads.html#cb247-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb247-11"><a href="dyads-and-triads.html#cb247-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Dyad Census</span></span>
-<span id="cb247-12"><a href="dyads-and-triads.html#cb247-12" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">dyad.census</span>(mat6, <span class="at">g=</span><span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="dyads-and-triads.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
+<span id="cb239-2"><a href="dyads-and-triads.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DYAD</span></span>
+<span id="cb239-3"><a href="dyads-and-triads.html#cb239-3" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
+<span id="cb239-4"><a href="dyads-and-triads.html#cb239-4" aria-hidden="true" tabindex="-1"></a>mat6<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb239-5"><a href="dyads-and-triads.html#cb239-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb239-6"><a href="dyads-and-triads.html#cb239-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb239-7"><a href="dyads-and-triads.html#cb239-7" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
+<span id="cb239-8"><a href="dyads-and-triads.html#cb239-8" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,</span>
+<span id="cb239-9"><a href="dyads-and-triads.html#cb239-9" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">6</span>,<span class="dv">6</span>, <span class="at">byrow=</span>T)</span>
+<span id="cb239-10"><a href="dyads-and-triads.html#cb239-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb239-11"><a href="dyads-and-triads.html#cb239-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Dyad Census</span></span>
+<span id="cb239-12"><a href="dyads-and-triads.html#cb239-12" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">dyad.census</span>(mat6, <span class="at">g=</span><span class="cn">NULL</span>)</span></code></pre></div>
 <pre><code>##      Mut Asym Null
 ## [1,]   4    4    7</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="dyads-and-triads.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Like edgewise but multiplied for m/(m+a)</span></span>
-<span id="cb249-2"><a href="dyads-and-triads.html#cb249-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">grecip</span>(mat6,<span class="at">measure=</span><span class="st">&quot;dyadic&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="dyads-and-triads.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Like edgewise but multiplied for m/(m+a)</span></span>
+<span id="cb241-2"><a href="dyads-and-triads.html#cb241-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">grecip</span>(mat6,<span class="at">measure=</span><span class="st">&quot;dyadic&quot;</span>)</span></code></pre></div>
 <pre><code>##       Mut 
 ## 0.7333333</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="dyads-and-triads.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Edgewise (like we have seen before)</span></span>
-<span id="cb251-2"><a href="dyads-and-triads.html#cb251-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">grecip</span>(mat6,<span class="at">measure=</span><span class="st">&quot;edgewise&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="dyads-and-triads.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Edgewise (like we have seen before)</span></span>
+<span id="cb243-2"><a href="dyads-and-triads.html#cb243-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">grecip</span>(mat6,<span class="at">measure=</span><span class="st">&quot;edgewise&quot;</span>)</span></code></pre></div>
 <pre><code>##       Mut 
 ## 0.6666667</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="dyads-and-triads.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Density</span></span>
-<span id="cb253-2"><a href="dyads-and-triads.html#cb253-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">gden</span>(mat6)</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="dyads-and-triads.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Density</span></span>
+<span id="cb245-2"><a href="dyads-and-triads.html#cb245-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">gden</span>(mat6)</span></code></pre></div>
 <pre><code>## [1] 0.4</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="dyads-and-triads.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With igraph</span></span>
-<span id="cb255-2"><a href="dyads-and-triads.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
-<span id="cb255-3"><a href="dyads-and-triads.html#cb255-3" aria-hidden="true" tabindex="-1"></a>mat6i<span class="ot">&lt;-</span><span class="fu">graph_from_adjacency_matrix</span>(mat6,<span class="at">mode=</span><span class="fu">c</span>(<span class="st">&quot;directed&quot;</span>),<span class="at">diag=</span>F)</span>
-<span id="cb255-4"><a href="dyads-and-triads.html#cb255-4" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">reciprocity</span>(mat6i)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="dyads-and-triads.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With igraph</span></span>
+<span id="cb247-2"><a href="dyads-and-triads.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb247-3"><a href="dyads-and-triads.html#cb247-3" aria-hidden="true" tabindex="-1"></a>mat6i<span class="ot">&lt;-</span><span class="fu">graph_from_adjacency_matrix</span>(mat6,<span class="at">mode=</span><span class="fu">c</span>(<span class="st">&quot;directed&quot;</span>),<span class="at">diag=</span>F)</span>
+<span id="cb247-4"><a href="dyads-and-triads.html#cb247-4" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">reciprocity</span>(mat6i)</span></code></pre></div>
 <pre><code>## [1] 0.6666667</code></pre>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="dyads-and-triads.html#cb257-1" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">edge_density</span>(mat6i)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="dyads-and-triads.html#cb249-1" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">edge_density</span>(mat6i)</span></code></pre></div>
 <pre><code>## [1] 0.4</code></pre>
+</div>
+<div id="triads-1" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> Triads</h2>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="dyads-and-triads.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
+<span id="cb251-2"><a href="dyads-and-triads.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="co"># TRIAD</span></span>
+<span id="cb251-3"><a href="dyads-and-triads.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="do">##############################</span></span>
+<span id="cb251-4"><a href="dyads-and-triads.html#cb251-4" aria-hidden="true" tabindex="-1"></a>mat6<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb251-5"><a href="dyads-and-triads.html#cb251-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb251-6"><a href="dyads-and-triads.html#cb251-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb251-7"><a href="dyads-and-triads.html#cb251-7" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
+<span id="cb251-8"><a href="dyads-and-triads.html#cb251-8" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,</span>
+<span id="cb251-9"><a href="dyads-and-triads.html#cb251-9" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">6</span>,<span class="dv">6</span>, <span class="at">byrow=</span>T)</span>
+<span id="cb251-10"><a href="dyads-and-triads.html#cb251-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb251-11"><a href="dyads-and-triads.html#cb251-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Triad census</span></span>
+<span id="cb251-12"><a href="dyads-and-triads.html#cb251-12" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">triad.census</span>(mat6)</span></code></pre></div>
+<pre><code>##      003 012 102 021D 021U 021C 111D 111U 030T 030C 201 120D 120U 120C 210 300
+## [1,]   3   1   4    2    0    0    1    5    0    0   1    1    1    0   1   0</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="dyads-and-triads.html#cb253-1" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">gtrans</span>(mat6)</span></code></pre></div>
+<pre><code>## [1] 0.4375</code></pre>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="dyads-and-triads.html#cb255-1" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">gden</span>(mat6)</span></code></pre></div>
+<pre><code>## [1] 0.4</code></pre>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="dyads-and-triads.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if it&#39;s random</span></span>
+<span id="cb257-2"><a href="dyads-and-triads.html#cb257-2" aria-hidden="true" tabindex="-1"></a>RG100<span class="ot">&lt;-</span>sna<span class="sc">::</span><span class="fu">rgraph</span>(<span class="dv">20</span>,<span class="dv">100</span>,<span class="at">tprob=</span>.<span class="dv">2</span>)</span>
+<span id="cb257-3"><a href="dyads-and-triads.html#cb257-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sna<span class="sc">::</span><span class="fu">gden</span>(RG100))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-185-1.png" width="672" /></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="dyads-and-triads.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sna<span class="sc">::</span><span class="fu">gtrans</span>(RG100))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-185-2.png" width="672" /></p>
+
 </div>
 </div>
             </section>
@@ -489,8 +518,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="subgroups-and-equivalence.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="triads-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="subgroups-and-equivalence.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

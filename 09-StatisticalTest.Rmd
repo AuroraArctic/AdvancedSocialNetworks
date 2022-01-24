@@ -18,15 +18,16 @@ where $\bar{x}, \bar{y}$ are the means and $s_x,s_y$ are the standard deviations
 
 It is based on the idea that a feature or variable provides some useful information about data.
 
-1. Sample: make a statement about the relation between two variables for a well defined and finite population. Since it is difficult to collect information for the whole population, **randomly sampling** is a solution.
-2. Hypothesis: Before looking at data, make a statement about the population $H_0$ that we will reject in favour of an alternative statement about the population $H_A$. What we aspire to do is to prove that $H_0$ is very unlikely. 
-3. Probabilities: Look at sample results. Assuming that the null hypothesis $H_0$ is true, how much chance do we have of obtaining a sample that has a correlation that is that extreme or more extreme (than we observed with the sample).
-4. Conclusion: reject the null hypothesis $H_0$ in favour of the alternative hypothesis $H_a$ if the probability of such an extreme or more extreme outcome is lower than 5% ($\rho<0.05$). 
+1. **Sample**: make a statement about the relation between two variables for a well defined and finite population. Since it is difficult to collect information for the whole population, **randomly sampling** is a solution.
+2. **Hypothesis**: Before looking at data, make a statement about the population $H_0$ that we will reject in favour of an alternative statement about the population $H_A$. What we aspire to do is to prove that $H_0$ is very unlikely. 
+3. **Probabilities**: Look at sample results. Assuming that the null hypothesis $H_0$ is true, how much chance do we have of obtaining a sample that has a correlation that is that extreme or more extreme (than we observed with the sample).
+4. **Conclusion**
+: reject the null hypothesis $H_0$ in favour of the alternative hypothesis $H_a$ if the probability of such an extreme or more extreme outcome is lower than 5% ($\rho<0.05$). 
 
 ## Permutation Based Approach
 
 <aside>
-💡 *Imagine we have data about five people, knowing their age. We want to explore eventual correlations between outdegree and age.*
+💡 *Imagine we have data about five people, knowing their age. We want to explore eventual correlations between out degree and age.*
 
 </aside>
 

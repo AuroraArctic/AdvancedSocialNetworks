@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -464,20 +465,24 @@ r_{xy} = \frac{1}{n-1}\sum^n_{i=1} \frac{(x_i-\bar{x})(y_i-\bar{y})}{s_xs_y}
 <h2><span class="header-section-number">9.2</span> Significance test</h2>
 <p>It is based on the idea that a feature or variable provides some useful information about data.</p>
 <ol style="list-style-type: decimal">
-<li>Sample: make a statement about the relation between two variables for a well defined and finite population. Since it is difficult to collect information for the whole population, <strong>randomly sampling</strong> is a solution.</li>
-<li>Hypothesis: Before looking at data, make a statement about the population <span class="math inline">\(H_0\)</span> that we will reject in favour of an alternative statement about the population <span class="math inline">\(H_A\)</span>. What we aspire to do is to prove that <span class="math inline">\(H_0\)</span> is very unlikely.</li>
-<li>Probabilities: Look at sample results. Assuming that the null hypothesis <span class="math inline">\(H_0\)</span> is true, how much chance do we have of obtaining a sample that has a correlation that is that extreme or more extreme (than we observed with the sample).</li>
-<li>Conclusion: reject the null hypothesis <span class="math inline">\(H_0\)</span> in favour of the alternative hypothesis <span class="math inline">\(H_a\)</span> if the probability of such an extreme or more extreme outcome is lower than 5% (<span class="math inline">\(\rho&lt;0.05\)</span>).</li>
+<li><strong>Sample</strong>: make a statement about the relation between two variables for a well defined and finite population. Since it is difficult to collect information for the whole population, <strong>randomly sampling</strong> is a solution.</li>
+<li><strong>Hypothesis</strong>: Before looking at data, make a statement about the population <span class="math inline">\(H_0\)</span> that we will reject in favour of an alternative statement about the population <span class="math inline">\(H_A\)</span>. What we aspire to do is to prove that <span class="math inline">\(H_0\)</span> is very unlikely.</li>
+<li><strong>Probabilities</strong>: Look at sample results. Assuming that the null hypothesis <span class="math inline">\(H_0\)</span> is true, how much chance do we have of obtaining a sample that has a correlation that is that extreme or more extreme (than we observed with the sample).</li>
+<li><dl>
+<dt><strong>Conclusion</strong></dt>
+<dd>reject the null hypothesis <span class="math inline">\(H_0\)</span> in favour of the alternative hypothesis <span class="math inline">\(H_a\)</span> if the probability of such an extreme or more extreme outcome is lower than 5% (<span class="math inline">\(\rho&lt;0.05\)</span>).
+</dd>
+</dl></li>
 </ol>
 </div>
 <div id="permutation-based-approach" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Permutation Based Approach</h2>
 <aside>
-<p>💡 <em>Imagine we have data about five people, knowing their age. We want to explore eventual correlations between outdegree and age.</em></p>
+<p>💡 <em>Imagine we have data about five people, knowing their age. We want to explore eventual correlations between out degree and age.</em></p>
 </aside>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="statistical-tests-on-nodal-level.html#cb38-1" aria-hidden="true" tabindex="-1"></a>OD <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Out degree</span></span>
-<span id="cb38-2"><a href="statistical-tests-on-nodal-level.html#cb38-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">45</span>,<span class="dv">32</span>,<span class="dv">25</span>,<span class="dv">21</span>) <span class="co"># Ages</span></span>
-<span id="cb38-3"><a href="statistical-tests-on-nodal-level.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(OD,age) <span class="co"># Correlation test</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="statistical-tests-on-nodal-level.html#cb39-1" aria-hidden="true" tabindex="-1"></a>OD <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Out degree</span></span>
+<span id="cb39-2"><a href="statistical-tests-on-nodal-level.html#cb39-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">45</span>,<span class="dv">32</span>,<span class="dv">25</span>,<span class="dv">21</span>) <span class="co"># Ages</span></span>
+<span id="cb39-3"><a href="statistical-tests-on-nodal-level.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(OD,age) <span class="co"># Correlation test</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -491,9 +496,9 @@ r_{xy} = \frac{1}{n-1}\sum^n_{i=1} \frac{(x_i-\bar{x})(y_i-\bar{y})}{s_xs_y}
 ## -0.9481293</code></pre>
 <p>According to this test, with a p-value below 0.05, there is a negative correlation that explains that, by increasing the age, the number of out links decreases.</p>
 <p><em>What happens if we permute nodes position?</em></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="statistical-tests-on-nodal-level.html#cb40-1" aria-hidden="true" tabindex="-1"></a>OD <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Out degree still the same</span></span>
-<span id="cb40-2"><a href="statistical-tests-on-nodal-level.html#cb40-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">45</span>,<span class="dv">32</span>,<span class="dv">25</span>,<span class="dv">21</span>,<span class="dv">19</span>) <span class="co"># Ages permuted</span></span>
-<span id="cb40-3"><a href="statistical-tests-on-nodal-level.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(OD,age)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="statistical-tests-on-nodal-level.html#cb41-1" aria-hidden="true" tabindex="-1"></a>OD <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Out degree still the same</span></span>
+<span id="cb41-2"><a href="statistical-tests-on-nodal-level.html#cb41-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">45</span>,<span class="dv">32</span>,<span class="dv">25</span>,<span class="dv">21</span>,<span class="dv">19</span>) <span class="co"># Ages permuted</span></span>
+<span id="cb41-3"><a href="statistical-tests-on-nodal-level.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(OD,age)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 

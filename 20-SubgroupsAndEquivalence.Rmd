@@ -24,7 +24,6 @@ network<-matrix(c(
   0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,
   0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0),19,19)
 
-par(mar = c(0,0,0,0))
 gplot(network,
       displaylabels=TRUE,
       edge.lwd=0.5,
@@ -36,7 +35,7 @@ gplot(network,
 
 
 ```{r}
-clique.census(network, mode = "graph")
+clique.census(network, mode = "graph")$clique.count
 ```
 
 

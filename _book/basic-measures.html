@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -481,26 +482,27 @@ Density = \frac{\text{Number of ties}}{\text{Number of possible ties}} =\frac{\t
 Density = \frac{\text{Number of ties}}{\text{Number of possible ties}} =\frac{\text{Number of ties}}{n(n-1)/2} 
 \]</span></p>
 <aside>
-<p>💡 <em>In the Simpsons example, the density equals</em> <span class="math inline">\(D = 18/(10*9/2) = 18/45 = 0.4\)</span></p>
+<p>💡 <em>In the Simpsons example, where there are 18 edges and 10 nodes, the density equals</em> <span class="math inline">\(D = 18/(10*9/2) = 18/45 = 0.4\)</span>.</p>
 </aside>
 </div>
 <div id="average-degree" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Average Degree</h3>
-<p>Related to directed network, the average indegree equals the sum of the in-degree or out-degree over the total number of nodes inside the network:</p>
+<p>Related to directed network, the average in-degree equals the sum of the in-degree or out-degree over the total number of nodes inside the network:</p>
 <aside>
-<p>💡 In the Friends example, the average in-degree is <span class="math inline">\(11/6 = 1.833\)</span>, while the out-degree is <span class="math inline">\(11/6 = 1.833\)</span>.</p>
+<p>💡 <em>In the Friends example, the average in-degree is <span class="math inline">\(11/6 = 1.833\)</span>, while the out-degree is</em> <span class="math inline">\(11/6 = 1.833\)</span>.</p>
 </aside>
-<p>By considering the normalized degree, we discover that it equals the density of the network, because we initially divide by the maximum connections possible (<span class="math inline">\(n(n-1)\)</span>), and then we divide everything by the total number of nodes (<span class="math inline">\(n\)</span>), while the normalized degree is computed by dividing the degree by <span class="math inline">\(n-1\)</span>.</p>
+<p>The normalized degree of each node is computed by dividing the in and out-degree by <span class="math inline">\(n-1\)</span>.</p>
+<p>The normalized in degree and the out degree will give in the end the same sum. In particular, their mean equals the density of the entire network: in the density computation, total edges are divided by <span class="math inline">\(n(n-1)\)</span>, while in the normalized degree, everything is normalized by <span class="math inline">\(n-1\)</span> and then the average requires another division over <span class="math inline">\(n\)</span>,</p>
 </div>
 <div id="importance-of-density" class="section level3" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> Importance of density</h3>
-<p>The Density is useful whenever we need to compare networks, both of the same or different sizes. In particular, the bigger, the more important density becomes to evaluate its cohesiveness.</p>
+<p>The <strong>density</strong> is useful whenever we need to compare networks, whether same or different sizes. In particular, the bigger, the more important density becomes to evaluate its cohesiveness.</p>
 <p>Notice that a bigger network makes it harder to have a bigger density than a smaller one. Comparing the density of networks of different sizes can be challenging. It would be better to compare average degrees but notice that <strong>by increasing the network size and the average degree, the density reduces.</strong></p>
 </div>
 </div>
 <div id="degree-centralization" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Degree-centralization</h2>
-<p><strong>Centralization</strong> is a question about how central some nodes are compared to other nodes, it is a characteristic of the network itself. It’s related to the distribution of the centrality inside the network, while centrality is more related to the individual sphere of the nodes.</p>
+<p><strong>Centralization</strong> is a question about how central some nodes are compared to other nodes and therefore can be considered as a characteristic of the network itself. It is related to the distribution of the centrality inside the network, while centrality is more related to the individual sphere of the nodes.</p>
 <aside>
 <p>💡 <em>The least centralized network is a ring structure, where everyone is connected to the previous and following node (in this case the centralisation is 0).
 The most centralized network is an ego one, where one node is connected to everyone and no one else is connected to nodes different from the ego (in this case the centralisation measure is far from 0).</em></p>
@@ -513,7 +515,7 @@ The most centralized network is an ego one, where one node is connected to every
 <p>💡 <em>Note that the maximum number of connections we could build in a centralized network is <span class="math inline">\(n-1\)</span>. In a decentralized network, if everybody has the same number of connections, the centralisation will always be 0, since the maximum will be the same for every node.</em></p>
 </aside>
 <p><img src="images/02-Basic%20Measures/Untitled.png" width="50%" style="display: block; margin: auto;" /></p>
-<p>By considering the range between the least and the most centralized (<span class="math inline">\(0-12\)</span>), the centralisation can be finally computed by dividing the centralisation for the degree by the maximum centralisation value possible.</p>
+<p>By considering the range between the least and the most centralized (i.e. <span class="math inline">\([0,12]\)</span>), the centralisation can be finally computed by dividing the centralisation for the degree by the maximum centralisation value possible.</p>
 <aside>
 <p>💡 <em>In the example above, it would be</em> <span class="math inline">\(5/12\)</span>.</p>
 </aside>
@@ -524,7 +526,7 @@ Centralisation = \frac{\sum (\max-degree_i)}{(n-1)(n-2)}
 </div>
 <div id="directed-network-2" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Directed Network</h3>
-<p>In this case, we detain both in and out-degree centralisation.</p>
+<p>In the case of a directed network, we detain both in and out-degree centralisation.</p>
 <p><span class="math display">\[
 In-Centralisation = \frac{\sum (\max_{in}-\text{in-degree}_i)}{(n-1)^2}
 \]</span></p>
@@ -532,7 +534,7 @@ In-Centralisation = \frac{\sum (\max_{in}-\text{in-degree}_i)}{(n-1)^2}
 Out-Centralisation = \frac{\sum (\max_{out}-\text{out-degree}_i)}{(n-1)^2}
 \]</span></p>
 <aside>
-<p>💡 Still, if we consider the Friends network, we notice that related to the out-degree centralisation, the network is kind of centralized on Rachel, which is talkative with everybody:</p>
+<p>💡 <em>Still, if we consider Friends’ network, we notice that related to the out-degree centralisation, the network is kind of centralized on Rachel, which is talkative with everybody:</em></p>
 </aside>
 <p><span class="math display">\[
 Out-C = \frac{(5-1)+(5-0)+(5-1)+(5-5)+(5-3)+(5-1)}{5^2} = \frac{19}{25} = 0.76
@@ -546,7 +548,7 @@ In-C = \frac{(2-1)+5*(2-2)}{5^2} = \frac{1}{25} = 0.04
 </div>
 <div id="experiment" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Experiment</h3>
-<p><em>How fast a group could make decisions together?</em></p>
+<p><em>💡 How fast a group could make decisions together?</em></p>
 <p>Each subject was given a card, with 5 symbols from a set of 6. Each symbol appeared on 4 of the 5 cards, except for one. The group was asked to find the common symbol in the shortest time possible.</p>
 <p>The subjects communicated by writing messages that could be passed through slots in the walls of the cubicles. Four structures were proposed:</p>
 <ul>

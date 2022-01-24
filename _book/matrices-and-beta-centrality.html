@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -452,10 +453,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.1</span> Matrix Algebra</h2>
 <div id="adding-two-matrices" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Adding two matrices</h3>
-<p>The matrices X and Y indicate the ties for 2 different network relations (e.g. communication and friendship network) for the same set of 5 actors (a,b,c,d,e):</p>
-<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled.png" width="50%" style="display: block; margin: auto;" /></p>
-<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
-<p>Suppose we want to sum <span class="math inline">\(X+2Y\)</span>. Considering their adjacency matrix, we get:</p>
+<p>The matrices X and Y indicate the ties for 2 different network relations (e.g. communication and friendship network) for the same set of 5 actors (a,b,c,d,e), shown in the image below:</p>
+<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled.png" width="40%" style="display: block; margin: auto;" /></p>
+<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled%201.png" width="25%" style="display: block; margin: auto;" /></p>
+<p>Suppose we want to sum <span class="math inline">\(X+2Y\)</span> to get <span class="math inline">\(Z\)</span>. Considering their adjacency matrix, we get:</p>
+<p><span class="math display">\[
+X+2Y = Z
+\]</span></p>
 <p><span class="math display">\[
 \left(  
 \begin{array}{ccccc}
@@ -488,8 +492,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="cell-multiplication" class="section level3" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> Cell Multiplication</h3>
-<p>Suppose we want to compute <span class="math inline">\(XY\)</span>. Considering their adjacency matrix, we get:</p>
-<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled%202.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Suppose we want to compute <span class="math inline">\(XY\)</span>. Considering the adjacency matrices <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, we get:</p>
 <p><span class="math display">\[
 \left(  
 \begin{array}{ccccc}
@@ -518,7 +521,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 \end{array}
 \right)
-\]</span></p>
+\]</span>
+This equals to the adjacency matrix of two-steps paths from nodes in <span class="math inline">\(X\)</span> to nodes in <span class="math inline">\(Y\)</span>.</p>
+<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled%202.png" width="50%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="matrix-multiplication-of-different-matrices" class="section level3" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> Matrix Multiplication of different matrices</h3>
@@ -538,9 +543,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 R = \sum^\infty_{k=1}(\beta^{k-1}X^k) = X+\beta X^2+\beta^2 X^3+\dots
 \]</span></p>
 <p>Imagine there can be a repeated influence and we want to capture popularity (i.e. being connected to many popular people). By looking at one single step, we get that node <span class="math inline">\(d\)</span> has beta centrality <span class="math inline">\(\beta*(1+1+1+3)\)</span>, which represent the number of nodes that neighbours can reach. We then add an additional term <span class="math inline">\(\beta^2\)</span>, multiplied for the number of nodes each neighbour can reach in two steps.</p>
-<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled%204.png" width="50%" style="display: block; margin: auto;" /></p>
-<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled%205.png" width="50%" style="display: block; margin: auto;" /></p>
-<p>Given the matrix <span class="math inline">\(X\)</span>, we have the adjacency matrix of nodes A, B, C and D. We can compute all the two-steps adjacency paths and so on (i.e. <span class="math inline">\(X^2, X^3, X^4,\dots\)</span>). We could compute the centrality by summing them up:</p>
+<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled%204.png" width="30%" style="display: block; margin: auto;" /></p>
+<p><img src="images/05-Matrices%20and%20Beta%20centrality/Untitled%205.png" width="30%" style="display: block; margin: auto;" /></p>
+<p>Given the matrix <span class="math inline">\(X\)</span>, we have the adjacency matrix of nodes <span class="math inline">\(A\)</span>,<span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span>. We can compute all the two-steps adjacency paths and so on (i.e. <span class="math inline">\(X^2, X^3, X^4,\dots\)</span>). We could compute the beta centrality of <span class="math inline">\(a\)</span> in the previous net by summing them up:</p>
 <p><span class="math display">\[
 c_B(A) = 2+5+10+23+48+\dots
 \]</span></p>
@@ -552,24 +557,36 @@ c_B(i) = XI+\beta X^2I+\beta^2X^3I+\dots
 <p><span class="math display">\[
 c_B(A) = 1*2+0.1*5+0.01*10+0.001*23+0.0001*48+\dots
 \]</span></p>
-<p>In the end, we get for each node:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="matrices-and-beta-centrality.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
-<span id="cb15-2"><a href="matrices-and-beta-centrality.html#cb15-2" aria-hidden="true" tabindex="-1"></a>MAT4<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
-<span id="cb15-3"><a href="matrices-and-beta-centrality.html#cb15-3" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
-<span id="cb15-4"><a href="matrices-and-beta-centrality.html#cb15-4" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>,</span>
-<span id="cb15-5"><a href="matrices-and-beta-centrality.html#cb15-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),<span class="dv">4</span>,<span class="dv">4</span>)</span>
-<span id="cb15-6"><a href="matrices-and-beta-centrality.html#cb15-6" aria-hidden="true" tabindex="-1"></a>MAT4i<span class="ot">&lt;-</span><span class="fu">graph_from_adjacency_matrix</span>(MAT4,</span>
-<span id="cb15-7"><a href="matrices-and-beta-centrality.html#cb15-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">mode=</span><span class="fu">c</span>(<span class="st">&quot;undirected&quot;</span>),</span>
-<span id="cb15-8"><a href="matrices-and-beta-centrality.html#cb15-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">diag=</span>F)</span>
-<span id="cb15-9"><a href="matrices-and-beta-centrality.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Beta value = 0.1</span></span>
-<span id="cb15-10"><a href="matrices-and-beta-centrality.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(MAT4i, <span class="at">exponent=</span><span class="fl">0.1</span>)</span></code></pre></div>
-<pre><code>## [1] 0.9746799 0.9746799 1.3577419 0.5064930</code></pre>
+<p>In the end, we get for each node (only considering <span class="math inline">\(a,b,c,d\)</span>):</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="matrices-and-beta-centrality.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb14-2"><a href="matrices-and-beta-centrality.html#cb14-2" aria-hidden="true" tabindex="-1"></a>MAT4<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb14-3"><a href="matrices-and-beta-centrality.html#cb14-3" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb14-4"><a href="matrices-and-beta-centrality.html#cb14-4" aria-hidden="true" tabindex="-1"></a>               <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>,</span>
+<span id="cb14-5"><a href="matrices-and-beta-centrality.html#cb14-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),<span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb14-6"><a href="matrices-and-beta-centrality.html#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="matrices-and-beta-centrality.html#cb14-7" aria-hidden="true" tabindex="-1"></a>MAT4i<span class="ot">&lt;-</span><span class="fu">graph_from_adjacency_matrix</span>(MAT4,</span>
+<span id="cb14-8"><a href="matrices-and-beta-centrality.html#cb14-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">mode=</span><span class="fu">c</span>(<span class="st">&quot;undirected&quot;</span>),</span>
+<span id="cb14-9"><a href="matrices-and-beta-centrality.html#cb14-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">diag=</span>F)</span>
+<span id="cb14-10"><a href="matrices-and-beta-centrality.html#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="matrices-and-beta-centrality.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(MAT4i)<span class="sc">$</span>name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>)</span>
+<span id="cb14-12"><a href="matrices-and-beta-centrality.html#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The network we&#39;re focusing on</span></span>
+<span id="cb14-13"><a href="matrices-and-beta-centrality.html#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(MAT4i, </span>
+<span id="cb14-14"><a href="matrices-and-beta-centrality.html#cb14-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.size =</span> <span class="dv">30</span>, </span>
+<span id="cb14-15"><a href="matrices-and-beta-centrality.html#cb14-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.color =</span> <span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb14-16"><a href="matrices-and-beta-centrality.html#cb14-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">label.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="matrices-and-beta-centrality.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Beta value = 0.1</span></span>
+<span id="cb15-2"><a href="matrices-and-beta-centrality.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(MAT4i, <span class="at">exponent=</span><span class="fl">0.1</span>)</span></code></pre></div>
+<pre><code>##         a         b         c         d 
+## 0.9746799 0.9746799 1.3577419 0.5064930</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="matrices-and-beta-centrality.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Beta value = 0.1, with normalized values</span></span>
 <span id="cb17-2"><a href="matrices-and-beta-centrality.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(MAT4i, <span class="at">exponent=</span><span class="fl">0.1</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(MAT4i, <span class="at">exponent=</span><span class="fl">0.1</span>))</span></code></pre></div>
-<pre><code>## [1] 0.2555804 0.2555804 0.3560268 0.1328125</code></pre>
+<pre><code>##         a         b         c         d 
+## 0.2555804 0.2555804 0.3560268 0.1328125</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="matrices-and-beta-centrality.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Beta value = 0.2</span></span>
 <span id="cb19-2"><a href="matrices-and-beta-centrality.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(MAT4i, <span class="at">exponent=</span><span class="fl">0.2</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(MAT4i, <span class="at">exponent=</span><span class="fl">0.2</span>))</span></code></pre></div>
-<pre><code>## [1] 0.2601626 0.2601626 0.3414634 0.1382114</code></pre>
+<pre><code>##         a         b         c         d 
+## 0.2601626 0.2601626 0.3414634 0.1382114</code></pre>
 <p>We could change the beta value to 0.2 and obtain:</p>
 </div>
 <div id="graph-exercise" class="section level2" number="5.3">
@@ -590,26 +607,46 @@ c_B(A) = 1*2+0.1*5+0.01*10+0.001*23+0.0001*48+\dots
 <span id="cb21-14"><a href="matrices-and-beta-centrality.html#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Creation of the graph</span></span>
 <span id="cb21-15"><a href="matrices-and-beta-centrality.html#cb21-15" aria-hidden="true" tabindex="-1"></a>GRAPH11<span class="ot">&lt;-</span><span class="fu">graph_from_adjacency_matrix</span>(MAT11,<span class="at">mode=</span><span class="fu">c</span>(<span class="st">&quot;undirected&quot;</span>),<span class="at">diag=</span> <span class="cn">FALSE</span>)</span>
 <span id="cb21-16"><a href="matrices-and-beta-centrality.html#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-17"><a href="matrices-and-beta-centrality.html#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">1</span>)) <span class="co"># Beta value = 0.1</span></span></code></pre></div>
-<pre><code>##  [1] 0.05570762 0.05570762 0.05570762 0.18241829 0.05570762 0.05570762
-##  [7] 0.05570762 0.18241829 0.15842859 0.09547577 0.04701336</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="matrices-and-beta-centrality.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">2</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">2</span>)) <span class="co"># Beta value = 0.2</span></span></code></pre></div>
-<pre><code>##  [1] 0.05970982 0.05970982 0.05970982 0.17075893 0.05970982 0.05970982
-##  [7] 0.05970982 0.17075893 0.16350446 0.09263393 0.04408482</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="matrices-and-beta-centrality.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">3</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">3</span>)) <span class="co"># Beta value = 0.3</span></span></code></pre></div>
-<pre><code>##  [1] 0.06278200 0.06278200 0.06278200 0.16256285 0.06278200 0.06278200
-##  [7] 0.06278200 0.16256285 0.16668815 0.09036999 0.04112415</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="matrices-and-beta-centrality.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">4</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">4</span>)) <span class="co"># Beta value = 0.4</span></span></code></pre></div>
-<pre><code>##  [1] 0.06536114 0.06536114 0.06536114 0.15666328 0.06536114 0.06536114
-##  [7] 0.06536114 0.15666328 0.16861648 0.08799593 0.03789420</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="matrices-and-beta-centrality.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">5</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">5</span>)) <span class="co"># Beta value = 0.5</span></span></code></pre></div>
-<pre><code>##  [1] 0.06779661 0.06779661 0.06779661 0.15254237 0.06779661 0.06779661
-##  [7] 0.06779661 0.15254237 0.16949153 0.08474576 0.03389831</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="matrices-and-beta-centrality.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span><span class="dv">0</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span><span class="dv">0</span>)) <span class="co"># Beta value = 0</span></span></code></pre></div>
-<pre><code>##  [1] 0.05 0.05 0.05 0.20 0.05 0.05 0.05 0.20 0.15 0.10 0.05</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="matrices-and-beta-centrality.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span><span class="sc">-</span>.<span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span><span class="sc">-</span>.<span class="dv">1</span>)) <span class="co"># Beta value = -0.1</span></span></code></pre></div>
-<pre><code>##  [1] 0.0408331 0.0408331 0.0408331 0.2293779 0.0408331 0.0408331 0.0408331
-##  [8] 0.2293779 0.1345574 0.1087969 0.0528912</code></pre>
+<span id="cb21-17"><a href="matrices-and-beta-centrality.html#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(GRAPH11)<span class="sc">$</span>name <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>,<span class="st">&quot;f&quot;</span>,<span class="st">&quot;g&quot;</span>,<span class="st">&quot;h&quot;</span>,<span class="st">&quot;i&quot;</span>,<span class="st">&quot;j&quot;</span>,<span class="st">&quot;k&quot;</span>)</span>
+<span id="cb21-18"><a href="matrices-and-beta-centrality.html#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="co"># The network we&#39;re focusing on</span></span>
+<span id="cb21-19"><a href="matrices-and-beta-centrality.html#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(GRAPH11, </span>
+<span id="cb21-20"><a href="matrices-and-beta-centrality.html#cb21-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.size =</span> <span class="dv">30</span>, </span>
+<span id="cb21-21"><a href="matrices-and-beta-centrality.html#cb21-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.color =</span> <span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb21-22"><a href="matrices-and-beta-centrality.html#cb21-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">label.color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="matrices-and-beta-centrality.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">1</span>)) <span class="co"># Beta value = 0.1</span></span></code></pre></div>
+<pre><code>##          a          b          c          d          e          f          g 
+## 0.05570762 0.05570762 0.05570762 0.18241829 0.05570762 0.05570762 0.05570762 
+##          h          i          j          k 
+## 0.18241829 0.15842859 0.09547577 0.04701336</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="matrices-and-beta-centrality.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">2</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">2</span>)) <span class="co"># Beta value = 0.2</span></span></code></pre></div>
+<pre><code>##          a          b          c          d          e          f          g 
+## 0.05970982 0.05970982 0.05970982 0.17075893 0.05970982 0.05970982 0.05970982 
+##          h          i          j          k 
+## 0.17075893 0.16350446 0.09263393 0.04408482</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="matrices-and-beta-centrality.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">3</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">3</span>)) <span class="co"># Beta value = 0.3</span></span></code></pre></div>
+<pre><code>##          a          b          c          d          e          f          g 
+## 0.06278200 0.06278200 0.06278200 0.16256285 0.06278200 0.06278200 0.06278200 
+##          h          i          j          k 
+## 0.16256285 0.16668815 0.09036999 0.04112415</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="matrices-and-beta-centrality.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">4</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">4</span>)) <span class="co"># Beta value = 0.4</span></span></code></pre></div>
+<pre><code>##          a          b          c          d          e          f          g 
+## 0.06536114 0.06536114 0.06536114 0.15666328 0.06536114 0.06536114 0.06536114 
+##          h          i          j          k 
+## 0.15666328 0.16861648 0.08799593 0.03789420</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="matrices-and-beta-centrality.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">5</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span>.<span class="dv">5</span>)) <span class="co"># Beta value = 0.5</span></span></code></pre></div>
+<pre><code>##          a          b          c          d          e          f          g 
+## 0.06779661 0.06779661 0.06779661 0.15254237 0.06779661 0.06779661 0.06779661 
+##          h          i          j          k 
+## 0.15254237 0.16949153 0.08474576 0.03389831</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="matrices-and-beta-centrality.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span><span class="dv">0</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span><span class="dv">0</span>)) <span class="co"># Beta value = 0</span></span></code></pre></div>
+<pre><code>##    a    b    c    d    e    f    g    h    i    j    k 
+## 0.05 0.05 0.05 0.20 0.05 0.05 0.05 0.20 0.15 0.10 0.05</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="matrices-and-beta-centrality.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span><span class="sc">-</span>.<span class="dv">1</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">bonpow</span>(GRAPH11, <span class="at">exponent=</span><span class="sc">-</span>.<span class="dv">1</span>)) <span class="co"># Beta value = -0.1</span></span></code></pre></div>
+<pre><code>##         a         b         c         d         e         f         g         h 
+## 0.0408331 0.0408331 0.0408331 0.2293779 0.0408331 0.0408331 0.0408331 0.2293779 
+##         i         j         k 
+## 0.1345574 0.1087969 0.0528912</code></pre>
 
 </div>
 </div>

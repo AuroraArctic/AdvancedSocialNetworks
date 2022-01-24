@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -448,32 +449,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="two-mode-projections" class="section level1" number="19">
 <h1><span class="header-section-number">Chapter 19</span> Two-mode projections</h1>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="two-mode-projections.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="do">######################</span></span>
-<span id="cb210-2"><a href="two-mode-projections.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="co"># TWO-MODE PROJECTIONS</span></span>
-<span id="cb210-3"><a href="two-mode-projections.html#cb210-3" aria-hidden="true" tabindex="-1"></a><span class="do">######################</span></span>
-<span id="cb210-4"><a href="two-mode-projections.html#cb210-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
-<span id="cb210-5"><a href="two-mode-projections.html#cb210-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-6"><a href="two-mode-projections.html#cb210-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing data</span></span>
-<span id="cb210-7"><a href="two-mode-projections.html#cb210-7" aria-hidden="true" tabindex="-1"></a>DSAm <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(</span>
-<span id="cb210-8"><a href="two-mode-projections.html#cb210-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Datasets/Davis_SouthernWomen_Attendance.csv&quot;</span>,</span>
-<span id="cb210-9"><a href="two-mode-projections.html#cb210-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
-<span id="cb210-10"><a href="two-mode-projections.html#cb210-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-11"><a href="two-mode-projections.html#cb210-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-12"><a href="two-mode-projections.html#cb210-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Limit letters to the first two letters</span></span>
-<span id="cb210-13"><a href="two-mode-projections.html#cb210-13" aria-hidden="true" tabindex="-1"></a>DSAmS<span class="ot">&lt;-</span>DSAm</span>
-<span id="cb210-14"><a href="two-mode-projections.html#cb210-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Change names in new object</span></span>
-<span id="cb210-15"><a href="two-mode-projections.html#cb210-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(DSAmS)<span class="ot">&lt;-</span><span class="fu">substring</span>(<span class="fu">rownames</span>(DSAm),<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb210-16"><a href="two-mode-projections.html#cb210-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-17"><a href="two-mode-projections.html#cb210-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb210-18"><a href="two-mode-projections.html#cb210-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Now draw the network</span></span>
-<span id="cb210-19"><a href="two-mode-projections.html#cb210-19" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(DSAmS, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
-<span id="cb210-20"><a href="two-mode-projections.html#cb210-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="two-mode-projections.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="do">###########################</span></span>
-<span id="cb211-2"><a href="two-mode-projections.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ONE MODE PROJECTIONS</span></span>
-<span id="cb211-3"><a href="two-mode-projections.html#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="do">###########################</span></span>
-<span id="cb211-4"><a href="two-mode-projections.html#cb211-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb211-5"><a href="two-mode-projections.html#cb211-5" aria-hidden="true" tabindex="-1"></a>DSAmS<span class="sc">%*%</span><span class="fu">t</span>(DSAmS)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="two-mode-projections.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="do">######################</span></span>
+<span id="cb202-2"><a href="two-mode-projections.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="co"># TWO-MODE PROJECTIONS</span></span>
+<span id="cb202-3"><a href="two-mode-projections.html#cb202-3" aria-hidden="true" tabindex="-1"></a><span class="do">######################</span></span>
+<span id="cb202-4"><a href="two-mode-projections.html#cb202-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb202-5"><a href="two-mode-projections.html#cb202-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-6"><a href="two-mode-projections.html#cb202-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing data</span></span>
+<span id="cb202-7"><a href="two-mode-projections.html#cb202-7" aria-hidden="true" tabindex="-1"></a>DSAm <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(</span>
+<span id="cb202-8"><a href="two-mode-projections.html#cb202-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;datasets/Davis_SouthernWomen_Attendance.csv&quot;</span>,</span>
+<span id="cb202-9"><a href="two-mode-projections.html#cb202-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb202-10"><a href="two-mode-projections.html#cb202-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-11"><a href="two-mode-projections.html#cb202-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-12"><a href="two-mode-projections.html#cb202-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Limit letters to the first two letters</span></span>
+<span id="cb202-13"><a href="two-mode-projections.html#cb202-13" aria-hidden="true" tabindex="-1"></a>DSAmS<span class="ot">&lt;-</span>DSAm</span>
+<span id="cb202-14"><a href="two-mode-projections.html#cb202-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Change names in new object</span></span>
+<span id="cb202-15"><a href="two-mode-projections.html#cb202-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(DSAmS)<span class="ot">&lt;-</span><span class="fu">substring</span>(<span class="fu">rownames</span>(DSAm),<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb202-16"><a href="two-mode-projections.html#cb202-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-17"><a href="two-mode-projections.html#cb202-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb202-18"><a href="two-mode-projections.html#cb202-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Now draw the network</span></span>
+<span id="cb202-19"><a href="two-mode-projections.html#cb202-19" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(DSAmS, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
+<span id="cb202-20"><a href="two-mode-projections.html#cb202-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="two-mode-projections.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="do">###########################</span></span>
+<span id="cb203-2"><a href="two-mode-projections.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ONE MODE PROJECTIONS</span></span>
+<span id="cb203-3"><a href="two-mode-projections.html#cb203-3" aria-hidden="true" tabindex="-1"></a><span class="do">###########################</span></span>
+<span id="cb203-4"><a href="two-mode-projections.html#cb203-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb203-5"><a href="two-mode-projections.html#cb203-5" aria-hidden="true" tabindex="-1"></a>DSAmS<span class="sc">%*%</span><span class="fu">t</span>(DSAmS)</span></code></pre></div>
 <pre><code>##    EV LA TH BR CH FR EL PE RU VE MY KA SY NO HE DO OL FL
 ## EV  8  6  7  6  3  4  3  3  3  2  2  2  2  2  1  2  1  1
 ## LA  6  7  6  6  3  4  4  2  3  2  1  1  2  2  2  1  0  0
@@ -493,7 +494,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## DO  2  1  2  1  0  1  1  2  2  2  2  2  2  1  1  2  1  1
 ## OL  1  0  1  0  0  0  0  1  1  1  1  1  1  2  1  1  2  2
 ## FL  1  0  1  0  0  0  0  1  1  1  1  1  1  2  1  1  2  2</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="two-mode-projections.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(DSAmS)<span class="sc">%*%</span>DSAmS</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="two-mode-projections.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(DSAmS)<span class="sc">%*%</span>DSAmS</span></code></pre></div>
 <pre><code>##     E01 E02 E03 E04 E05 E06 E07 E08 E09 E10 E11 E12 E13 E14
 ## E01   3   2   3   2   3   3   2   3   1   0   0   0   0   0
 ## E02   2   3   3   2   3   3   2   3   2   0   0   0   0   0
@@ -509,57 +510,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## E12   0   0   0   0   0   1   4   5   5   5   2   6   3   3
 ## E13   0   0   0   0   0   1   2   2   3   3   1   3   3   3
 ## E14   0   0   0   0   0   1   2   2   3   3   1   3   3   3</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="two-mode-projections.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DSAmS)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="two-mode-projections.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(DSAmS)</span></code></pre></div>
 <pre><code>## [1] 0.3531746</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="two-mode-projections.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example dataset</span></span>
-<span id="cb217-2"><a href="two-mode-projections.html#cb217-2" aria-hidden="true" tabindex="-1"></a>scientists_papers<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb217-3"><a href="two-mode-projections.html#cb217-3" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb217-4"><a href="two-mode-projections.html#cb217-4" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb217-5"><a href="two-mode-projections.html#cb217-5" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb217-6"><a href="two-mode-projections.html#cb217-6" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
-<span id="cb217-7"><a href="two-mode-projections.html#cb217-7" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
-<span id="cb217-8"><a href="two-mode-projections.html#cb217-8" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">6</span>,<span class="dv">8</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb217-9"><a href="two-mode-projections.html#cb217-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(scientists_papers)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;a2&quot;</span>,<span class="st">&quot;a3&quot;</span>,<span class="st">&quot;a4&quot;</span>,<span class="st">&quot;a5&quot;</span>,<span class="st">&quot;a6&quot;</span>)</span>
-<span id="cb217-10"><a href="two-mode-projections.html#cb217-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(scientists_papers)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;e1&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;e3&quot;</span>,<span class="st">&quot;e4&quot;</span>,<span class="st">&quot;e5&quot;</span>,<span class="st">&quot;e6&quot;</span>,<span class="st">&quot;e7&quot;</span>,<span class="st">&quot;e8&quot;</span>)</span>
-<span id="cb217-11"><a href="two-mode-projections.html#cb217-11" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(scientists_papers, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="two-mode-projections.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="two-mode-projections.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example dataset</span></span>
+<span id="cb209-2"><a href="two-mode-projections.html#cb209-2" aria-hidden="true" tabindex="-1"></a>scientists_papers<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb209-3"><a href="two-mode-projections.html#cb209-3" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb209-4"><a href="two-mode-projections.html#cb209-4" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb209-5"><a href="two-mode-projections.html#cb209-5" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb209-6"><a href="two-mode-projections.html#cb209-6" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
+<span id="cb209-7"><a href="two-mode-projections.html#cb209-7" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb209-8"><a href="two-mode-projections.html#cb209-8" aria-hidden="true" tabindex="-1"></a>                          <span class="dv">6</span>,<span class="dv">8</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb209-9"><a href="two-mode-projections.html#cb209-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(scientists_papers)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;a1&quot;</span>,<span class="st">&quot;a2&quot;</span>,<span class="st">&quot;a3&quot;</span>,<span class="st">&quot;a4&quot;</span>,<span class="st">&quot;a5&quot;</span>,<span class="st">&quot;a6&quot;</span>)</span>
+<span id="cb209-10"><a href="two-mode-projections.html#cb209-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(scientists_papers)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;e1&quot;</span>,<span class="st">&quot;e2&quot;</span>,<span class="st">&quot;e3&quot;</span>,<span class="st">&quot;e4&quot;</span>,<span class="st">&quot;e5&quot;</span>,<span class="st">&quot;e6&quot;</span>,<span class="st">&quot;e7&quot;</span>,<span class="st">&quot;e8&quot;</span>)</span>
+<span id="cb209-11"><a href="two-mode-projections.html#cb209-11" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(scientists_papers, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="two-mode-projections.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers)</span></code></pre></div>
 <pre><code>## a1 a2 a3 a4 a5 a6 
 ##  1  2  2  3  6  2</code></pre>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="two-mode-projections.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(scientists_papers)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="two-mode-projections.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(scientists_papers)</span></code></pre></div>
 <pre><code>## e1 e2 e3 e4 e5 e6 e7 e8 
 ##  4  2  2  2  1  1  2  2</code></pre>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="two-mode-projections.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Example of valued network</span></span>
-<span id="cb222-2"><a href="two-mode-projections.html#cb222-2" aria-hidden="true" tabindex="-1"></a>MATRIX2V<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb222-3"><a href="two-mode-projections.html#cb222-3" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>,</span>
-<span id="cb222-4"><a href="two-mode-projections.html#cb222-4" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>,</span>
-<span id="cb222-5"><a href="two-mode-projections.html#cb222-5" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">5</span>,</span>
-<span id="cb222-6"><a href="two-mode-projections.html#cb222-6" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">0</span>,</span>
-<span id="cb222-7"><a href="two-mode-projections.html#cb222-7" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">7</span>,<span class="dv">4</span>),<span class="dv">6</span>,<span class="dv">4</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
-<span id="cb222-8"><a href="two-mode-projections.html#cb222-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(MATRIX2V)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>,<span class="st">&quot;f&quot;</span>)</span>
-<span id="cb222-9"><a href="two-mode-projections.html#cb222-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(MATRIX2V)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;w&quot;</span>,<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>)</span>
-<span id="cb222-10"><a href="two-mode-projections.html#cb222-10" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(MATRIX2V, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
-<span id="cb222-11"><a href="two-mode-projections.html#cb222-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="two-mode-projections.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(MATRIX2V, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
-<span id="cb223-2"><a href="two-mode-projections.html#cb223-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>,<span class="at">edge.lwd=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="two-mode-projections.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Centrality Measures about Authors</span></span>
-<span id="cb224-2"><a href="two-mode-projections.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="two-mode-projections.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Example of valued network</span></span>
+<span id="cb214-2"><a href="two-mode-projections.html#cb214-2" aria-hidden="true" tabindex="-1"></a>MATRIX2V<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb214-3"><a href="two-mode-projections.html#cb214-3" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>,</span>
+<span id="cb214-4"><a href="two-mode-projections.html#cb214-4" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>,</span>
+<span id="cb214-5"><a href="two-mode-projections.html#cb214-5" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">5</span>,</span>
+<span id="cb214-6"><a href="two-mode-projections.html#cb214-6" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">0</span>,</span>
+<span id="cb214-7"><a href="two-mode-projections.html#cb214-7" aria-hidden="true" tabindex="-1"></a>                   <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">7</span>,<span class="dv">4</span>),<span class="dv">6</span>,<span class="dv">4</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb214-8"><a href="two-mode-projections.html#cb214-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(MATRIX2V)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;e&quot;</span>,<span class="st">&quot;f&quot;</span>)</span>
+<span id="cb214-9"><a href="two-mode-projections.html#cb214-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(MATRIX2V)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;w&quot;</span>,<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;z&quot;</span>)</span>
+<span id="cb214-10"><a href="two-mode-projections.html#cb214-10" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(MATRIX2V, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
+<span id="cb214-11"><a href="two-mode-projections.html#cb214-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="two-mode-projections.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(MATRIX2V, <span class="at">displaylabels=</span><span class="cn">TRUE</span>, </span>
+<span id="cb215-2"><a href="two-mode-projections.html#cb215-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">usearrows=</span><span class="cn">FALSE</span>, <span class="at">gmode=</span><span class="st">&quot;twomode&quot;</span>,<span class="at">edge.lwd=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="two-mode-projections.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Centrality Measures about Authors</span></span>
+<span id="cb216-2"><a href="two-mode-projections.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers)</span></code></pre></div>
 <pre><code>## a1 a2 a3 a4 a5 a6 
 ##  1  2  2  3  6  2</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="two-mode-projections.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers)<span class="sc">/</span><span class="fu">NCOL</span>(scientists_papers)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="two-mode-projections.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(scientists_papers)<span class="sc">/</span><span class="fu">NCOL</span>(scientists_papers)</span></code></pre></div>
 <pre><code>##    a1    a2    a3    a4    a5    a6 
 ## 0.125 0.250 0.250 0.375 0.750 0.250</code></pre>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="two-mode-projections.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Centrality Measures about Papers</span></span>
-<span id="cb228-2"><a href="two-mode-projections.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(scientists_papers)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="two-mode-projections.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Centrality Measures about Papers</span></span>
+<span id="cb220-2"><a href="two-mode-projections.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(scientists_papers)</span></code></pre></div>
 <pre><code>## e1 e2 e3 e4 e5 e6 e7 e8 
 ##  4  2  2  2  1  1  2  2</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="two-mode-projections.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(scientists_papers)<span class="sc">/</span><span class="fu">NROW</span>(scientists_papers)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="two-mode-projections.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(scientists_papers)<span class="sc">/</span><span class="fu">NROW</span>(scientists_papers)</span></code></pre></div>
 <pre><code>##        e1        e2        e3        e4        e5        e6        e7        e8 
 ## 0.6666667 0.3333333 0.3333333 0.3333333 0.1666667 0.1666667 0.3333333 0.3333333</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="two-mode-projections.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of participation of authors for each paper</span></span>
-<span id="cb232-2"><a href="two-mode-projections.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="two-mode-projections.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of participation of authors for each paper</span></span>
+<span id="cb224-2"><a href="two-mode-projections.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers)</span></code></pre></div>
 <pre><code>##      a1   a2   a3   a4  a5  a6
 ## e1 0.25 0.25 0.25 0.25 0.0 0.0
 ## e2 0.00 0.00 0.50 0.50 0.0 0.0
@@ -569,8 +570,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## e6 0.00 0.00 0.00 0.00 1.0 0.0
 ## e7 0.00 0.00 0.00 0.00 0.5 0.5
 ## e8 0.00 0.00 0.00 0.00 0.5 0.5</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="two-mode-projections.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Same but transposed</span></span>
-<span id="cb234-2"><a href="two-mode-projections.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers))</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="two-mode-projections.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Same but transposed</span></span>
+<span id="cb226-2"><a href="two-mode-projections.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers))</span></code></pre></div>
 <pre><code>##      e1  e2  e3  e4 e5 e6  e7  e8
 ## a1 0.25 0.0 0.0 0.0  0  0 0.0 0.0
 ## a2 0.25 0.0 0.0 0.5  0  0 0.0 0.0
@@ -578,8 +579,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## a4 0.25 0.5 0.5 0.0  0  0 0.0 0.0
 ## a5 0.00 0.0 0.5 0.5  1  1 0.5 0.5
 ## a6 0.00 0.0 0.0 0.0  0  0 0.5 0.5</code></pre>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="two-mode-projections.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage of participation into papers</span></span>
-<span id="cb236-2"><a href="two-mode-projections.html#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(<span class="fu">t</span>(<span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers)))</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="two-mode-projections.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage of participation into papers</span></span>
+<span id="cb228-2"><a href="two-mode-projections.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(<span class="fu">t</span>(<span class="fu">t</span>(scientists_papers)<span class="sc">/</span><span class="fu">colSums</span>(scientists_papers)))</span></code></pre></div>
 <pre><code>##   a1   a2   a3   a4   a5   a6 
 ## 0.25 0.75 0.75 1.25 4.00 1.00</code></pre>
 

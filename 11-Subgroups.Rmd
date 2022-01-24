@@ -27,6 +27,14 @@ network<-matrix(c(
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,
 0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0),19,19)
+
+network = as.network(network, directed = F)
+
+par(mar = c(0,0,0,0))
+plot(network,
+     displaylabels=TRUE,
+     label.cex = 0.7,
+     vertex.cex = 0.8)
 ```
 
 ### Components
@@ -40,14 +48,10 @@ A subset where everyone is directly or indirectly connected to everyone else is 
 
 </aside>
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
-knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled.png")
-```
-
 
 ### Cliques
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Examples of cliques"}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 1.png")
 ```
 
@@ -70,7 +74,7 @@ By considering the previous network, the $2$-cliques are:
 - $1, 2, 3, 6, 7$;
 - $1, 2, 3, 6, 4, 5$;
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Example of 2-cliques"}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/12-network.png")
 ```
 
@@ -105,7 +109,7 @@ Some 2-clans in the network are:
 - 1, 2, 3, 6, 7;
 - 1, 2, 3, 6, 4, 5.
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Example of k-clan"}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 2.png")
 ```
 
@@ -113,15 +117,15 @@ knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled
 
 ### Core periphery
 
-If we try to represent the network with an adjacency matrix, we would notice that cliques are evident by 1s zones. In order to get a completely filled by 1s zone, there should be a direct path between all nodes. Based on the size of these blocks, we can distinguish the core from the periphery. In fact, the periphery will have zeros zones, if not connected to anyone, or 1 and 0s zones, while the core will have 1s zones. 
+If we try to represent the network with an adjacency matrix, we would notice that cliques are evident by $1$s zones. In order to get a completely filled by $1$s zone, there should be a direct path between all nodes. Based on the size of these blocks, we can distinguish the core from the periphery. In fact, the periphery will have zeros zones, if not connected to anyone, or $1$ and $0$s zones, while the core will have $1$s zones. 
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='60%', fig.cap=""}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 3.png")
 ```
 
 ### Structural equivalence
 
-In social network analysis, two nodes are considered **structurally equivalent** if they have the same neighbourhoods – that is, they are connected to the same others.  
+In social network analysis, two nodes are considered **structurally equivalent** if they have the same neighbourhoods – they are connected to the same others.  
 
 <aside>
 💡 *For instance, in the network below, we know that there are some nodes that have the same behaviours: $\{f, g\}, \{c, d\}, \{i, j\}$.*
@@ -157,7 +161,7 @@ Some types of blocks can be:
 - row-functional or col-functional: all starting nodes link to some other nodes and vice-versa, if there is just one 1 in each row/column;
 - row-regular or col-regular: each row/column is covered;
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Nine types of connection between clusters"}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 5.png")
 ```
 
@@ -203,19 +207,17 @@ network_2_SEH<-sedist(network_2, method="hamming")
 network_2_SEH 
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Same distance matrix obtained in the chunk"}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 7.png")
 ```
 
 ```{r}
 # Clustering
 network_2_SEHD<-as.dist(network_2_SEH)
+
+# Clustering on the Humming distance
 network_2_SEHD_HC<-hclust(network_2_SEHD,method="complete")
 plot(network_2_SEHD_HC)
-```
-
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
-knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 8.png")
 ```
 
 ### Euclidean Structural Equivalence
@@ -245,7 +247,7 @@ network_2_SEE<-sedist(network_2, method="euclidean")
 network_2_SEE
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='70%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='70%', fig.cap="Example of distance matrix computed with Euclidean distance, as shown in the chunk above"}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 10.png")
 ```
 
@@ -254,8 +256,4 @@ knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled
 network_2_SEED<-as.dist(network_2_SEE)
 network_2_SEED_HC<-hclust(network_2_SEED,method="complete")
 plot(network_2_SEED_HC)
-```
-
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
-knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 11.png")
 ```

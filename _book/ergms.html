@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -450,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 13</span> ERGMs</h1>
 <div id="introduction-1" class="section level2" number="13.1">
 <h2><span class="header-section-number">13.1</span> Introduction</h2>
-<p>Suppose we collect data about 7 females and 6 males. Why should we end up observing a specific network instead of another?</p>
+<p>Suppose we collect data about <span class="math inline">\(7\)</span> females and <span class="math inline">\(6\)</span> males. Why should we end up observing a specific network instead of another?</p>
 <p>The probability of observing the network <span class="math inline">\(x\)</span> equals:</p>
 <p><span class="math display">\[
 P(X=x) = \frac{exp(\theta&#39;z(x))}{\kappa(\theta)}
@@ -478,8 +479,8 @@ P(X=x) = \frac{exp(\theta&#39;z(x))}{\kappa(\theta)}
 <aside>
 <p>💡 <em>For instance, by considering the two networks below, despite both networks having similar density, the 2-stars is very different.</em></p>
 </aside>
-<p>If we observe a high number of two-stars in our network given the number of ties, then the underlying force was probably one that tended to prefer to build ties to nodes with a high degree.</p>
 <p><img src="images/13-ERGMs/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>If we observe a high number of two-stars in our network given the number of ties, then the underlying force was probably one that tended to prefer to build ties to nodes with a high degree.</p>
 <aside>
 <p>💡 <em>In the previous 3 networks, the 2-stars measure is <span class="math inline">\(77, 40\)</span> and <span class="math inline">\(43\)</span>.</em></p>
 </aside>
@@ -557,7 +558,7 @@ P\left(X=X_{\text {obs }}\right) = \frac{e^{\theta_{L}\ \# L_{\text {obs}}+\thet
 <p>Consider the presence or absence of a tie between actors <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> as a function of the rest of the graph. Given the rest of the graph, what is the likelihood of <span class="math inline">\(x_{ij}\)</span> being present?</p>
 <p><span class="math display">\[
 \begin{aligned}
-P(x_{ij} &amp;=1 \mid X_{ij}^{C})=\frac{P\left(X=X_{obs}^{i}=1\right)}{{P}\left({X}={X}_{{obs}}^{{i}=0}\right)+{P}\left({X}={X}_{{obs}}^{{i}=1}\right)}\\
+P(x_{ij} =1 \mid X_{ij}^{C}) &amp;=\frac{P\left(X=X_{obs}^{i}=1\right)}{{P}\left({X}={X}_{{obs}}^{{i}=0}\right)+{P}\left({X}={X}_{{obs}}^{{i}=1}\right)}\\
 &amp;= \frac{\frac{e^{\theta_{L}\ \# L_{\text {obs}}^{ij=1}+\theta_{S} \ \# S_{\text {obs}}^{ij=1}+\theta_{T}\ \# T_{\text {obs}}^{ij=1}}}{\sum_{k=1}^{\text {All }}[e^{\theta_{L} \#L_{k}+\theta_{S} \ \# S_{k}+\theta_{T} \ \#T_{k}}]}}{\frac{e^{\theta_{L}\ \# L_{\text {obs}}^{ij=0}+\theta_{S} \ \# S_{\text {obs}}^{ij=0}+\theta_{T}\ \# T_{\text {obs}}^{ij=0}}}{\sum_{k=1}^{\text {All }}[e^{\theta_{L} \#L_{k}+\theta_{S} \ \# S_{k}+\theta_{T} \ \#T_{k}}]}+\frac{e^{\theta_{L}\ \# L_{\text {obs}}^{ij=1}+\theta_{S} \ \# S_{\text {obs}}^{ij=1}+\theta_{T}\ \# T_{\text {obs}}^{ij=1}}}{\sum_{k=1}^{\text {All }}[e^{\theta_{L} \#L_{k}+\theta_{S} \ \# S_{k}+\theta_{T} \ \#T_{k}}]}}
 \end{aligned}
 \]</span></p>
@@ -569,11 +570,13 @@ e^{\theta_{L}\ \# L_{\text {obs}}^{ij=1}+\theta_{S} \ \# S_{\text {obs}}^{ij=1}+
 \]</span></p>
 <p>The same formula can be defined for <span class="math inline">\(X_{ij} = 0\)</span>.</p>
 <p><span class="math display">\[
-\frac{{P}\left({X}_{i,j}=1 \mid {X}_{i,j}^{{c}}\right)}{{P}\left({X}_{i,j}=0 \mid {X}_{i,j}^{{c}}\right)}=\frac{{e}^{\theta_{{L}}} \ \# {~L}_{{obs}}^{{ij}=1}+\theta_{{S}} \ \# {~S}_{{obs}}^{{ij}=1}+\theta_{T} \ \# {~T}_{{obs}}^{{ij}=1}}{e^{\theta_{{L}}} \ \# {~L}_{\text {obs }}^{{ij}=0}+\theta_{{S}} \ \# {~S}_{\text {obs}}^{{ij}=0}+\theta_{T} \ \# {~T}_{\text {obs}}^{{ij}=0}} \\
-= e^{\left[\theta_{L} \ \# L_{\text {obs }}^{i j=1}+\theta_{S} \ \# S_{\text {obs }}^{i j=1}+\theta_{T} \ \# T_{\text {obs }}^{i j=1}\right]-\left[\theta_{L}\ \# L_{\text {obs}}^{i j=0}+\theta_{S} \ \# S_{\text {obs}}^{i j=0}+\theta_{T} \ \# T_{\text {obs }}^{i j=0}\right]} \\
-= e^{\theta_L\left[\#L_{obs}^{ij=1}- \#L_{obs}^{ij=0}\right]+
+\begin{aligned}
+\frac{{P}\left({X}_{i,j}=1 \mid {X}_{i,j}^{{c}}\right)}{{P}\left({X}_{i,j}=0 \mid {X}_{i,j}^{{c}}\right)} &amp;= \frac{{e}^{\theta_{{L}}} \ \# {~L}_{{obs}}^{{ij}=1}+\theta_{{S}} \ \# {~S}_{{obs}}^{{ij}=1}+\theta_{T} \ \# {~T}_{{obs}}^{{ij}=1}}{e^{\theta_{{L}}} \ \# {~L}_{\text {obs }}^{{ij}=0}+\theta_{{S}} \ \# {~S}_{\text {obs}}^{{ij}=0}+\theta_{T} \ \# {~T}_{\text {obs}}^{{ij}=0}} \\
+&amp;= e^{\left[\theta_{L} \ \# L_{\text {obs }}^{i j=1}+\theta_{S} \ \# S_{\text {obs }}^{i j=1}+\theta_{T} \ \# T_{\text {obs }}^{i j=1}\right]-\left[\theta_{L}\ \# L_{\text {obs}}^{i j=0}+\theta_{S} \ \# S_{\text {obs}}^{i j=0}+\theta_{T} \ \# T_{\text {obs }}^{i j=0}\right]} \\
+&amp;= e^{\theta_L\left[\#L_{obs}^{ij=1}- \#L_{obs}^{ij=0}\right]+
 \theta_S\left[\#S_{obs}^{ij=1}- \#S_{obs}^{ij=0}\right]+
 \theta_T\left[\#T_{obs}^{ij=1}- \#T_{obs}^{ij=0}\right]}
+\end{aligned}
 \]</span></p>
 <p>By considering the logarithm, we get a simple logistic regression equation. Does the local surrounding predict the presence or absence of a tie between <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>?</p>
 <ul>

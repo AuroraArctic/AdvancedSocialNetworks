@@ -1,11 +1,12 @@
 # Centrality Measures
 
 ## Scientists example
+
 ```{r}
 library(sna)
 
 # SCIENTISTS COLLABORATION
-BS504Cx<-as.matrix(read.csv("Datasets/Borgatti_Scientists504_Collaboration.csv",
+BS504Cx<-as.matrix(read.csv("datasets/Borgatti_Scientists504_Collaboration.csv",
                             stringsAsFactors=FALSE, row.names=1))
 
 # Pick only those who have at least 3 collabs
@@ -28,7 +29,7 @@ gplot(BS504C,
 
 ```{r}
 # Inserting attributes
-BS504Attr<-read.csv("Datasets/Borgatti_Scientists504_Attributes.csv",
+BS504Attr<-read.csv("datasets/Borgatti_Scientists504_Attributes.csv",
                     stringsAsFactors=FALSE, row.names=1)
 
 Tenure<-(BS504Attr$Years) # Years attribute
@@ -64,11 +65,12 @@ legend("topright",
        horiz = F , 
        inset = c(0.01))
 ```
+
 ## Florentine Families
 
 ```{r}
 # FLORENTINE FAMILIES
-PFM<-as.matrix(read.csv("Datasets/Padgett_FlorentineFamilies_Marriage.csv",
+PFM<-as.matrix(read.csv("datasets/Padgett_FlorentineFamilies_Marriage.csv",
                         stringsAsFactors=FALSE, row.names=1))
 PFMn<-as.network(PFM, directed=F)
 gplot(PFMn, 
@@ -89,7 +91,7 @@ gplot(PFMn,
 
 ```{r}
 # Add attributes file and use wealth to change size of nodes (vertex.cex)
-PFA<-read.csv("Datasets/Padgett_FlorentineFamilies_Attributes.csv",
+PFA<-read.csv("datasets/Padgett_FlorentineFamilies_Attributes.csv",
                stringsAsFactors=FALSE, row.names=1)
 
 # Color palette

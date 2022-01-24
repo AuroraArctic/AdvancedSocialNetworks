@@ -47,7 +47,7 @@ igraph::reciprocity(mat6i)
 igraph::edge_density(mat6i)
 ```
 
-# Triads
+## Triads
 
 ```{r}
 ##############################

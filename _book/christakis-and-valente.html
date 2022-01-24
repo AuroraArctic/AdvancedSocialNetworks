@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -462,21 +463,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>Induction effect or Social Contagion: spread from a person to a person</p>
 <aside>
-<p>🌐 <em>if your friends gain weight, you gain weight, and you then, in turn, impact other friends. Because we conform and we change our idea about what acceptable body size is.</em></p>
+<p>🌐 <em>If your friends gain weight, you gain weight, and you then, in turn, impact other friends. Because we conform and we change our idea about what acceptable body size is.</em></p>
 </aside>
 <aside>
-<p>🚬 <em>if your friends smoke, you might start smoking.</em></p>
+<p>🚬 <em>If your friends smoke, you might start smoking.</em></p>
 </aside></li>
 <li><p>Homophily effect: birds of a feather flock together</p>
 <aside>
-<p>🌐 <em>form a tie because we have a similar body size, to begin with, or similar interest in exercise (etc.) that might predict our body size.</em></p>
+<p>🌐 <em>Form a tie because we have a similar body size, to begin with, or similar interest in exercise (etc.) that might predict our body size.</em></p>
 </aside>
 <aside>
 <p>🚬 <em>Friendship emerging as a result of smoking behaviour.</em></p>
 </aside></li>
 <li><p>Confounding factor: it confounds our ability to figure out what’s going on</p>
 <aside>
-<p>🌐 <em>something happening in a cluster’s environment (e.g. a gym opening, which makes all members of the cluster lose weight, or a fast-food restaurant opening, which makes all members gain weight).</em></p>
+<p>🌐 <em>Something happening in a cluster’s environment (e.g. a gym opening, which makes all members of the cluster lose weight, or a fast-food restaurant opening, which makes all members gain weight).</em></p>
 </aside>
 <aside>
 <p>🚬 <em>Environment makes both of us start/stop smoking (like an anti-smoking advertisement, or new laws that impacts one group but not another).</em></p>
@@ -484,16 +485,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Some examples that can be applied to these three reasons are:</p>
 <ul>
-<li>movies preferences</li>
-<li>happiness</li>
-<li>smiling</li>
-<li>eating fast food</li>
-<li>…</li>
+<li>movies preferences;</li>
+<li>happiness;</li>
+<li>smiling;</li>
+<li>eating fast food.</li>
 </ul>
 </div>
 <div id="what-is-the-meaning-of-3-degrees-of-separation" class="section level3" number="14.1.3">
 <h3><span class="header-section-number">14.1.3</span> What is the meaning of 3 degrees of separation?</h3>
-<p>This here shows, on the Y-axis, the increase in the probability that a person is obese given that a social contact of theirs is obese and, on the X-axis, the degrees of separation between the two people. According to Christakis, there are three degrees of separation that hold for many traits, in particular, obesity:</p>
+<p>The plot here shows, on the Y-axis, the increase in the probability that a person is obese given that a social contact of theirs is obese and, on the X-axis, the degrees of separation between the two people. According to Christakis, there are three degrees of separation that hold for many traits, in particular, obesity:</p>
 <p><img src="images/14-Christakis%20and%20Valente/Untitled.png" width="50%" style="display: block; margin: auto;" /></p>
 <ul>
 <li>If your friends are obese you have about a 45% higher likelihood of being obese yourself;</li>
@@ -519,14 +519,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">14.1.5</span> What might be potential mechanisms for the spread of behaviour?</h3>
 <p>Alter’s appearance or behaviour changes:</p>
 <ul>
-<li><p>ego’s behaviour</p>
+<li><p>Ego’s behaviour</p>
 <aside>
 <p>🚬 <em>For instance, related to smoking, seeing other people smoke makes us smoke.</em></p>
 </aside>
 <aside>
 <p>😷 <em>Related to mask-wearing, we notice other people wearing masks, friends specifically, and we change our behaviour accordingly.</em></p>
 </aside></li>
-<li><p>ego’s expectations or perceptions of norms.</p>
+<li><p>Ego’s expectations or perceptions of norms.</p>
 <aside>
 <p>🚬 <em>For instance, related to smoking, we are convinced by arguments from others about what is normal and expected. Life is short and there are so many other dangers, you should worry about smoking.</em></p>
 </aside>
@@ -548,10 +548,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">14.2.1</span> What is the classic idea of diffusion?</h3>
 <p>Studying how networks influence behaviour moves us from theories about networks to network theory. New ideas and practices originate enter communities from some external source (e.g. mass media, labour exchanges, cosmopolitan contact, technical shifts). Adoption of the new idea or practice then flows through <strong>interpersonal contact networks</strong>.</p>
 <p>Diffusion happens out of interpersonal contact, persuasion and communication modelling. Diffusion occurs over time, usually following a trend studied in the Economy about the adoption of new products or technology, where there are nearly adopters, then diffusion and in the end the large common use/adoption of a behaviour.</p>
-<p><img src="images/14-Christakis%20and%20Valente/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-105"></span>
+<img src="images/14-Christakis%20and%20Valente/Untitled%201.png" alt="Stages of adoption over time" width="50%" />
+<p class="caption">
+Figure 14.1: Stages of adoption over time
+</p>
+</div>
 <p>Valente created mathematical models of the diffusion of innovations in different situations: for external and internal influence and when the external communications are mixed with person-to-person contact. However, it is far more interesting to study the processes that occur amongst people in the network.</p>
 <p>Therefore, Valente created a hypothetical community of people and the percentage of diffusion when adopters persuade non-adopters at a rate of one per cent. When this happens, we get the S-shape curve described above. But this is wrong since there’s no network in this. Once we start to see there’s clustering in the network, we notice that it all goes in a different way. In a random way, we get the S-shape, in a real network, there are some moments where the diffusion speeds up or slows down, deviating from the model.</p>
-<p><img src="images/14-Christakis%20and%20Valente/Untitled%202.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-106"></span>
+<img src="images/14-Christakis%20and%20Valente/Untitled%202.png" alt="S-curve to describe random behaviour adoption" width="50%" />
+<p class="caption">
+Figure 14.2: S-curve to describe random behaviour adoption
+</p>
+</div>
 </div>
 <div id="what-types-of-network-influence-weights-are-there-according-to-valente" class="section level3" number="14.2.2">
 <h3><span class="header-section-number">14.2.2</span> What types of network influence weights are there according to Valente?</h3>
@@ -597,12 +607,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="images/14-Christakis%20and%20Valente/Untitled%205.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><strong>What happens over time during the diffusion process?</strong></p>
 <ul>
-<li>external influence (e.g. media, advertisement, travel), whose effect decreases over time. As more people adopt, we do not worry about external influence;</li>
-<li>selection, which is very high in the beginning , because in the beginning nobody does nothing in my network. Over time, as the community fills with adopters, we don’t need to make changes in the network in order to have people being consistent with the ego’s behaviour;</li>
-<li>influence should increase over time: as the behaviour becomes normative, as there are more adopters, I’m more likely to change my behaviour;</li>
-<li>opinion leaders, whose trend varies, when the behaviour is normative and compatible with the community. When it is not culturally compatible, opinion leaders delay their adoption.</li>
+<li>External influence (e.g. media, advertisement, travel), whose effect decreases over time. As more people adopt, we do not worry about external influence;</li>
+<li>Selection, which is very high in the beginning , because in the beginning nobody does nothing in my network. Over time, as the community fills with adopters, we don’t need to make changes in the network in order to have people being consistent with the ego’s behaviour;</li>
+<li>Influence should increase over time: as the behaviour becomes normative, as there are more adopters, I’m more likely to change my behaviour;</li>
+<li>Opinion leaders, whose trend varies, when the behaviour is normative and compatible with the community. When it is not culturally compatible, opinion leaders delay their adoption.</li>
 </ul>
-<p><img src="images/14-Christakis%20and%20Valente/Untitled%206.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-110"></span>
+<img src="images/14-Christakis%20and%20Valente/Untitled%206.png" alt="Phenomena that happen over time during the diffusion process and their development" width="50%" />
+<p class="caption">
+Figure 14.3: Phenomena that happen over time during the diffusion process and their development
+</p>
+</div>
 
 </div>
 </div>

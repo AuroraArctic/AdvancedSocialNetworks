@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -463,18 +464,15 @@ Density = \frac{\text{Number of ties}}{\text{Number of possible ties}}
 <aside>
 <p>⚛️ <em>For instance, in this TBBT network, the density is 1/4 (7 actual ties, with 8 nodes, so 8</em>7/2 = 28 possible ties).*</p>
 </aside>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="average-degree-1" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Average Degree</h3>
 <p><em>What is the average number of connections for nodes?</em></p>
 <aside>
-<p>⚛️ The average degree of connections for nodes is:
-(1+2+1+1+2+2+2+2)/8 = 1.625</p>
+<p>⚛️ <em>The average degree of connections for nodes is:</em> <span class="math inline">\((1+2+1+1+2+2+2+2)/8 = 1.625\)</span>.</p>
 </aside>
-<p><img src="images/03-Cohesion%20measures/Untitled.png" width="50%" style="display: block; margin: auto;" /></p>
-<aside>
-<p>💡 <em>Remember that density does not tell us how these ties are distributed among the nodes.</em></p>
-</aside>
+<p>Remember that density does not tell us how these ties are distributed among the nodes.</p>
 </div>
 </div>
 <div id="components" class="section level2" number="3.2">
@@ -482,7 +480,7 @@ Density = \frac{\text{Number of ties}}{\text{Number of possible ties}}
 <p><em>How many different groups of nodes exist that cannot reach each other (directly or indirectly)?</em></p>
 <p>A component is a maximum set where everyone is connected with each other.</p>
 <aside>
-<p>⚛️ <em>In the Big Bang Theory set, the components are two, as shown in the image above</em>.</p>
+<p>⚛️ <em>In the Big Bang Theory network, the components are two, as shown in the image</em>.</p>
 </aside>
 <p>Imagine that everyone has a piece of information that needs to be propagated. The more components, the less information everyone is reaching and the worse it is. The number of components of a network goes from 1 to the total number of nodes <span class="math inline">\(n\)</span>. We should think of components as a way to spread creativity inside the network. All groups hold unique ideas and being one component allows for exposure to more ideas.</p>
 <div id="component-ratio" class="section level3" number="3.2.1">
@@ -495,11 +493,7 @@ CR = \frac{c-1}{n-1}
 <p>⚛️ <em>In TBBT example, the component ratio would be <span class="math inline">\((2-1)/(8-1) = 1/7\)</span>.</em></p>
 </aside>
 <p>1 means that all nodes are isolated, while 0 means there’s one single component.</p>
-<p>Notice that the component ratio does not tell us anything about the distribution of these components.</p>
-<aside>
-<p>💡 <em>The size of the largest component is a function of the network size, but it doesn’t tell us anything about the smaller components.</em></p>
-</aside>
-<p><img src="images/03-Cohesion%20measures/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Notice that the component ratio does not tell us anything about the distribution of these components. The size of the largest component is a function of the network size, but it doesn’t tell us anything about the smaller components.</p>
 </div>
 <div id="connectedness-and-fragmentation" class="section level3" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Connectedness and fragmentation</h3>
@@ -510,7 +504,7 @@ CR = \frac{c-1}{n-1}
 <p><img src="images/03-Cohesion%20measures/Untitled%203.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><em>What proportion of pairs of nodes can reach each other directly or indirectly?</em></p>
 <aside>
-<p>⚛️ <em>In the first example, Amy, Bernadette and Stuart reach each other <span class="math inline">\((3*2)\)</span>, whereas the others 5 are connected among them <span class="math inline">\((5*4)\)</span> , so <span class="math inline">\((3*2+5*4)/(8*7) = 0.464\)</span> .
+<p>⚛️ <em>In the first example, Amy, Bernadette and Stuart reach each other <span class="math inline">\((3\cdot2)\)</span>, whereas the others <span class="math inline">\(5\)</span> are connected among them <span class="math inline">\((5\cdot4)\)</span> , so <span class="math inline">\((3\cdot2+5\cdot4)/(8\cdot7) = 0.464\)</span>.
 In the second example, since the first three nodes do not reach each other, we have <span class="math inline">\((0+0+0+5*4)/(8*7) = 0.357\)</span>.</em></p>
 </aside>
 <p>This proportion is called <strong>connectedness</strong>, while its complement is called <strong>fragmentation (<span class="math inline">\(fragmentation = 1-connectedness\)</span>)</strong>. Notice that these measures do not inform about how long it takes to reach other nodes inside the same component:</p>
@@ -527,27 +521,27 @@ Connectedness = \frac{\sum_{i = \text{number of nodes in ith component}} i(i-1)}
 <aside>
 <p>⚛️ <em>For instance, the distance from Howard to Leonard is 2. If we want to compute the average distance between any couple of nodes inside the TBBT network, we need to consider disconnected nodes with inf distance, as shown in the geodesic distance matrix, which shows the minimum number of links to pass in order to reach a specific node.</em></p>
 </aside>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="cohesion-measures.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Geodesic distance:</span></span>
-<span id="cb1-2"><a href="cohesion-measures.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]</span></span>
-<span id="cb1-3"><a href="cohesion-measures.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [1,] 0 1 1 2 3 Inf Inf Inf</span></span>
-<span id="cb1-4"><a href="cohesion-measures.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># [2,] 1 0 1 2 3 Inf Inf Inf</span></span>
-<span id="cb1-5"><a href="cohesion-measures.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># [3,] 1 1 0 1 2 Inf Inf Inf</span></span>
-<span id="cb1-6"><a href="cohesion-measures.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [4,] 2 2 1 0 1 Inf Inf Inf</span></span>
-<span id="cb1-7"><a href="cohesion-measures.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># [5,] 3 3 2 1 0 Inf Inf Inf</span></span>
-<span id="cb1-8"><a href="cohesion-measures.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># [6,] Inf Inf Inf Inf Inf 0 1 1</span></span>
-<span id="cb1-9"><a href="cohesion-measures.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># [7,] Inf Inf Inf Inf Inf 1 0 2</span></span>
-<span id="cb1-10"><a href="cohesion-measures.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># [8,] Inf Inf Inf Inf Inf 1 2 0</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="cohesion-measures.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geodist</span>(tbbt)<span class="sc">$</span>gdist</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+## [1,]    0    1    2  Inf  Inf  Inf  Inf  Inf
+## [2,]    1    0    1  Inf  Inf  Inf  Inf  Inf
+## [3,]    2    1    0  Inf  Inf  Inf  Inf  Inf
+## [4,]  Inf  Inf  Inf    0    1    1    2    3
+## [5,]  Inf  Inf  Inf    1    0    1    2    3
+## [6,]  Inf  Inf  Inf    1    1    0    1    2
+## [7,]  Inf  Inf  Inf    2    2    1    0    1
+## [8,]  Inf  Inf  Inf    3    3    2    1    0</code></pre>
 <p>By convention, Inf is expressed as 0 if we consider <span class="math inline">\(1/\text{geodesic distance}\)</span>, also called <strong>reciprocal distance</strong>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="cohesion-measures.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # 1/geodesic distance</span></span>
-<span id="cb2-2"><a href="cohesion-measures.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]</span></span>
-<span id="cb2-3"><a href="cohesion-measures.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [1,] Inf 1.0000000 1.0 0.5 0.3333333 0 0.0 0.0</span></span>
-<span id="cb2-4"><a href="cohesion-measures.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># [2,] 1.0000000 Inf 1.0 0.5 0.3333333 0 0.0 0.0</span></span>
-<span id="cb2-5"><a href="cohesion-measures.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># [3,] 1.0000000 1.0000000 Inf 1.0 0.5000000 0 0.0 0.0</span></span>
-<span id="cb2-6"><a href="cohesion-measures.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [4,] 0.5000000 0.5000000 1.0 Inf 1.0000000 0 0.0 0.0</span></span>
-<span id="cb2-7"><a href="cohesion-measures.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># [5,] 0.3333333 0.3333333 0.5 1.0 Inf 0 0.0 0.0</span></span>
-<span id="cb2-8"><a href="cohesion-measures.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># [6,] 0.0000000 0.0000000 0.0 0.0 0.0000000 Inf 1.0 1.0</span></span>
-<span id="cb2-9"><a href="cohesion-measures.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># [7,] 0.0000000 0.0000000 0.0 0.0 0.0000000 1 Inf 0.5</span></span>
-<span id="cb2-10"><a href="cohesion-measures.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># [8,] 0.0000000 0.0000000 0.0 0.0 0.0000000 1 0.5 Inf</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="cohesion-measures.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="fu">geodist</span>(tbbt)<span class="sc">$</span>gdist)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]      [,4]      [,5] [,6] [,7]      [,8]
+## [1,]  Inf    1  0.5 0.0000000 0.0000000  0.0  0.0 0.0000000
+## [2,]  1.0  Inf  1.0 0.0000000 0.0000000  0.0  0.0 0.0000000
+## [3,]  0.5    1  Inf 0.0000000 0.0000000  0.0  0.0 0.0000000
+## [4,]  0.0    0  0.0       Inf 1.0000000  1.0  0.5 0.3333333
+## [5,]  0.0    0  0.0 1.0000000       Inf  1.0  0.5 0.3333333
+## [6,]  0.0    0  0.0 1.0000000 1.0000000  Inf  1.0 0.5000000
+## [7,]  0.0    0  0.0 0.5000000 0.5000000  1.0  Inf 1.0000000
+## [8,]  0.0    0  0.0 0.3333333 0.3333333  0.5  1.0       Inf</code></pre>
 <p>Excluding the diagonal, the <strong>compactness</strong> is expressed as the average of the reciprocal distance. <strong>Breadth</strong> is the complement of compactness (1-compactness).</p>
 </div>
 <div id="k-step-approach" class="section level3" number="3.3.2">
@@ -556,19 +550,15 @@ Connectedness = \frac{\sum_{i = \text{number of nodes in ith component}} i(i-1)}
 <aside>
 <p>💡 <em>For instance, given the geodesic distance, what is the proportion of nodes that can reach each other in less than 3 steps?</em></p>
 </aside>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="cohesion-measures.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geodesic distance:</span></span>
-<span id="cb3-2"><a href="cohesion-measures.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]</span></span>
-<span id="cb3-3"><a href="cohesion-measures.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [1,] 0 1 1 2 3 Inf Inf Inf</span></span>
-<span id="cb3-4"><a href="cohesion-measures.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># [2,] 1 0 1 2 3 Inf Inf Inf</span></span>
-<span id="cb3-5"><a href="cohesion-measures.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># [3,] 1 1 0 1 2 Inf Inf Inf</span></span>
-<span id="cb3-6"><a href="cohesion-measures.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [4,] 2 2 1 0 1 Inf Inf Inf</span></span>
-<span id="cb3-7"><a href="cohesion-measures.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># [5,] 3 3 2 1 0 Inf Inf Inf</span></span>
-<span id="cb3-8"><a href="cohesion-measures.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># [6,] Inf Inf Inf Inf Inf 0 1 1</span></span>
-<span id="cb3-9"><a href="cohesion-measures.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># [7,] Inf Inf Inf Inf Inf 1 0 2</span></span>
-<span id="cb3-10"><a href="cohesion-measures.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># [8,] Inf Inf Inf Inf Inf 1 2 0</span></span>
-<span id="cb3-11"><a href="cohesion-measures.html#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="cohesion-measures.html#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # Less than 3 steps</span></span>
-<span id="cb3-13"><a href="cohesion-measures.html#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.3928571 = (11)/(8*7/2) = 11/28</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="cohesion-measures.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjacency matrix of how many steps are necessary to reach other nodes</span></span>
+<span id="cb5-2"><a href="cohesion-measures.html#cb5-2" aria-hidden="true" tabindex="-1"></a>steps_3 <span class="ot">=</span> <span class="fu">geodist</span>(tbbt<span class="sc">*</span>tbbt<span class="sc">*</span>tbbt)<span class="sc">$</span>gdist</span>
+<span id="cb5-3"><a href="cohesion-measures.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="cohesion-measures.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Counting the undirected edges that reach other nodes in less than 3 steps</span></span>
+<span id="cb5-5"><a href="cohesion-measures.html#cb5-5" aria-hidden="true" tabindex="-1"></a>less_then_3_steps <span class="ot">=</span> <span class="fu">sum</span>(steps_3 <span class="sc">&lt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> steps_3 <span class="sc">&gt;</span> <span class="dv">0</span>)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb5-6"><a href="cohesion-measures.html#cb5-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">8</span></span>
+<span id="cb5-7"><a href="cohesion-measures.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of nodes that reach each other in less than 3 steps</span></span>
+<span id="cb5-8"><a href="cohesion-measures.html#cb5-8" aria-hidden="true" tabindex="-1"></a>less_then_3_steps<span class="sc">/</span>(n<span class="sc">*</span>(n<span class="dv">-1</span>)<span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.3928571</code></pre>
 </div>
 </div>
 <div id="exercises" class="section level2" number="3.4">
@@ -580,12 +570,12 @@ Connectedness = \frac{\sum_{i = \text{number of nodes in ith component}} i(i-1)}
 <p>Density assumes the same value for all the networks.</p></li>
 <li><p>Connectedness</p>
 <p>In networks composed of one single component, obviously, everyone is connected with everyone else, promoting easy information sharing.</p>
-<p>Within some components, for instance in network 6 there’s a completely connected component between Stuart, Sheldon, Penny and Leonard, which reduces the cost of information sharing.</p></li>
+<p>Within some components, for instance in network <span class="math inline">\(6\)</span> there’s a completely connected component between Stuart, Sheldon, Penny and Leonard, which reduces the cost of information sharing.</p></li>
 <li><p>Compactness</p>
-<p>The difference between the two networks with one component, we notice that in terms of compactness the fourth takes fewer steps to reach every other node in the network. If we consider the 2 steps reach in fact, we notice that it is higher in network 4 than in 3.</p></li>
+<p>The difference between the two networks with one component, we notice that in terms of compactness the fourth takes fewer steps to reach every other node in the network. If we consider the <span class="math inline">\(2\)</span> steps reach in fact, we notice that it is higher in network <span class="math inline">\(4\)</span> than in <span class="math inline">\(3\)</span>.</p></li>
 </ul>
 <p><em>Considering the money to spend on the process of information sharing. Which network would be more helpful?</em></p>
-<p>In this case, components play a key role in terms of reachability. So networks as 4 and 3 are preferable.</p>
+<p>In this case, components play a key role in terms of reachability. So networks as <span class="math inline">\(4\)</span> and <span class="math inline">\(3\)</span> are preferable.</p>
 <p><em>In terms of information sharing and studying for an exam to gain a certain competence?</em></p>
 <p>Direct connections are more helpful than greater components. It’s hard to transfer knowledge from multiple people to one.</p>
 <p><em>When thinking to find a resource online?</em></p>

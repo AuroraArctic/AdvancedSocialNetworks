@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -450,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 4</span> Centrality</h1>
 <div id="degree-centrality-1" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Degree Centrality</h2>
-<p>The aim of degree centrality is to compute who’s the node that reaches as many people as possible in one single step.</p>
+<p>The aim of degree centrality is to find the node that reaches as many people as possible in one single step.</p>
 </div>
 <div id="closeness-centrality" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Closeness Centrality</h2>
@@ -463,26 +464,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="https://img.icons8.com/plasticine/400/homer-simpson.png" alt="https://img.icons8.com/plasticine/400/homer-simpson.png" width="40px" /> <em>Consider the following example where we start from Marge and try to reach for every other node in the network.</em></p>
 </aside>
 <p>Some nodes may be equivalent, especially when they’re interchangeable.</p>
-<p><img src="images/04-Centrality/Untitled.png" width="50%" style="display: block; margin: auto;" /></p>
-<p>By considering the final table obtained by counting the necessary steps to reach any other node starting from a specific one, we obtain the table aside. We can notice how Homer and Krusty are equivalent since they reach in the same number of steps all the nodes in the network, but Lisa and Bart minimize the cost with equivalent connections. On the other side, Cecil maximizes the path cost to reach all the other nodes.</p>
-<p>These values can be normalized by computing the reciprocal, multiply for the minimum value possible: <span class="math inline">\(n-1\)</span>, which equals 9 in the Simpsons’ example.</p>
-<p>The lower the closeness, the less central a node is; the higher the closeness, the more central a node. This can be computed through the following command on R:</p>
-<p><img src="images/04-Centrality/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="images/04-Centrality/Untitled.png" width="50%" style="display: block; margin: auto;" />
+<img src="images/04-Centrality/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><img src="images/04-Centrality/Untitled%202.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="centrality.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
-<span id="cb4-2"><a href="centrality.html#cb4-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n <span class="ot">=</span> <span class="fu">as.network</span>(<span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/simpsons.csv&quot;</span>, </span>
-<span id="cb4-3"><a href="centrality.html#cb4-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">row.names=</span><span class="dv">1</span>, </span>
-<span id="cb4-4"><a href="centrality.html#cb4-4" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">stringsAsFactors =</span> F)),</span>
-<span id="cb4-5"><a href="centrality.html#cb4-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">directed=</span>F)</span>
-<span id="cb4-6"><a href="centrality.html#cb4-6" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] 0.5294118 0.5294118 0.6000000 0.5000000 0.5000000 0.6428571 0.6428571
-##  [8] 0.6000000 0.4285714 0.3103448</code></pre>
+<p>By considering the final table obtained by counting the necessary steps to reach any other node starting from a specific one, we obtain the table below. We can notice how Homer and Krusty are equivalent since they reach in the same number of steps all the nodes in the network, but Lisa and Bart minimize the cost with equivalent connections. On the other side, Cecil maximizes the path cost to reach all the other nodes.</p>
+<p>These values can be normalized by computing the reciprocal, multiply for the minimum value possible: <span class="math inline">\(n-1\)</span>, which equals 9 in the Simpsons’ example.</p>
+<p>The lower the closeness, the less central a node is; the higher the closeness, the more central a node becomes. This can be computed through the following command on R:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="centrality.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb7-2"><a href="centrality.html#cb7-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n <span class="ot">=</span> <span class="fu">as.network</span>(<span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/simpsons.csv&quot;</span>, </span>
+<span id="cb7-3"><a href="centrality.html#cb7-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">row.names=</span><span class="dv">1</span>, </span>
+<span id="cb7-4"><a href="centrality.html#cb7-4" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">stringsAsFactors =</span> F)),</span>
+<span id="cb7-5"><a href="centrality.html#cb7-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">directed=</span>F)</span>
+<span id="cb7-6"><a href="centrality.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="centrality.html#cb7-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="fu">cbind</span>(<span class="at">Name =</span> <span class="fu">get.vertex.attribute</span>(Simpsons_n, <span class="st">&quot;vertex.names&quot;</span>),</span>
+<span id="cb7-8"><a href="centrality.html#cb7-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Closeness =</span> sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>))))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Closeness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Ned</td>
+<td align="left">0.529411764705882</td>
+</tr>
+<tr class="even">
+<td align="left">Marge</td>
+<td align="left">0.529411764705882</td>
+</tr>
+<tr class="odd">
+<td align="left">Homer</td>
+<td align="left">0.6</td>
+</tr>
+<tr class="even">
+<td align="left">Abe</td>
+<td align="left">0.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Maggie</td>
+<td align="left">0.5</td>
+</tr>
+<tr class="even">
+<td align="left">Bart</td>
+<td align="left">0.642857142857143</td>
+</tr>
+<tr class="odd">
+<td align="left">Lisa</td>
+<td align="left">0.642857142857143</td>
+</tr>
+<tr class="even">
+<td align="left">Krusty</td>
+<td align="left">0.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Bob</td>
+<td align="left">0.428571428571429</td>
+</tr>
+<tr class="even">
+<td align="left">Cecil</td>
+<td align="left">0.310344827586207</td>
+</tr>
+</tbody>
+</table>
 <p><em>What happens if we add multiple components?</em></p>
 <p>The other nodes will never be reached, therefore it is counted as Inf, but it shouldn’t be summed up to other steps, or every node will be equivalently central. Considering the code, we would obtain:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="centrality.html#cb6-1" aria-hidden="true" tabindex="-1"></a>Simpsons_n2<span class="ot">&lt;-</span>Simpsons_n</span>
-<span id="cb6-2"><a href="centrality.html#cb6-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n2[<span class="dv">9</span>,<span class="dv">10</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
-<span id="cb6-3"><a href="centrality.html#cb6-3" aria-hidden="true" tabindex="-1"></a>Simpsons_n2[<span class="dv">10</span>,<span class="dv">9</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
-<span id="cb6-4"><a href="centrality.html#cb6-4" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n2, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="centrality.html#cb8-1" aria-hidden="true" tabindex="-1"></a>Simpsons_n2<span class="ot">&lt;-</span>Simpsons_n</span>
+<span id="cb8-2"><a href="centrality.html#cb8-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n2[<span class="dv">9</span>,<span class="dv">10</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb8-3"><a href="centrality.html#cb8-3" aria-hidden="true" tabindex="-1"></a>Simpsons_n2[<span class="dv">10</span>,<span class="dv">9</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb8-4"><a href="centrality.html#cb8-4" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n2, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0</code></pre>
 <p>Whoever we choose, will never reach everyone. But suppose we set a maximum cost for reaching a node, despite they’re not connected and cannot reach each other. In this case, we can normalize as before and choose the highest value, remembering that still we cannot reach everyone.</p>
 </div>
@@ -493,22 +544,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>By using the reciprocal distances (1/geodesic distance), then unreachable nodes value <span class="math inline">\(1/\infty\)</span>, therefore 0.</p>
 <p>Considering this centrality measure, the most central node is Homer, since there is not a single component anymore, but two separated ones and Lisa/Bart took advantage of the fact that they could have reached both sides of the network, while now they can’t.</p>
 <p><img src="images/04-Centrality/Untitled%203.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="centrality.html#cb8-1" aria-hidden="true" tabindex="-1"></a>Simpsons_n2<span class="ot">&lt;-</span>Simpsons_n</span>
-<span id="cb8-2"><a href="centrality.html#cb8-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n2[<span class="dv">9</span>,<span class="dv">10</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
-<span id="cb8-3"><a href="centrality.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Simpsons_n2[10,9]&lt;-0</span></span>
-<span id="cb8-4"><a href="centrality.html#cb8-4" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n2, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">cmode=</span><span class="st">&quot;suminvundir&quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] 0.6481481 0.6481481 0.7592593 0.5925926 0.5925926 0.7222222 0.7222222
-##  [8] 0.6111111 0.4074074 0.0000000</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="centrality.html#cb10-1" aria-hidden="true" tabindex="-1"></a>Simpsons_n2<span class="ot">&lt;-</span>Simpsons_n</span>
+<span id="cb10-2"><a href="centrality.html#cb10-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n2[<span class="dv">9</span>,<span class="dv">10</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb10-3"><a href="centrality.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="centrality.html#cb10-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-5"><a href="centrality.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Name&quot;</span> <span class="ot">=</span> <span class="fu">get.vertex.attribute</span>(Simpsons_n, <span class="st">&quot;vertex.names&quot;</span>),</span>
+<span id="cb10-6"><a href="centrality.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Reciprocal Closeness Centrality</span><span class="st">`</span> <span class="ot">=</span> sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n2, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">cmode=</span><span class="st">&quot;suminvundir&quot;</span>))</span>
+<span id="cb10-7"><a href="centrality.html#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="centrality.html#cb10-8" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df, <span class="at">col.names =</span> <span class="fu">gsub</span>(<span class="st">&quot;[.]&quot;</span>,<span class="st">&quot; &quot;</span>, <span class="fu">names</span>(df)))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="right">Reciprocal Closeness Centrality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Ned</td>
+<td align="right">0.6481481</td>
+</tr>
+<tr class="even">
+<td align="left">Marge</td>
+<td align="right">0.6481481</td>
+</tr>
+<tr class="odd">
+<td align="left">Homer</td>
+<td align="right">0.7592593</td>
+</tr>
+<tr class="even">
+<td align="left">Abe</td>
+<td align="right">0.5925926</td>
+</tr>
+<tr class="odd">
+<td align="left">Maggie</td>
+<td align="right">0.5925926</td>
+</tr>
+<tr class="even">
+<td align="left">Bart</td>
+<td align="right">0.7222222</td>
+</tr>
+<tr class="odd">
+<td align="left">Lisa</td>
+<td align="right">0.7222222</td>
+</tr>
+<tr class="even">
+<td align="left">Krusty</td>
+<td align="right">0.6111111</td>
+</tr>
+<tr class="odd">
+<td align="left">Bob</td>
+<td align="right">0.4074074</td>
+</tr>
+<tr class="even">
+<td align="left">Cecil</td>
+<td align="right">0.0000000</td>
+</tr>
+</tbody>
+</table>
 <p><img src="images/04-Centrality/Untitled%204.png" width="50%" style="display: block; margin: auto;" /></p>
 <p>By changing the network structure, separating both Bob and Cecil, we get different interpretations of this centrality measure: Bob reduces its closeness, while Cecil augments it for being connected to someone. Other nodes increase their closeness since they’re more connected to the people inside their component.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="centrality.html#cb10-1" aria-hidden="true" tabindex="-1"></a>Simpsons_n3<span class="ot">&lt;-</span>Simpsons_n</span>
-<span id="cb10-2"><a href="centrality.html#cb10-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n3[<span class="dv">8</span>,<span class="dv">9</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
-<span id="cb10-3"><a href="centrality.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Simpsons_n3[9,8]&lt;-0</span></span>
-<span id="cb10-4"><a href="centrality.html#cb10-4" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n3, </span>
-<span id="cb10-5"><a href="centrality.html#cb10-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, </span>
-<span id="cb10-6"><a href="centrality.html#cb10-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">cmode=</span><span class="st">&quot;suminvundir&quot;</span>)</span></code></pre></div>
-<pre><code>##  [1] 0.6111111 0.6111111 0.7222222 0.5555556 0.5555556 0.6666667 0.6666667
-##  [8] 0.5000000 0.1111111 0.1111111</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="centrality.html#cb11-1" aria-hidden="true" tabindex="-1"></a>Simpsons_n3<span class="ot">&lt;-</span>Simpsons_n</span>
+<span id="cb11-2"><a href="centrality.html#cb11-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n3[<span class="dv">8</span>,<span class="dv">9</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
+<span id="cb11-3"><a href="centrality.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Simpsons_n3[9,8]&lt;-0</span></span>
+<span id="cb11-4"><a href="centrality.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="centrality.html#cb11-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb11-6"><a href="centrality.html#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Name&quot;</span> <span class="ot">=</span> <span class="fu">get.vertex.attribute</span>(Simpsons_n, <span class="st">&quot;vertex.names&quot;</span>),</span>
+<span id="cb11-7"><a href="centrality.html#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Reciprocal Closeness Centrality</span><span class="st">`</span> <span class="ot">=</span> sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n3, </span>
+<span id="cb11-8"><a href="centrality.html#cb11-8" aria-hidden="true" tabindex="-1"></a>                                                       <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb11-9"><a href="centrality.html#cb11-9" aria-hidden="true" tabindex="-1"></a>                                                       <span class="at">cmode=</span><span class="st">&quot;suminvundir&quot;</span>))</span>
+<span id="cb11-10"><a href="centrality.html#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="centrality.html#cb11-11" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df, <span class="at">col.names =</span> <span class="fu">gsub</span>(<span class="st">&quot;[.]&quot;</span>,<span class="st">&quot; &quot;</span>, <span class="fu">names</span>(df)))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="right">Reciprocal Closeness Centrality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Ned</td>
+<td align="right">0.6111111</td>
+</tr>
+<tr class="even">
+<td align="left">Marge</td>
+<td align="right">0.6111111</td>
+</tr>
+<tr class="odd">
+<td align="left">Homer</td>
+<td align="right">0.7222222</td>
+</tr>
+<tr class="even">
+<td align="left">Abe</td>
+<td align="right">0.5555556</td>
+</tr>
+<tr class="odd">
+<td align="left">Maggie</td>
+<td align="right">0.5555556</td>
+</tr>
+<tr class="even">
+<td align="left">Bart</td>
+<td align="right">0.6666667</td>
+</tr>
+<tr class="odd">
+<td align="left">Lisa</td>
+<td align="right">0.6666667</td>
+</tr>
+<tr class="even">
+<td align="left">Krusty</td>
+<td align="right">0.5000000</td>
+</tr>
+<tr class="odd">
+<td align="left">Bob</td>
+<td align="right">0.1111111</td>
+</tr>
+<tr class="even">
+<td align="left">Cecil</td>
+<td align="right">0.1111111</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="betweenness-centrality" class="section level2" number="4.3">
@@ -526,15 +682,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <aside>
 <p>💡 <em>In the first example, there are these three nodes that can be used as alternatives. In the second example, there are three paths from A to B, which comprehend in between nodes C, D, E, F and G.</em></p>
 </aside>
-<p><img src="images/04-Centrality/Untitled%206.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="centrality.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">betweenness</span>(Simpsons_n, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
-<pre><code>##  [1]  0.8333333  0.8333333  3.6666667  0.0000000  0.0000000  8.3333333
-##  [7]  8.3333333 14.0000000  8.0000000  0.0000000</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="centrality.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#[1] 0.8333333 0.8333333 3.66666667 0.0000000 0.0000000</span></span>
-<span id="cb14-2"><a href="centrality.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#[6] 8.3333333 8.3333333 14.0000000 8.0000000 0.0000000</span></span></code></pre></div>
-<p>The minimum value we can get is 0, while the maximum is the number of possible links we could have in a network (<span class="math inline">\(n(n-1)/2\)</span>), which equals <span class="math inline">\((9*8)/2 = 36\)</span> in the Simpsons’ case. Normally, betweenness centrality is normalized according to the maximum value possible.</p>
+<p><img src="images/04-Centrality/Untitled%206.png" width="30%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="centrality.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="fu">get.vertex.attribute</span>(Simpsons_n, <span class="st">&quot;vertex.names&quot;</span>),</span>
+<span id="cb12-2"><a href="centrality.html#cb12-2" aria-hidden="true" tabindex="-1"></a>      sna<span class="sc">::</span><span class="fu">betweenness</span>(Simpsons_n, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>))</span></code></pre></div>
+<pre><code>##       [,1]     [,2]               
+##  [1,] &quot;Ned&quot;    &quot;0.833333333333333&quot;
+##  [2,] &quot;Marge&quot;  &quot;0.833333333333333&quot;
+##  [3,] &quot;Homer&quot;  &quot;3.66666666666667&quot; 
+##  [4,] &quot;Abe&quot;    &quot;0&quot;                
+##  [5,] &quot;Maggie&quot; &quot;0&quot;                
+##  [6,] &quot;Bart&quot;   &quot;8.33333333333333&quot; 
+##  [7,] &quot;Lisa&quot;   &quot;8.33333333333333&quot; 
+##  [8,] &quot;Krusty&quot; &quot;14&quot;               
+##  [9,] &quot;Bob&quot;    &quot;8&quot;                
+## [10,] &quot;Cecil&quot;  &quot;0&quot;</code></pre>
+<p>The minimum value we can get is 0, while the maximum is the number of possible links we could have in a network (<span class="math inline">\(n(n-1)/2\)</span>), which equals <span class="math inline">\((9\cdot 8)/2 = 36\)</span> in the Simpsons’ case. Normally, betweenness centrality is normalized according to the maximum value possible.</p>
 <aside>
-<p><img src="https://img.icons8.com/plasticine/400/homer-simpson.png" alt="https://img.icons8.com/plasticine/400/homer-simpson.png" width="40px" /> <em>In the case of Krusty, its betweenness centrality is <span class="math inline">\(14/36 = 0.389\)</span> which means that he’s between two nodes shortest path nearly 39% of the time.</em></p>
+<p><img src="https://img.icons8.com/plasticine/400/homer-simpson.png" alt="https://img.icons8.com/plasticine/400/homer-simpson.png" width="40px" /> <em>In the case of Krusty, its betweenness centrality is <span class="math inline">\(14/36 = 0.389\)</span> which means that he’s between two nodes shortest path nearly <span class="math inline">\(39\%\)</span> of the time.</em></p>
 </aside>
 </div>
 <div id="resource-dependence-theory" class="section level2" number="4.4">
@@ -545,7 +709,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 (1) B needs specific resources from A, therefore can exert power over it until B needs the resources;
 (2) there are no alternatives for B to A: the power disappears by increasing the number of alternatives.</em></p>
 </blockquote>
-<p>According to Brass work about being in the right place, the dependent variable is influence. He looked at closeness and betweenness centrality when focusing on newspaper publishing company employees. In particular,</p>
+<p>According to Brass work about being in the right place, the dependent variable is influence. He looked at closeness and betweenness centrality when focusing on newspaper publishing company employees. In particular:</p>
 <ul>
 <li>closeness centrality is expressed as <strong>access</strong> or minimal distance between a focal actor and all other persons;</li>
 <li>betweenness centrality is expressed as <strong>control</strong> or the relative extent to which a focal actor falls on the shortest path between any two other persons.</li>
@@ -559,9 +723,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="bonacich-beta-centrality" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> Bonacich Beta Centrality</h2>
 <p>It is similar to closeness centrality because we worry about near connections with people that have a lot of connections.</p>
-<p>Beta centrality not only refers to geodesic, as closeness does but also to all possible walks. Flowing of information can be repeated and changed, such as attitude and beliefs. Whenever we reinforce the same links over and over again, we may risk entering inside an echo chamber, so the repetition of connections (back and forward) may affect the centrality of a node.</p>
+<p>Beta centrality not only refers to geodesic, as closeness does, but also to all possible walks. Flowing of information can be repeated and changed, such as attitude and beliefs. Whenever we reinforce the same links over and over again, we may risk entering inside an echo chamber, so the repetition of connections (back and forward) may affect the centrality of a node.</p>
 <p>Closeness is a binary situation of connection, while Bonacich Beta Centrality is more on continuity and consistent connection between nodes.</p>
-<p><img src="images/04-Centrality/Untitled%207.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="images/04-Centrality/Untitled%207.png" width="60%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

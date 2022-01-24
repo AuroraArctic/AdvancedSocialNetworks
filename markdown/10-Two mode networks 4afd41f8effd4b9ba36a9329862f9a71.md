@@ -15,7 +15,7 @@ Whenever we focus on two-mode networks, we put effort on ties, not on actors, wh
 ```r
 library(sna)
 DSAm <- as.matrix(read.csv(
-  "Datasets/Davis_SouthernWomen_Attendance.csv",
+  "datasets/Davis_SouthernWomen_Attendance.csv",
   stringsAsFactors = FALSE, row.names=1))
 DSAm
 

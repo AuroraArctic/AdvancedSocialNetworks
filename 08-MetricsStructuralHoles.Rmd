@@ -2,7 +2,36 @@
 
 ## Ego density
 
-Consider the Medici family, which has 6 alters. The number of ties between these alters is 1, while the maximum is $6*5/2 = 15$. This means that the ego density is the ratio between the first value and the maximum: $1/15 = 0.067$:
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(sna)
+PFM<-as.matrix(read.csv("datasets/Padgett_FlorentineFamilies_Marriage.csv",
+                        stringsAsFactors=FALSE, row.names=1))
+
+PFMn<-as.network(PFM, directed=F)
+
+# Compute the degree of the network
+DPFM<-sna::degree(PFMn)
+
+# Plot the network, where the size relies on the degree of every node
+par(mar=c(0,0,0,0))
+gplot(PFMn, 
+      gmode="graph", 
+      #layout
+      jitter=F,
+      #ties
+      edge.col="grey70",
+      edge.lwd=.1, 
+      #nodes
+      vertex.col="cornflowerblue",
+      vertex.cex=DPFM/17+.5,
+      #labels
+      displaylabels=TRUE, 
+      label.pos=3, 
+      label.cex=DPFM/20+.4, 
+      vertex.border="white")
+```
+
+Consider the Medici family, which has $6$ alters. The number of ties between these alters is $1$, while the maximum is $6\cdot 5/2 = 15$. This means that the ego density is the ratio between the first value and the maximum: $1/15 = 0.067$:
 
 $$
 \text{ego density} = \frac{ \text{\# ties between alters }}{\text{\# maximum links between alters}}
@@ -11,7 +40,7 @@ $$
 We could repeat the computation for the remaining families:
 
 <aside>
-💡 *For instance, the Peruzzi family has 3 alters, between which there are 2 ties, while the maximum is $3/2/2 = 3$. Therefore the ego density equals $2/3 = 0.667$.*
+💡 *For instance, the Peruzzi family has $3$ alters, between which there are $2$ ties, while the maximum is $3/(2/2) = 3$. Therefore the ego density equals $2/3 = 0.667$.*
 
 </aside>
 
@@ -21,32 +50,32 @@ We could repeat the computation for the remaining families:
 </aside>
 
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
-#knitr::include_graphics("images/08-Metrics for structural holes/Florence_Familiies.svg")
-```
-
 ## Ego betweenness
 
 The ego betweenness measures whether a node is within the shortest path between couples of nodes. 
 
 <aside>
 💡 Consider the **Medici** Family. It has:
+
 - 5 from Salviati to any other node;
 - 5 from Acciaiuoli to any other;
 - 5 from Albizzi to any other;
 - 5 from Barbadori to any other;
 - 4 from Tornabuoni to any other but Ridolfi;
 - 4 from Ridolfi to any other but Tornabuoni.
+
 In total, its ego betweenness is 28.
 
 </aside>
 
 <aside>
 💡 Consider the **Guadagni** family. They have 4 alters:
+
 - from Lamberteschi to any other: 3;
 - from Bischeri: 3;
 - from Albizzi: 3;
 - from Tornabuoni: 3;
+
 In total, its ego betweenness is 12.
 
 </aside>
@@ -78,16 +107,16 @@ $$
 
 Suppose $a$ is the ego, in four different situations:
 
-- all alters are connected with each other: if a truncates the relationship, there is no affection to theirs;
+- all alters are connected with each other: if $a$ truncates the relationship, there is no affection to theirs;
 - same as the previous case, but lower number of alters: higher constraint index;
-- no alter is connected to any other alter of a;
+- no alter is connected to any other alter of $a$;
 - same as the previous case, but lower number of alters, which reduces the constraint index;
 
 A lower value for the constraint index indicates a higher presence of structural holes. With lower connections, each of them is dangerous, since their loss implies the closure of nodes. If there are fewer friends that are connected with each other there's a higher constraint. Whenever $a$ becomes central and regulates relationships between nodes, there's a structural node and the constraint falls.
 
 ### Pilot Example
 
-For each direct link starting from $a$, compute the probability of choosing that link plus the two-step paths that link a to the related node. 
+For each direct link starting from $a$, compute the probability of choosing that link plus the two-step paths that link $a$ to the related node. 
 
 - Example 1: 1/4 probability per each node with within links
     
@@ -180,10 +209,10 @@ Let's try to compute the index with some families:
 
 - Pazzi
     
-    Pazzi only has 1 alter: Salviati. Therefore the constraint index will be equal to the term that counts the probability of going from Pazzi to Salviati (which equals 1^2 = 1). 
+    Pazzi only has 1 alter: Salviati. Therefore the constraint index will be equal to the term that counts the probability of going from Pazzi to Salviati (which equals $1^2 = 1$). 
     
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='20%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='15%', fig.cap=""}
 knitr::include_graphics("images/08-Metrics for structural holes/Untitled 4.png")
 ```
 
@@ -200,7 +229,7 @@ knitr::include_graphics("images/08-Metrics for structural holes/Untitled 4.png")
     $$
     
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='20%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='30%', fig.cap=""}
 knitr::include_graphics("images/08-Metrics for structural holes/Untitled 5.png")
 ```
 
@@ -220,7 +249,7 @@ knitr::include_graphics("images/08-Metrics for structural holes/Untitled 5.png")
     $$
     
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='20%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='30%', fig.cap=""}
 knitr::include_graphics("images/08-Metrics for structural holes/Untitled 6.png")
 ```
 

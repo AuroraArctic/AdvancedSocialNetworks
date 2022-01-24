@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -450,143 +451,145 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 17</span> Centrality Measures</h1>
 <div id="scientists-example" class="section level2" number="17.1">
 <h2><span class="header-section-number">17.1</span> Scientists example</h2>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="centrality-measures.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
-<span id="cb144-2"><a href="centrality-measures.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-3"><a href="centrality-measures.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SCIENTISTS COLLABORATION</span></span>
-<span id="cb144-4"><a href="centrality-measures.html#cb144-4" aria-hidden="true" tabindex="-1"></a>BS504Cx<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Borgatti_Scientists504_Collaboration.csv&quot;</span>,</span>
-<span id="cb144-5"><a href="centrality-measures.html#cb144-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
-<span id="cb144-6"><a href="centrality-measures.html#cb144-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-7"><a href="centrality-measures.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Pick only those who have at least 3 collabs</span></span>
-<span id="cb144-8"><a href="centrality-measures.html#cb144-8" aria-hidden="true" tabindex="-1"></a>BS504C<span class="ot">&lt;-</span>(BS504Cx<span class="sc">&gt;</span><span class="dv">3</span>)</span>
-<span id="cb144-9"><a href="centrality-measures.html#cb144-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-10"><a href="centrality-measures.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the collaborations</span></span>
-<span id="cb144-11"><a href="centrality-measures.html#cb144-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb144-12"><a href="centrality-measures.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504C, </span>
-<span id="cb144-13"><a href="centrality-measures.html#cb144-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
-<span id="cb144-14"><a href="centrality-measures.html#cb144-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
-<span id="cb144-15"><a href="centrality-measures.html#cb144-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;kamadakawai&quot;</span>,</span>
-<span id="cb144-16"><a href="centrality-measures.html#cb144-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
-<span id="cb144-17"><a href="centrality-measures.html#cb144-17" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
-<span id="cb144-18"><a href="centrality-measures.html#cb144-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>, </span>
-<span id="cb144-19"><a href="centrality-measures.html#cb144-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">1</span>,</span>
-<span id="cb144-20"><a href="centrality-measures.html#cb144-20" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
-<span id="cb144-21"><a href="centrality-measures.html#cb144-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
-<span id="cb144-22"><a href="centrality-measures.html#cb144-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>.<span class="dv">75</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="centrality-measures.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting attributes</span></span>
-<span id="cb145-2"><a href="centrality-measures.html#cb145-2" aria-hidden="true" tabindex="-1"></a>BS504Attr<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Borgatti_Scientists504_Attributes.csv&quot;</span>,</span>
-<span id="cb145-3"><a href="centrality-measures.html#cb145-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
-<span id="cb145-4"><a href="centrality-measures.html#cb145-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-5"><a href="centrality-measures.html#cb145-5" aria-hidden="true" tabindex="-1"></a>Tenure<span class="ot">&lt;-</span>(BS504Attr<span class="sc">$</span>Years) <span class="co"># Years attribute</span></span>
-<span id="cb145-6"><a href="centrality-measures.html#cb145-6" aria-hidden="true" tabindex="-1"></a>TenureA<span class="ot">&lt;-</span>(<span class="fu">round</span>(<span class="dv">10</span><span class="sc">*</span>(Tenure)<span class="sc">/</span><span class="fu">max</span>((Tenure)))) <span class="co"># Normalizing years</span></span>
-<span id="cb145-7"><a href="centrality-measures.html#cb145-7" aria-hidden="true" tabindex="-1"></a>colfunc <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#B78FB3&quot;</span>, <span class="st">&quot;#22BFAC&quot;</span>)) <span class="co"># color palette</span></span>
-<span id="cb145-8"><a href="centrality-measures.html#cb145-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-9"><a href="centrality-measures.html#cb145-9" aria-hidden="true" tabindex="-1"></a>COLWB<span class="ot">&lt;-</span><span class="fu">colfunc</span>(<span class="dv">7</span>) <span class="co"># 7 colors</span></span>
-<span id="cb145-10"><a href="centrality-measures.html#cb145-10" aria-hidden="true" tabindex="-1"></a>vertex_color <span class="ot">=</span> <span class="fu">ifelse</span>(TenureA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>),COLWB[<span class="dv">6</span>],</span>
-<span id="cb145-11"><a href="centrality-measures.html#cb145-11" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">ifelse</span>(TenureA<span class="sc">&gt;=</span><span class="dv">7</span>, COLWB[<span class="dv">7</span>],COLWB[TenureA<span class="sc">+</span><span class="dv">1</span>]))</span>
-<span id="cb145-12"><a href="centrality-measures.html#cb145-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-13"><a href="centrality-measures.html#cb145-13" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb145-14"><a href="centrality-measures.html#cb145-14" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504C, </span>
-<span id="cb145-15"><a href="centrality-measures.html#cb145-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, </span>
-<span id="cb145-16"><a href="centrality-measures.html#cb145-16" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
-<span id="cb145-17"><a href="centrality-measures.html#cb145-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;kamadakawai&quot;</span>,</span>
-<span id="cb145-18"><a href="centrality-measures.html#cb145-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter =</span> F,</span>
-<span id="cb145-19"><a href="centrality-measures.html#cb145-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
-<span id="cb145-20"><a href="centrality-measures.html#cb145-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>,</span>
-<span id="cb145-21"><a href="centrality-measures.html#cb145-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">2</span>, </span>
-<span id="cb145-22"><a href="centrality-measures.html#cb145-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
-<span id="cb145-23"><a href="centrality-measures.html#cb145-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>vertex_color, <span class="co"># color</span></span>
-<span id="cb145-24"><a href="centrality-measures.html#cb145-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span><span class="dv">1</span>,<span class="co">#1+.7*(2-BS504Attr$Sex), </span></span>
-<span id="cb145-25"><a href="centrality-measures.html#cb145-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.sides=</span>BS504Attr<span class="sc">$</span>Sex<span class="dv">-1</span><span class="sc">*</span><span class="dv">47</span><span class="sc">+</span><span class="dv">3</span>)</span>
-<span id="cb145-26"><a href="centrality-measures.html#cb145-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-27"><a href="centrality-measures.html#cb145-27" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
-<span id="cb145-28"><a href="centrality-measures.html#cb145-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Colors&quot;</span>,<span class="st">&quot; Senior&quot;</span>, <span class="st">&quot; Junior&quot;</span>, <span class="st">&quot; &quot;</span>,<span class="st">&quot;Shapes&quot;</span>, <span class="st">&quot; Male&quot;</span>, <span class="st">&quot; Female&quot;</span>),</span>
-<span id="cb145-29"><a href="centrality-measures.html#cb145-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;#B78FB3&quot;</span>,<span class="st">&quot;#22BFAC&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;black&quot;</span>,<span class="st">&quot;black&quot;</span>), </span>
-<span id="cb145-30"><a href="centrality-measures.html#cb145-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb145-31"><a href="centrality-measures.html#cb145-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">18</span>),</span>
-<span id="cb145-32"><a href="centrality-measures.html#cb145-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">pt.cex =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">2.1</span>,<span class="fl">2.1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">1.7</span>,<span class="fl">1.9</span>), </span>
-<span id="cb145-33"><a href="centrality-measures.html#cb145-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">1</span>, </span>
-<span id="cb145-34"><a href="centrality-measures.html#cb145-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">text.col =</span> <span class="st">&quot;grey10&quot;</span>, </span>
-<span id="cb145-35"><a href="centrality-measures.html#cb145-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">horiz =</span> F , </span>
-<span id="cb145-36"><a href="centrality-measures.html#cb145-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">inset =</span> <span class="fu">c</span>(<span class="fl">0.01</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-153-1.png" width="672" />
-## Florentine Families</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="centrality-measures.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FLORENTINE FAMILIES</span></span>
-<span id="cb146-2"><a href="centrality-measures.html#cb146-2" aria-hidden="true" tabindex="-1"></a>PFM<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Padgett_FlorentineFamilies_Marriage.csv&quot;</span>,</span>
-<span id="cb146-3"><a href="centrality-measures.html#cb146-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
-<span id="cb146-4"><a href="centrality-measures.html#cb146-4" aria-hidden="true" tabindex="-1"></a>PFMn<span class="ot">&lt;-</span><span class="fu">as.network</span>(PFM, <span class="at">directed=</span>F)</span>
-<span id="cb146-5"><a href="centrality-measures.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(PFMn, </span>
-<span id="cb146-6"><a href="centrality-measures.html#cb146-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
-<span id="cb146-7"><a href="centrality-measures.html#cb146-7" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
-<span id="cb146-8"><a href="centrality-measures.html#cb146-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
-<span id="cb146-9"><a href="centrality-measures.html#cb146-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
-<span id="cb146-10"><a href="centrality-measures.html#cb146-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
-<span id="cb146-11"><a href="centrality-measures.html#cb146-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>,</span>
-<span id="cb146-12"><a href="centrality-measures.html#cb146-12" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
-<span id="cb146-13"><a href="centrality-measures.html#cb146-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
-<span id="cb146-14"><a href="centrality-measures.html#cb146-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
-<span id="cb146-15"><a href="centrality-measures.html#cb146-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
-<span id="cb146-16"><a href="centrality-measures.html#cb146-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
-<span id="cb146-17"><a href="centrality-measures.html#cb146-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="centrality-measures.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add attributes file and use wealth to change size of nodes (vertex.cex)</span></span>
-<span id="cb147-2"><a href="centrality-measures.html#cb147-2" aria-hidden="true" tabindex="-1"></a>PFA<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;Datasets/Padgett_FlorentineFamilies_Attributes.csv&quot;</span>,</span>
-<span id="cb147-3"><a href="centrality-measures.html#cb147-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
-<span id="cb147-4"><a href="centrality-measures.html#cb147-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-5"><a href="centrality-measures.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Color palette</span></span>
-<span id="cb147-6"><a href="centrality-measures.html#cb147-6" aria-hidden="true" tabindex="-1"></a>n_colors<span class="ot">&lt;-</span><span class="fu">max</span>(PFA<span class="sc">$</span>Priors)<span class="sc">-</span><span class="fu">min</span>(PFA<span class="sc">$</span>Priors)<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb147-7"><a href="centrality-measures.html#cb147-7" aria-hidden="true" tabindex="-1"></a>colfunc <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#FFD670&quot;</span>, <span class="st">&quot;#70D6FF&quot;</span>))</span>
-<span id="cb147-8"><a href="centrality-measures.html#cb147-8" aria-hidden="true" tabindex="-1"></a>colors<span class="ot">&lt;-</span><span class="fu">colfunc</span>(n_colors)</span>
-<span id="cb147-9"><a href="centrality-measures.html#cb147-9" aria-hidden="true" tabindex="-1"></a>vertex_colors<span class="ot">&lt;-</span>colors[PFA<span class="sc">$</span>Priors<span class="sc">+</span><span class="dv">1</span>]</span>
-<span id="cb147-10"><a href="centrality-measures.html#cb147-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-11"><a href="centrality-measures.html#cb147-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb147-12"><a href="centrality-measures.html#cb147-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(PFMn, </span>
-<span id="cb147-13"><a href="centrality-measures.html#cb147-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
-<span id="cb147-14"><a href="centrality-measures.html#cb147-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
-<span id="cb147-15"><a href="centrality-measures.html#cb147-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
-<span id="cb147-16"><a href="centrality-measures.html#cb147-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
-<span id="cb147-17"><a href="centrality-measures.html#cb147-17" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
-<span id="cb147-18"><a href="centrality-measures.html#cb147-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey20&quot;</span>,</span>
-<span id="cb147-19"><a href="centrality-measures.html#cb147-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
-<span id="cb147-20"><a href="centrality-measures.html#cb147-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>vertex_colors,</span>
-<span id="cb147-21"><a href="centrality-measures.html#cb147-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>PFA<span class="sc">$</span>Wealth<span class="sc">/</span><span class="dv">80</span><span class="sc">+</span><span class="dv">1</span>,</span>
-<span id="cb147-22"><a href="centrality-measures.html#cb147-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
-<span id="cb147-23"><a href="centrality-measures.html#cb147-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
-<span id="cb147-24"><a href="centrality-measures.html#cb147-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
-<span id="cb147-25"><a href="centrality-measures.html#cb147-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="centrality-measures.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate centrality measures</span></span>
-<span id="cb148-2"><a href="centrality-measures.html#cb148-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-3"><a href="centrality-measures.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Degree</span></span>
-<span id="cb148-4"><a href="centrality-measures.html#cb148-4" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="centrality-measures.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb137-2"><a href="centrality-measures.html#cb137-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-3"><a href="centrality-measures.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SCIENTISTS COLLABORATION</span></span>
+<span id="cb137-4"><a href="centrality-measures.html#cb137-4" aria-hidden="true" tabindex="-1"></a>BS504Cx<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;datasets/Borgatti_Scientists504_Collaboration.csv&quot;</span>,</span>
+<span id="cb137-5"><a href="centrality-measures.html#cb137-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb137-6"><a href="centrality-measures.html#cb137-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-7"><a href="centrality-measures.html#cb137-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Pick only those who have at least 3 collabs</span></span>
+<span id="cb137-8"><a href="centrality-measures.html#cb137-8" aria-hidden="true" tabindex="-1"></a>BS504C<span class="ot">&lt;-</span>(BS504Cx<span class="sc">&gt;</span><span class="dv">3</span>)</span>
+<span id="cb137-9"><a href="centrality-measures.html#cb137-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb137-10"><a href="centrality-measures.html#cb137-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the collaborations</span></span>
+<span id="cb137-11"><a href="centrality-measures.html#cb137-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb137-12"><a href="centrality-measures.html#cb137-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504C, </span>
+<span id="cb137-13"><a href="centrality-measures.html#cb137-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb137-14"><a href="centrality-measures.html#cb137-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb137-15"><a href="centrality-measures.html#cb137-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;kamadakawai&quot;</span>,</span>
+<span id="cb137-16"><a href="centrality-measures.html#cb137-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb137-17"><a href="centrality-measures.html#cb137-17" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb137-18"><a href="centrality-measures.html#cb137-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>, </span>
+<span id="cb137-19"><a href="centrality-measures.html#cb137-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">1</span>,</span>
+<span id="cb137-20"><a href="centrality-measures.html#cb137-20" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb137-21"><a href="centrality-measures.html#cb137-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb137-22"><a href="centrality-measures.html#cb137-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>.<span class="dv">75</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="centrality-measures.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserting attributes</span></span>
+<span id="cb138-2"><a href="centrality-measures.html#cb138-2" aria-hidden="true" tabindex="-1"></a>BS504Attr<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;datasets/Borgatti_Scientists504_Attributes.csv&quot;</span>,</span>
+<span id="cb138-3"><a href="centrality-measures.html#cb138-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb138-4"><a href="centrality-measures.html#cb138-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-5"><a href="centrality-measures.html#cb138-5" aria-hidden="true" tabindex="-1"></a>Tenure<span class="ot">&lt;-</span>(BS504Attr<span class="sc">$</span>Years) <span class="co"># Years attribute</span></span>
+<span id="cb138-6"><a href="centrality-measures.html#cb138-6" aria-hidden="true" tabindex="-1"></a>TenureA<span class="ot">&lt;-</span>(<span class="fu">round</span>(<span class="dv">10</span><span class="sc">*</span>(Tenure)<span class="sc">/</span><span class="fu">max</span>((Tenure)))) <span class="co"># Normalizing years</span></span>
+<span id="cb138-7"><a href="centrality-measures.html#cb138-7" aria-hidden="true" tabindex="-1"></a>colfunc <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#B78FB3&quot;</span>, <span class="st">&quot;#22BFAC&quot;</span>)) <span class="co"># color palette</span></span>
+<span id="cb138-8"><a href="centrality-measures.html#cb138-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-9"><a href="centrality-measures.html#cb138-9" aria-hidden="true" tabindex="-1"></a>COLWB<span class="ot">&lt;-</span><span class="fu">colfunc</span>(<span class="dv">7</span>) <span class="co"># 7 colors</span></span>
+<span id="cb138-10"><a href="centrality-measures.html#cb138-10" aria-hidden="true" tabindex="-1"></a>vertex_color <span class="ot">=</span> <span class="fu">ifelse</span>(TenureA <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>),COLWB[<span class="dv">6</span>],</span>
+<span id="cb138-11"><a href="centrality-measures.html#cb138-11" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">ifelse</span>(TenureA<span class="sc">&gt;=</span><span class="dv">7</span>, COLWB[<span class="dv">7</span>],COLWB[TenureA<span class="sc">+</span><span class="dv">1</span>]))</span>
+<span id="cb138-12"><a href="centrality-measures.html#cb138-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-13"><a href="centrality-measures.html#cb138-13" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb138-14"><a href="centrality-measures.html#cb138-14" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(BS504C, </span>
+<span id="cb138-15"><a href="centrality-measures.html#cb138-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, </span>
+<span id="cb138-16"><a href="centrality-measures.html#cb138-16" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb138-17"><a href="centrality-measures.html#cb138-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;kamadakawai&quot;</span>,</span>
+<span id="cb138-18"><a href="centrality-measures.html#cb138-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter =</span> F,</span>
+<span id="cb138-19"><a href="centrality-measures.html#cb138-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb138-20"><a href="centrality-measures.html#cb138-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>,</span>
+<span id="cb138-21"><a href="centrality-measures.html#cb138-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.lwd=</span>.<span class="dv">2</span>, </span>
+<span id="cb138-22"><a href="centrality-measures.html#cb138-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb138-23"><a href="centrality-measures.html#cb138-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>vertex_color, <span class="co"># color</span></span>
+<span id="cb138-24"><a href="centrality-measures.html#cb138-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span><span class="dv">1</span>,<span class="co">#1+.7*(2-BS504Attr$Sex), </span></span>
+<span id="cb138-25"><a href="centrality-measures.html#cb138-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.sides=</span>BS504Attr<span class="sc">$</span>Sex<span class="dv">-1</span><span class="sc">*</span><span class="dv">47</span><span class="sc">+</span><span class="dv">3</span>)</span>
+<span id="cb138-26"><a href="centrality-measures.html#cb138-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-27"><a href="centrality-measures.html#cb138-27" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
+<span id="cb138-28"><a href="centrality-measures.html#cb138-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Colors&quot;</span>,<span class="st">&quot; Senior&quot;</span>, <span class="st">&quot; Junior&quot;</span>, <span class="st">&quot; &quot;</span>,<span class="st">&quot;Shapes&quot;</span>, <span class="st">&quot; Male&quot;</span>, <span class="st">&quot; Female&quot;</span>),</span>
+<span id="cb138-29"><a href="centrality-measures.html#cb138-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;white&quot;</span>,<span class="st">&quot;#B78FB3&quot;</span>,<span class="st">&quot;#22BFAC&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;white&quot;</span>,<span class="st">&quot;black&quot;</span>,<span class="st">&quot;black&quot;</span>), </span>
+<span id="cb138-30"><a href="centrality-measures.html#cb138-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb138-31"><a href="centrality-measures.html#cb138-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">19</span>,<span class="dv">18</span>),</span>
+<span id="cb138-32"><a href="centrality-measures.html#cb138-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">pt.cex =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">2.1</span>,<span class="fl">2.1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">1.7</span>,<span class="fl">1.9</span>), </span>
+<span id="cb138-33"><a href="centrality-measures.html#cb138-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">1</span>, </span>
+<span id="cb138-34"><a href="centrality-measures.html#cb138-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">text.col =</span> <span class="st">&quot;grey10&quot;</span>, </span>
+<span id="cb138-35"><a href="centrality-measures.html#cb138-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">horiz =</span> F , </span>
+<span id="cb138-36"><a href="centrality-measures.html#cb138-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">inset =</span> <span class="fu">c</span>(<span class="fl">0.01</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+</div>
+<div id="florentine-families" class="section level2" number="17.2">
+<h2><span class="header-section-number">17.2</span> Florentine Families</h2>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="centrality-measures.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FLORENTINE FAMILIES</span></span>
+<span id="cb139-2"><a href="centrality-measures.html#cb139-2" aria-hidden="true" tabindex="-1"></a>PFM<span class="ot">&lt;-</span><span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;datasets/Padgett_FlorentineFamilies_Marriage.csv&quot;</span>,</span>
+<span id="cb139-3"><a href="centrality-measures.html#cb139-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>))</span>
+<span id="cb139-4"><a href="centrality-measures.html#cb139-4" aria-hidden="true" tabindex="-1"></a>PFMn<span class="ot">&lt;-</span><span class="fu">as.network</span>(PFM, <span class="at">directed=</span>F)</span>
+<span id="cb139-5"><a href="centrality-measures.html#cb139-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(PFMn, </span>
+<span id="cb139-6"><a href="centrality-measures.html#cb139-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb139-7"><a href="centrality-measures.html#cb139-7" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb139-8"><a href="centrality-measures.html#cb139-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb139-9"><a href="centrality-measures.html#cb139-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb139-10"><a href="centrality-measures.html#cb139-10" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb139-11"><a href="centrality-measures.html#cb139-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey80&quot;</span>,</span>
+<span id="cb139-12"><a href="centrality-measures.html#cb139-12" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb139-13"><a href="centrality-measures.html#cb139-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span><span class="st">&quot;cornflowerblue&quot;</span>,</span>
+<span id="cb139-14"><a href="centrality-measures.html#cb139-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb139-15"><a href="centrality-measures.html#cb139-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb139-16"><a href="centrality-measures.html#cb139-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb139-17"><a href="centrality-measures.html#cb139-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">8</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="centrality-measures.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add attributes file and use wealth to change size of nodes (vertex.cex)</span></span>
+<span id="cb140-2"><a href="centrality-measures.html#cb140-2" aria-hidden="true" tabindex="-1"></a>PFA<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;datasets/Padgett_FlorentineFamilies_Attributes.csv&quot;</span>,</span>
+<span id="cb140-3"><a href="centrality-measures.html#cb140-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb140-4"><a href="centrality-measures.html#cb140-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-5"><a href="centrality-measures.html#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Color palette</span></span>
+<span id="cb140-6"><a href="centrality-measures.html#cb140-6" aria-hidden="true" tabindex="-1"></a>n_colors<span class="ot">&lt;-</span><span class="fu">max</span>(PFA<span class="sc">$</span>Priors)<span class="sc">-</span><span class="fu">min</span>(PFA<span class="sc">$</span>Priors)<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb140-7"><a href="centrality-measures.html#cb140-7" aria-hidden="true" tabindex="-1"></a>colfunc <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;#FFD670&quot;</span>, <span class="st">&quot;#70D6FF&quot;</span>))</span>
+<span id="cb140-8"><a href="centrality-measures.html#cb140-8" aria-hidden="true" tabindex="-1"></a>colors<span class="ot">&lt;-</span><span class="fu">colfunc</span>(n_colors)</span>
+<span id="cb140-9"><a href="centrality-measures.html#cb140-9" aria-hidden="true" tabindex="-1"></a>vertex_colors<span class="ot">&lt;-</span>colors[PFA<span class="sc">$</span>Priors<span class="sc">+</span><span class="dv">1</span>]</span>
+<span id="cb140-10"><a href="centrality-measures.html#cb140-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-11"><a href="centrality-measures.html#cb140-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb140-12"><a href="centrality-measures.html#cb140-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gplot</span>(PFMn, </span>
+<span id="cb140-13"><a href="centrality-measures.html#cb140-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb140-14"><a href="centrality-measures.html#cb140-14" aria-hidden="true" tabindex="-1"></a>      <span class="co">#layout</span></span>
+<span id="cb140-15"><a href="centrality-measures.html#cb140-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">mode=</span><span class="st">&quot;fruchtermanreingold&quot;</span>,</span>
+<span id="cb140-16"><a href="centrality-measures.html#cb140-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">jitter=</span>F,</span>
+<span id="cb140-17"><a href="centrality-measures.html#cb140-17" aria-hidden="true" tabindex="-1"></a>      <span class="co">#ties</span></span>
+<span id="cb140-18"><a href="centrality-measures.html#cb140-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">edge.col=</span><span class="st">&quot;grey20&quot;</span>,</span>
+<span id="cb140-19"><a href="centrality-measures.html#cb140-19" aria-hidden="true" tabindex="-1"></a>      <span class="co">#nodes</span></span>
+<span id="cb140-20"><a href="centrality-measures.html#cb140-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.col=</span>vertex_colors,</span>
+<span id="cb140-21"><a href="centrality-measures.html#cb140-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">vertex.cex=</span>PFA<span class="sc">$</span>Wealth<span class="sc">/</span><span class="dv">80</span><span class="sc">+</span><span class="dv">1</span>,</span>
+<span id="cb140-22"><a href="centrality-measures.html#cb140-22" aria-hidden="true" tabindex="-1"></a>      <span class="co">#labels</span></span>
+<span id="cb140-23"><a href="centrality-measures.html#cb140-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">displaylabels=</span>T,</span>
+<span id="cb140-24"><a href="centrality-measures.html#cb140-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.pos=</span><span class="dv">1</span>,</span>
+<span id="cb140-25"><a href="centrality-measures.html#cb140-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">label.cex=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="centrality-measures.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate centrality measures</span></span>
+<span id="cb141-2"><a href="centrality-measures.html#cb141-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-3"><a href="centrality-measures.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Degree</span></span>
+<span id="cb141-4"><a href="centrality-measures.html#cb141-4" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1] 1 3 2 3 3 1 4 1 6 1 3 0 3 2 4 3</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="centrality-measures.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Betweenness centrality</span></span>
-<span id="cb150-2"><a href="centrality-measures.html#cb150-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">betweenness</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">cmode=</span><span class="st">&quot;undirected&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="centrality-measures.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Betweenness centrality</span></span>
+<span id="cb143-2"><a href="centrality-measures.html#cb143-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">betweenness</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">cmode=</span><span class="st">&quot;undirected&quot;</span>)</span></code></pre></div>
 <pre><code>##  [1]  0.000000 19.333333  8.500000  9.500000  5.000000  0.000000 23.166667
 ##  [8]  0.000000 47.500000  0.000000  2.000000  0.000000 10.333333 13.000000
 ## [15]  9.333333  8.333333</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="centrality-measures.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Bonacich Power Centrality</span></span>
-<span id="cb152-2"><a href="centrality-measures.html#cb152-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">bonpow</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">exponent=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="centrality-measures.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Bonacich Power Centrality</span></span>
+<span id="cb145-2"><a href="centrality-measures.html#cb145-2" aria-hidden="true" tabindex="-1"></a>sna<span class="sc">::</span><span class="fu">bonpow</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">exponent=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>##   ACCIAIUOLI      ALBIZZI    BARBADORI     BISCHERI   CASTELLANI       GINORI 
 ##    0.3455474    1.0366421    0.6910947    1.0366421    1.0366421    0.3455474 
 ##     GUADAGNI LAMBERTESCHI       MEDICI        PAZZI      PERUZZI        PUCCI 
 ##    1.3821895    0.3455474    2.0732842    0.3455474    1.0366421    0.0000000 
 ##      RIDOLFI     SALVIATI      STROZZI   TORNABUONI 
 ##    1.0366421    0.6910947    1.3821895    1.0366421</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="centrality-measures.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Constraint index</span></span>
-<span id="cb154-2"><a href="centrality-measures.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
-<span id="cb154-3"><a href="centrality-measures.html#cb154-3" aria-hidden="true" tabindex="-1"></a>PFM_i<span class="ot">&lt;-</span><span class="fu">graph_from_adjacency_matrix</span>(<span class="fu">as.matrix</span>(PFM),<span class="at">mode=</span><span class="st">&quot;undirected&quot;</span>, <span class="at">diag=</span>F)</span>
-<span id="cb154-4"><a href="centrality-measures.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="fu">constraint</span>(PFM_i)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="centrality-measures.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Constraint index</span></span>
+<span id="cb147-2"><a href="centrality-measures.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb147-3"><a href="centrality-measures.html#cb147-3" aria-hidden="true" tabindex="-1"></a>PFM_i<span class="ot">&lt;-</span><span class="fu">graph_from_adjacency_matrix</span>(<span class="fu">as.matrix</span>(PFM),<span class="at">mode=</span><span class="st">&quot;undirected&quot;</span>, <span class="at">diag=</span>F)</span>
+<span id="cb147-4"><a href="centrality-measures.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="fu">constraint</span>(PFM_i)</span></code></pre></div>
 <pre><code>##   ACCIAIUOLI      ALBIZZI    BARBADORI     BISCHERI   CASTELLANI       GINORI 
 ##    1.0000000    0.3333333    0.5000000    0.4822531    0.4822531    1.0000000 
 ##     GUADAGNI LAMBERTESCHI       MEDICI        PAZZI      PERUZZI        PUCCI 
 ##    0.2500000    1.0000000    0.2098765    1.0000000    0.6558642          NaN 
 ##      RIDOLFI     SALVIATI      STROZZI   TORNABUONI 
 ##    0.4598765    0.5000000    0.4583333    0.4598765</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="centrality-measures.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical tests for significance</span></span>
-<span id="cb156-2"><a href="centrality-measures.html#cb156-2" aria-hidden="true" tabindex="-1"></a>PFMn.Deg<span class="ot">&lt;-</span>sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span>
-<span id="cb156-3"><a href="centrality-measures.html#cb156-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-4"><a href="centrality-measures.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFMn.Deg,PFA<span class="sc">$</span>Priors) <span class="co"># Number of families vs Priors</span></span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="centrality-measures.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical tests for significance</span></span>
+<span id="cb149-2"><a href="centrality-measures.html#cb149-2" aria-hidden="true" tabindex="-1"></a>PFMn.Deg<span class="ot">&lt;-</span>sna<span class="sc">::</span><span class="fu">degree</span>(PFMn, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>)</span>
+<span id="cb149-3"><a href="centrality-measures.html#cb149-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-4"><a href="centrality-measures.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFMn.Deg,PFA<span class="sc">$</span>Priors) <span class="co"># Number of families vs Priors</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -598,7 +601,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##       cor 
 ## 0.5480948</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="centrality-measures.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFMn.Deg,PFA<span class="sc">$</span>Wealth) <span class="co"># Number or families vs Wealth</span></span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="centrality-measures.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFMn.Deg,PFA<span class="sc">$</span>Wealth) <span class="co"># Number or families vs Wealth</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -610,7 +613,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##       cor 
 ## 0.5589956</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="centrality-measures.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFA<span class="sc">$</span>Priors,PFA<span class="sc">$</span>Wealth) <span class="co"># Priors vs Wealth</span></span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="centrality-measures.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(PFA<span class="sc">$</span>Priors,PFA<span class="sc">$</span>Wealth) <span class="co"># Priors vs Wealth</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -622,10 +625,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ##       cor 
 ## 0.4216972</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="centrality-measures.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear Models</span></span>
-<span id="cb162-2"><a href="centrality-measures.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="do">## One of them</span></span>
-<span id="cb162-3"><a href="centrality-measures.html#cb162-3" aria-hidden="true" tabindex="-1"></a>M1<span class="ot">&lt;-</span><span class="fu">lm</span>(PFMn.Deg<span class="sc">~</span>PFA<span class="sc">$</span>Priors)</span>
-<span id="cb162-4"><a href="centrality-measures.html#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M1)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="centrality-measures.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear Models</span></span>
+<span id="cb155-2"><a href="centrality-measures.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="do">## One of them</span></span>
+<span id="cb155-3"><a href="centrality-measures.html#cb155-3" aria-hidden="true" tabindex="-1"></a>M1<span class="ot">&lt;-</span><span class="fu">lm</span>(PFMn.Deg<span class="sc">~</span>PFA<span class="sc">$</span>Priors)</span>
+<span id="cb155-4"><a href="centrality-measures.html#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = PFMn.Deg ~ PFA$Priors)
@@ -644,9 +647,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 1.303 on 14 degrees of freedom
 ## Multiple R-squared:  0.3004, Adjusted R-squared:  0.2504 
 ## F-statistic: 6.012 on 1 and 14 DF,  p-value: 0.02794</code></pre>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="centrality-measures.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Both of them</span></span>
-<span id="cb164-2"><a href="centrality-measures.html#cb164-2" aria-hidden="true" tabindex="-1"></a>M2<span class="ot">&lt;-</span><span class="fu">lm</span>(PFMn.Deg<span class="sc">~</span>PFA<span class="sc">$</span>Priors<span class="sc">+</span>PFA<span class="sc">$</span>Wealth)</span>
-<span id="cb164-3"><a href="centrality-measures.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M2)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="centrality-measures.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Both of them</span></span>
+<span id="cb157-2"><a href="centrality-measures.html#cb157-2" aria-hidden="true" tabindex="-1"></a>M2<span class="ot">&lt;-</span><span class="fu">lm</span>(PFMn.Deg<span class="sc">~</span>PFA<span class="sc">$</span>Priors<span class="sc">+</span>PFA<span class="sc">$</span>Wealth)</span>
+<span id="cb157-3"><a href="centrality-measures.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(M2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = PFMn.Deg ~ PFA$Priors + PFA$Wealth)
@@ -666,15 +669,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 1.22 on 13 degrees of freedom
 ## Multiple R-squared:  0.4312, Adjusted R-squared:  0.3436 
 ## F-statistic: 4.927 on 2 and 13 DF,  p-value: 0.02555</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="centrality-measures.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bonacich Centrality</span></span>
-<span id="cb166-2"><a href="centrality-measures.html#cb166-2" aria-hidden="true" tabindex="-1"></a>exponents <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">0.1</span>))</span>
-<span id="cb166-3"><a href="centrality-measures.html#cb166-3" aria-hidden="true" tabindex="-1"></a>bonpow_results <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb166-4"><a href="centrality-measures.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(e <span class="cf">in</span> exponents){</span>
-<span id="cb166-5"><a href="centrality-measures.html#cb166-5" aria-hidden="true" tabindex="-1"></a>   bonpow_results <span class="ot">=</span> <span class="fu">append</span>(bonpow_results,</span>
-<span id="cb166-6"><a href="centrality-measures.html#cb166-6" aria-hidden="true" tabindex="-1"></a>                           sna<span class="sc">::</span><span class="fu">bonpow</span>(PFA, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">exponent=</span>e))</span>
-<span id="cb166-7"><a href="centrality-measures.html#cb166-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb166-8"><a href="centrality-measures.html#cb166-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-9"><a href="centrality-measures.html#cb166-9" aria-hidden="true" tabindex="-1"></a>bonpow_results</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="centrality-measures.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bonacich Centrality</span></span>
+<span id="cb159-2"><a href="centrality-measures.html#cb159-2" aria-hidden="true" tabindex="-1"></a>exponents <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">0.5</span>,<span class="fl">0.1</span>))</span>
+<span id="cb159-3"><a href="centrality-measures.html#cb159-3" aria-hidden="true" tabindex="-1"></a>bonpow_results <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb159-4"><a href="centrality-measures.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(e <span class="cf">in</span> exponents){</span>
+<span id="cb159-5"><a href="centrality-measures.html#cb159-5" aria-hidden="true" tabindex="-1"></a>   bonpow_results <span class="ot">=</span> <span class="fu">append</span>(bonpow_results,</span>
+<span id="cb159-6"><a href="centrality-measures.html#cb159-6" aria-hidden="true" tabindex="-1"></a>                           sna<span class="sc">::</span><span class="fu">bonpow</span>(PFA, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">exponent=</span>e))</span>
+<span id="cb159-7"><a href="centrality-measures.html#cb159-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb159-8"><a href="centrality-measures.html#cb159-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb159-9"><a href="centrality-measures.html#cb159-9" aria-hidden="true" tabindex="-1"></a>bonpow_results</span></code></pre></div>
 <pre><code>##   [1]  0.66599220  1.03706233  0.61168749  0.59844465  0.55718716  0.36268738
 ##   [7]  0.40565924  0.49342506  1.92559593  0.49233450  1.14333639  0.03524465
 ##  [13]  0.67830976  0.49996422  2.33947465  0.49233450  1.18542586  1.18252142

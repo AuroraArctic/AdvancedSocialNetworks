@@ -42,6 +42,7 @@ e             & a, c, d             & 19+32+25 = 76    & 76/3 = 25.333      \\ \
 \caption{}
 \label{tab:my-table}
 \end{table}
+
 Consider the adjacency matrix beside, where the green table indicates the number of resources held by nodes and the blue one is the adjacency matrix. We could then compute the resourcefulness of each node, both in terms of sum and average, as shown in the table. 
 
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='30%', fig.cap=""}
@@ -56,8 +57,8 @@ knitr::include_graphics("images/06-Attributes based measures/08-graph.png")
 
 Which of the two networks is a good situation?
 
-- it's good to be connected to similar people because they will get along, they understand each other, there's a common ground and they emphasize with each other;
-- on the other side, to spread knowledge, exit from our echo chamber it is important also to face different realities.
+- it is good to be connected to similar people because they will get along, they understand each other, there is a common ground and they emphasize with each other;
+- on the other side, to spread knowledge, to exit from our echo chamber is also important to face different realities.
 
 We could simply compute **homophily** by computing the percentage of neighbours of the central node that belongs to the same category. 
 
@@ -75,8 +76,13 @@ To properly define homophily in ego networks, we recur to:
 $$
 EI_i = \frac{E_i-I_i}{E_i+I_i}
 $$
+where $E_i$ counts the number of different nodes from the ego and $I_i$ counts the number of similar nodes to the ego, whose sum $E_i+I_i$ must provide the total alters in the ego's network. 
 
-Whenever we change our perspective considering a global network, as the example on the right, also our interpretation may change. For instance, by considering a, b and d as in the previous example, their connections change if we extend their ego networks. 
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='30%', fig.cap="Example of a network, considering nodes a, b and d."}
+knitr::include_graphics("images/06-Attributes based measures/Untitled 3.png")
+```
+
+Whenever we change our perspective considering a global network also our interpretation may change. For instance, by considering $a$, $b$ and $d$ in the image  as in the previous example, their connections change if we extend their ego networks. 
 
 We could build a matrix by considering:
 
@@ -89,9 +95,7 @@ $$
 Q_i = \frac{ad-bc}{ad+bc}
 $$
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='30%', fig.cap=""}
-knitr::include_graphics("images/06-Attributes based measures/Untitled 3.png")
-```
+
 
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='80%', fig.cap=""}
 knitr::include_graphics("images/06-Attributes based measures/Untitled 4.png")
@@ -117,9 +121,9 @@ Differences in characteristics imply differences in resources, so when we connec
 
 The **index of quality variation** looks at one person and we care about other people categories (i.e. to what resources they can access):
 
-- if all neighbours belong to the same category, the index values 0;
+- if all neighbours belong to the same category, the index values $0$;
 - if we consider an ego network, in particular, the proportion of nodes per each category and sum their squared value, we get our value.
-- if every alter belongs to a different category, the index equals 1.
+- if every alter belongs to a different category, the index equals $1$.
 
 All values are normalized by the maximum value that the index can assume. 
 
@@ -133,9 +137,9 @@ knitr::include_graphics("images/06-Attributes based measures/Untitled 6.png")
 
 <aside>
 💡 **Remember**: 
-heterophily among alters; 
+*heterophily among alters; 
 homogeneity when all connections are the same category;
 homophily among alters; 
-atrophy within an ego network (people different from me that challenge me).
+atrophy within an ego network (people different from me that challenge me).*
 
 </aside>

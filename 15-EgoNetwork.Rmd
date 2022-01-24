@@ -14,8 +14,9 @@ A research topic can be considered good if interesting, relevant, has not been a
 ## Identify a research question
 
 <aside>
-❓ Related to people who live abroad, some research questions could be *How do people experience moving home and why? what factors make it good or bad for them? How do Hungarian returning migrants experience their return and what are the
-main factors that affect their experiences?*
+❓ Related to people who live abroad, some research questions could be 
+
+*How do people experience moving home and why? What factors make it good or bad for them? How do Hungarian returning migrants experience their return and what are the main factors that affect their experiences?*
 
 </aside>
 
@@ -32,7 +33,7 @@ Is there a theory that directly adresses or answers our question?
 
 Let’s consider the social capital theories. James Coleman in 1988 focuses on the function of social capital, which according to the economic sociology is based on a rational choice approach: it attempts to introduce social structure into his analysis by employing social capital and social norms to explain how individual rational actions translate into systematic collective action.
 
-It is not a single entity, but a variety of entities, having two characteristics in common: they all consist of some aspect of social structure, and they facilitate certain actions of individuals who are within the structure. There are three forms of social capital: obligations and expectations; information channels; social norms. 
+It is not a single entity, but a variety of entities, having two characteristics in common: They all consist of some aspect of social structure, and they facilitate certain actions of individuals who are within the structure. There are three forms of social capital: *obligations and expectations*; *information channels*; *social norms*. 
 
 A key concept is about **closure or bonding capital**, which facilitates obligations and expectations and social norms and takes the form of trust, social norms of reciprocity and cooperation. 
 
@@ -126,12 +127,12 @@ There are two major kinds of network research designs:
 
 In order to choose between the socio or the ego-centric approach we must consider 2 main criteria:
 
-- which one suits better for assessing our theoretical approach or answering our research question?
-- practical considerations involved in data collection.
+- Which one suits better for assessing our theoretical approach or answering our research question?
+- Practical considerations involved in data collection.
 
 ### Ego-centric network
 
-The ego-centric network, also called ego-networks, is a network where the person whose network is collected is called ego. The person who are nominated by the ego are called alters. 
+The ego-centric network, also called **ego-networks**, is a network where the person whose network is collected is called ego. The person who are nominated by the ego are called alters. 
 
 In order to collect data for ego-networks:
 

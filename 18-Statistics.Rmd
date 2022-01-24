@@ -9,9 +9,9 @@ library(sna)
 library(tidyverse)
 
 # Data import
-PFM<-as.matrix(read.csv("Datasets/Padgett_FlorentineFamilies_Marriage.csv",
+PFM<-as.matrix(read.csv("datasets/Padgett_FlorentineFamilies_Marriage.csv",
                         stringsAsFactors=FALSE, row.names=1))
-PFA<-read.csv("Datasets/Padgett_FlorentineFamilies_Attributes.csv",
+PFA<-read.csv("datasets/Padgett_FlorentineFamilies_Attributes.csv",
               stringsAsFactors=FALSE, row.names=1)
 
 # Converting the matrix into network
@@ -53,7 +53,7 @@ gplot(PFMn,
 
 ```{r}
 # Degree
-as.data.frame(sna::degree(PFMn, gmode="graph"), rownames(PFM))
+knitr::kable(as.data.frame(sna::degree(PFMn, gmode="graph"), rownames(PFM)))
 PFMn.Deg<-sna::degree(PFMn, gmode="graph")
 ```
 

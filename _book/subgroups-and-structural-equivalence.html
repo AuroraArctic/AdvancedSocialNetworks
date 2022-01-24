@@ -413,18 +413,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="centrality-measures.html"><a href="centrality-measures.html"><i class="fa fa-check"></i><b>17</b> Centrality Measures</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="centrality-measures.html"><a href="centrality-measures.html#scientists-example"><i class="fa fa-check"></i><b>17.1</b> Scientists example</a></li>
+<li class="chapter" data-level="17.2" data-path="centrality-measures.html"><a href="centrality-measures.html#florentine-families"><i class="fa fa-check"></i><b>17.2</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
 <li class="chapter" data-level="21" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html"><i class="fa fa-check"></i><b>21</b> Dyads and triads</a>
 <ul>
 <li class="chapter" data-level="21.1" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#dyads-1"><i class="fa fa-check"></i><b>21.1</b> Dyads</a></li>
+<li class="chapter" data-level="21.2" data-path="dyads-and-triads.html"><a href="dyads-and-triads.html#triads-1"><i class="fa fa-check"></i><b>21.2</b> Triads</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="triads-1.html"><a href="triads-1.html"><i class="fa fa-check"></i><b>22</b> Triads</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 <li><a href="https://github.com/AuroraArctic/AdvancedSocialNetworks" target="blank">Repo available in Github</a></li>
@@ -450,30 +451,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 11</span> Subgroups and Structural Equivalence</h1>
 <div id="subgroups" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Subgroups</h2>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="subgroups-and-structural-equivalence.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Network creation</span></span>
-<span id="cb69-2"><a href="subgroups-and-structural-equivalence.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
-<span id="cb69-3"><a href="subgroups-and-structural-equivalence.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cliques</span></span>
-<span id="cb69-4"><a href="subgroups-and-structural-equivalence.html#cb69-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-5"><a href="subgroups-and-structural-equivalence.html#cb69-5" aria-hidden="true" tabindex="-1"></a>network<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb69-6"><a href="subgroups-and-structural-equivalence.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-7"><a href="subgroups-and-structural-equivalence.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-8"><a href="subgroups-and-structural-equivalence.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-9"><a href="subgroups-and-structural-equivalence.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-10"><a href="subgroups-and-structural-equivalence.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-11"><a href="subgroups-and-structural-equivalence.html#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-12"><a href="subgroups-and-structural-equivalence.html#cb69-12" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-13"><a href="subgroups-and-structural-equivalence.html#cb69-13" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-14"><a href="subgroups-and-structural-equivalence.html#cb69-14" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-15"><a href="subgroups-and-structural-equivalence.html#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-16"><a href="subgroups-and-structural-equivalence.html#cb69-16" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-17"><a href="subgroups-and-structural-equivalence.html#cb69-17" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-18"><a href="subgroups-and-structural-equivalence.html#cb69-18" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-19"><a href="subgroups-and-structural-equivalence.html#cb69-19" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
-<span id="cb69-20"><a href="subgroups-and-structural-equivalence.html#cb69-20" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-21"><a href="subgroups-and-structural-equivalence.html#cb69-21" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb69-22"><a href="subgroups-and-structural-equivalence.html#cb69-22" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,</span>
-<span id="cb69-23"><a href="subgroups-and-structural-equivalence.html#cb69-23" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,</span>
-<span id="cb69-24"><a href="subgroups-and-structural-equivalence.html#cb69-24" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">19</span>,<span class="dv">19</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="subgroups-and-structural-equivalence.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Network creation</span></span>
+<span id="cb65-2"><a href="subgroups-and-structural-equivalence.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb65-3"><a href="subgroups-and-structural-equivalence.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cliques</span></span>
+<span id="cb65-4"><a href="subgroups-and-structural-equivalence.html#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="subgroups-and-structural-equivalence.html#cb65-5" aria-hidden="true" tabindex="-1"></a>network<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb65-6"><a href="subgroups-and-structural-equivalence.html#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-7"><a href="subgroups-and-structural-equivalence.html#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-8"><a href="subgroups-and-structural-equivalence.html#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-9"><a href="subgroups-and-structural-equivalence.html#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-10"><a href="subgroups-and-structural-equivalence.html#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-11"><a href="subgroups-and-structural-equivalence.html#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-12"><a href="subgroups-and-structural-equivalence.html#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-13"><a href="subgroups-and-structural-equivalence.html#cb65-13" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-14"><a href="subgroups-and-structural-equivalence.html#cb65-14" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-15"><a href="subgroups-and-structural-equivalence.html#cb65-15" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-16"><a href="subgroups-and-structural-equivalence.html#cb65-16" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-17"><a href="subgroups-and-structural-equivalence.html#cb65-17" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-18"><a href="subgroups-and-structural-equivalence.html#cb65-18" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-19"><a href="subgroups-and-structural-equivalence.html#cb65-19" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,</span>
+<span id="cb65-20"><a href="subgroups-and-structural-equivalence.html#cb65-20" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-21"><a href="subgroups-and-structural-equivalence.html#cb65-21" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb65-22"><a href="subgroups-and-structural-equivalence.html#cb65-22" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,</span>
+<span id="cb65-23"><a href="subgroups-and-structural-equivalence.html#cb65-23" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,</span>
+<span id="cb65-24"><a href="subgroups-and-structural-equivalence.html#cb65-24" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="dv">19</span>,<span class="dv">19</span>)</span>
+<span id="cb65-25"><a href="subgroups-and-structural-equivalence.html#cb65-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-26"><a href="subgroups-and-structural-equivalence.html#cb65-26" aria-hidden="true" tabindex="-1"></a>network <span class="ot">=</span> <span class="fu">as.network</span>(network, <span class="at">directed =</span> F)</span>
+<span id="cb65-27"><a href="subgroups-and-structural-equivalence.html#cb65-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-28"><a href="subgroups-and-structural-equivalence.html#cb65-28" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb65-29"><a href="subgroups-and-structural-equivalence.html#cb65-29" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(network,</span>
+<span id="cb65-30"><a href="subgroups-and-structural-equivalence.html#cb65-30" aria-hidden="true" tabindex="-1"></a>     <span class="at">displaylabels=</span><span class="cn">TRUE</span>,</span>
+<span id="cb65-31"><a href="subgroups-and-structural-equivalence.html#cb65-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">label.cex =</span> <span class="fl">0.7</span>,</span>
+<span id="cb65-32"><a href="subgroups-and-structural-equivalence.html#cb65-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">vertex.cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
 <div id="components-1" class="section level3" number="11.1.1">
 <h3><span class="header-section-number">11.1.1</span> Components</h3>
 <p><em>Who would be able to “eventually” share information with each other?</em></p>
@@ -481,11 +491,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <aside>
 <p>💡 <em>Note that if actors <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are at least indirectly connected, and actor <span class="math inline">\(c\)</span> is at least indirectly connected to <span class="math inline">\(b\)</span>, then actor <span class="math inline">\(c\)</span> is at least indirectly connected to a. Hence all actors belong to one and only one component.</em></p>
 </aside>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled.png" width="50%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="cliques" class="section level3" number="11.1.2">
 <h3><span class="header-section-number">11.1.2</span> Cliques</h3>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-79"></span>
+<img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%201.png" alt="Examples of cliques" width="50%" />
+<p class="caption">
+Figure 11.1: Examples of cliques
+</p>
+</div>
 <p>A subset where everyone is directly connected to everyone else in the subset is called a <strong>clique</strong>.</p>
 <aside>
 <p>💡 <em>Note that both an actor and a dyad might belong to more than one clique.</em></p>
@@ -502,7 +516,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(1, 2, 3, 6, 7\)</span>;</li>
 <li><span class="math inline">\(1, 2, 3, 6, 4, 5\)</span>;</li>
 </ul>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/12-network.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
+<img src="images/11-Subgroups%20and%20Structural%20Equivalence/12-network.png" alt="Example of 2-cliques" width="50%" />
+<p class="caption">
+Figure 11.2: Example of 2-cliques
+</p>
+</div>
 <aside>
 <p>💡 Note that actors might become cliques through others that are not members themselves. For instance, if we consider the 2-clique composed by <span class="math inline">\(K_2 = \{14,15,17,18,19\}\)</span> thanks to 16.</p>
 </aside>
@@ -513,15 +532,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>9, 10, 11, 12.</li>
 </ul>
 <p>If <span class="math inline">\(K = N-1\)</span>, then we get a component, while if <span class="math inline">\(K=1\)</span>, we get a normal clique.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="subgroups-and-structural-equivalence.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the cliques</span></span>
-<span id="cb70-2"><a href="subgroups-and-structural-equivalence.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns number of cliques per each node</span></span>
-<span id="cb70-3"><a href="subgroups-and-structural-equivalence.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">clique.census</span>(network, <span class="at">mode =</span> <span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="subgroups-and-structural-equivalence.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the cliques</span></span>
+<span id="cb66-2"><a href="subgroups-and-structural-equivalence.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns number of cliques per each node</span></span>
+<span id="cb66-3"><a href="subgroups-and-structural-equivalence.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">clique.census</span>(network, <span class="at">mode =</span> <span class="st">&quot;graph&quot;</span>)</span></code></pre></div>
 <pre><code>## $clique.count
-##   Agg v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19
-## 1   2  0  0  0  0  0  0  0  1  0   0   0   0   1   0   0   0   0   0   0
-## 2   7  0  0  0  0  0  0  0  0  1   1   3   1   0   1   2   2   2   1   0
-## 3   3  1  0  1  1  1  1  1  0  0   0   0   0   0   1   0   0   0   1   1
-## 4   1  1  1  1  0  0  1  0  0  0   0   0   0   0   0   0   0   0   0   0
+##   Agg 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+## 1   2 0 0 0 0 0 0 0 1 0  0  0  0  1  0  0  0  0  0  0
+## 2   7 0 0 0 0 0 0 0 0 1  1  3  1  0  1  2  2  2  1  0
+## 3   3 1 0 1 1 1 1 1 0 0  0  0  0  0  1  0  0  0  1  1
+## 4   1 1 1 1 0 0 1 0 0 0  0  0  0  0  0  0  0  0  0  0
 ## 
 ## $cliques
 ## $cliques[[1]]
@@ -581,19 +600,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>1, 2, 3, 6, 7;</li>
 <li>1, 2, 3, 6, 4, 5.</li>
 </ul>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%202.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
+<img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%202.png" alt="Example of k-clan" width="50%" />
+<p class="caption">
+Figure 11.3: Example of k-clan
+</p>
+</div>
 </div>
 </div>
 <div id="equivalence" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> Equivalence</h2>
 <div id="core-periphery" class="section level3" number="11.2.1">
 <h3><span class="header-section-number">11.2.1</span> Core periphery</h3>
-<p>If we try to represent the network with an adjacency matrix, we would notice that cliques are evident by 1s zones. In order to get a completely filled by 1s zone, there should be a direct path between all nodes. Based on the size of these blocks, we can distinguish the core from the periphery. In fact, the periphery will have zeros zones, if not connected to anyone, or 1 and 0s zones, while the core will have 1s zones.</p>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%203.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>If we try to represent the network with an adjacency matrix, we would notice that cliques are evident by <span class="math inline">\(1\)</span>s zones. In order to get a completely filled by <span class="math inline">\(1\)</span>s zone, there should be a direct path between all nodes. Based on the size of these blocks, we can distinguish the core from the periphery. In fact, the periphery will have zeros zones, if not connected to anyone, or <span class="math inline">\(1\)</span> and <span class="math inline">\(0\)</span>s zones, while the core will have <span class="math inline">\(1\)</span>s zones.</p>
+<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%203.png" width="60%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="structural-equivalence" class="section level3" number="11.2.2">
 <h3><span class="header-section-number">11.2.2</span> Structural equivalence</h3>
-<p>In social network analysis, two nodes are considered <strong>structurally equivalent</strong> if they have the same neighbourhoods – that is, they are connected to the same others.</p>
+<p>In social network analysis, two nodes are considered <strong>structurally equivalent</strong> if they have the same neighbourhoods – they are connected to the same others.</p>
 <aside>
 <p>💡 <em>For instance, in the network below, we know that there are some nodes that have the same behaviours: <span class="math inline">\(\{f, g\}, \{c, d\}, \{i, j\}\)</span>.</em></p>
 </aside>
@@ -622,21 +646,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>row-functional or col-functional: all starting nodes link to some other nodes and vice-versa, if there is just one 1 in each row/column;</li>
 <li>row-regular or col-regular: each row/column is covered;</li>
 </ul>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%205.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-85"></span>
+<img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%205.png" alt="Nine types of connection between clusters" width="50%" />
+<p class="caption">
+Figure 11.4: Nine types of connection between clusters
+</p>
+</div>
 </div>
 </div>
 <div id="structural-equivalence-on-r" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> Structural Equivalence on R</h2>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="subgroups-and-structural-equivalence.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalence</span></span>
-<span id="cb72-2"><a href="subgroups-and-structural-equivalence.html#cb72-2" aria-hidden="true" tabindex="-1"></a>network_2<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb72-3"><a href="subgroups-and-structural-equivalence.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb72-4"><a href="subgroups-and-structural-equivalence.html#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb72-5"><a href="subgroups-and-structural-equivalence.html#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb72-6"><a href="subgroups-and-structural-equivalence.html#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb72-7"><a href="subgroups-and-structural-equivalence.html#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb72-8"><a href="subgroups-and-structural-equivalence.html#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb72-9"><a href="subgroups-and-structural-equivalence.html#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb72-10"><a href="subgroups-and-structural-equivalence.html#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dv">8</span>,<span class="dv">8</span>,<span class="at">byrow=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="subgroups-and-structural-equivalence.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalence</span></span>
+<span id="cb68-2"><a href="subgroups-and-structural-equivalence.html#cb68-2" aria-hidden="true" tabindex="-1"></a>network_2<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb68-3"><a href="subgroups-and-structural-equivalence.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb68-4"><a href="subgroups-and-structural-equivalence.html#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb68-5"><a href="subgroups-and-structural-equivalence.html#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb68-6"><a href="subgroups-and-structural-equivalence.html#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb68-7"><a href="subgroups-and-structural-equivalence.html#cb68-7" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb68-8"><a href="subgroups-and-structural-equivalence.html#cb68-8" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb68-9"><a href="subgroups-and-structural-equivalence.html#cb68-9" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
+<span id="cb68-10"><a href="subgroups-and-structural-equivalence.html#cb68-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="dv">8</span>,<span class="dv">8</span>,<span class="at">byrow=</span>T)</span></code></pre></div>
 <div id="hamming-structural-equivalence" class="section level3" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> Hamming Structural Equivalence</h3>
 <p><span class="math display">\[
@@ -652,9 +681,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>💡 <em>Note that this example covers only the situations with direct links from <span class="math inline">\(i,j\)</span> to <span class="math inline">\(k\)</span>, but also the vice-versa must be considered.</em></p>
 </aside>
 <p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%206.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="subgroups-and-structural-equivalence.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructing the distance matrix with the Hamming distance</span></span>
-<span id="cb73-2"><a href="subgroups-and-structural-equivalence.html#cb73-2" aria-hidden="true" tabindex="-1"></a>network_2_SEH<span class="ot">&lt;-</span><span class="fu">sedist</span>(network_2, <span class="at">method=</span><span class="st">&quot;hamming&quot;</span>)</span>
-<span id="cb73-3"><a href="subgroups-and-structural-equivalence.html#cb73-3" aria-hidden="true" tabindex="-1"></a>network_2_SEH </span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="subgroups-and-structural-equivalence.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructing the distance matrix with the Hamming distance</span></span>
+<span id="cb69-2"><a href="subgroups-and-structural-equivalence.html#cb69-2" aria-hidden="true" tabindex="-1"></a>network_2_SEH<span class="ot">&lt;-</span><span class="fu">sedist</span>(network_2, <span class="at">method=</span><span class="st">&quot;hamming&quot;</span>)</span>
+<span id="cb69-3"><a href="subgroups-and-structural-equivalence.html#cb69-3" aria-hidden="true" tabindex="-1"></a>network_2_SEH </span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
 ## [1,]    0    4    2    4    4    4    1    1
 ## [2,]    4    0    6    4    2    2    3    3
@@ -664,21 +693,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [6,]    4    2    4    2    0    0    5    5
 ## [7,]    1    3    3    3    5    5    0    0
 ## [8,]    1    3    3    3    5    5    0    0</code></pre>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%207.png" width="50%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="subgroups-and-structural-equivalence.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clustering</span></span>
-<span id="cb75-2"><a href="subgroups-and-structural-equivalence.html#cb75-2" aria-hidden="true" tabindex="-1"></a>network_2_SEHD<span class="ot">&lt;-</span><span class="fu">as.dist</span>(network_2_SEH)</span>
-<span id="cb75-3"><a href="subgroups-and-structural-equivalence.html#cb75-3" aria-hidden="true" tabindex="-1"></a>network_2_SEHD_HC<span class="ot">&lt;-</span><span class="fu">hclust</span>(network_2_SEHD,<span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
-<span id="cb75-4"><a href="subgroups-and-structural-equivalence.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(network_2_SEHD_HC)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%208.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-89"></span>
+<img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%207.png" alt="Same distance matrix obtained in the chunk" width="50%" />
+<p class="caption">
+Figure 11.5: Same distance matrix obtained in the chunk
+</p>
+</div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="subgroups-and-structural-equivalence.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clustering</span></span>
+<span id="cb71-2"><a href="subgroups-and-structural-equivalence.html#cb71-2" aria-hidden="true" tabindex="-1"></a>network_2_SEHD<span class="ot">&lt;-</span><span class="fu">as.dist</span>(network_2_SEH)</span>
+<span id="cb71-3"><a href="subgroups-and-structural-equivalence.html#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="subgroups-and-structural-equivalence.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Clustering on the Humming distance</span></span>
+<span id="cb71-5"><a href="subgroups-and-structural-equivalence.html#cb71-5" aria-hidden="true" tabindex="-1"></a>network_2_SEHD_HC<span class="ot">&lt;-</span><span class="fu">hclust</span>(network_2_SEHD,<span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
+<span id="cb71-6"><a href="subgroups-and-structural-equivalence.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(network_2_SEHD_HC)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
 </div>
 <div id="euclidean-structural-equivalence" class="section level3" number="11.3.2">
 <h3><span class="header-section-number">11.3.2</span> Euclidean Structural Equivalence</h3>
 <p><span class="math display">\[
 Euclidean_{ij} = \sqrt{\sum_k^N \Big((x_{ik}-x{jk})^2+(x_{ki}-x_{kj})^2\Big)}
 \]</span></p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="subgroups-and-structural-equivalence.html#cb76-1" aria-hidden="true" tabindex="-1"></a>network_2_SEE<span class="ot">&lt;-</span><span class="fu">sedist</span>(network_2, <span class="at">method=</span><span class="st">&quot;euclidean&quot;</span>)</span>
-<span id="cb76-2"><a href="subgroups-and-structural-equivalence.html#cb76-2" aria-hidden="true" tabindex="-1"></a>network_2_SEE</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="subgroups-and-structural-equivalence.html#cb72-1" aria-hidden="true" tabindex="-1"></a>network_2_SEE<span class="ot">&lt;-</span><span class="fu">sedist</span>(network_2, <span class="at">method=</span><span class="st">&quot;euclidean&quot;</span>)</span>
+<span id="cb72-2"><a href="subgroups-and-structural-equivalence.html#cb72-2" aria-hidden="true" tabindex="-1"></a>network_2_SEE</span></code></pre></div>
 <pre><code>##          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
 ## [1,] 0.000000 2.000000 1.414214 2.000000 2.000000 2.000000 1.000000 1.000000
 ## [2,] 2.000000 0.000000 2.449490 2.000000 1.414214 1.414214 1.732051 1.732051
@@ -688,15 +723,15 @@ Euclidean_{ij} = \sqrt{\sum_k^N \Big((x_{ik}-x{jk})^2+(x_{ki}-x_{kj})^2\Big)}
 ## [6,] 2.000000 1.414214 2.000000 1.414214 0.000000 0.000000 2.236068 2.236068
 ## [7,] 1.000000 1.732051 1.732051 1.732051 2.236068 2.236068 0.000000 0.000000
 ## [8,] 1.000000 1.732051 1.732051 1.732051 2.236068 2.236068 0.000000 0.000000</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="subgroups-and-structural-equivalence.html#cb78-1" aria-hidden="true" tabindex="-1"></a>network_2_SEED<span class="ot">&lt;-</span><span class="fu">as.dist</span>(network_2_SEE)</span>
-<span id="cb78-2"><a href="subgroups-and-structural-equivalence.html#cb78-2" aria-hidden="true" tabindex="-1"></a>network_2_SEED_HC<span class="ot">&lt;-</span><span class="fu">hclust</span>(network_2_SEED,<span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
-<span id="cb78-3"><a href="subgroups-and-structural-equivalence.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(network_2_SEED_HC)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="subgroups-and-structural-equivalence.html#cb74-1" aria-hidden="true" tabindex="-1"></a>network_2_SEED<span class="ot">&lt;-</span><span class="fu">as.dist</span>(network_2_SEE)</span>
+<span id="cb74-2"><a href="subgroups-and-structural-equivalence.html#cb74-2" aria-hidden="true" tabindex="-1"></a>network_2_SEED_HC<span class="ot">&lt;-</span><span class="fu">hclust</span>(network_2_SEED,<span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
+<span id="cb74-3"><a href="subgroups-and-structural-equivalence.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(network_2_SEED_HC)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
 <p>Suppose having two nodes <span class="math inline">\(i,j\)</span> pointing to <span class="math inline">\(k\)</span>. We aim to compute the euclidean distance between <span class="math inline">\(x_{ik}\)</span> and <span class="math inline">\(x_{jk}\)</span>.</p>
 <p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%209.png" width="80%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="subgroups-and-structural-equivalence.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Euclidean Structural Equivalence</span></span>
-<span id="cb79-2"><a href="subgroups-and-structural-equivalence.html#cb79-2" aria-hidden="true" tabindex="-1"></a>network_2_SEE<span class="ot">&lt;-</span><span class="fu">sedist</span>(network_2, <span class="at">method=</span><span class="st">&quot;euclidean&quot;</span>)</span>
-<span id="cb79-3"><a href="subgroups-and-structural-equivalence.html#cb79-3" aria-hidden="true" tabindex="-1"></a>network_2_SEE</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="subgroups-and-structural-equivalence.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Euclidean Structural Equivalence</span></span>
+<span id="cb75-2"><a href="subgroups-and-structural-equivalence.html#cb75-2" aria-hidden="true" tabindex="-1"></a>network_2_SEE<span class="ot">&lt;-</span><span class="fu">sedist</span>(network_2, <span class="at">method=</span><span class="st">&quot;euclidean&quot;</span>)</span>
+<span id="cb75-3"><a href="subgroups-and-structural-equivalence.html#cb75-3" aria-hidden="true" tabindex="-1"></a>network_2_SEE</span></code></pre></div>
 <pre><code>##          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
 ## [1,] 0.000000 2.000000 1.414214 2.000000 2.000000 2.000000 1.000000 1.000000
 ## [2,] 2.000000 0.000000 2.449490 2.000000 1.414214 1.414214 1.732051 1.732051
@@ -706,13 +741,17 @@ Euclidean_{ij} = \sqrt{\sum_k^N \Big((x_{ik}-x{jk})^2+(x_{ki}-x_{kj})^2\Big)}
 ## [6,] 2.000000 1.414214 2.000000 1.414214 0.000000 0.000000 2.236068 2.236068
 ## [7,] 1.000000 1.732051 1.732051 1.732051 2.236068 2.236068 0.000000 0.000000
 ## [8,] 1.000000 1.732051 1.732051 1.732051 2.236068 2.236068 0.000000 0.000000</code></pre>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%2010.png" width="70%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="subgroups-and-structural-equivalence.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Clustering on euclidean distance</span></span>
-<span id="cb81-2"><a href="subgroups-and-structural-equivalence.html#cb81-2" aria-hidden="true" tabindex="-1"></a>network_2_SEED<span class="ot">&lt;-</span><span class="fu">as.dist</span>(network_2_SEE)</span>
-<span id="cb81-3"><a href="subgroups-and-structural-equivalence.html#cb81-3" aria-hidden="true" tabindex="-1"></a>network_2_SEED_HC<span class="ot">&lt;-</span><span class="fu">hclust</span>(network_2_SEED,<span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
-<span id="cb81-4"><a href="subgroups-and-structural-equivalence.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(network_2_SEED_HC)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
-<p><img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%2011.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-94"></span>
+<img src="images/11-Subgroups%20and%20Structural%20Equivalence/Untitled%2010.png" alt="Example of distance matrix computed with Euclidean distance, as shown in the chunk above" width="70%" />
+<p class="caption">
+Figure 11.6: Example of distance matrix computed with Euclidean distance, as shown in the chunk above
+</p>
+</div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="subgroups-and-structural-equivalence.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Clustering on euclidean distance</span></span>
+<span id="cb77-2"><a href="subgroups-and-structural-equivalence.html#cb77-2" aria-hidden="true" tabindex="-1"></a>network_2_SEED<span class="ot">&lt;-</span><span class="fu">as.dist</span>(network_2_SEE)</span>
+<span id="cb77-3"><a href="subgroups-and-structural-equivalence.html#cb77-3" aria-hidden="true" tabindex="-1"></a>network_2_SEED_HC<span class="ot">&lt;-</span><span class="fu">hclust</span>(network_2_SEED,<span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
+<span id="cb77-4"><a href="subgroups-and-structural-equivalence.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(network_2_SEED_HC)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 
 </div>
 </div>

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Suppose we collect data about 7 females and 6 males. Why should we end up observing a specific network instead of another?
+Suppose we collect data about $7$ females and $6$ males. Why should we end up observing a specific network instead of another?
 
 The probability of observing the network $x$ equals:
 
@@ -46,11 +46,11 @@ In order to answer this question, we should focus on the number of 2-stars as a 
 
 </aside>
 
-If we observe a high number of two-stars in our network given the number of ties, then the underlying force was probably one that tended to prefer to build ties to nodes with a high degree.
-
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
 knitr::include_graphics("images/13-ERGMs/Untitled 1.png")
 ```
+
+If we observe a high number of two-stars in our network given the number of ties, then the underlying force was probably one that tended to prefer to build ties to nodes with a high degree.
 
 <aside>
 💡 *In the previous 3 networks, the 2-stars measure is $77, 40$ and $43$.*
@@ -139,7 +139,7 @@ Consider the presence or absence of a tie between actors $i$ and $j$ as a functi
 
 $$
 \begin{aligned}
-P(x_{ij} &=1 \mid X_{ij}^{C})=\frac{P\left(X=X_{obs}^{i}=1\right)}{{P}\left({X}={X}_{{obs}}^{{i}=0}\right)+{P}\left({X}={X}_{{obs}}^{{i}=1}\right)}\\
+P(x_{ij} =1 \mid X_{ij}^{C}) &=\frac{P\left(X=X_{obs}^{i}=1\right)}{{P}\left({X}={X}_{{obs}}^{{i}=0}\right)+{P}\left({X}={X}_{{obs}}^{{i}=1}\right)}\\
 &= \frac{\frac{e^{\theta_{L}\ \# L_{\text {obs}}^{ij=1}+\theta_{S} \ \# S_{\text {obs}}^{ij=1}+\theta_{T}\ \# T_{\text {obs}}^{ij=1}}}{\sum_{k=1}^{\text {All }}[e^{\theta_{L} \#L_{k}+\theta_{S} \ \# S_{k}+\theta_{T} \ \#T_{k}}]}}{\frac{e^{\theta_{L}\ \# L_{\text {obs}}^{ij=0}+\theta_{S} \ \# S_{\text {obs}}^{ij=0}+\theta_{T}\ \# T_{\text {obs}}^{ij=0}}}{\sum_{k=1}^{\text {All }}[e^{\theta_{L} \#L_{k}+\theta_{S} \ \# S_{k}+\theta_{T} \ \#T_{k}}]}+\frac{e^{\theta_{L}\ \# L_{\text {obs}}^{ij=1}+\theta_{S} \ \# S_{\text {obs}}^{ij=1}+\theta_{T}\ \# T_{\text {obs}}^{ij=1}}}{\sum_{k=1}^{\text {All }}[e^{\theta_{L} \#L_{k}+\theta_{S} \ \# S_{k}+\theta_{T} \ \#T_{k}}]}}
 \end{aligned}
 $$
@@ -154,11 +154,13 @@ $$
 The same formula can be defined for $X_{ij} = 0$. 
 
 $$
-\frac{{P}\left({X}_{i,j}=1 \mid {X}_{i,j}^{{c}}\right)}{{P}\left({X}_{i,j}=0 \mid {X}_{i,j}^{{c}}\right)}=\frac{{e}^{\theta_{{L}}} \ \# {~L}_{{obs}}^{{ij}=1}+\theta_{{S}} \ \# {~S}_{{obs}}^{{ij}=1}+\theta_{T} \ \# {~T}_{{obs}}^{{ij}=1}}{e^{\theta_{{L}}} \ \# {~L}_{\text {obs }}^{{ij}=0}+\theta_{{S}} \ \# {~S}_{\text {obs}}^{{ij}=0}+\theta_{T} \ \# {~T}_{\text {obs}}^{{ij}=0}} \\
-= e^{\left[\theta_{L} \ \# L_{\text {obs }}^{i j=1}+\theta_{S} \ \# S_{\text {obs }}^{i j=1}+\theta_{T} \ \# T_{\text {obs }}^{i j=1}\right]-\left[\theta_{L}\ \# L_{\text {obs}}^{i j=0}+\theta_{S} \ \# S_{\text {obs}}^{i j=0}+\theta_{T} \ \# T_{\text {obs }}^{i j=0}\right]} \\
-= e^{\theta_L\left[\#L_{obs}^{ij=1}- \#L_{obs}^{ij=0}\right]+
+\begin{aligned}
+\frac{{P}\left({X}_{i,j}=1 \mid {X}_{i,j}^{{c}}\right)}{{P}\left({X}_{i,j}=0 \mid {X}_{i,j}^{{c}}\right)} &= \frac{{e}^{\theta_{{L}}} \ \# {~L}_{{obs}}^{{ij}=1}+\theta_{{S}} \ \# {~S}_{{obs}}^{{ij}=1}+\theta_{T} \ \# {~T}_{{obs}}^{{ij}=1}}{e^{\theta_{{L}}} \ \# {~L}_{\text {obs }}^{{ij}=0}+\theta_{{S}} \ \# {~S}_{\text {obs}}^{{ij}=0}+\theta_{T} \ \# {~T}_{\text {obs}}^{{ij}=0}} \\
+&= e^{\left[\theta_{L} \ \# L_{\text {obs }}^{i j=1}+\theta_{S} \ \# S_{\text {obs }}^{i j=1}+\theta_{T} \ \# T_{\text {obs }}^{i j=1}\right]-\left[\theta_{L}\ \# L_{\text {obs}}^{i j=0}+\theta_{S} \ \# S_{\text {obs}}^{i j=0}+\theta_{T} \ \# T_{\text {obs }}^{i j=0}\right]} \\
+&= e^{\theta_L\left[\#L_{obs}^{ij=1}- \#L_{obs}^{ij=0}\right]+
 \theta_S\left[\#S_{obs}^{ij=1}- \#S_{obs}^{ij=0}\right]+
 \theta_T\left[\#T_{obs}^{ij=1}- \#T_{obs}^{ij=0}\right]}
+\end{aligned}
 $$
 
 By considering the logarithm, we get a simple logistic regression equation. Does the local surrounding predict the presence or absence of a tie between $i$ and $j$?

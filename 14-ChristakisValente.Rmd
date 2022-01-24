@@ -16,19 +16,19 @@ A cluster is a group of people who are connected and are similar in characterist
 - Induction effect or Social Contagion: spread from a person to a person
     
     <aside>
-    🌐 *if your friends gain weight, you gain weight, and you then, in turn, impact other friends. Because we conform and we change our idea about what acceptable body size is.*
+    🌐 *If your friends gain weight, you gain weight, and you then, in turn, impact other friends. Because we conform and we change our idea about what acceptable body size is.*
     
     </aside>
     
     <aside>
-    🚬 *if your friends smoke, you might start smoking.*
+    🚬 *If your friends smoke, you might start smoking.*
     
     </aside>
     
 - Homophily effect: birds of a feather flock together
     
     <aside>
-    🌐 *form a tie because we have a similar body size, to begin with, or similar interest in exercise (etc.) that might predict our body size.*
+    🌐 *Form a tie because we have a similar body size, to begin with, or similar interest in exercise (etc.) that might predict our body size.*
     
     </aside>
     
@@ -40,7 +40,7 @@ A cluster is a group of people who are connected and are similar in characterist
 - Confounding factor: it confounds our ability to figure out what’s going on
     
     <aside>
-    🌐 *something happening in a cluster’s environment (e.g. a gym opening, which makes all members of the cluster lose weight, or a fast-food restaurant opening, which makes all members gain weight).*
+    🌐 *Something happening in a cluster’s environment (e.g. a gym opening, which makes all members of the cluster lose weight, or a fast-food restaurant opening, which makes all members gain weight).*
     
     </aside>
     
@@ -52,15 +52,14 @@ A cluster is a group of people who are connected and are similar in characterist
 
 Some examples that can be applied to these three reasons are:
 
-- movies preferences
-- happiness
-- smiling
-- eating fast food
-- ...
+- movies preferences;
+- happiness;
+- smiling;
+- eating fast food.
 
 ### What is the meaning of 3 degrees of separation?
 
-This here shows, on the Y-axis, the increase in the probability that a person is obese given that a social contact of theirs is obese and, on the X-axis, the degrees of separation between the two people. According to Christakis, there are three degrees of separation that hold for many traits, in particular, obesity:
+The plot here shows, on the Y-axis, the increase in the probability that a person is obese given that a social contact of theirs is obese and, on the X-axis, the degrees of separation between the two people. According to Christakis, there are three degrees of separation that hold for many traits, in particular, obesity:
 
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
 knitr::include_graphics("images/14-Christakis and Valente/Untitled.png")
@@ -94,7 +93,7 @@ Obesity is a **multicentric epidemic** since there is no patient zero of this ep
 
 Alter’s appearance or behaviour changes:
 
-- ego’s behaviour
+- Ego’s behaviour
     
     <aside>
     🚬 *For instance, related to smoking, seeing other people smoke makes us smoke.*
@@ -106,7 +105,7 @@ Alter’s appearance or behaviour changes:
     
     </aside>
     
-- ego’s expectations or perceptions of norms.
+- Ego’s expectations or perceptions of norms.
     
     <aside>
     🚬 *For instance, related to smoking, we are convinced by arguments from others about what is normal and expected. Life is short and there are so many other dangers, you should worry about smoking.*
@@ -133,7 +132,7 @@ Studying how networks influence behaviour moves us from theories about networks 
 
 Diffusion happens out of interpersonal contact, persuasion and communication modelling. Diffusion occurs over time, usually following a trend studied in the Economy about the adoption of new products or technology, where there are nearly adopters, then diffusion and in the end the large common use/adoption of a behaviour. 
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Stages of adoption over time"}
 knitr::include_graphics("images/14-Christakis and Valente/Untitled 1.png")
 ```
 
@@ -141,7 +140,7 @@ Valente created mathematical models of the diffusion of innovations in different
 
 Therefore, Valente created a hypothetical community of people and the percentage of diffusion when adopters persuade non-adopters at a rate of one per cent. When this happens, we get the S-shape curve described above. But this is wrong since there’s no network in this. Once we start to see there’s clustering in the network, we notice that it all goes in a different way. In a random way, we get the S-shape, in a real network, there are some moments where the diffusion speeds up or slows down, deviating from the model. 
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="S-curve to describe random behaviour adoption"}
 knitr::include_graphics("images/14-Christakis and Valente/Untitled 2.png")
 ```
 
@@ -218,11 +217,11 @@ knitr::include_graphics("images/14-Christakis and Valente/Untitled 5.png")
 
 **What happens over time during the diffusion process?** 
 
-- external influence (e.g. media, advertisement, travel), whose effect decreases over time. As more people adopt, we do not worry about external influence;
-- selection, which is very high in the beginning , because in the beginning nobody does nothing in my network. Over time, as the community fills with adopters, we don’t need to make changes in the network in order to have people being consistent with the ego’s behaviour;
-- influence should increase over time: as the behaviour becomes normative, as there are more adopters, I’m more likely to change my behaviour;
-- opinion leaders, whose trend varies, when the behaviour is normative and compatible with the community. When it is not culturally compatible, opinion leaders delay their adoption.
+- External influence (e.g. media, advertisement, travel), whose effect decreases over time. As more people adopt, we do not worry about external influence;
+- Selection, which is very high in the beginning , because in the beginning nobody does nothing in my network. Over time, as the community fills with adopters, we don’t need to make changes in the network in order to have people being consistent with the ego’s behaviour;
+- Influence should increase over time: as the behaviour becomes normative, as there are more adopters, I’m more likely to change my behaviour;
+- Opinion leaders, whose trend varies, when the behaviour is normative and compatible with the community. When it is not culturally compatible, opinion leaders delay their adoption.
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Phenomena that happen over time during the diffusion process and their development"}
 knitr::include_graphics("images/14-Christakis and Valente/Untitled 6.png")
 ```

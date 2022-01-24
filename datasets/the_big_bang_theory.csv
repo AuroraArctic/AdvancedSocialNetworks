@@ -1,0 +1,9 @@
+,Amy, Bernadette, Stuart, Penny, Sheldon, Leonard, Raj, Howard
+Amy,0,1,0,0,0,0,0,0
+Bernadette,1,0,1,0,0,0,0,0
+Stuart,0,1,0,0,0,0,0,0
+Penny,0,0,0,0,1,1,0,0
+Sheldon,0,0,0,1,0,1,0,0
+Leonard,0,0,0,1,1,0,1,0
+Raj,0,0,0,0,0,1,0,1
+Howard,0,0,0,0,0,0,1,0
