@@ -171,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
 <li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
-<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment-of-bavelas-and-leavitt"><i class="fa fa-check"></i><b>2.3.3</b> Experiment of Bavelas and Leavitt</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
@@ -261,9 +261,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#classic-approach"><i class="fa fa-check"></i><b>9.1</b> Classic Approach</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#correlation"><i class="fa fa-check"></i><b>9.1.1</b> Correlation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.1.2</b> Significance test</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.2</b> Significance test</a></li>
-<li class="chapter" data-level="9.3" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.3</b> Permutation Based Approach</a></li>
+<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.2</b> Permutation Based Approach</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="two-mode-networks.html"><a href="two-mode-networks.html"><i class="fa fa-check"></i><b>10</b> Two mode networks</a>
 <ul>
@@ -418,6 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.2" data-path="statistics-about-network.html"><a href="statistics-about-network.html#classic-approach-1"><i class="fa fa-check"></i><b>18.2</b> Classic approach</a></li>
+<li class="chapter" data-level="18.3" data-path="statistics-about-network.html"><a href="statistics-about-network.html#permutation-based-approach-1"><i class="fa fa-check"></i><b>18.3</b> Permutation based approach</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
@@ -488,7 +490,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 EI_i = \frac{E_i-I_i}{E_i+I_i}
 \]</span>
 where <span class="math inline">\(E_i\)</span> counts the number of different nodes from the ego and <span class="math inline">\(I_i\)</span> counts the number of similar nodes to the ego, whose sum <span class="math inline">\(E_i+I_i\)</span> must provide the total alters in the ego’s network.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-34"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-36"></span>
 <img src="images/06-Attributes%20based%20measures/Untitled%203.png" alt="Example of a network, considering nodes a, b and d." width="30%" />
 <p class="caption">
 Figure 6.1: Example of a network, considering nodes a, b and d.
@@ -505,7 +507,7 @@ Figure 6.1: Example of a network, considering nodes a, b and d.
 Q_i = \frac{ad-bc}{ad+bc}
 \]</span></p>
 <p><img src="images/06-Attributes%20based%20measures/Untitled%204.png" width="80%" style="display: block; margin: auto;" /></p>
-<p>Whenever we have high b and c, we have atrophy, tendency to choose different people from us; whenever a and d are high, homophily increases.</p>
+<p>Whenever we have high b and c, we have eterophily, tendency to choose different people from us; whenever a and d are high, homophily increases.</p>
 <aside>
 <p>💡 <em>In the second network, b tends to prefer women to men, since she excludes most of the men from her connections. There’s a high tendency to homophily.
 In the third network, says that he builds more connections with females than random chance. Also, he did not connect to a lot of males that were available.</em></p>

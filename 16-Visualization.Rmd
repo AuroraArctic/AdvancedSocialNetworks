@@ -6,7 +6,7 @@
 
 Before starting to visualize networks, it is necessary to install the package for Social Network Analysis, called `sna`:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(sna)
 ```
 

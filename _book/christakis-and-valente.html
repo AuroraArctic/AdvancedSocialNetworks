@@ -171,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
 <li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
-<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment-of-bavelas-and-leavitt"><i class="fa fa-check"></i><b>2.3.3</b> Experiment of Bavelas and Leavitt</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
@@ -261,9 +261,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#classic-approach"><i class="fa fa-check"></i><b>9.1</b> Classic Approach</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#correlation"><i class="fa fa-check"></i><b>9.1.1</b> Correlation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.1.2</b> Significance test</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.2</b> Significance test</a></li>
-<li class="chapter" data-level="9.3" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.3</b> Permutation Based Approach</a></li>
+<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.2</b> Permutation Based Approach</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="two-mode-networks.html"><a href="two-mode-networks.html"><i class="fa fa-check"></i><b>10</b> Two mode networks</a>
 <ul>
@@ -418,6 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.2" data-path="statistics-about-network.html"><a href="statistics-about-network.html#classic-approach-1"><i class="fa fa-check"></i><b>18.2</b> Classic approach</a></li>
+<li class="chapter" data-level="18.3" data-path="statistics-about-network.html"><a href="statistics-about-network.html#permutation-based-approach-1"><i class="fa fa-check"></i><b>18.3</b> Permutation based approach</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
@@ -548,7 +550,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">14.2.1</span> What is the classic idea of diffusion?</h3>
 <p>Studying how networks influence behaviour moves us from theories about networks to network theory. New ideas and practices originate enter communities from some external source (e.g. mass media, labour exchanges, cosmopolitan contact, technical shifts). Adoption of the new idea or practice then flows through <strong>interpersonal contact networks</strong>.</p>
 <p>Diffusion happens out of interpersonal contact, persuasion and communication modelling. Diffusion occurs over time, usually following a trend studied in the Economy about the adoption of new products or technology, where there are nearly adopters, then diffusion and in the end the large common use/adoption of a behaviour.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-105"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-107"></span>
 <img src="images/14-Christakis%20and%20Valente/Untitled%201.png" alt="Stages of adoption over time" width="50%" />
 <p class="caption">
 Figure 14.1: Stages of adoption over time
@@ -556,7 +558,7 @@ Figure 14.1: Stages of adoption over time
 </div>
 <p>Valente created mathematical models of the diffusion of innovations in different situations: for external and internal influence and when the external communications are mixed with person-to-person contact. However, it is far more interesting to study the processes that occur amongst people in the network.</p>
 <p>Therefore, Valente created a hypothetical community of people and the percentage of diffusion when adopters persuade non-adopters at a rate of one per cent. When this happens, we get the S-shape curve described above. But this is wrong since there’s no network in this. Once we start to see there’s clustering in the network, we notice that it all goes in a different way. In a random way, we get the S-shape, in a real network, there are some moments where the diffusion speeds up or slows down, deviating from the model.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-106"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-108"></span>
 <img src="images/14-Christakis%20and%20Valente/Untitled%202.png" alt="S-curve to describe random behaviour adoption" width="50%" />
 <p class="caption">
 Figure 14.2: S-curve to describe random behaviour adoption
@@ -612,7 +614,7 @@ Figure 14.2: S-curve to describe random behaviour adoption
 <li>Influence should increase over time: as the behaviour becomes normative, as there are more adopters, I’m more likely to change my behaviour;</li>
 <li>Opinion leaders, whose trend varies, when the behaviour is normative and compatible with the community. When it is not culturally compatible, opinion leaders delay their adoption.</li>
 </ul>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-110"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-112"></span>
 <img src="images/14-Christakis%20and%20Valente/Untitled%206.png" alt="Phenomena that happen over time during the diffusion process and their development" width="50%" />
 <p class="caption">
 Figure 14.3: Phenomena that happen over time during the diffusion process and their development

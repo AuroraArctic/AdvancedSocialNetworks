@@ -3,6 +3,8 @@
 
 ## Florentine Families
 
+In the following chunk, Florentine Families data is imported first as matrix and then as undirected network inside `PFMn`. Also, `PFA` contains the attributes for each family. 
+
 ```{r message=FALSE, warning=FALSE}
 # Libraries import
 library(sna)
@@ -20,6 +22,7 @@ PFMn<-as.network(PFM, directed=F)
 summary(PFMn)
 ```
 
+Then the families' links are shown in the following network, mapping colours according to the priors (i.e. number of times a family member became part of the Florence councel) and size based on families' wealth (i.e. the greener, the richer; the purpler, the poorer). 
 
 ```{r}
 # Working on nodes colors...
@@ -50,35 +53,50 @@ gplot(PFMn,
       label.cex=.7)
 ```
 
-
+Then, the degree for each family is shown, indicating that the most powerful family is the De Medici, followed by Guadagni and Strozzi. Since they are not direct alters, probably they were competing for the power in Florence. 
 ```{r}
 # Degree
 knitr::kable(as.data.frame(sna::degree(PFMn, gmode="graph"), rownames(PFM)))
 PFMn.Deg<-sna::degree(PFMn, gmode="graph")
 ```
 
+## Classic approach
+
+Let's start with the classic approach, computing the correlation between a family degree and its number of priors. 
 
 ```{r}
-############################
-# STATISTICAL TESTS
-############################
-
 ## Correlation test between degree and priors
 cor.test(PFMn.Deg,PFA$Priors) # positive correlation
+```
+The p-value is below $0.05$, therefore the Pearson correlation is significative and, as the score indicates, positive. Let's try with a linear model where the number of priors is the predictor and the degree is the predicted value:
 
+```{r}
 ## Linear Model
 M1<-lm(PFMn.Deg~PFA$Priors) 
 summary(M1)
 ```
-
+Priors is a meaningful feature to use to predict the degree, as the p-values suggests, but both the R-squared and the Adjusted R-squared indicate the low quality of the model. By plotting the fitted line over data points we may notice that there is a high variability on the extremes of the degree, while most of the families degree lies on the middle (i.e. around 3).
 
 ```{r}
-# PERMUTATION BASED APPROACH
+library(ggplot2)
 
+ggplot()+
+  geom_smooth(aes(PFMn.Deg,PFA$Priors), method = lm)+
+  geom_point(aes(PFMn.Deg,PFA$Priors))
+```
+
+## Permutation based approach
+
+Since the permutatio based approach is based on making samples of the original data by permutating them, the function `sample()` comes into help. 
+
+```{r}
 ## Data preparation
 PFA.P<-PFA$Priors
 sample(PFA.P) # Sample of priors with no replacement
+```
 
+First, we build an empty matrix with $1,000$ values, since we're going to perform $1,000$ permutations. Inside the loop, a sample of priors data is computed, in order to perfom the correlation test on the degree and the permuted priors data. 
+```{r}
 sample_matrix<-matrix(NA,1000,1) # Initializing the matrix
 
 for (k in c(1:1000))
@@ -87,16 +105,28 @@ for (k in c(1:1000))
   # Compute correlation between degree and Priors permuted
   sample_matrix[k,1]<-cor(PFMn.Deg,PFA.P_PERM) 
 }
-
-## Information of the Matrix with correlations
-summary(sample_matrix)
-
-## Plotting the correlation trend among samplings
-par(mar=c(3,3,3,3))
-hist(sample_matrix, breaks=50)
 ```
 
+We can inspect the matrix filled with correlation values to notice some basic statistics. Remember that originally we got `r cor(PFMn.Deg,PFA$Priors)` as Pearson correlation value, which is above the 3rd quantile, but below the maximum correlation reached. 
 
+```{r}
+## Information of the Matrix with correlations
+summary(sample_matrix)
+```
+
+This plot shows the distribution of the Pearson correlation obtained permuting the priors $1,000$ times. We can notice that the mean is below the $0$, while the score we obtained before is around $0.5$, in the tail of the distribution. 
+
+```{r}
+## Plotting the correlation trend among samplings
+par(mar=c(3,3,3,3))
+hist(sample_matrix, breaks=50, main = "Distribution of the Pearson correlation obtained permuting priors")
+abline(v=cor.test(PFMn.Deg,PFA$Priors)$estimate, col = 'red')
+```
+
+We can compute the probability of obtaining that correlation score by computing:
+
+- mean correlation above the real value;
+- mean correlation below the real value.
 ```{r}
 ## Sum 
 (corRealValue<-cor(PFMn.Deg,PFA$Priors)) # Actual correlation with no sampling
@@ -105,22 +135,42 @@ sum(sample_matrix<=-corRealValue)/1000 # Mean correlation below actual cor
 
 # Summing them
 sum(sample_matrix>=corRealValue)/1000 + sum(sample_matrix<=-corRealValue)/1000
+```
 
-# Consinder the absolute number of correlation
+The same thing can be done by considering the absolute value of the correlation score, in order to get the probability of getting such score in both tails. 
+```{r}
+# Consider the absolute number of correlation
 sum(sample_matrix>=abs(corRealValue))/1000
 sum(sample_matrix<=-abs(corRealValue))/1000
 sum(sample_matrix>=abs(corRealValue))/1000 + sum(sample_matrix<=-abs(corRealValue))/1000
 ```
 
+If we approximate the distribution to a Gaussian, we could use `pnorm()` to get the probability for the Pearson coefficient to be equal or higher than the real coefficient. 
 
+```{r}
+# Positive correlation Probability
+pnorm(corRealValue, mean = mean(sample_matrix), sd = sd(sample_matrix), lower.tail = F)
+
+# Negative correlatio probability
+pnorm(-corRealValue, mean = mean(sample_matrix), sd = sd(sample_matrix), lower.tail = T)
+
+# Both positive and negative probability
+pnorm(corRealValue, mean = mean(sample_matrix), sd = sd(sample_matrix), lower.tail = F)+
+  pnorm(-corRealValue, mean = mean(sample_matrix), sd = sd(sample_matrix), lower.tail = T)
+```
+
+Suppose now we detain new data $x_1, y_1$ as follows, with a cluster in the upper part of the plot and a single data point in the lower left part. 
 ```{r}
 # SPECIFIC DATA SAMPLING
 x1<-c(7,8,6,7,0,8,9,7,8,5,9,7,8,7)
 y1<-c(5,6,7,9,0,4,6,5,6,7,6,7,7,9)
 plot(x1,y1)
-cor(x1,y1)
 cor.test(x1,y1)
 
+```
+The correlation is `r cor(x1,y1)` with p-value `r cor.test(x1,y1)$p.value`. Verify if the relationship between $x_1$ and $y_1$ is independent or not through a permutation based approach that iterates $20,000$ times. 
+
+```{r}
 # Initializing output as matrix that does not follow a 
 # normal distribution through permutation based approaches
 OUTPUT<-matrix(NA,20000,1)
@@ -130,24 +180,31 @@ for (k in c(1:20000))
   OUTPUT[k,1]<-cor(y1,x1_PERM)
 }
 hist(OUTPUT, nclass=20, prob=T)
+```
+We could inspect the 95% confidence interval of these permutations: 
 
+```{r}
 ## 95%-CI
-mean(OUTPUT)+sd(OUTPUT)*1.96
-mean(OUTPUT)-sd(OUTPUT)*1.96
+cbind(mean(OUTPUT)+sd(OUTPUT)*1.96, mean(OUTPUT)-sd(OUTPUT)*1.96)
 ```
 
+A second approach considers $x$ as the sequence of $40$ numbers that go from the minimum to the maximum correlation value obtained in the previous permutation example. $f$ is the normal distribution obtained considering its mean and standard deviation. The reproduced histogram is similar to the previous one. 
 
 ```{r}
 ## 2 approaches
 x <- seq(min(OUTPUT), max(OUTPUT), length = 40)
 f <- dnorm(x, mean = mean(OUTPUT), sd = sd(OUTPUT))
 
+# Plotting the Gaussian distribution
 hist(OUTPUT, nclass=20, prob=T, col="cornflowerblue")
 lines(x, f, col = "blue", lwd = 2, type = "b")
-
 curve(dnorm(x, mean=mean(OUTPUT), sd=sd(OUTPUT)), 
       col="darkblue", lwd=2, add=TRUE)
-sum(OUTPUT>cor(x1,y1))/20000
-
 abline(v=cor(x1,y1), lwd=3, col="red")
 ```
+
+
+```{r}
+sum(OUTPUT>=cor(x1,y1))/20000
+```
+After $20,000$ permutations we can see that our correlation coefficient can be get in the top `r sum(OUTPUT>=cor(x1,y1))/20000*100`% of the correlation scores obtainable. 

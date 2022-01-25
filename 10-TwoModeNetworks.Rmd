@@ -2,10 +2,16 @@
 
 ## Two-mode data
 
-Whenever we focus on two-mode networks, we put effort on ties, not on actors, where there are two types of actors. As with 1-mode networks, we need to specify the boundary of the network:
+Whenever we focus on **two-mode networks**, we put effort on ties, not on actors, where there are two types of actors. As with 1-mode networks, we need to specify the boundary of the network:
 
 - defined by events to which actors participate, missing other events to which those actors attended;
 - by actors, to include some events, missing the other actors that attended those events.
+
+*For instance, suppose we consider social movements consisting into actors and meetings or events or organizations to which they are affiliated*.
+
+In analyzing two-mode data, we typically make the assumption that attending the same event is either an indicator of an underlying social relationship between the actors or a potential opportunity for one to develop. It could also be a fortuity to notice the co-attendance of large events.  
+
+First, import data about the attendance of women to some events. 
 
 ```{r}
 library(sna)
@@ -32,15 +38,17 @@ gplot(DSAmS,
 
 A one-mode projection is another way of representing two-mode projections by inserting links between nodes if they share a common link toward a node. In order to compute it:
 
-1. Get the adjacency matrix;
-2. Compute the transpose of this matrix;
-3. Multiply the first matrix with the second one to compute two steps paths from a node to another.  
+1. Get the adjacency matrix $A$;
+2. Compute the transpose of this matrix $t(A)$;
+3. Multiply the first matrix with the second one to compute two steps paths from a node to another $A \cdot t(A)$.  
 
 ```{r}
 # One-mode projection
-DSAmS%*%t(DSAmS) # Matrix multiplication
-t(DSAmS)%*%DSAmS # on the other verse
 
+# Persons
+DSAmS%*%t(DSAmS)
+# Events
+t(DSAmS)%*%DSAmS 
 ```
 
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
@@ -68,7 +76,7 @@ knitr::include_graphics("images/10-Two mode networks/Untitled 1.png")
 
 ## Bipartite
 
-It is possible to compute a two-mode network centrality using bipartite one-mode: according to this modality, we put together actors and events. 
+One of the problems with converting the affiliation matrix to one-mode is that there can be a loss of information. It is possible to compute a two-mode network centrality using **bipartite one-mode**: according to this modality, we put together actors and events to form total nodes and fill the same-type nodes with 0s. 
 
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
 knitr::include_graphics("images/10-Two mode networks/Untitled 2.png")

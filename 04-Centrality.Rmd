@@ -9,11 +9,14 @@ The aim of degree centrality is to find the node that reaches as many people as 
 
 *How to discover who's the most central node in the network? If you have information that you want everyone in the group to have, and you can only give it to one person in the group, who would you give it to?*
 
-Every extra step needed to reach someone decreases accuracy and increases costs. A **geodesic** is the shortest path between two actors. There may be more than one shortest path connecting any two vertices.
+Every extra step needed to reach someone decreases accuracy and increases costs. A **geodesic** is the shortest path between two actors. Geodesics are not necessarily unique, there could be multiple paths of equally short length. A long geodesic distance implies that, even under the very best conditions, it would be a long time before something gets from one node to the other. 
+
+In the following subsections, two versions of the closeness centrality will be presented: Freeman’s approach, which is about reaching everyone in the minimum number of steps; the reciprocal approach, which is about reaching the highest number possible in a few steps.
+
 
 ### Freeman's closeness centrality
 
-We start with a person that has the information and in one step we count how many of them have been reached starting from him/her. 
+Freeman defines closeness centrality as the sum of geodesic distances from a node to all others. Large numbers indicate that a node is highly peripheral, while small numbers indicate that a node is more central. We start with a person that has the information and in one step we count how many of them have been reached starting from him/her. 
 
 <aside>
 <img src="https://img.icons8.com/plasticine/400/homer-simpson.png" alt="https://img.icons8.com/plasticine/400/homer-simpson.png" width="40px" /> *Consider the following example where we start from Marge and try to reach for every other node in the network.*
@@ -35,10 +38,9 @@ knitr::include_graphics("images/04-Centrality/Untitled 2.png")
 
 By considering the final table obtained by counting the necessary steps to reach any other node starting from a specific one, we obtain the table below. We can notice how Homer and Krusty are equivalent since they reach in the same number of steps all the nodes in the network, but Lisa and Bart minimize the cost with equivalent connections. On the other side, Cecil maximizes the path cost to reach all the other nodes. 
 
-These values can be normalized by computing the reciprocal, multiply for the minimum value possible: $n-1$, which equals 9 in the Simpsons' example. 
+These values can be normalized by computing the reciprocal, multiply for the minimum value possible: $n-1$, which equals $9$ in the Simpsons' example. 
 
 The lower the closeness, the less central a node is; the higher the closeness, the more central a node becomes. This can be computed through the following command on R:
-
 
 ```{r message=FALSE, warning=FALSE}
 library(sna)
@@ -53,7 +55,7 @@ knitr::kable(data.frame(cbind(Name = get.vertex.attribute(Simpsons_n, "vertex.na
 
 *What happens if we add multiple components?*
 
-The other nodes will never be reached, therefore it is counted as Inf, but it shouldn't be summed up to other steps, or every node will be equivalently central. Considering the code, we would obtain:
+The other nodes will never be reached, therefore it is counted as $Inf$ (i.e. undefined), but it shouldn't be summed up to other steps, or every node will be equivalently central. Considering the code, we would obtain:
 
 ```{r}
 Simpsons_n2<-Simpsons_n
@@ -84,7 +86,9 @@ Simpsons_n2[9,10]<-0
 
 df = data.frame(
     "Name" = get.vertex.attribute(Simpsons_n, "vertex.names"),
-    `Reciprocal Closeness Centrality` = sna::closeness(Simpsons_n2, gmode="graph", cmode="suminvundir"))
+    `Reciprocal Closeness Centrality` = sna::closeness(Simpsons_n2,
+                                                       gmode="graph",
+                                                       cmode="suminvundir"))
 
 knitr::kable(df, col.names = gsub("[.]"," ", names(df)))
 ```
@@ -113,7 +117,13 @@ knitr::kable(df, col.names = gsub("[.]"," ", names(df)))
 
 *Who is important as an “in-between” person to transfer information?*
 
-This centrality is about the gatekeepers between two nodes that gain power from this situation. The more nodes in between, the more extra points are earned to connect other nodes. 
+This centrality is about the gatekeepers between two nodes that gain power from this situation, in terms of potential for controlling flows through the network. The more nodes in between, the more extra points are earned to connect other nodes. Betweenness centrality is a measure of how often a node falls along the shortest path between two other nodes:
+
+$$
+b_j = \frac{\sum_{i<k}g_{ijk}}{g_{ik}}
+$$
+
+with $g_{ijk}$ being the number of geodesic paths connecting $i$ and $k$ through $j$ and $g_{ik}$ the total number of geodesic paths connecting $i$ and $k$. Whenever a node is an isolate or whenever every alter it has is connected to every other alter, the betweenness falls to $0$. 
 
 <aside>
 <img src="https://img.icons8.com/plasticine/400/homer-simpson.png" alt="https://img.icons8.com/plasticine/400/homer-simpson.png" width="40px" /> *Consider Lisa as the in-between person we're interested in. She's important whenever she connects all nodes except for Abe to the line composed of Krusty, Bob and Cecil.*
@@ -160,14 +170,16 @@ According to Emerson's power from a dependency framework work,
 (2) there are no alternatives for B to A: the power disappears by increasing the number of alternatives.*
 > 
 
-According to Brass work about being in the right place, the dependent variable is influence. He looked at closeness and betweenness centrality when focusing on newspaper publishing company employees. In particular:
+According to Daniel Brass's work about being in the right place, the dependent variable is influence. He looked at closeness and betweenness centrality when focusing on newspaper publishing company employees. In particular:
 
 - closeness centrality is expressed as **access** or minimal distance between a focal actor and all other persons;
+
 - betweenness centrality is expressed as **control** or the relative extent to which a focal actor falls on the shortest path between any two other persons.
 
 Also, there were three levels of analysis: workgroup, department and organization. According to the result:
 
 - when it comes to a workgroup, access to the whole resources is important. When it came to controlling, it is not important;
+
 - control instead is more pivotal at the organizational level, whereas access to resources has no importance since it is strict.
 
 ## Bonacich Beta Centrality
@@ -176,7 +188,7 @@ It is similar to closeness centrality because we worry about near connections wi
 
 Beta centrality not only refers to geodesic, as closeness does, but also to all possible walks. Flowing of information can be repeated and changed, such as attitude and beliefs. Whenever we reinforce the same links over and over again, we may risk entering inside an echo chamber, so the repetition of connections (back and forward) may affect the centrality of a node. 
 
-Closeness is a binary situation of connection, while Bonacich Beta Centrality is more on continuity and consistent connection between nodes.  
+Closeness is a binary situation of connection, while Bonacich Beta Centrality is more on continuity and consistent connection between nodes. Bonacich based his idea on the fact that actors who have more connections are more likely to be powerful because they c1an directly affect more other actors.
 
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='60%', fig.cap=""}
 knitr::include_graphics("images/04-Centrality/Untitled 7.png")

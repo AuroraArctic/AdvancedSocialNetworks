@@ -171,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
 <li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
-<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment-of-bavelas-and-leavitt"><i class="fa fa-check"></i><b>2.3.3</b> Experiment of Bavelas and Leavitt</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
@@ -261,9 +261,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#classic-approach"><i class="fa fa-check"></i><b>9.1</b> Classic Approach</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#correlation"><i class="fa fa-check"></i><b>9.1.1</b> Correlation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.1.2</b> Significance test</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.2</b> Significance test</a></li>
-<li class="chapter" data-level="9.3" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.3</b> Permutation Based Approach</a></li>
+<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.2</b> Permutation Based Approach</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="two-mode-networks.html"><a href="two-mode-networks.html"><i class="fa fa-check"></i><b>10</b> Two mode networks</a>
 <ul>
@@ -418,6 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.2" data-path="statistics-about-network.html"><a href="statistics-about-network.html#classic-approach-1"><i class="fa fa-check"></i><b>18.2</b> Classic approach</a></li>
+<li class="chapter" data-level="18.3" data-path="statistics-about-network.html"><a href="statistics-about-network.html#permutation-based-approach-1"><i class="fa fa-check"></i><b>18.3</b> Permutation based approach</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
@@ -451,6 +453,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 9</span> Statistical Tests on Nodal Level</h1>
 <div id="classic-approach" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Classic Approach</h2>
+<p>In the classic approach, we would:</p>
+<ul>
+<li>correlate the attribute columns;</li>
+<li>significance tests, whose assumptions are violated by network data (e.g. independent observations, data distribution).</li>
+</ul>
 <div id="correlation" class="section level3" number="9.1.1">
 <h3><span class="header-section-number">9.1.1</span> Correlation</h3>
 <p>The correlation coefficient measures the association between two interval or ratio variables.</p>
@@ -460,9 +467,8 @@ r_{xy} = \frac{1}{n-1}\sum^n_{i=1} \frac{(x_i-\bar{x})(y_i-\bar{y})}{s_xs_y}
 \]</span></p>
 <p>where <span class="math inline">\(\bar{x}, \bar{y}\)</span> are the means and <span class="math inline">\(s_x,s_y\)</span> are the standard deviations.</p>
 </div>
-</div>
-<div id="significance-test" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Significance test</h2>
+<div id="significance-test" class="section level3" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Significance test</h3>
 <p>It is based on the idea that a feature or variable provides some useful information about data.</p>
 <ol style="list-style-type: decimal">
 <li><strong>Sample</strong>: make a statement about the relation between two variables for a well defined and finite population. Since it is difficult to collect information for the whole population, <strong>randomly sampling</strong> is a solution.</li>
@@ -475,14 +481,17 @@ r_{xy} = \frac{1}{n-1}\sum^n_{i=1} \frac{(x_i-\bar{x})(y_i-\bar{y})}{s_xs_y}
 </dl></li>
 </ol>
 </div>
-<div id="permutation-based-approach" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Permutation Based Approach</h2>
+</div>
+<div id="permutation-based-approach" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Permutation Based Approach</h2>
+<p>This approach does not involve samples.</p>
 <aside>
 <p>💡 <em>Imagine we have data about five people, knowing their age. We want to explore eventual correlations between out degree and age.</em></p>
 </aside>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="statistical-tests-on-nodal-level.html#cb39-1" aria-hidden="true" tabindex="-1"></a>OD <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Out degree</span></span>
-<span id="cb39-2"><a href="statistical-tests-on-nodal-level.html#cb39-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">45</span>,<span class="dv">32</span>,<span class="dv">25</span>,<span class="dv">21</span>) <span class="co"># Ages</span></span>
-<span id="cb39-3"><a href="statistical-tests-on-nodal-level.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(OD,age) <span class="co"># Correlation test</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="statistical-tests-on-nodal-level.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating data and computing the correlation</span></span>
+<span id="cb41-2"><a href="statistical-tests-on-nodal-level.html#cb41-2" aria-hidden="true" tabindex="-1"></a>OD <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Out degree</span></span>
+<span id="cb41-3"><a href="statistical-tests-on-nodal-level.html#cb41-3" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">45</span>,<span class="dv">32</span>,<span class="dv">25</span>,<span class="dv">21</span>) <span class="co"># Ages</span></span>
+<span id="cb41-4"><a href="statistical-tests-on-nodal-level.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(OD,age) <span class="co"># Correlation test</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -494,11 +503,12 @@ r_{xy} = \frac{1}{n-1}\sum^n_{i=1} \frac{(x_i-\bar{x})(y_i-\bar{y})}{s_xs_y}
 ## sample estimates:
 ##        cor 
 ## -0.9481293</code></pre>
-<p>According to this test, with a p-value below 0.05, there is a negative correlation that explains that, by increasing the age, the number of out links decreases.</p>
-<p><em>What happens if we permute nodes position?</em></p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="statistical-tests-on-nodal-level.html#cb41-1" aria-hidden="true" tabindex="-1"></a>OD <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Out degree still the same</span></span>
-<span id="cb41-2"><a href="statistical-tests-on-nodal-level.html#cb41-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">45</span>,<span class="dv">32</span>,<span class="dv">25</span>,<span class="dv">21</span>,<span class="dv">19</span>) <span class="co"># Ages permuted</span></span>
-<span id="cb41-3"><a href="statistical-tests-on-nodal-level.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(OD,age)</span></code></pre></div>
+<p>According to this test, with a p-value below <span class="math inline">\(0.05\)</span>, there is a negative correlation that explains that, by increasing the age, the number of out links decreases.</p>
+<p><em>What happens if we permute nodes position? If we perform some permutations, what proportion of all these samples that could have come out would result in a correlation as large as the one we actually observed? What are the chances of observing such a large correlation even when the values of the variables are assigned independently of each other?</em></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="statistical-tests-on-nodal-level.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform correlation test on permuted age</span></span>
+<span id="cb43-2"><a href="statistical-tests-on-nodal-level.html#cb43-2" aria-hidden="true" tabindex="-1"></a>OD <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># Out degree still the same</span></span>
+<span id="cb43-3"><a href="statistical-tests-on-nodal-level.html#cb43-3" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">45</span>,<span class="dv">32</span>,<span class="dv">25</span>,<span class="dv">21</span>,<span class="dv">19</span>) <span class="co"># Ages permuted</span></span>
+<span id="cb43-4"><a href="statistical-tests-on-nodal-level.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(OD,age)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -511,6 +521,8 @@ r_{xy} = \frac{1}{n-1}\sum^n_{i=1} \frac{(x_i-\bar{x})(y_i-\bar{y})}{s_xs_y}
 ##       cor 
 ## 0.1021936</code></pre>
 <p>If we permute ages, then the p-value rises, to reject our alternative hypothesis and accept the null one. A <strong>permutation test</strong> (also called re-randomization test) is an exact test, a type of statistical significance test in which the distribution of the test statistic under the null hypothesis is obtained by calculating all possible values of the test statistic under all possible rearrangements of the observed data points.</p>
+<p>Reformulating, the permutation test calculates all the ways that the experiment could have come out given that scores were actually independent and counts the proportion of random assignments yielding a correlation as large as the one actually observed.</p>
+<p>We can then compare the observed correlation against the distribution of correlations that one could obtain if the two variables were in fact independent of each other.</p>
 <p>It’s interesting to notice that by permuting ages, we will in the end get a normal distribution for our correlation.</p>
 
 </div>

@@ -171,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
 <li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
-<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment-of-bavelas-and-leavitt"><i class="fa fa-check"></i><b>2.3.3</b> Experiment of Bavelas and Leavitt</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
@@ -261,9 +261,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#classic-approach"><i class="fa fa-check"></i><b>9.1</b> Classic Approach</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#correlation"><i class="fa fa-check"></i><b>9.1.1</b> Correlation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.1.2</b> Significance test</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.2</b> Significance test</a></li>
-<li class="chapter" data-level="9.3" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.3</b> Permutation Based Approach</a></li>
+<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.2</b> Permutation Based Approach</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="two-mode-networks.html"><a href="two-mode-networks.html"><i class="fa fa-check"></i><b>10</b> Two mode networks</a>
 <ul>
@@ -418,6 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.2" data-path="statistics-about-network.html"><a href="statistics-about-network.html#classic-approach-1"><i class="fa fa-check"></i><b>18.2</b> Classic approach</a></li>
+<li class="chapter" data-level="18.3" data-path="statistics-about-network.html"><a href="statistics-about-network.html#permutation-based-approach-1"><i class="fa fa-check"></i><b>18.3</b> Permutation based approach</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
@@ -462,7 +464,8 @@ P(X=x) = \frac{exp(\theta&#39;z(x))}{\kappa(\theta)}
 \begin{aligned}
 \operatorname{Pr}\left(X_{i j}=1 \mid \mathbf{X}_{i j}^{c}\right) &amp;=\frac{\operatorname{Pr}\left(\mathbf{X}=\mathbf{x}_{i j}^{+}\right)}{\operatorname{Pr}\left(\mathbf{X}=\mathbf{x}_{i j}^{+}\right)+\operatorname{Pr}\left(\mathbf{X}=\mathbf{x}_{i j}^{-}\right)} \\&amp;=\frac{\exp \left\{\boldsymbol{\theta}^{\prime} \mathbf{z}\left(\mathbf{x}_{i j}^{+}\right)\right\}}{\exp \left\{\boldsymbol{\theta}^{\prime} \mathbf{z}\left(\mathbf{x}_{i j}^{+}\right)\right\}+\exp \left\{\boldsymbol{\theta}^{\prime} \mathbf{z}\left(\mathbf{x}_{i j}^{-}\right)\right\}}
 \end{aligned}
-\]</span></p>
+\]</span>
+As Borgatti et al. states in Analyzing Social Networks, these models are related to more general linear models of standard statistics but deal with the fact that we cannot assume independence of observations. Conditional dependence is related to the fact that if two edges share a common vertex, then they are dependent, conditional on the rest of the graph. These models are called Markov random graphs models.</p>
 <div id="density---is-there-an-overall-tendency-to-build-or-refrain-from-building-ties" class="section level3" number="13.1.1">
 <h3><span class="header-section-number">13.1.1</span> Density - Is there an overall tendency to build or refrain from building ties?</h3>
 <p>We could refer to this question with the density. Consider that connections may require time and energy, but also provide positive benefits.</p>
@@ -474,7 +477,7 @@ P(X=x) = \frac{exp(\theta&#39;z(x))}{\kappa(\theta)}
 </div>
 <div id="centralization---is-there-a-tendency-for-popular-people-to-obtain-more-ties" class="section level3" number="13.1.2">
 <h3><span class="header-section-number">13.1.2</span> Centralization - Is there a tendency for popular people to obtain more ties?</h3>
-<p>If so, popular nodes might be more attractive, otherwise, there are limits to the level of variation in degree. According to the <strong>Matthew effect</strong>, the rich get richer and the poor get poorer.</p>
+<p>If so, popular nodes might be more attractive, otherwise, there are limits to the level of variation in degree. According to the <strong>Matthew effect</strong>, the rich get richer and the poor get poorer, also called preferential attachment.</p>
 <p>In order to answer this question, we should focus on the number of 2-stars as a measure of centralization. Consider two networks that have roughly the same density and the same number of nodes.</p>
 <aside>
 <p>💡 <em>For instance, by considering the two networks below, despite both networks having similar density, the 2-stars is very different.</em></p>
@@ -622,10 +625,10 @@ P(X=X_{\text{obs}}) = \frac{e^{\theta_{L} \# L_{\text {obs}}+\theta_{S} \# S_{\t
 P\left(X_{ij}^{t+1}=1 \mid x_{ij}^{C, t}\right)= \frac{e^{\theta_{L}\left[\# ~L_{t}^{ij=1}-\# ~L_{t}^{ij=0}\right]+\theta_{S}\left[\# ~S_{t}^{ij=1}-\# ~S_{t}^{ij=0}\right]+\theta_{T}\left[\# ~T_{t}^{ij=1}-\# {~T}_{t}^{ij=0}\right]}}{1+e^{\theta_{L}\left[\# ~L_{t}^{ij=1}-\# ~L_{t}^{ij=0}\right]+\theta_{S}\left[\# ~S_{t}^{ij=1}-\# ~s_{t}^{ij=0}\right]+\theta_{T} \left[\# T_{t}^{ij=1}-\# T_{t}^{ij=0}\right]}}
 \]</span></p>
 <ol start="4" style="list-style-type: decimal">
-<li>If we use the same rules for a long enough time, the Markov chain forgets about history
-(forgets the starting network), i.e., only takes into account the rules of the process/game ad the networks generated will tend to go towards a stable “equilibrium” (i.e. similar networks). Time after time, the algorithm will show a different characteristic of the network.</li>
-<li>If we use the estimates that truly reflect the forces which are most likely to have led to our observed network, then the process will generate networks that are similar to our observed
-network. That is provided we run this long enough so it forgets about the start = burn-in. Of course in reality we do not know the values for the estimates but we can search for them in this way.</li>
+<li><p>If we use the same rules for a long enough time, the Markov chain forgets about history
+(forgets the starting network), i.e., only takes into account the rules of the process/game ad the networks generated will tend to go towards a stable “equilibrium” (i.e. similar networks). Time after time, the algorithm will show a different characteristic of the network;</p></li>
+<li><p>If we use the estimates that truly reflect the forces which are most likely to have led to our observed network, then the process will generate networks that are similar to our observed
+network. That is provided we run this long enough so it forgets about the start = burn-in. Of course in reality we do not know the values for the estimates but we can search for them in this way.</p></li>
 </ol>
 
 </div>

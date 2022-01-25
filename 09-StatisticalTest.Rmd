@@ -2,6 +2,12 @@
 
 ## Classic Approach
 
+In the classic approach, we would:
+
+* correlate the attribute columns;
+* significance tests, whose assumptions are violated by network data (e.g. independent observations, data distribution).
+
+
 ### Correlation
 
 The correlation coefficient measures the association between two interval or ratio variables. 
@@ -14,7 +20,7 @@ $$
 
 where $\bar{x}, \bar{y}$ are the means and $s_x,s_y$ are the standard deviations. 
 
-## Significance test
+### Significance test
 
 It is based on the idea that a feature or variable provides some useful information about data.
 
@@ -26,27 +32,35 @@ It is based on the idea that a feature or variable provides some useful informat
 
 ## Permutation Based Approach
 
+This approach does not involve samples.
+
 <aside>
 💡 *Imagine we have data about five people, knowing their age. We want to explore eventual correlations between out degree and age.*
 
 </aside>
 
 ```{r}
+# Creating data and computing the correlation
 OD = c(3,1,2,2,3) # Out degree
 age = c(19,45,32,25,21) # Ages
 cor.test(OD,age) # Correlation test
 ```
 
-According to this test, with a p-value below 0.05, there is a negative correlation that explains that, by increasing the age, the number of out links decreases. 
+According to this test, with a p-value below $0.05$, there is a negative correlation that explains that, by increasing the age, the number of out links decreases. 
 
-*What happens if we permute nodes position?* 
+*What happens if we permute nodes position? If we perform some permutations, what proportion of all these samples that could have come out would result in a correlation as large as the one we actually observed? What are the chances of observing such a large correlation even when the values of the variables are assigned independently of each other?* 
 
 ```{r}
+# Perform correlation test on permuted age
 OD = c(3,1,2,2,3) # Out degree still the same
 age = c(45,32,25,21,19) # Ages permuted
 cor.test(OD,age)
 ```
 
-If we permute ages, then the p-value rises, to reject our alternative hypothesis and accept the null one.  A **permutation test** (also called re-randomization test) is an exact test, a type of statistical significance test in which the distribution of the test statistic under the null hypothesis is obtained by calculating all possible values of the test statistic under all possible rearrangements of the observed data points.
+If we permute ages, then the p-value rises, to reject our alternative hypothesis and accept the null one. A **permutation test** (also called re-randomization test) is an exact test, a type of statistical significance test in which the distribution of the test statistic under the null hypothesis is obtained by calculating all possible values of the test statistic under all possible rearrangements of the observed data points. 
+
+Reformulating, the permutation test calculates all the ways that the experiment could have come out given that scores were actually independent and counts the proportion of random assignments yielding a correlation as large as the one actually observed. 
+
+We can then compare the observed correlation against the distribution of correlations that one could obtain if the two variables were in fact independent of each other. 
 
 It's interesting to notice that by permuting ages, we will in the end get a normal distribution for our correlation.

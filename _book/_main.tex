@@ -174,7 +174,7 @@
 \hypertarget{definition}{%
 \subsection{Definition}\label{definition}}
 
-\textbf{Networks} are a way of thinking about social systems that focus our attention on the relationships among the entities that make up the system, which we call actors or nodes. These are the focus of \textbf{Network Science}.
+\textbf{Networks} are a way of thinking about social systems that focus our attention on the relationships among the entities that make up the system, which we call actors or nodes, whose categorical or quantitative traits are called \emph{attributes}. These are the focus of \textbf{Network Science}.
 
 The nodes in a network can be almost anything, although when we talk about social networks we normally expect the nodes to be active agents rather than, say, inanimate objects. Most often, nodes are individuals, but can also be collectivities. \textbf{Social Network Analysis} focuses on humans and how their actions and mechanisms impact the system of interest.
 
@@ -219,7 +219,13 @@ Words          & Used together       & All tweets on a specific topic \\ \bottom
 
 A usual representation for networks is the \textbf{Adjacency matrix}, a square matrix that can be reciprocal (mirrored) or not (different if we swap columns and rows). Generally, self-loops do not make sense, therefore in certain situations, we can just ignore them by inserting a 0. Whenever there is a tie linking two nodes, we insert a 1.
 
+\emph{Note that whenever the adjacency matrix is symmetric and square with respect to the diagonal, we're looking at an undirected network, while if it is not so, we're looking at a directed network.}
+
 The value inside the adjacency matrix between a couple of nodes may assume values different from 0 and 1, e.g.~the weight of the tie. By adding attributes (e.g.~age, gender), we could modify the network representation based on a specific attribute (e.g.~colour, size, shape).
+
+A variant of the adjacency matrix \(A\) is the distance matrix, which holds the geodesic distances between pairs of nodes (i.e.~how many steps are required to \(a\) to reach \(b\)).
+
+Another representation for networks are graphs, defined as the set of nodes \(V\) and edges \(E\).
 
 \hypertarget{types-of-networks}{%
 \section{Types of networks}\label{types-of-networks}}
@@ -236,8 +242,7 @@ An extension to the ego network approach is to continue iterating and expanding 
 \hypertarget{directed-and-undirected-networks}{%
 \subsection{Directed and undirected networks}\label{directed-and-undirected-networks}}
 
-💡 \emph{Normally, friendships is an undirected network, since it is mutual, but not all people we define as such will agree with us, since they may have other priorities people to think to.
-Friendship requires frequent meetings, trust, long-term relationships. It is a concept that requires specific behaviours and expectations.}
+💡 \emph{Normally, friendships is an undirected network, since it is mutual, but not all people we define as such will agree with us, since they may have other priorities people to think to. Friendship requires frequent meetings, trust, long-term relationships. It is a concept that requires specific behaviours and expectations.}
 
 Undirected networks are such that relationships are mutual and both parts know they're linked.
 
@@ -281,7 +286,7 @@ The two-mode network can be projected to a one-mode network, based on their comm
 \item
   \textbf{Individual Level}
 
-  Focusing on a single node, we look at its connections and position inside the network (e.g.~centralisation, density). Most node-level network properties are aggregations of dyad-level measurements, as when we count the number of ties that a node has.
+  Focusing on a single node, we look at its connections and position inside the network (e.g.~centralization, density). Most node-level network properties are aggregations of dyad-level measurements, as when we count the number of ties that a node has.
 
   💡 \emph{Do actors with more friends tend to have stronger immune systems?}
 \item
@@ -295,7 +300,7 @@ The two-mode network can be projected to a one-mode network, based on their comm
 \hypertarget{basic-measures}{%
 \chapter{Basic Measures}\label{basic-measures}}
 
-With respect to the considered level of analysis, there are some measures that can be computed for each of them.
+With respect to the considered level of analysis, there are some measures that can be computed for each of them. Focusing on centrality means focusing on a node's position in a network, at the individual level. It may be important for bridging other nodes or for the power derived by occupying that position.
 
 \hypertarget{degree-centrality}{%
 \section{Degree centrality}\label{degree-centrality}}
@@ -322,7 +327,7 @@ Consider a direct network, whose adjacency matrix is not symmetric. The In degre
 \label{tab:dir_degree}
 \end{table}
 
-This degree centrality can be normalized to get the proportion of outcoming/incoming connections for each node, by dividing the in/outdegree by the total number of people remaining (\(n-1\), or the maximum possible connections that a node could have):
+This degree centrality can be normalized to get the proportion of outcoming/incoming connections for each node, by dividing the in/out-degree by the total number of people remaining (\(n-1\), or the maximum possible connections that a node could have):
 
 \begin{table}[h]
 \centering
@@ -344,7 +349,13 @@ This degree centrality can be normalized to get the proportion of outcoming/inco
 \hypertarget{undirected-network}{%
 \subsection{Undirected Network}\label{undirected-network}}
 
-In this case, the in-degree and the out-degree are the same, since we do not distinguish the type of connections. It can be considered as a double arrow pointing to both sides.
+In this case, the in-degree and the out-degree are the same, since we do not distinguish the type of connections. It can be considered as a double arrow pointing to both sides:
+
+\[
+d_i = \sum_j x_{ij}
+\]
+
+High degree centrality can be seen as higher risk of receiving whatever flows through the network, since these nodes are more visible and tend to be seen as important.
 
 \begin{table}[h]
 \centering
@@ -369,6 +380,8 @@ In this case, the in-degree and the out-degree are the same, since we do not dis
 \hypertarget{density-and-average-degree}{%
 \section{Density and average degree}\label{density-and-average-degree}}
 
+The simplest measure of cohesion is density, which is the number of ties in the network, expressed as a proportion of the number possible.
+
 \hypertarget{directed-network-1}{%
 \subsection{Directed Network}\label{directed-network-1}}
 
@@ -378,7 +391,7 @@ Density = \frac{\text{Number of ties}}{\text{Number of possible ties}} =\frac{\t
 
 The number of possible ties, without considering self-loops, equals \(n(n-1)\). The number of ties equals the sum of the adjacency matrix.
 
-💡 \emph{For instance, by considering the Friends network, we can say that there are 11 ties and 6 people, so the density equals} \(D = 11/(6*5) = 11/30 = 0.367\).
+💡 \emph{For instance, by considering the Friends network, we can say that there are 11 ties and 6 people, so the density equals} \(D = 11/(6\cdot 5) = 11/30 = 0.367\).
 
 This number indicates the percentage of direct connections between nodes inside the network.
 
@@ -388,17 +401,19 @@ This number indicates the percentage of direct connections between nodes inside 
 In this case, the number of ties can be obtained by doubling the sum of half-matrix, since it is symmetric. The number of possible ties in this case is divided by two, since it is symmetrical and \((a,b) = (b,a)\):
 
 \[
-Density = \frac{\text{Number of ties}}{\text{Number of possible ties}} =\frac{\text{Number of ties}}{n(n-1)/2} 
+Density = \frac{\text{Number of ties}}{\text{Number of possible ties}} =\frac{\text{Number of ties}}{\frac{n(n-1)}{2}} 
 \]
 
-💡 \emph{In the Simpsons example, where there are 18 edges and 10 nodes, the density equals} \(D = 18/(10*9/2) = 18/45 = 0.4\).
+💡 \emph{In the Simpsons example, where there are 18 edges and 10 nodes, the density equals} \(D = 18/(10\cdot 9/2) = 18/45 = 0.4\).
 
 \hypertarget{average-degree}{%
 \subsection{Average Degree}\label{average-degree}}
 
+Since the density may assume a different meaning if we compare small and big size networks, the average degree is usually used in substitution to the density. It represents the average number of ties each node has.
+
 Related to directed network, the average in-degree equals the sum of the in-degree or out-degree over the total number of nodes inside the network:
 
-💡 \emph{In the Friends example, the average in-degree is \(11/6 = 1.833\), while the out-degree is} \(11/6 = 1.833\).
+💡 \emph{In the Friends example, the average in-degree is} \(11/6 = 1.833\), while the out-degree is \(11/6 = 1.833\).
 
 The normalized degree of each node is computed by dividing the in and out-degree by \(n-1\).
 
@@ -414,19 +429,18 @@ Notice that a bigger network makes it harder to have a bigger density than a sma
 \hypertarget{degree-centralization}{%
 \section{Degree-centralization}\label{degree-centralization}}
 
-\textbf{Centralization} is a question about how central some nodes are compared to other nodes and therefore can be considered as a characteristic of the network itself. It is related to the distribution of the centrality inside the network, while centrality is more related to the individual sphere of the nodes.
+\textbf{Centralization} is a question about how central some nodes are compared to other nodes and therefore can be considered as a characteristic of the network itself. It is related to the distribution of the centrality inside the network, so to the extend a network is dominated by a single node; while centrality is more related to the individual sphere of the nodes.
 
-💡 \emph{The least centralized network is a ring structure, where everyone is connected to the previous and following node (in this case the centralisation is 0).
-The most centralized network is an ego one, where one node is connected to everyone and no one else is connected to nodes different from the ego (in this case the centralisation measure is far from 0).}
+💡 \emph{The least centralized network is a ring structure, where everyone is connected to the previous and following node (in this case the centralization is 0). The most centralized network is an ego one, where one node is connected to everyone and no one else is connected to nodes different from the ego (in this case the centralization measure is far from 0).}
 
-Centralisation may indicate the status of some nodes inside a network.
+Centralization may indicate the status of some nodes inside a network.
 
 \hypertarget{undirected-network-2}{%
 \subsection{Undirected Network}\label{undirected-network-2}}
 
-By taking the maximum degree inside the network, for each node, we subtract its degree to this maximum, in order to get its centralisation. The centralisation for the degree is then obtained by summing all these centralisations.
+By taking the maximum degree inside the network, for each node, we subtract its degree to this maximum, in order to get its centralization. The centralization for the degree is then obtained by summing all these centralizations.
 
-💡 \emph{Note that the maximum number of connections we could build in a centralized network is \(n-1\). In a decentralized network, if everybody has the same number of connections, the centralisation will always be 0, since the maximum will be the same for every node.}
+💡 \emph{Note that the maximum number of connections we could build in a centralized network is} \(n-1\). In a decentralized network, if everybody has the same number of connections, the centralization will always be 0, since the maximum will be the same for every node.
 
 \begin{figure}[h!]
 
@@ -436,30 +450,30 @@ By taking the maximum degree inside the network, for each node, we subtract its 
 
 \end{figure}
 
-By considering the range between the least and the most centralized (i.e.~\([0,12]\)), the centralisation can be finally computed by dividing the centralisation for the degree by the maximum centralisation value possible.
+By considering the range between the least and the most centralized (i.e.~\([0,12]\)), the centralization can be finally computed by dividing the centralization for the degree by the maximum centralization value possible.
 
 💡 \emph{In the example above, it would be} \(5/12\).
 
-The general formula for the centralisation is the following:
+The general formula for the centralization is the following:
 
 \[
-Centralisation = \frac{\sum (\max-degree_i)}{(n-1)(n-2)}
+Centralization = \frac{\sum (\max-degree_i)}{(n-1)(n-2)}
 \]
 
 \hypertarget{directed-network-2}{%
 \subsection{Directed Network}\label{directed-network-2}}
 
-In the case of a directed network, we detain both in and out-degree centralisation.
+In the case of a directed network, we detain both in and out-degree centralization.
 
 \[
-In-Centralisation = \frac{\sum (\max_{in}-\text{in-degree}_i)}{(n-1)^2}
+In-Centralization = \frac{\sum (\max_{in}-\text{in-degree}_i)}{(n-1)^2}
 \]
 
 \[
-Out-Centralisation = \frac{\sum (\max_{out}-\text{out-degree}_i)}{(n-1)^2}
+Out-Centralization = \frac{\sum (\max_{out}-\text{out-degree}_i)}{(n-1)^2}
 \]
 
-💡 \emph{Still, if we consider Friends' network, we notice that related to the out-degree centralisation, the network is kind of centralized on Rachel, which is talkative with everybody:}
+💡 \emph{Still, if we consider Friends' network, we notice that related to the out-degree centralization, the network is kind of centralized on Rachel, which is talkative with everybody:}
 
 \[
 Out-C = \frac{(5-1)+(5-0)+(5-1)+(5-5)+(5-3)+(5-1)}{5^2} = \frac{19}{25} = 0.76
@@ -471,12 +485,12 @@ Out-C = \frac{(5-1)+(5-0)+(5-1)+(5-5)+(5-3)+(5-1)}{5^2} = \frac{19}{25} = 0.76
 In-C = \frac{(2-1)+5*(2-2)}{5^2} = \frac{1}{25} = 0.04
 \]
 
-\hypertarget{experiment}{%
-\subsection{Experiment}\label{experiment}}
+\hypertarget{experiment-of-bavelas-and-leavitt}{%
+\subsection{Experiment of Bavelas and Leavitt}\label{experiment-of-bavelas-and-leavitt}}
 
 \emph{💡 How fast a group could make decisions together?}
 
-Each subject was given a card, with 5 symbols from a set of 6. Each symbol appeared on 4 of the 5 cards, except for one. The group was asked to find the common symbol in the shortest time possible.
+Bavelas and Leavitt conducted a series of experiments at the MIT. They aim to study the best communication structure for group problem-solving. Each subject was given a card, with 5 symbols from a set of 6. Each symbol appeared on 4 of the 5 cards, except for one. The group was asked to find the common symbol in the shortest time possible.
 
 The subjects communicated by writing messages that could be passed through slots in the walls of the cubicles. Four structures were proposed:
 
@@ -553,11 +567,11 @@ Remember that density does not tell us how these ties are distributed among the 
 
 \emph{How many different groups of nodes exist that cannot reach each other (directly or indirectly)?}
 
-A component is a maximum set where everyone is connected with each other.
+A component is a maximal set where every node can reach every other by some path. Maximal indicates that if you can add a node to the set without violating the condition that everyone can reach everyone, than it must be so. Weak components are a variant of components, where, if we disregard the direction of edges, we will find components; on the other side, strong components are such that even if we respect directions every node is connected to every other.
 
 ⚛️ \emph{In the Big Bang Theory network, the components are two, as shown in the image}.
 
-Imagine that everyone has a piece of information that needs to be propagated. The more components, the less information everyone is reaching and the worse it is. The number of components of a network goes from 1 to the total number of nodes \(n\). We should think of components as a way to spread creativity inside the network. All groups hold unique ideas and being one component allows for exposure to more ideas.
+Imagine that everyone has a piece of information that needs to be propagated. The more components, the less information everyone is reaching and the worse it is. The number of components of a network goes from \(1\) to the total number of nodes \(n\). We should think of components as a way to spread creativity inside the network. All groups hold unique ideas and being one component allows for exposure to more ideas.
 
 \hypertarget{component-ratio}{%
 \subsection{Component ratio}\label{component-ratio}}
@@ -570,12 +584,14 @@ CR = \frac{c-1}{n-1}
 
 ⚛️ \emph{In TBBT example, the component ratio would be \((2-1)/(8-1) = 1/7\).}
 
-1 means that all nodes are isolated, while 0 means there's one single component.
+\(1\) means that all nodes are isolated, while \(0\) means there's one single component. In order to get cohesion, this component ratio can be subtracted to \(1\).
 
-Notice that the component ratio does not tell us anything about the distribution of these components. The size of the largest component is a function of the network size, but it doesn't tell us anything about the smaller components.
+Notice that the component ratio does not tell us anything about the distribution of these components. The size of the largest component is a function of the network size, but it doesn't tell us anything about the smaller components. This happens because it is not very sensitive.
 
 \hypertarget{connectedness-and-fragmentation}{%
 \subsection{Connectedness and fragmentation}\label{connectedness-and-fragmentation}}
+
+Connectedness and fragmentation are more sensitive than the component ratio instead. Connectedness is the proportion of pairs of nodes that can reach each other by a path of any length (i.e.~proportion of pairs of nodes located in the same component).
 
 ⚛️ The two networks below are similar to the largest components, but not the same.
 
@@ -600,10 +616,13 @@ Notice that the component ratio does not tell us anything about the distribution
 ⚛️ \emph{In the first example, Amy, Bernadette and Stuart reach each other \((3\cdot2)\), whereas the others \(5\) are connected among them \((5\cdot4)\) , so \((3\cdot2+5\cdot4)/(8\cdot7) = 0.464\).
 In the second example, since the first three nodes do not reach each other, we have \((0+0+0+5*4)/(8*7) = 0.357\).}
 
-This proportion is called \textbf{connectedness}, while its complement is called \textbf{fragmentation (\(fragmentation = 1-connectedness\))}. Notice that these measures do not inform about how long it takes to reach other nodes inside the same component:
+This proportion is called \textbf{connectedness}, while its complement is called \textbf{fragmentation} (\(\text{fragmentation} = 1-\text{connectedness}\)). Notice that these measures do not inform about how long it takes to reach other nodes inside the same component:
 
 \[
-Connectedness = \frac{\sum_{i = \text{number of nodes in ith component}} i(i-1)}{n(n-1)}
+\begin{aligned}
+Connectedness &= \frac{\sum_{i = \text{number of nodes in ith component}} i(i-1)}{n(n-1)} \\
+Fragmentation &= 1- Connectedness
+\end{aligned}
 \]
 
 \hypertarget{geodesic}{%
@@ -612,7 +631,8 @@ Connectedness = \frac{\sum_{i = \text{number of nodes in ith component}} i(i-1)}
 \hypertarget{compactness-and-breadth}{%
 \subsection{Compactness and breadth}\label{compactness-and-breadth}}
 
-We can study the average distance between two nodes, based on cohesion measures. Remember that longer distances reduce information sharing since it is quite expensive to reach them. The lower the average distance, the easier it is to reach other nodes and therefore the more the network is cohesive and preferrable.
+We can study the average distance between two nodes, based on cohesion measures. Remember that longer distances reduce information sharing since it is quite expensive to reach them. The lower the average distance, the easier it is to reach other nodes and therefore the more the network is cohesive and preferable.\\
+Unfortunately, average geodesic distance and its variants cannot be applied to disconnected graphs, were some distances are not defined (i.e.~\(Inf\)).
 
 ⚛️ \emph{For instance, the distance from Howard to Leonard is 2. If we want to compute the average distance between any couple of nodes inside the TBBT network, we need to consider disconnected nodes with inf distance, as shown in the geodesic distance matrix, which shows the minimum number of links to pass in order to reach a specific node.}
 
@@ -654,7 +674,14 @@ By convention, Inf is expressed as 0 if we consider \(1/\text{geodesic distance}
 ## [8,]  0.0    0  0.0 0.3333333 0.3333333  0.5  1.0       Inf
 \end{verbatim}
 
-Excluding the diagonal, the \textbf{compactness} is expressed as the average of the reciprocal distance. \textbf{Breadth} is the complement of compactness (1-compactness).
+Excluding the diagonal, the \textbf{compactness} is expressed as the average of the reciprocal distance. It weights the paths connecting nodes inversely by their length. \textbf{Breadth} is the complement of compactness (\(1-\text{compactness}\)):
+
+\[
+\begin{aligned}
+Compactness &= \frac{\sum_{i\neq j} (1/d_{ij})}{n(n-1)}\\
+Breadth &= 1-Compactness
+\end{aligned}
+\]
 
 \hypertarget{k-step-approach}{%
 \subsection{K-step approach}\label{k-step-approach}}
@@ -728,12 +755,14 @@ The aim of degree centrality is to find the node that reaches as many people as 
 
 \emph{How to discover who's the most central node in the network? If you have information that you want everyone in the group to have, and you can only give it to one person in the group, who would you give it to?}
 
-Every extra step needed to reach someone decreases accuracy and increases costs. A \textbf{geodesic} is the shortest path between two actors. There may be more than one shortest path connecting any two vertices.
+Every extra step needed to reach someone decreases accuracy and increases costs. A \textbf{geodesic} is the shortest path between two actors. Geodesics are not necessarily unique, there could be multiple paths of equally short length. A long geodesic distance implies that, even under the very best conditions, it would be a long time before something gets from one node to the other.
+
+In the following subsections, two versions of the closeness centrality will be presented: Freeman's approach, which is about reaching everyone in the minimum number of steps; the reciprocal approach, which is about reaching the highest number possible in a few steps.
 
 \hypertarget{freemans-closeness-centrality}{%
 \subsection{Freeman's closeness centrality}\label{freemans-closeness-centrality}}
 
-We start with a person that has the information and in one step we count how many of them have been reached starting from him/her.
+Freeman defines closeness centrality as the sum of geodesic distances from a node to all others. Large numbers indicate that a node is highly peripheral, while small numbers indicate that a node is more central. We start with a person that has the information and in one step we count how many of them have been reached starting from him/her.
 
 \emph{Consider the following example where we start from Marge and try to reach for every other node in the network.}
 
@@ -764,14 +793,14 @@ Some nodes may be equivalent, especially when they're interchangeable.
 
 By considering the final table obtained by counting the necessary steps to reach any other node starting from a specific one, we obtain the table below. We can notice how Homer and Krusty are equivalent since they reach in the same number of steps all the nodes in the network, but Lisa and Bart minimize the cost with equivalent connections. On the other side, Cecil maximizes the path cost to reach all the other nodes.
 
-These values can be normalized by computing the reciprocal, multiply for the minimum value possible: \(n-1\), which equals 9 in the Simpsons' example.
+These values can be normalized by computing the reciprocal, multiply for the minimum value possible: \(n-1\), which equals \(9\) in the Simpsons' example.
 
 The lower the closeness, the less central a node is; the higher the closeness, the more central a node becomes. This can be computed through the following command on R:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(sna)}
-\NormalTok{Simpsons\_n }\OtherTok{=} \FunctionTok{as.network}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"Datasets/simpsons.csv"}\NormalTok{, }
+\NormalTok{Simpsons\_n }\OtherTok{=} \FunctionTok{as.network}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"datasets/simpsons.csv"}\NormalTok{, }
                                            \AttributeTok{row.names=}\DecValTok{1}\NormalTok{, }
                                            \AttributeTok{stringsAsFactors =}\NormalTok{ F)),}
                         \AttributeTok{directed=}\NormalTok{F)}
@@ -809,7 +838,7 @@ Cecil & 0.310344827586207\\
 
 \emph{What happens if we add multiple components?}
 
-The other nodes will never be reached, therefore it is counted as Inf, but it shouldn't be summed up to other steps, or every node will be equivalently central. Considering the code, we would obtain:
+The other nodes will never be reached, therefore it is counted as \(Inf\) (i.e.~undefined), but it shouldn't be summed up to other steps, or every node will be equivalently central. Considering the code, we would obtain:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -852,7 +881,9 @@ Considering this centrality measure, the most central node is Homer, since there
 
 \NormalTok{df }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}
     \StringTok{"Name"} \OtherTok{=} \FunctionTok{get.vertex.attribute}\NormalTok{(Simpsons\_n, }\StringTok{"vertex.names"}\NormalTok{),}
-    \StringTok{\textasciigrave{}}\AttributeTok{Reciprocal Closeness Centrality}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ sna}\SpecialCharTok{::}\FunctionTok{closeness}\NormalTok{(Simpsons\_n2, }\AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{, }\AttributeTok{cmode=}\StringTok{"suminvundir"}\NormalTok{))}
+    \StringTok{\textasciigrave{}}\AttributeTok{Reciprocal Closeness Centrality}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ sna}\SpecialCharTok{::}\FunctionTok{closeness}\NormalTok{(Simpsons\_n2,}
+                                                       \AttributeTok{gmode=}\StringTok{"graph"}\NormalTok{,}
+                                                       \AttributeTok{cmode=}\StringTok{"suminvundir"}\NormalTok{))}
 
 \NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(df, }\AttributeTok{col.names =} \FunctionTok{gsub}\NormalTok{(}\StringTok{"[.]"}\NormalTok{,}\StringTok{" "}\NormalTok{, }\FunctionTok{names}\NormalTok{(df)))}
 \end{Highlighting}
@@ -941,7 +972,13 @@ Cecil & 0.1111111\\
 
 \emph{Who is important as an ``in-between'' person to transfer information?}
 
-This centrality is about the gatekeepers between two nodes that gain power from this situation. The more nodes in between, the more extra points are earned to connect other nodes.
+This centrality is about the gatekeepers between two nodes that gain power from this situation, in terms of potential for controlling flows through the network. The more nodes in between, the more extra points are earned to connect other nodes. Betweenness centrality is a measure of how often a node falls along the shortest path between two other nodes:
+
+\[
+b_j = \frac{\sum_{i<k}g_{ijk}}{g_{ik}}
+\]
+
+with \(g_{ijk}\) being the number of geodesic paths connecting \(i\) and \(k\) through \(j\) and \(g_{ik}\) the total number of geodesic paths connecting \(i\) and \(k\). Whenever a node is an isolate or whenever every alter it has is connected to every other alter, the betweenness falls to \(0\).
 
 \emph{Consider Lisa as the in-between person we're interested in. She's important whenever she connects all nodes except for Abe to the line composed of Krusty, Bob and Cecil.}
 
@@ -1003,10 +1040,9 @@ According to Emerson's power from a dependency framework work,
 (2) there are no alternatives for B to A: the power disappears by increasing the number of alternatives.}
 \end{quote}
 
-According to Brass work about being in the right place, the dependent variable is influence. He looked at closeness and betweenness centrality when focusing on newspaper publishing company employees. In particular:
+According to Daniel Brass's work about being in the right place, the dependent variable is influence. He looked at closeness and betweenness centrality when focusing on newspaper publishing company employees. In particular:
 
 \begin{itemize}
-\tightlist
 \item
   closeness centrality is expressed as \textbf{access} or minimal distance between a focal actor and all other persons;
 \item
@@ -1016,7 +1052,6 @@ According to Brass work about being in the right place, the dependent variable i
 Also, there were three levels of analysis: workgroup, department and organization. According to the result:
 
 \begin{itemize}
-\tightlist
 \item
   when it comes to a workgroup, access to the whole resources is important. When it came to controlling, it is not important;
 \item
@@ -1030,7 +1065,7 @@ It is similar to closeness centrality because we worry about near connections wi
 
 Beta centrality not only refers to geodesic, as closeness does, but also to all possible walks. Flowing of information can be repeated and changed, such as attitude and beliefs. Whenever we reinforce the same links over and over again, we may risk entering inside an echo chamber, so the repetition of connections (back and forward) may affect the centrality of a node.
 
-Closeness is a binary situation of connection, while Bonacich Beta Centrality is more on continuity and consistent connection between nodes.
+Closeness is a binary situation of connection, while Bonacich Beta Centrality is more on continuity and consistent connection between nodes. Bonacich based his idea on the fact that actors who have more connections are more likely to be powerful because they c1an directly affect more other actors.
 
 \begin{figure}[h!]
 
@@ -1178,8 +1213,11 @@ Imagine there can be a repeated influence, such that it spreads on two or more s
 \[
 R = \sum^\infty_{k=1}(\beta^{k-1}X^k) = X+\beta X^2+\beta^2 X^3+\dots
 \]
+The terms in the Bonacich equation are powers of the adjacency matrix. The \((i,j)\) cell of the \(k\)th power of an adjacency matrix gives the number of walks of length \(k\) from \(i\) to \(j\). This formula gives the number of walks of all lengths that join every pair of nodes, weighted by the \(\beta\) values.
 
 Imagine there can be a repeated influence and we want to capture popularity (i.e.~being connected to many popular people). By looking at one single step, we get that node \(d\) has beta centrality \(\beta*(1+1+1+3)\), which represent the number of nodes that neighbours can reach. We then add an additional term \(\beta^2\), multiplied for the number of nodes each neighbour can reach in two steps.
+
+If a node has a high beta centrality score, it means there are many short walks connecting the node to all others and therefore a strong possibility of influencing others (or being influenced).
 
 \begin{figure}[h!]
 
@@ -1203,7 +1241,9 @@ Given the matrix \(X\), we have the adjacency matrix of nodes \(A\),\(B\), \(C\)
 c_B(A) = 2+5+10+23+48+\dots
 \]
 
-Instead of just summing them, we could insert the beta \(\beta\) term which reduces the importance of the paths that necessitate of multiple steps:
+Instead of just summing them, we could insert the beta \(\beta\) term which reduces the importance of the paths that necessitate of multiple steps: when \(\beta\) is small, only immediate friends matter, while for high \(\beta\), the global network structure matters. If positive, nodes have higher centrality when they have edges to other central nodes, while if negative they have higher centrality when they have edges to less central nodes.
+
+\emph{Note: When selecting negative \(\beta\), centrality scores themselves can be negative, implying that an actor would be better off not having any connections. It is possible to think of situations in which this could occur but these are rare, and in those cases it is probably better to increase the value of \beta to eliminate negative scores.}
 
 \[
 c_B(i) = XI+\beta X^2I+\beta^2X^3I+\dots
@@ -1253,6 +1293,18 @@ D             & 0.5065                   & 0.133         \\ \bottomrule
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Beta value = 0}
+\FunctionTok{bonpow}\NormalTok{(MAT4i, }\AttributeTok{exponent=}\DecValTok{0}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(}\FunctionTok{bonpow}\NormalTok{(MAT4i, }\AttributeTok{exponent=}\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     a     b     c     d 
+## 0.250 0.250 0.375 0.125
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1336,7 +1388,7 @@ D             & 0.5309                   & 0.138         \\ \bottomrule
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-29-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-30-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1533,7 +1585,7 @@ where \(E_i\) counts the number of different nodes from the ego and \(I_i\) coun
 
 }
 
-\caption{Example of a network, considering nodes a, b and d.}\label{fig:unnamed-chunk-34}
+\caption{Example of a network, considering nodes a, b and d.}\label{fig:unnamed-chunk-36}
 \end{figure}
 
 Whenever we change our perspective considering a global network also our interpretation may change. For instance, by considering \(a\), \(b\) and \(d\) in the image as in the previous example, their connections change if we extend their ego networks.
@@ -1562,7 +1614,7 @@ Q_i = \frac{ad-bc}{ad+bc}
 
 \end{figure}
 
-Whenever we have high b and c, we have atrophy, tendency to choose different people from us; whenever a and d are high, homophily increases.
+Whenever we have high b and c, we have eterophily, tendency to choose different people from us; whenever a and d are high, homophily increases.
 
 💡 \emph{In the second network, b tends to prefer women to men, since she excludes most of the men from her connections. There's a high tendency to homophily.
 In the third network, says that he builds more connections with females than random chance. Also, he did not connect to a lot of males that were available.}
@@ -1771,7 +1823,7 @@ Under a selfish and individualistic perspective, Burt's Structural Holes theory 
 
 \end{figure}
 
-Betweenness centrality is relevant because it is about the flow of resources between people we're connected to. In this case, C has the highest betweenness centrality, while A has the lowest. We can summarize previous theories through:
+Betweenness centrality is relevant because it is about the flow of resources between people we're connected to. In this case, \(C\) has the highest betweenness centrality, while A has the lowest. We can summarize previous theories through \(3\) main arguements that Burt has used:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1824,14 +1876,23 @@ Krackhardt's disagrees with both Coleman and Burt's theories. According to Krack
 \hypertarget{six-degrees-of-separation}{%
 \subsection{Six degrees of separation}\label{six-degrees-of-separation}}
 
-According to Milgram's experiment in 1967, some people were randomly selected in Nebraska and they should send a letter or a package to someone they know in Boston. They can only use people they know on a first-name basis. The average path for the received package was 5.5, but only a few were actually reached, that's why they choose the average and not the actual value.
+Milgram's experiment in 1967 led us to the idea of six degrees of separation, according to which between any two people there is a path of length \(6\) or less.
+
+The value of \(6\) was a result of an experiment by Stanley Milgram in which he distributed letters randomly to people in two US cities and asked them to pass them to a target, and, if they did not know the target, to pass them to someone who might. He found the average number of steps from originator to target was \(6.4\). A second example was the analysis of Microsoft Messenger in 2007 which at the time had \(180\) million nodes and \(1.3\) billion edges; it was calculated that the average geodesic path length was \(5.5\).
 
 \hypertarget{small-world-effect}{%
 \subsection{Small World Effect}\label{small-world-effect}}
 
-In society, there's a high level of clustering, especially when the degrees of separation is that low. Whenever we have a lower geodesic distance within the same cluster, with few nodes, we may want to connect these small communities with some ties: in this case, the average distance reduces.
+According to Watts and Strogatz, in society, there's a high level of clustering, especially when the degrees of separation is that low. Whenever we have a lower geodesic distance within the same cluster, with few nodes, we may want to connect these small communities with some ties: in this case, the average distance reduces.
 
 A few changes in where we place ties makes some connected clusters into a small world where anybody can reach anybody else in a few steps.
+
+Human social systems are clumpy but also very compact, in the sense of having surprisingly short paths
+linking everyone to everyone else. The more transitivity there is in a network the longer path distances tend to be. It only takes a few connections between clumps to shorten average path length considerably, so the class of networks that are both clumpy and have shorts paths is quite a bit bigger than initially thought.
+
+By testing the clustering coefficient, we find out that it is large relative to random graphs (in which the clustering coefficient will be very close to graph density) and the average distance approaches the average distance in random graphs (which is quite small).
+
+By connecting the components with random bridges, by augmenting them, we lower the average distance in the network, while if no components are clearly detectable the clustering lowers.
 
 \begin{figure}[h!]
 
@@ -1851,17 +1912,17 @@ Information only reaches the direct contacts of a person.
 \begin{itemize}
 \tightlist
 \item
-  1 person: 7
+  \(1\) person: \(7\);
 \item
-  2 persons: 9, 4
+  \(2\) persons: \(9, 4\);
 \item
-  3 persons: 12, 2, 16, to reach everyone except for 18
+  \(3\) persons: \(12, 2, 16\), to reach everyone except for \(18\);
 \item
-  4 persons: 12, 42 16, 18
+  \(4\) persons: \(12, 42 16, 18\).
 \end{itemize}
 
 We're trying to choose non redundant links to reach as many nodes as possible.
-What if we remove these nodes? Will we still be able to reach them all? Without 9, 7 and 4, we will have three clusters, guided by 12, 2 and 16.
+What if we remove these nodes? Will we still be able to reach them all? Without \(9\), \(7\) and \(4\), we will have three clusters, guided by \(12\), \(2\) and \(16\).
 
 \hypertarget{metrics-for-structural-holes}{%
 \chapter{Metrics for structural holes}\label{metrics-for-structural-holes}}
@@ -1869,7 +1930,7 @@ What if we remove these nodes? Will we still be able to reach them all? Without 
 \hypertarget{ego-density}{%
 \section{Ego density}\label{ego-density}}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-43-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-45-1.pdf}
 
 Consider the Medici family, which has \(6\) alters. The number of ties between these alters is \(1\), while the maximum is \(6\cdot 5/2 = 15\). This means that the ego density is the ratio between the first value and the maximum: \(1/15 = 0.067\):
 
@@ -2222,6 +2283,16 @@ Seems like \(af\) and \(ab\) have the same constraint index, which is higher for
 \hypertarget{classic-approach}{%
 \section{Classic Approach}\label{classic-approach}}
 
+In the classic approach, we would:
+
+\begin{itemize}
+\tightlist
+\item
+  correlate the attribute columns;
+\item
+  significance tests, whose assumptions are violated by network data (e.g.~independent observations, data distribution).
+\end{itemize}
+
 \hypertarget{correlation}{%
 \subsection{Correlation}\label{correlation}}
 
@@ -2236,7 +2307,7 @@ r_{xy} = \frac{1}{n-1}\sum^n_{i=1} \frac{(x_i-\bar{x})(y_i-\bar{y})}{s_xs_y}
 where \(\bar{x}, \bar{y}\) are the means and \(s_x,s_y\) are the standard deviations.
 
 \hypertarget{significance-test}{%
-\section{Significance test}\label{significance-test}}
+\subsection{Significance test}\label{significance-test}}
 
 It is based on the idea that a feature or variable provides some useful information about data.
 
@@ -2259,10 +2330,13 @@ It is based on the idea that a feature or variable provides some useful informat
 \hypertarget{permutation-based-approach}{%
 \section{Permutation Based Approach}\label{permutation-based-approach}}
 
+This approach does not involve samples.
+
 💡 \emph{Imagine we have data about five people, knowing their age. We want to explore eventual correlations between out degree and age.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Creating data and computing the correlation}
 \NormalTok{OD }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{) }\CommentTok{\# Out degree}
 \NormalTok{age }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{19}\NormalTok{,}\DecValTok{45}\NormalTok{,}\DecValTok{32}\NormalTok{,}\DecValTok{25}\NormalTok{,}\DecValTok{21}\NormalTok{) }\CommentTok{\# Ages}
 \FunctionTok{cor.test}\NormalTok{(OD,age) }\CommentTok{\# Correlation test}
@@ -2283,12 +2357,13 @@ It is based on the idea that a feature or variable provides some useful informat
 ## -0.9481293
 \end{verbatim}
 
-According to this test, with a p-value below 0.05, there is a negative correlation that explains that, by increasing the age, the number of out links decreases.
+According to this test, with a p-value below \(0.05\), there is a negative correlation that explains that, by increasing the age, the number of out links decreases.
 
-\emph{What happens if we permute nodes position?}
+\emph{What happens if we permute nodes position? If we perform some permutations, what proportion of all these samples that could have come out would result in a correlation as large as the one we actually observed? What are the chances of observing such a large correlation even when the values of the variables are assigned independently of each other?}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Perform correlation test on permuted age}
 \NormalTok{OD }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{) }\CommentTok{\# Out degree still the same}
 \NormalTok{age }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{45}\NormalTok{,}\DecValTok{32}\NormalTok{,}\DecValTok{25}\NormalTok{,}\DecValTok{21}\NormalTok{,}\DecValTok{19}\NormalTok{) }\CommentTok{\# Ages permuted}
 \FunctionTok{cor.test}\NormalTok{(OD,age)}
@@ -2311,6 +2386,10 @@ According to this test, with a p-value below 0.05, there is a negative correlati
 
 If we permute ages, then the p-value rises, to reject our alternative hypothesis and accept the null one. A \textbf{permutation test} (also called re-randomization test) is an exact test, a type of statistical significance test in which the distribution of the test statistic under the null hypothesis is obtained by calculating all possible values of the test statistic under all possible rearrangements of the observed data points.
 
+Reformulating, the permutation test calculates all the ways that the experiment could have come out given that scores were actually independent and counts the proportion of random assignments yielding a correlation as large as the one actually observed.
+
+We can then compare the observed correlation against the distribution of correlations that one could obtain if the two variables were in fact independent of each other.
+
 It's interesting to notice that by permuting ages, we will in the end get a normal distribution for our correlation.
 
 \hypertarget{two-mode-networks}{%
@@ -2319,7 +2398,7 @@ It's interesting to notice that by permuting ages, we will in the end get a norm
 \hypertarget{two-mode-data}{%
 \section{Two-mode data}\label{two-mode-data}}
 
-Whenever we focus on two-mode networks, we put effort on ties, not on actors, where there are two types of actors. As with 1-mode networks, we need to specify the boundary of the network:
+Whenever we focus on \textbf{two-mode networks}, we put effort on ties, not on actors, where there are two types of actors. As with 1-mode networks, we need to specify the boundary of the network:
 
 \begin{itemize}
 \tightlist
@@ -2328,6 +2407,12 @@ Whenever we focus on two-mode networks, we put effort on ties, not on actors, wh
 \item
   by actors, to include some events, missing the other actors that attended those events.
 \end{itemize}
+
+\emph{For instance, suppose we consider social movements consisting into actors and meetings or events or organizations to which they are affiliated}.
+
+In analyzing two-mode data, we typically make the assumption that attending the same event is either an indicator of an underlying social relationship between the actors or a potential opportunity for one to develop. It could also be a fortuity to notice the co-attendance of large events.
+
+First, import data about the attendance of women to some events.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2352,7 +2437,7 @@ Whenever we focus on two-mode networks, we put effort on ties, not on actors, wh
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-56-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-58-1.pdf}
 
 \hypertarget{one-mode-projections}{%
 \section{One-mode projections}\label{one-mode-projections}}
@@ -2363,17 +2448,19 @@ A one-mode projection is another way of representing two-mode projections by ins
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Get the adjacency matrix;
+  Get the adjacency matrix \(A\);
 \item
-  Compute the transpose of this matrix;
+  Compute the transpose of this matrix \(t(A)\);
 \item
-  Multiply the first matrix with the second one to compute two steps paths from a node to another.
+  Multiply the first matrix with the second one to compute two steps paths from a node to another \(A \cdot t(A)\).
 \end{enumerate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# One{-}mode projection}
-\NormalTok{DSAmS}\SpecialCharTok{\%*\%}\FunctionTok{t}\NormalTok{(DSAmS) }\CommentTok{\# Matrix multiplication}
+
+\CommentTok{\# Persons}
+\NormalTok{DSAmS}\SpecialCharTok{\%*\%}\FunctionTok{t}\NormalTok{(DSAmS)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2401,7 +2488,8 @@ A one-mode projection is another way of representing two-mode projections by ins
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{t}\NormalTok{(DSAmS)}\SpecialCharTok{\%*\%}\NormalTok{DSAmS }\CommentTok{\# on the other verse}
+\CommentTok{\# Events}
+\FunctionTok{t}\NormalTok{(DSAmS)}\SpecialCharTok{\%*\%}\NormalTok{DSAmS }
 \end{Highlighting}
 \end{Shaded}
 
@@ -2458,7 +2546,7 @@ A one-mode projection is another way of representing two-mode projections by ins
 \hypertarget{bipartite}{%
 \section{Bipartite}\label{bipartite}}
 
-It is possible to compute a two-mode network centrality using bipartite one-mode: according to this modality, we put together actors and events.
+One of the problems with converting the affiliation matrix to one-mode is that there can be a loss of information. It is possible to compute a two-mode network centrality using \textbf{bipartite one-mode}: according to this modality, we put together actors and events to form total nodes and fill the same-type nodes with 0s.
 
 \begin{figure}[h!]
 
@@ -2501,7 +2589,7 @@ To compute the density of a two-mode network, compute the total number of edges 
 
 }
 
-\caption{Example of network with scientists and papers}\label{fig:unnamed-chunk-63}
+\caption{Example of network with scientists and papers}\label{fig:unnamed-chunk-65}
 \end{figure}
 
 Consider a network with scientists and papers, where \(n_a\) defines the number of scientists and \(n_e\) defines the number of papers. It is possible to compute:
@@ -2540,7 +2628,7 @@ Consider a network with scientists and papers, where \(n_a\) defines the number 
 \end{Highlighting}
 \end{Shaded}
 
-  \includegraphics{_main_files/figure-latex/unnamed-chunk-64-1.pdf}
+  \includegraphics{_main_files/figure-latex/unnamed-chunk-66-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2653,7 +2741,7 @@ Consider a network with scientists and papers, where \(n_a\) defines the number 
 
 }
 
-\caption{Contribution of each author}\label{fig:unnamed-chunk-68}
+\caption{Contribution of each author}\label{fig:unnamed-chunk-70}
 \end{figure}
 
 \begin{itemize}
@@ -2850,32 +2938,35 @@ Seems like \(A_6\) is connected only with females (i.e.~\(A_5\)), while \(A_4\) 
 \hypertarget{subgroups}{%
 \section{Subgroups}\label{subgroups}}
 
+Embedded within a network there are often groups of actors who interact with each other to such an extent that they could be considered to be a separate entity. This group can be called ``cohesive subgroup'' or community. They may allow to discover patterns in people or why certain behaviour/information is spread around a group of nodes. Also, if there are shared norms and similar actions for group members, we may be able to replace cohesive group members by a single `super-node'. This would reduce the complexity and size of the network and consequently aid visualization and analysis.
+
+Let's start with the following example:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Network creation}
 \FunctionTok{library}\NormalTok{(sna)}
-\CommentTok{\# cliques}
 
 \NormalTok{network}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
-\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}
-\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{),}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{)}
+  \DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+  \DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{),}\DecValTok{19}\NormalTok{,}\DecValTok{19}\NormalTok{)}
 
 \NormalTok{network }\OtherTok{=} \FunctionTok{as.network}\NormalTok{(network, }\AttributeTok{directed =}\NormalTok{ F)}
 
@@ -2883,11 +2974,13 @@ Seems like \(A_6\) is connected only with females (i.e.~\(A_5\)), while \(A_4\) 
 \FunctionTok{plot}\NormalTok{(network,}
      \AttributeTok{displaylabels=}\ConstantTok{TRUE}\NormalTok{,}
      \AttributeTok{label.cex =} \FloatTok{0.7}\NormalTok{,}
+     \AttributeTok{edge.col =} \StringTok{"grey70"}\NormalTok{,}
+     \AttributeTok{vertex.col =} \StringTok{"cornflowerblue"}\NormalTok{,}
      \AttributeTok{vertex.cex =} \FloatTok{0.8}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-78-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-80-1.pdf}
 
 \hypertarget{components-1}{%
 \subsection{Components}\label{components-1}}
@@ -2907,12 +3000,12 @@ A subset where everyone is directly or indirectly connected to everyone else is 
 
 }
 
-\caption{Examples of cliques}\label{fig:unnamed-chunk-79}
+\caption{Examples of cliques}\label{fig:unnamed-chunk-81}
 \end{figure}
 
 A subset where everyone is directly connected to everyone else in the subset is called a \textbf{clique}.
 
-💡 \emph{Note that both an actor and a dyad might belong to more than one clique.}
+💡 \emph{Note that both an actor and a dyad might belong to more than one clique. In order to limit the overlapping of cliques, it is possible to increase the minimum size of a clique.}
 
 \hypertarget{k-cliques}{%
 \subsection{K-cliques}\label{k-cliques}}
@@ -2941,7 +3034,7 @@ By considering the previous network, the \(2\)-cliques are:
 
 }
 
-\caption{Example of 2-cliques}\label{fig:unnamed-chunk-80}
+\caption{Example of 2-cliques}\label{fig:unnamed-chunk-82}
 \end{figure}
 
 💡 Note that actors might become cliques through others that are not members themselves. For instance, if we consider the 2-clique composed by \(K_2 = \{14,15,17,18,19\}\) thanks to 16.
@@ -3051,7 +3144,7 @@ Some 2-clans in the network are:
 
 }
 
-\caption{Example of k-clan}\label{fig:unnamed-chunk-82}
+\caption{Example of k-clan}\label{fig:unnamed-chunk-84}
 \end{figure}
 
 \hypertarget{equivalence}{%
@@ -3073,7 +3166,11 @@ If we try to represent the network with an adjacency matrix, we would notice tha
 \hypertarget{structural-equivalence}{%
 \subsection{Structural equivalence}\label{structural-equivalence}}
 
-In social network analysis, two nodes are considered \textbf{structurally equivalent} if they have the same neighbourhoods -- they are connected to the same others.
+In social network analysis, two nodes are considered \textbf{structurally equivalent} if they have the same neighborhoods -- they are connected to the same others. Structural equivalence is related to the roles we play in the network and to the fact that people that play the same role in the network act similarly.
+
+Structural equivalence examines the direct connections of an actor to other actors in the network. Two actors are structurally equivalent if they send ties to the same third parties, and receive ties from the same third parties. They do not need to have a direct tie to each other to be equivalent.
+
+It is a useful concept to identify similarities in attitudes and behaviours of nodes in the network and they tend to show homogeneity, as actors in the same cohesive subgroup. This similarity may be due to environment influence, due to their role or their shared neighbours. Remember that persons adapt to their social environments, and therefore actors with similar social environments will tend to have certain similarities.
 
 💡 \emph{For instance, in the network below, we know that there are some nodes that have the same behaviours: \(\{f, g\}, \{c, d\}, \{i, j\}\).}
 
@@ -3088,7 +3185,7 @@ In social network analysis, two nodes are considered \textbf{structurally equiva
 \hypertarget{regular-equivalence}{%
 \subsection{Regular equivalence}\label{regular-equivalence}}
 
-Two actors are \textbf{regular equivalent} if they are equally related to equivalent others. Two nodes are said to play the same role (i.e., are regularly equivalent) if they have ties to the same roles.
+Regular equivalence is a restriction of structural equivalence according to which actors need to be connected to the same actors to be equivalent. Therefore, two actors are \textbf{regular equivalent} if they are equally related to equivalent others. Two nodes are said to play the same role (i.e., are regularly equivalent) if they have ties to the same roles.
 
 💡 \emph{For instance, we can distinguish two types of nodes: \(\{b,c,d,e\}, \{f,g,h,i,j\}\).}
 
@@ -3104,6 +3201,8 @@ Two actors are \textbf{regular equivalent} if they are equally related to equiva
 \item
   \textbf{combination of all the links} (ties), represented in a block as a single link between positions, while at the same time constructing one tie for each block. In a case, when there are no ties in a block, there will be no ties between the two positions, that define the block.
 \end{itemize}
+
+The aim of blockmodeling is to produce a simplified or reduced matrix. We first arrange the rows and columns of the adjacency matrix so that structurally equivalent actors are grouped together. This grouping induces blocks within the matrix. For pure structural equivalence, the blocks are either all ones or all zeros and are called \(1\)-blocks and \(0-blocks\), respectively.
 
 Some types of blocks can be:
 
@@ -3129,8 +3228,10 @@ Some types of blocks can be:
 
 }
 
-\caption{Nine types of connection between clusters}\label{fig:unnamed-chunk-85}
+\caption{Nine types of connection between clusters}\label{fig:unnamed-chunk-87}
 \end{figure}
+
+We can treat matrices as proximity measure and apply classification and clustering techniques.
 
 \hypertarget{structural-equivalence-on-r}{%
 \section{Structural Equivalence on R}\label{structural-equivalence-on-r}}
@@ -3205,7 +3306,7 @@ Suppose there are two nodes \(i,j\) and we want to compute the Hamming distance 
 
 }
 
-\caption{Same distance matrix obtained in the chunk}\label{fig:unnamed-chunk-89}
+\caption{Same distance matrix obtained in the chunk}\label{fig:unnamed-chunk-91}
 \end{figure}
 
 \begin{Shaded}
@@ -3219,10 +3320,12 @@ Suppose there are two nodes \(i,j\) and we want to compute the Hamming distance 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-90-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-92-1.pdf}
 
 \hypertarget{euclidean-structural-equivalence}{%
 \subsection{Euclidean Structural Equivalence}\label{euclidean-structural-equivalence}}
+
+In this case, a pair of structurally equivalent actors would yield a distance of zero. Values close to zero would indicate that the actors involved are nearly structurally equivalent.
 
 \[
 Euclidean_{ij} = \sqrt{\sum_k^N \Big((x_{ik}-x{jk})^2+(x_{ki}-x_{kj})^2\Big)}
@@ -3255,7 +3358,7 @@ Euclidean_{ij} = \sqrt{\sum_k^N \Big((x_{ik}-x{jk})^2+(x_{ki}-x_{kj})^2\Big)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-91-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-93-1.pdf}
 
 Suppose having two nodes \(i,j\) pointing to \(k\). We aim to compute the euclidean distance between \(x_{ik}\) and \(x_{jk}\).
 
@@ -3293,7 +3396,7 @@ Suppose having two nodes \(i,j\) pointing to \(k\). We aim to compute the euclid
 
 }
 
-\caption{Example of distance matrix computed with Euclidean distance, as shown in the chunk above}\label{fig:unnamed-chunk-94}
+\caption{Example of distance matrix computed with Euclidean distance, as shown in the chunk above}\label{fig:unnamed-chunk-96}
 \end{figure}
 
 \begin{Shaded}
@@ -3305,7 +3408,7 @@ Suppose having two nodes \(i,j\) pointing to \(k\). We aim to compute the euclid
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-95-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-97-1.pdf}
 
 \hypertarget{reciprocity-and-transitivity}{%
 \chapter{Reciprocity and transitivity}\label{reciprocity-and-transitivity}}
@@ -3334,10 +3437,10 @@ With \textbf{dyad census}, we count how many mutual, asymmetric and null dyads t
 
 }
 
-\caption{Example of directed network}\label{fig:unnamed-chunk-96}
+\caption{Example of directed network}\label{fig:unnamed-chunk-98}
 \end{figure}
 
-💡 \emph{Get the total dyads available as \(n(n-1)/2\) and then remove the total amount of dyads actually existing (sum mutual and asymmetric's).}
+💡 \emph{Get the total dyads available as} \(n(n-1)/2\) and then remove the total amount of dyads actually existing (sum mutual and asymmetric's).
 
 \emph{Given the density, what would be the expected dyad census?}
 
@@ -3375,10 +3478,11 @@ There are two indexes for computing reciprocity:
     \frac{2\cdot M}{2\cdot M+A}
     \]
 
-  💡 \emph{In the previous example, we would get \(2\cdot4/(2\cdot4+4) = 8/12 = 0.667\).}
+  💡 \emph{In the previous example, we would get} \(2\cdot4/(2\cdot4+4) = 8/12 = 0.667\).
 
-  💡 \emph{Suppose that the previous network doesn't have reciprocal edges, then reciprocity would be \(0/(0+8) = 0\), because the index of reciprocity would be \(2\cdot 0/(2\cdot 0+A) = 0\).
-  If instead all edges are mutual, then the highest reachable value is 1, because \(2\cdot M/(2\cdot M+A) = 2M/(2M) = 1\).}
+  💡 \emph{Suppose that the previous network doesn't have reciprocal edges, then reciprocity would be} \(0/(0+8) = 0\), because the index of reciprocity would be \(2\cdot 0/(2\cdot 0+A) = 0\). If instead all edges are mutual, then the highest reachable value is 1, because \(2\cdot M/(2\cdot M+A) = 2M/(2M) = 1\).
+
+  \emph{Note that UCINET adds the number of symmetric pairs as well as the reciprocates ties, including the case where there is a reciprocated zero in the adjacency matrix}.\\
 \item
   Considering the density, we would obtain the reciprocity index by:
 
@@ -3482,7 +3586,7 @@ There are two indexes for computing reciprocity:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-97-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-99-1.pdf}
 
 \hypertarget{triads}{%
 \section{Triads}\label{triads}}
@@ -3490,7 +3594,42 @@ There are two indexes for computing reciprocity:
 \hypertarget{triad-census}{%
 \subsection{Triad Census}\label{triad-census}}
 
-According to the Davis and Leinhardt triad census, there are 16 ways to arrange a triad. The \texttt{sna} library on R helps to count how many of them there are in a network.
+According to the Davis and Leinhardt triad census, there are 16 ways to arrange a triad in directed networks. The \texttt{sna} library on R helps to count how many of them there are in a network. The triads are labelled using the MAN convention:
+
+\begin{itemize}
+\tightlist
+\item
+  Mutuals, dyads with reciprocated ties;
+\item
+  Asymmetrics, dyads with unreciprocated ties;
+\item
+  Nulls, dyads with no tie.
+\end{itemize}
+
+\emph{For instance,}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{003: 3 non-null, 0 mutual and asymmetric;}
+\item
+  \emph{111D: 1 mutual, 1 asymmetric, 1 non-dyad}
+\item
+  \emph{021D: 0 mutual, 2 asymmetric, 1 null dyads.}
+\end{itemize}
+
+In addition, letters indicate:
+
+\begin{itemize}
+\item
+  D: down arrows;
+\item
+  U: up arrows;
+\item
+  C: cycle;
+\item
+  T: transitivity.
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3513,7 +3652,7 @@ According to the Davis and Leinhardt triad census, there are 16 ways to arrange 
 
 \begin{figure}[h!]
 
-{\centering \includegraphics[width=0.5\linewidth]{images/12-Reciprocity and transitivity/Untitled 3} 
+{\centering \includegraphics[width=0.5\linewidth]{images/12-Reciprocity and transitivity/MAN} 
 
 }
 
@@ -3538,10 +3677,15 @@ By considering the code output and the triad census legend, we could focus for i
 \hypertarget{transitivity}{%
 \subsection{Transitivity}\label{transitivity}}
 
-In order to know whether a network is transitive, we can compare the transitivity computed through \texttt{gtrans()} with the density of the network. Transitivity is computed as the ratio between a dyad and the number of dyads between these two nodes plus the number of tryads there are.
+In order to know whether a network is transitive, we can compare the transitivity computed through \texttt{gtrans()} with the density of the network. Transitivity is computed as the ratio between a dyad and the number of dyads between these two nodes plus the number of tryads there are:
+
+\[
+Transitivity = \frac{\sum_{i,j,k}x_{ij}x_{jk}x_{ki}}{\sum_{i,j,k}x_{ij}x_{jk}}
+\] To simplify, we count the proportion of triads in which \(A \rightarrow B \rightarrow C \implies A\rightarrow C\) over the total triads that go from \(A\) to \(B\) and from \(B\) to \(C\).
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Transitivty}
 \NormalTok{sna}\SpecialCharTok{::}\FunctionTok{gtrans}\NormalTok{(mat6)}
 \end{Highlighting}
 \end{Shaded}
@@ -3552,6 +3696,7 @@ In order to know whether a network is transitive, we can compare the transitivit
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Density}
 \NormalTok{sna}\SpecialCharTok{::}\FunctionTok{gden}\NormalTok{(mat6)}
 \end{Highlighting}
 \end{Shaded}
@@ -3559,6 +3704,29 @@ In order to know whether a network is transitive, we can compare the transitivit
 \begin{verbatim}
 ## [1] 0.4
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Also density}
+\FunctionTok{sum}\NormalTok{(mat6)}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(mat6)}\SpecialCharTok{*}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(mat6)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4
+\end{verbatim}
+
+Watts and Strogatz proposed a measure for undirected networks called \textbf{clustering coefficient} to capture the extent to which a network had areas of high and low density:
+
+\begin{itemize}
+\tightlist
+\item
+  measure the density of ties in each node's ego network;
+\item
+  average the qauntity across all nodes to get the overall clustering coefficient.
+\end{itemize}
+
+If the clustering coefficient is weighted by the number of pairs of nodes in every ego's network it equals the transitivity coefficient. Watts and Strogatz use this coefficient to define small-world networks.
 
 \hypertarget{ergms}{%
 \chapter{ERGMs}\label{ergms}}
@@ -3583,6 +3751,7 @@ These tie-based decisions are driven by a \textbf{combination of social forces} 
 \operatorname{Pr}\left(X_{i j}=1 \mid \mathbf{X}_{i j}^{c}\right) &=\frac{\operatorname{Pr}\left(\mathbf{X}=\mathbf{x}_{i j}^{+}\right)}{\operatorname{Pr}\left(\mathbf{X}=\mathbf{x}_{i j}^{+}\right)+\operatorname{Pr}\left(\mathbf{X}=\mathbf{x}_{i j}^{-}\right)} \\&=\frac{\exp \left\{\boldsymbol{\theta}^{\prime} \mathbf{z}\left(\mathbf{x}_{i j}^{+}\right)\right\}}{\exp \left\{\boldsymbol{\theta}^{\prime} \mathbf{z}\left(\mathbf{x}_{i j}^{+}\right)\right\}+\exp \left\{\boldsymbol{\theta}^{\prime} \mathbf{z}\left(\mathbf{x}_{i j}^{-}\right)\right\}}
 \end{aligned}
 \]
+As Borgatti et al.~states in Analyzing Social Networks, these models are related to more general linear models of standard statistics but deal with the fact that we cannot assume independence of observations. Conditional dependence is related to the fact that if two edges share a common vertex, then they are dependent, conditional on the rest of the graph. These models are called Markov random graphs models.
 
 \hypertarget{density---is-there-an-overall-tendency-to-build-or-refrain-from-building-ties}{%
 \subsection{Density - Is there an overall tendency to build or refrain from building ties?}\label{density---is-there-an-overall-tendency-to-build-or-refrain-from-building-ties}}
@@ -3604,7 +3773,7 @@ If we observe a low number of ties in our network (given network size), then the
 \hypertarget{centralization---is-there-a-tendency-for-popular-people-to-obtain-more-ties}{%
 \subsection{Centralization - Is there a tendency for popular people to obtain more ties?}\label{centralization---is-there-a-tendency-for-popular-people-to-obtain-more-ties}}
 
-If so, popular nodes might be more attractive, otherwise, there are limits to the level of variation in degree. According to the \textbf{Matthew effect}, the rich get richer and the poor get poorer.
+If so, popular nodes might be more attractive, otherwise, there are limits to the level of variation in degree. According to the \textbf{Matthew effect}, the rich get richer and the poor get poorer, also called preferential attachment.
 
 In order to answer this question, we should focus on the number of 2-stars as a measure of centralization. Consider two networks that have roughly the same density and the same number of nodes.
 
@@ -3841,10 +4010,9 @@ P\left(X_{ij}^{t+1}=1 \mid x_{ij}^{C, t}\right)= \frac{e^{\theta_{L}\left[\# ~L_
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{3}
-\tightlist
 \item
   If we use the same rules for a long enough time, the Markov chain forgets about history
-  (forgets the starting network), i.e., only takes into account the rules of the process/game ad the networks generated will tend to go towards a stable ``equilibrium'' (i.e.~similar networks). Time after time, the algorithm will show a different characteristic of the network.
+  (forgets the starting network), i.e., only takes into account the rules of the process/game ad the networks generated will tend to go towards a stable ``equilibrium'' (i.e.~similar networks). Time after time, the algorithm will show a different characteristic of the network;
 \item
   If we use the estimates that truly reflect the forces which are most likely to have led to our observed network, then the process will generate networks that are similar to our observed
   network. That is provided we run this long enough so it forgets about the start = burn-in. Of course in reality we do not know the values for the estimates but we can search for them in this way.
@@ -3985,7 +4153,7 @@ Diffusion happens out of interpersonal contact, persuasion and communication mod
 
 }
 
-\caption{Stages of adoption over time}\label{fig:unnamed-chunk-105}
+\caption{Stages of adoption over time}\label{fig:unnamed-chunk-107}
 \end{figure}
 
 Valente created mathematical models of the diffusion of innovations in different situations: for external and internal influence and when the external communications are mixed with person-to-person contact. However, it is far more interesting to study the processes that occur amongst people in the network.
@@ -3998,7 +4166,7 @@ Therefore, Valente created a hypothetical community of people and the percentage
 
 }
 
-\caption{S-curve to describe random behaviour adoption}\label{fig:unnamed-chunk-106}
+\caption{S-curve to describe random behaviour adoption}\label{fig:unnamed-chunk-108}
 \end{figure}
 
 \hypertarget{what-types-of-network-influence-weights-are-there-according-to-valente}{%
@@ -4117,13 +4285,15 @@ It is possible to use a \texttt{NetdiffuseR} package to track the diffusion of i
 
 }
 
-\caption{Phenomena that happen over time during the diffusion process and their development}\label{fig:unnamed-chunk-110}
+\caption{Phenomena that happen over time during the diffusion process and their development}\label{fig:unnamed-chunk-112}
 \end{figure}
 
 \hypertarget{egos-network}{%
 \chapter{Ego's Network}\label{egos-network}}
 
 We will go through the process of designing and conducting a social network study.
+
+En ego network is the part of a network that involves a particular node we are focusing on, which we call ego. This network consists of ego, the nodes ego is connected to (alters), and usually the ties between ego's alters.
 
 \hypertarget{finding-a-research-topic}{%
 \section{Finding a research topic}\label{finding-a-research-topic}}
@@ -4139,10 +4309,12 @@ A research topic can be considered good if interesting, relevant, has not been a
 
 \emph{How do people experience moving home and why? What factors make it good or bad for them? How do Hungarian returning migrants experience their return and what are the main factors that affect their experiences?}
 
+Note that if the research question doesn't allow you to restrict the set of alters that a respondent could name, then it is better to use a personal-network research design. In addition, whenever we consider a sociological group, we automatically restrict the actors in our network.
+
 \hypertarget{think-about-relevant-theories}{%
 \section{Think about relevant theories}\label{think-about-relevant-theories}}
 
-Is there a theory that directly adresses or answers our question?
+Is there a theory that directly addresses or answers our question?
 
 ❓ \emph{Are there any sociological theories or concepts that help us think about why some people are happier in general or cope better in certain situations? Maybe something you learnt in class?}
 
@@ -4165,7 +4337,7 @@ People with strong ties come from the same social circle thus have access to the
 \hypertarget{nan-lin}{%
 \subsection{Nan Lin}\label{nan-lin}}
 
-According to Nan Lin, social capital can be defined as resources embedded in a social structure which are accessed and/or mobilised in purposive action.
+According to Nan Lin, social capital can be defined as resources embedded in a social structure which are accessed and/or mobilized in purpose action.
 
 It cuts through the debate of bridging vs closure: differentiates two different kinds of returns to social capital, that result from different mechanisms:
 
@@ -4205,15 +4377,15 @@ There are two major kinds of network research designs:
 \item
   \textbf{Socio-centric or whole network design}
 
-  It starts with a set of all the actors. Then we collect all the connection between all the actors. We get a single and complete network.
+  The focus is on the ties among all pairs of nodes in a given set. We get a single and complete network, but the cost of the design increases with the network size.
 
   It captures the position of individuals within the social structure. It can measure indirect or absent ties.
 \item
   \textbf{Ego-centric or personal network design}
 
-  It starts with a sample of actors from a population. Each of them provides information about the members of their own network. We get a set of separate networks.
+  We sample to obtain a set of respondents and then collect from each respondent (ego) the list of people (alters) they are connected to, the nature of the ties connecting them, characteristics of these alters, and the respondent's perceptions of the ties among the alters. Whenever we capture egos ties, we reach their alters.
 
-  It also captures the position of individuals within the social structure but its limited to direct ties.
+  It also captures the position of individuals within the social structure but its limited to direct ties. It simplifies the boundaries of the network, making more manageable to collect data.
 \end{itemize}
 
 \hypertarget{from-theory-to-practice}{%
@@ -4235,7 +4407,7 @@ There are two major kinds of network research designs:
 
   We cannot generalize our assumptions for all networks, but just for the whole one we're studying, since each one of them may have different dynamics.
 
-  ❓ \emph{Let's say we make a network study of your network class here and conclude that the tallest person has the most central position. Does it hold for your other classes too? And for other universities? Also for undergraduate students? For other network classes at other universities? Since we didn't sample students from all Italian (or European) universities, we cannot generalise}
+  ❓ \emph{Let's say we make a network study of your network class here and conclude that the tallest person has the most central position. Does it hold for your other classes too? And for other universities? Also for undergraduate students? For other network classes at other universities? Since we didn't sample students from all Italian (or European) universities, we cannot generalize.}
 \item
   \textbf{Ego centric}
 
@@ -4280,15 +4452,17 @@ In order to collect data for ego-networks:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Name generator: who are the members of the network? who are the ego alters? Remember to set a time frame and to limit the size of the network;
+  Name generator: who are the members of the network? who are the ego alters? Remember to set a time frame and to limit the size of the network. generally, it consists of a series of open-ended questions designed to generate the names of people;
 \item
-  Name interrelator: how do we define who knows whom in the network? is it weighted or not?
+  Name interpreter: what alter attributes are relevant? We ask the respondent about each name that came up in the generator, requiring attributes and qualities of ego's relationship with this alter;
 \item
-  Name interpreter: what alter attributes are relevant?
+  Name interrelater: how do we define who knows whom in the network? is it weighted or not? We ask the respondent about ties between the alters. Notice that the ego may have limited knowledge of the ties among alters and the task can be time-consuming.
 \end{enumerate}
 
 \hypertarget{generating-names-of-ego-networks}{%
 \subsection{Generating names of ego-networks}\label{generating-names-of-ego-networks}}
+
+The aim is to develop a list of distinct names that we can systematically ask the respondent about.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4409,7 +4583,7 @@ and finish with \texttt{dev.off()}, which closes the image file for changes.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-113-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-115-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4442,7 +4616,7 @@ For a circle layout, it is necessary to change \texttt{mode} into \texttt{"circl
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-114-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-116-1.pdf}
 
 \hypertarget{fr-layout}{%
 \subsection{FR Layout}\label{fr-layout}}
@@ -4467,7 +4641,7 @@ For a circle layout, it is necessary to change \texttt{mode} into \texttt{"circl
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-115-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-117-1.pdf}
 
 \hypertarget{kha-network}{%
 \subsection{KHA Network}\label{kha-network}}
@@ -4504,7 +4678,7 @@ The following network is denser than the previous, since we multiply the matrix 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-116-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-118-1.pdf}
 We could also build a function to plot a network:
 
 \begin{Shaded}
@@ -4530,7 +4704,7 @@ We could also build a function to plot a network:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-117-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-119-1.pdf}
 
 \hypertarget{layout-based-on-2-continuous-attributes}{%
 \section{Layout based on 2 continuous attributes}\label{layout-based-on-2-continuous-attributes}}
@@ -4619,7 +4793,7 @@ Now let's start drawing, remembering that:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-120-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-122-1.pdf}
 
 \hypertarget{layout-where-points-are-grouped-based-on-nominal-attribute}{%
 \section{Layout where points are grouped based on nominal attribute}\label{layout-where-points-are-grouped-based-on-nominal-attribute}}
@@ -4666,7 +4840,7 @@ We can get nodes coordinates by plotting them based on their department similari
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-123-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-125-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4690,7 +4864,7 @@ We can get nodes coordinates by plotting them based on their department similari
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-124-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-126-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4712,7 +4886,7 @@ We can get nodes coordinates by plotting them based on their department similari
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-125-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-127-1.pdf}
 \#\# Geography - International trade among countries in 1928
 
 In this case, nodes are positioned based on the geographic location of their capitals. Canada and the US have been slightly moved to the West to make the trade between European countries more visible.
@@ -4765,7 +4939,7 @@ In this case, nodes are positioned based on the geographic location of their cap
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-127-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-129-1.pdf}
 
 \hypertarget{multidimensional-scaling}{%
 \section{Multidimensional scaling}\label{multidimensional-scaling}}
@@ -4812,7 +4986,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-128-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-130-1.pdf}
 
 \hypertarget{mds-on-valued-trade}{%
 \subsection{MDS on valued trade}\label{mds-on-valued-trade}}
@@ -4857,7 +5031,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-129-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-131-1.pdf}
 
 \hypertarget{mds-on-geodesic-distances}{%
 \subsection{MDS on geodesic distances}\label{mds-on-geodesic-distances}}
@@ -4947,7 +5121,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-130-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-132-1.pdf}
 
 \hypertarget{kamadakawai-and-fr-layout-khfs}{%
 \section{KamadaKawai and FR layout KHFS}\label{kamadakawai-and-fr-layout-khfs}}
@@ -4986,7 +5160,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-131-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-133-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5006,7 +5180,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-131-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-133-2.pdf}
 
 \hypertarget{scientists-collaborations}{%
 \subsection{Scientists collaborations}\label{scientists-collaborations}}
@@ -5034,7 +5208,7 @@ In the next chunk, the aim is to separated into two clusters those scientists th
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-132-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-134-1.pdf}
 
 \hypertarget{nodal-attributes-on-khf}{%
 \subsection{Nodal attributes on KHF}\label{nodal-attributes-on-khf}}
@@ -5067,7 +5241,7 @@ Let's consider scientists' tenure. If we aim to plot the variation in terms of t
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-133-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-135-1.pdf}
 
 Now, the same plot is proposed again with:
 
@@ -5112,7 +5286,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-134-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-136-1.pdf}
 
 \hypertarget{scientists-collaboration-more-complex}{%
 \subsection{Scientists collaboration (more complex)}\label{scientists-collaboration-more-complex}}
@@ -5178,7 +5352,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-136-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-138-1.pdf}
 
 \hypertarget{nodal-attributes-on-pfm}{%
 \subsection{Nodal attributes on PFM}\label{nodal-attributes-on-pfm}}
@@ -5213,7 +5387,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-137-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-139-1.pdf}
 
 \hypertarget{tie-strength-on-scientists-collaborations}{%
 \section{Tie strength on Scientists collaborations}\label{tie-strength-on-scientists-collaborations}}
@@ -5247,7 +5421,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-139-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-141-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5266,7 +5440,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-140-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-142-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5284,7 +5458,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-141-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-143-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5302,7 +5476,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-142-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-144-1.pdf}
 
 \hypertarget{directed-networks}{%
 \section{Directed networks}\label{directed-networks}}
@@ -5341,7 +5515,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-145-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-147-1.pdf}
 
 \hypertarget{centrality-measures}{%
 \chapter{Centrality Measures}\label{centrality-measures}}
@@ -5376,7 +5550,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-146-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-148-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5419,7 +5593,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-147-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-149-1.pdf}
 
 \hypertarget{florentine-families}{%
 \section{Florentine Families}\label{florentine-families}}
@@ -5446,7 +5620,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-148-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-150-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5478,7 +5652,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-149-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-151-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5721,6 +5895,8 @@ Now, the same plot is proposed again with:
 \hypertarget{florentine-families-1}{%
 \section{Florentine Families}\label{florentine-families-1}}
 
+In the following chunk, Florentine Families data is imported first as matrix and then as undirected network inside \texttt{PFMn}. Also, \texttt{PFA} contains the attributes for each family.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Libraries import}
@@ -5784,6 +5960,8 @@ Now, the same plot is proposed again with:
 ## [20,]   16   13
 \end{verbatim}
 
+Then the families' links are shown in the following network, mapping colours according to the priors (i.e.~number of times a family member became part of the Florence councel) and size based on families' wealth (i.e.~the greener, the richer; the purpler, the poorer).
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Working on nodes colors...}
@@ -5815,7 +5993,9 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-155-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-157-1.pdf}
+
+Then, the degree for each family is shown, indicating that the most powerful family is the De Medici, followed by Guadagni and Strozzi. Since they are not direct alters, probably they were competing for the power in Florence.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5868,12 +6048,13 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{classic-approach-1}{%
+\section{Classic approach}\label{classic-approach-1}}
+
+Let's start with the classic approach, computing the correlation between a family degree and its number of priors.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
-\CommentTok{\# STATISTICAL TESTS}
-\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
-
 \DocumentationTok{\#\# Correlation test between degree and priors}
 \FunctionTok{cor.test}\NormalTok{(PFMn.Deg,PFA}\SpecialCharTok{$}\NormalTok{Priors) }\CommentTok{\# positive correlation}
 \end{Highlighting}
@@ -5892,6 +6073,8 @@ TORNABUONI & 3\\
 ##       cor 
 ## 0.5480948
 \end{verbatim}
+
+The p-value is below \(0.05\), therefore the Pearson correlation is significative and, as the score indicates, positive. Let's try with a linear model where the number of priors is the predictor and the degree is the predicted value:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5922,10 +6105,31 @@ TORNABUONI & 3\\
 ## F-statistic: 6.012 on 1 and 14 DF,  p-value: 0.02794
 \end{verbatim}
 
+Priors is a meaningful feature to use to predict the degree, as the p-values suggests, but both the R-squared and the Adjusted R-squared indicate the low quality of the model. By plotting the fitted line over data points we may notice that there is a high variability on the extremes of the degree, while most of the families degree lies on the middle (i.e.~around 3).
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# PERMUTATION BASED APPROACH}
+\FunctionTok{library}\NormalTok{(ggplot2)}
 
+\FunctionTok{ggplot}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\FunctionTok{aes}\NormalTok{(PFMn.Deg,PFA}\SpecialCharTok{$}\NormalTok{Priors), }\AttributeTok{method =}\NormalTok{ lm)}\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(PFMn.Deg,PFA}\SpecialCharTok{$}\NormalTok{Priors))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-161-1.pdf}
+
+\hypertarget{permutation-based-approach-1}{%
+\section{Permutation based approach}\label{permutation-based-approach-1}}
+
+Since the permutatio based approach is based on making samples of the original data by permutating them, the function \texttt{sample()} comes into help.
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \DocumentationTok{\#\# Data preparation}
 \NormalTok{PFA.P}\OtherTok{\textless{}{-}}\NormalTok{PFA}\SpecialCharTok{$}\NormalTok{Priors}
 \FunctionTok{sample}\NormalTok{(PFA.P) }\CommentTok{\# Sample of priors with no replacement}
@@ -5933,8 +6137,10 @@ TORNABUONI & 3\\
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 22 53  0 21 35  0 65 74 12  0  0  0 38  0 42 53
+##  [1] 74  0  0  0  0 35  0 12 53 42 21 38 53 22 65  0
 \end{verbatim}
+
+First, we build an empty matrix with \(1,000\) values, since we're going to perform \(1,000\) permutations. Inside the loop, a sample of priors data is computed, in order to perfom the correlation test on the degree and the permuted priors data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5946,31 +6152,50 @@ TORNABUONI & 3\\
   \CommentTok{\# Compute correlation between degree and Priors permuted}
 \NormalTok{  sample\_matrix[k,}\DecValTok{1}\NormalTok{]}\OtherTok{\textless{}{-}}\FunctionTok{cor}\NormalTok{(PFMn.Deg,PFA.P\_PERM) }
 \NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
+We can inspect the matrix filled with correlation values to notice some basic statistics. Remember that originally we got 0.5480948 as Pearson correlation value, which is above the 3rd quantile, but below the maximum correlation reached.
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \DocumentationTok{\#\# Information of the Matrix with correlations}
 \FunctionTok{summary}\NormalTok{(sample\_matrix)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##        V1          
-##  Min.   :-0.68148  
-##  1st Qu.:-0.19966  
-##  Median :-0.01625  
-##  Mean   :-0.01050  
-##  3rd Qu.: 0.17700  
-##  Max.   : 0.67122
+##        V1           
+##  Min.   :-0.748179  
+##  1st Qu.:-0.178708  
+##  Median :-0.012826  
+##  Mean   : 0.001657  
+##  3rd Qu.: 0.185549  
+##  Max.   : 0.749889
 \end{verbatim}
+
+This plot shows the distribution of the Pearson correlation obtained permuting the priors \(1,000\) times. We can notice that the mean is below the \(0\), while the score we obtained before is around \(0.5\), in the tail of the distribution.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \DocumentationTok{\#\# Plotting the correlation trend among samplings}
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{))}
-\FunctionTok{hist}\NormalTok{(sample\_matrix, }\AttributeTok{breaks=}\DecValTok{50}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(sample\_matrix, }\AttributeTok{breaks=}\DecValTok{50}\NormalTok{, }\AttributeTok{main =} \StringTok{"Distribution of the Pearson correlation obtained permuting priors"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{cor.test}\NormalTok{(PFMn.Deg,PFA}\SpecialCharTok{$}\NormalTok{Priors)}\SpecialCharTok{$}\NormalTok{estimate, }\AttributeTok{col =} \StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-158-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-165-1.pdf}
+
+We can compute the probability of obtaining that correlation score by computing:
+
+\begin{itemize}
+\tightlist
+\item
+  mean correlation above the real value;
+\item
+  mean correlation below the real value.
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5990,7 +6215,7 @@ TORNABUONI & 3\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.011
+## [1] 0.017
 \end{verbatim}
 
 \begin{Shaded}
@@ -6000,7 +6225,7 @@ TORNABUONI & 3\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.012
+## [1] 0.007
 \end{verbatim}
 
 \begin{Shaded}
@@ -6011,18 +6236,20 @@ TORNABUONI & 3\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.023
+## [1] 0.024
 \end{verbatim}
+
+The same thing can be done by considering the absolute value of the correlation score, in order to get the probability of getting such score in both tails.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Consinder the absolute number of correlation}
+\CommentTok{\# Consider the absolute number of correlation}
 \FunctionTok{sum}\NormalTok{(sample\_matrix}\SpecialCharTok{\textgreater{}=}\FunctionTok{abs}\NormalTok{(corRealValue))}\SpecialCharTok{/}\DecValTok{1000}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.011
+## [1] 0.017
 \end{verbatim}
 
 \begin{Shaded}
@@ -6032,7 +6259,7 @@ TORNABUONI & 3\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.012
+## [1] 0.007
 \end{verbatim}
 
 \begin{Shaded}
@@ -6042,8 +6269,46 @@ TORNABUONI & 3\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.023
+## [1] 0.024
 \end{verbatim}
+
+If we approximate the distribution to a Gaussian, we could use \texttt{pnorm()} to get the probability for the Pearson coefficient to be equal or higher than the real coefficient.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Positive correlation Probability}
+\FunctionTok{pnorm}\NormalTok{(corRealValue, }\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(sample\_matrix), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(sample\_matrix), }\AttributeTok{lower.tail =}\NormalTok{ F)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.01750568
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Negative correlatio probability}
+\FunctionTok{pnorm}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{corRealValue, }\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(sample\_matrix), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(sample\_matrix), }\AttributeTok{lower.tail =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.01696033
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Both positive and negative probability}
+\FunctionTok{pnorm}\NormalTok{(corRealValue, }\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(sample\_matrix), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(sample\_matrix), }\AttributeTok{lower.tail =}\NormalTok{ F)}\SpecialCharTok{+}
+  \FunctionTok{pnorm}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{corRealValue, }\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(sample\_matrix), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(sample\_matrix), }\AttributeTok{lower.tail =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03446601
+\end{verbatim}
+
+Suppose now we detain new data \(x_1, y_1\) as follows, with a cluster in the upper part of the plot and a single data point in the lower left part.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6054,17 +6319,7 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-160-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{cor}\NormalTok{(x1,y1)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 0.5859543
-\end{verbatim}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-169-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6086,6 +6341,8 @@ TORNABUONI & 3\\
 ## 0.5859543
 \end{verbatim}
 
+The correlation is 0.5859543 with p-value 0.0276672. Verify if the relationship between \(x_1\) and \(y_1\) is independent or not through a permutation based approach that iterates \(20,000\) times.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Initializing output as matrix that does not follow a }
@@ -6100,28 +6357,22 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-160-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-170-1.pdf}
+We could inspect the 95\% confidence interval of these permutations:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \DocumentationTok{\#\# 95\%{-}CI}
-\FunctionTok{mean}\NormalTok{(OUTPUT)}\SpecialCharTok{+}\FunctionTok{sd}\NormalTok{(OUTPUT)}\SpecialCharTok{*}\FloatTok{1.96}
+\FunctionTok{cbind}\NormalTok{(}\FunctionTok{mean}\NormalTok{(OUTPUT)}\SpecialCharTok{+}\FunctionTok{sd}\NormalTok{(OUTPUT)}\SpecialCharTok{*}\FloatTok{1.96}\NormalTok{, }\FunctionTok{mean}\NormalTok{(OUTPUT)}\SpecialCharTok{{-}}\FunctionTok{sd}\NormalTok{(OUTPUT)}\SpecialCharTok{*}\FloatTok{1.96}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.5335515
+##           [,1]       [,2]
+## [1,] 0.5444428 -0.5437258
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{mean}\NormalTok{(OUTPUT)}\SpecialCharTok{{-}}\FunctionTok{sd}\NormalTok{(OUTPUT)}\SpecialCharTok{*}\FloatTok{1.96}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] -0.5393416
-\end{verbatim}
+A second approach considers \(x\) as the sequence of \(40\) numbers that go from the minimum to the maximum correlation value obtained in the previous permutation example. \(f\) is the normal distribution obtained considering its mean and standard deviation. The reproduced histogram is similar to the previous one.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6129,26 +6380,28 @@ TORNABUONI & 3\\
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\FunctionTok{min}\NormalTok{(OUTPUT), }\FunctionTok{max}\NormalTok{(OUTPUT), }\AttributeTok{length =} \DecValTok{40}\NormalTok{)}
 \NormalTok{f }\OtherTok{\textless{}{-}} \FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(OUTPUT), }\AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(OUTPUT))}
 
+\CommentTok{\# Plotting the Gaussian distribution}
 \FunctionTok{hist}\NormalTok{(OUTPUT, }\AttributeTok{nclass=}\DecValTok{20}\NormalTok{, }\AttributeTok{prob=}\NormalTok{T, }\AttributeTok{col=}\StringTok{"cornflowerblue"}\NormalTok{)}
 \FunctionTok{lines}\NormalTok{(x, f, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }\AttributeTok{type =} \StringTok{"b"}\NormalTok{)}
-
 \FunctionTok{curve}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean=}\FunctionTok{mean}\NormalTok{(OUTPUT), }\AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(OUTPUT)), }
       \AttributeTok{col=}\StringTok{"darkblue"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{add=}\ConstantTok{TRUE}\NormalTok{)}
-\FunctionTok{sum}\NormalTok{(OUTPUT}\SpecialCharTok{\textgreater{}}\FunctionTok{cor}\NormalTok{(x1,y1))}\SpecialCharTok{/}\DecValTok{20000}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 0.05725
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{cor}\NormalTok{(x1,y1), }\AttributeTok{lwd=}\DecValTok{3}\NormalTok{, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-161-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-172-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(OUTPUT}\SpecialCharTok{\textgreater{}=}\FunctionTok{cor}\NormalTok{(x1,y1))}\SpecialCharTok{/}\DecValTok{20000}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.0623
+\end{verbatim}
+
+After \(20,000\) permutations we can see that our correlation coefficient can be get in the top 6.23\% of the correlation scores obtainable.
 
 \hypertarget{two-mode-projections}{%
 \chapter{Two-mode projections}\label{two-mode-projections}}
@@ -6178,7 +6431,7 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-162-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-174-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6262,7 +6515,7 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-164-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-176-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6302,7 +6555,7 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-165-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-177-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6311,7 +6564,7 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-166-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-178-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6445,7 +6698,7 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-170-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-182-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6501,7 +6754,7 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-173-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-185-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6532,7 +6785,7 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-175-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-187-1.pdf}
 
 \hypertarget{dyads-and-triads}{%
 \chapter{Dyads and triads}\label{dyads-and-triads}}
@@ -6673,7 +6926,7 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-185-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-197-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6681,6 +6934,6 @@ TORNABUONI & 3\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-185-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-197-2.pdf}
 
 \end{document}

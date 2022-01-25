@@ -2,31 +2,34 @@
 
 ## Subgroups
 
+Embedded within a network there are often groups of actors who interact with each other to such an extent that they could be considered to be a separate entity. This group can be called "cohesive subgroup" or community. They may allow to discover patterns in people or why certain behaviour/information is spread around a group of nodes. Also, if there are shared norms and similar actions for group members, we may be able to replace cohesive group members by a single ‘super-node’. This would reduce the complexity and size of the network and consequently aid visualization and analysis.
+
+Let's start with the following example:
+
 ```{r}
 # Network creation
 library(sna)
-# cliques
 
 network<-matrix(c(
-0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
-1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
-1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
-1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,
-0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,
-0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0),19,19)
+  0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
+  1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
+  1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,
+  0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0),19,19)
 
 network = as.network(network, directed = F)
 
@@ -34,6 +37,8 @@ par(mar = c(0,0,0,0))
 plot(network,
      displaylabels=TRUE,
      label.cex = 0.7,
+     edge.col = "grey70",
+     vertex.col = "cornflowerblue",
      vertex.cex = 0.8)
 ```
 
@@ -58,7 +63,7 @@ knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled
 A subset where everyone is directly connected to everyone else in the subset is called a **clique**.
 
 <aside>
-💡 *Note that both an actor and a dyad might belong to more than one clique.*
+💡 *Note that both an actor and a dyad might belong to more than one clique. In order to limit the overlapping of cliques, it is possible to increase the minimum size of a clique.*
 
 </aside>
 
@@ -125,7 +130,11 @@ knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled
 
 ### Structural equivalence
 
-In social network analysis, two nodes are considered **structurally equivalent** if they have the same neighbourhoods – they are connected to the same others.  
+In social network analysis, two nodes are considered **structurally equivalent** if they have the same neighborhoods – they are connected to the same others. Structural equivalence is related to the roles we play in the network and to the fact that people that play the same role in the network act similarly. 
+
+Structural equivalence examines the direct connections of an actor to other actors in the network. Two actors are structurally equivalent if they send ties to the same third parties, and receive ties from the same third parties. They do not need to have a direct tie to each other to be equivalent.
+
+It is a useful concept to identify similarities in attitudes and behaviours of nodes in the network and they tend to show homogeneity, as actors in the same cohesive subgroup. This similarity may be due to environment influence, due to their role or their shared neighbours. Remember that persons adapt to their social environments, and therefore actors with similar social environments will tend to have certain similarities.
 
 <aside>
 💡 *For instance, in the network below, we know that there are some nodes that have the same behaviours: $\{f, g\}, \{c, d\}, \{i, j\}$.*
@@ -138,7 +147,7 @@ knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled
 
 ### Regular equivalence
 
-Two actors are **regular equivalent** if they are equally related to equivalent others. Two nodes are said to play the same role (i.e., are regularly equivalent) if they have ties to the same roles.
+Regular equivalence is a restriction of structural equivalence according to which actors need to be connected to the same actors to be equivalent. Therefore, two actors are **regular equivalent** if they are equally related to equivalent others. Two nodes are said to play the same role (i.e., are regularly equivalent) if they have ties to the same roles. 
 
 <aside>
 💡 *For instance, we can distinguish two types of nodes: $\{b,c,d,e\}, \{f,g,h,i,j\}$.*
@@ -152,6 +161,8 @@ Two actors are **regular equivalent** if they are equally related to equivalent 
 - **identification of all vertices** (e.g., units, nodes) within a cluster and at the same time representing each cluster as a vertex, from which vertices for another graph can be constructed;
 - **combination of all the links** (ties), represented in a block as a single link between positions, while at the same time constructing one tie for each block. In a case, when there are no ties in a block, there will be no ties between the two positions, that define the block.
 
+The aim of blockmodeling is to produce a simplified or reduced matrix. We first arrange the rows and columns of the adjacency matrix so that structurally equivalent actors are grouped together. This grouping induces blocks within the matrix. For pure structural equivalence, the blocks are either all ones or all zeros and are called $1$-blocks and $0-blocks$, respectively.
+
 Some types of blocks can be:
 
 - complete: filled with 1s;
@@ -164,6 +175,8 @@ Some types of blocks can be:
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Nine types of connection between clusters"}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 5.png")
 ```
+
+We can treat matrices as proximity measure and apply classification and clustering techniques. 
 
 ## Structural Equivalence on R
 
@@ -221,6 +234,8 @@ plot(network_2_SEHD_HC)
 ```
 
 ### Euclidean Structural Equivalence
+
+In this case, a pair of structurally equivalent actors would yield a distance of zero. Values close to zero would indicate that the actors involved are nearly structurally equivalent.
 
 $$
 Euclidean_{ij} = \sqrt{\sum_k^N \Big((x_{ik}-x{jk})^2+(x_{ki}-x_{kj})^2\Big)}

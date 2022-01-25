@@ -171,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
 <li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
-<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment-of-bavelas-and-leavitt"><i class="fa fa-check"></i><b>2.3.3</b> Experiment of Bavelas and Leavitt</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
@@ -261,9 +261,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#classic-approach"><i class="fa fa-check"></i><b>9.1</b> Classic Approach</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#correlation"><i class="fa fa-check"></i><b>9.1.1</b> Correlation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.1.2</b> Significance test</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.2</b> Significance test</a></li>
-<li class="chapter" data-level="9.3" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.3</b> Permutation Based Approach</a></li>
+<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.2</b> Permutation Based Approach</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="two-mode-networks.html"><a href="two-mode-networks.html"><i class="fa fa-check"></i><b>10</b> Two mode networks</a>
 <ul>
@@ -418,6 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.2" data-path="statistics-about-network.html"><a href="statistics-about-network.html#classic-approach-1"><i class="fa fa-check"></i><b>18.2</b> Classic approach</a></li>
+<li class="chapter" data-level="18.3" data-path="statistics-about-network.html"><a href="statistics-about-network.html#permutation-based-approach-1"><i class="fa fa-check"></i><b>18.3</b> Permutation based approach</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
@@ -486,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </aside>
 <div id="definition" class="section level3" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> Definition</h3>
-<p><strong>Networks</strong> are a way of thinking about social systems that focus our attention on the relationships among the entities that make up the system, which we call actors or nodes. These are the focus of <strong>Network Science</strong>.</p>
+<p><strong>Networks</strong> are a way of thinking about social systems that focus our attention on the relationships among the entities that make up the system, which we call actors or nodes, whose categorical or quantitative traits are called <em>attributes</em>. These are the focus of <strong>Network Science</strong>.</p>
 <p>The nodes in a network can be almost anything, although when we talk about social networks we normally expect the nodes to be active agents rather than, say, inanimate objects. Most often, nodes are individuals, but can also be collectivities. <strong>Social Network Analysis</strong> focuses on humans and how their actions and mechanisms impact the system of interest.</p>
 <p>In a social network, we can find:</p>
 <ul>
@@ -499,7 +501,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="social-network-representation" class="section level3" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> Social Network Representation</h3>
 <p>A usual representation for networks is the <strong>Adjacency matrix</strong>, a square matrix that can be reciprocal (mirrored) or not (different if we swap columns and rows). Generally, self-loops do not make sense, therefore in certain situations, we can just ignore them by inserting a 0. Whenever there is a tie linking two nodes, we insert a 1.</p>
+<p><em>Note that whenever the adjacency matrix is symmetric and square with respect to the diagonal, we’re looking at an undirected network, while if it is not so, we’re looking at a directed network.</em></p>
 <p>The value inside the adjacency matrix between a couple of nodes may assume values different from 0 and 1, e.g. the weight of the tie. By adding attributes (e.g. age, gender), we could modify the network representation based on a specific attribute (e.g. colour, size, shape).</p>
+<p>A variant of the adjacency matrix <span class="math inline">\(A\)</span> is the distance matrix, which holds the geodesic distances between pairs of nodes (i.e. how many steps are required to <span class="math inline">\(a\)</span> to reach <span class="math inline">\(b\)</span>).</p>
+<p>Another representation for networks are graphs, defined as the set of nodes <span class="math inline">\(V\)</span> and edges <span class="math inline">\(E\)</span>.</p>
 </div>
 </div>
 <div id="types-of-networks" class="section level2" number="1.2">
@@ -515,8 +520,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="directed-and-undirected-networks" class="section level3" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Directed and undirected networks</h3>
 <aside>
-<p>💡 <em>Normally, friendships is an undirected network, since it is mutual, but not all people we define as such will agree with us, since they may have other priorities people to think to.
-Friendship requires frequent meetings, trust, long-term relationships. It is a concept that requires specific behaviours and expectations.</em></p>
+<p>💡 <em>Normally, friendships is an undirected network, since it is mutual, but not all people we define as such will agree with us, since they may have other priorities people to think to. Friendship requires frequent meetings, trust, long-term relationships. It is a concept that requires specific behaviours and expectations.</em></p>
 </aside>
 <p>Undirected networks are such that relationships are mutual and both parts know they’re linked.</p>
 <p>Directed networks may be represented both by straight lines with two arrows or curved lines with two lines, pointing in opposite directions.</p>
@@ -548,7 +552,7 @@ Friendship requires frequent meetings, trust, long-term relationships. It is a c
 <p>💡 <em>Do well-connected networks tend to diffuse ideas faster?</em></p>
 </aside></li>
 <li><p><strong>Individual Level</strong></p>
-<p>Focusing on a single node, we look at its connections and position inside the network (e.g. centralisation, density). Most node-level network properties are aggregations of dyad-level measurements, as when we count the number of ties that a node has.</p>
+<p>Focusing on a single node, we look at its connections and position inside the network (e.g. centralization, density). Most node-level network properties are aggregations of dyad-level measurements, as when we count the number of ties that a node has.</p>
 <aside>
 <p>💡 <em>Do actors with more friends tend to have stronger immune systems?</em></p>
 </aside></li>

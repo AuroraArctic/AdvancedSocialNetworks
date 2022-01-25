@@ -124,7 +124,7 @@ Under a selfish and individualistic perspective, Burt's Structural Holes theory 
 knitr::include_graphics("images/07-Triads and structural holes/Untitled 2.png")
 ```
 
-Betweenness centrality is relevant because it is about the flow of resources between people we're connected to. In this case, C has the highest betweenness centrality, while A has the lowest. We can summarize previous theories through:
+Betweenness centrality is relevant because it is about the flow of resources between people we're connected to. In this case, $C$ has the highest betweenness centrality, while A has the lowest. We can summarize previous theories through $3$ main arguements that Burt has used:
 
 1. Simmel: No control over ego by others;
 2. Betweenness: power overflow of information and resources;
@@ -157,17 +157,27 @@ knitr::include_graphics("images/07-Triads and structural holes/Untitled 3.png")
 
 ### Six degrees of separation
 
-According to Milgram's experiment in 1967, some people were randomly selected in Nebraska and they should send a letter or a package to someone they know in Boston. They can only use people they know on a first-name basis. The average path for the received package was 5.5, but only a few were actually reached, that's why they choose the average and not the actual value. 
+Milgram's experiment in 1967 led us to the idea of six degrees of separation, according to which between any two people there is a path of length $6$ or less. 
+
+The value of $6$ was a result of an experiment by Stanley Milgram in which he distributed letters randomly to people in two US cities and asked them to pass them to a target, and, if they did not know the target, to pass them to someone who might. He found the average number of steps from originator to target was $6.4$. A second example was the analysis of Microsoft Messenger in 2007 which at the time had $180$ million nodes and $1.3$ billion edges; it was calculated that the average geodesic path length was $5.5$.
 
 ### Small World Effect
 
-In society, there's a high level of clustering, especially when the degrees of separation is that low. Whenever we have a lower geodesic distance within the same cluster, with few nodes, we may want to connect these small communities with some ties: in this case, the average distance reduces. 
+According to Watts and Strogatz, in society, there's a high level of clustering, especially when the degrees of separation is that low. Whenever we have a lower geodesic distance within the same cluster, with few nodes, we may want to connect these small communities with some ties: in this case, the average distance reduces. 
 
 A few changes in where we place ties makes some connected clusters into a small world where anybody can reach anybody else in a few steps. 
+
+Human social systems are clumpy but also very compact, in the sense of having surprisingly short paths
+linking everyone to everyone else. The more transitivity there is in a network the longer path   distances tend to be. It only takes a few connections between clumps to shorten average path length considerably, so the class of networks that are both clumpy and have shorts paths is quite a bit bigger than initially thought.
+
+By testing the clustering coefficient, we find out that it is large relative to random graphs (in which the clustering coefficient will be very close to graph density) and the average distance approaches the average distance in random graphs (which is quite small).
+
+By connecting the components with random bridges, by augmenting them, we lower the average distance in the network, while if no components are clearly detectable the clustering lowers. 
 
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='60%', fig.cap=""}
 knitr::include_graphics("images/07-Triads and structural holes/Untitled 4.png")
 ```
+
 
 ### Keyplayers
 
@@ -176,12 +186,12 @@ Information only reaches the direct contacts of a person.
 <aside>
 💡 We want to reach as many people as possible and we can choose the persons to which we can communicate the information. Who would we choose?
 
-- 1 person: 7
-- 2 persons: 9, 4 
-- 3 persons: 12, 2, 16, to reach everyone except for 18
-- 4 persons: 12, 42 16, 18
+- $1$ person: $7$;
+- $2$ persons: $9, 4$; 
+- $3$ persons: $12, 2, 16$, to reach everyone except for $18$;
+- $4$ persons: $12, 42 16, 18$.
 
 We're trying to choose non redundant links to reach as many nodes as possible. 
-What if we remove these nodes? Will we still be able to reach them all? Without 9, 7 and 4, we will have three clusters, guided by 12, 2 and 16.
+What if we remove these nodes? Will we still be able to reach them all? Without $9$, $7$ and $4$, we will have three clusters, guided by $12$, $2$ and $16$.
 
 </aside>

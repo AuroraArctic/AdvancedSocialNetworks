@@ -171,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="basic-measures.html"><a href="basic-measures.html#undirected-network-2"><i class="fa fa-check"></i><b>2.3.1</b> Undirected Network</a></li>
 <li class="chapter" data-level="2.3.2" data-path="basic-measures.html"><a href="basic-measures.html#directed-network-2"><i class="fa fa-check"></i><b>2.3.2</b> Directed Network</a></li>
-<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment"><i class="fa fa-check"></i><b>2.3.3</b> Experiment</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-measures.html"><a href="basic-measures.html#experiment-of-bavelas-and-leavitt"><i class="fa fa-check"></i><b>2.3.3</b> Experiment of Bavelas and Leavitt</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cohesion-measures.html"><a href="cohesion-measures.html"><i class="fa fa-check"></i><b>3</b> Cohesion measures</a>
@@ -261,9 +261,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#classic-approach"><i class="fa fa-check"></i><b>9.1</b> Classic Approach</a>
 <ul>
 <li class="chapter" data-level="9.1.1" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#correlation"><i class="fa fa-check"></i><b>9.1.1</b> Correlation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.1.2</b> Significance test</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#significance-test"><i class="fa fa-check"></i><b>9.2</b> Significance test</a></li>
-<li class="chapter" data-level="9.3" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.3</b> Permutation Based Approach</a></li>
+<li class="chapter" data-level="9.2" data-path="statistical-tests-on-nodal-level.html"><a href="statistical-tests-on-nodal-level.html#permutation-based-approach"><i class="fa fa-check"></i><b>9.2</b> Permutation Based Approach</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="two-mode-networks.html"><a href="two-mode-networks.html"><i class="fa fa-check"></i><b>10</b> Two mode networks</a>
 <ul>
@@ -418,6 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="statistics-about-network.html"><a href="statistics-about-network.html"><i class="fa fa-check"></i><b>18</b> Statistics about network</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="statistics-about-network.html"><a href="statistics-about-network.html#florentine-families-1"><i class="fa fa-check"></i><b>18.1</b> Florentine Families</a></li>
+<li class="chapter" data-level="18.2" data-path="statistics-about-network.html"><a href="statistics-about-network.html#classic-approach-1"><i class="fa fa-check"></i><b>18.2</b> Classic approach</a></li>
+<li class="chapter" data-level="18.3" data-path="statistics-about-network.html"><a href="statistics-about-network.html#permutation-based-approach-1"><i class="fa fa-check"></i><b>18.3</b> Permutation based approach</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="two-mode-projections.html"><a href="two-mode-projections.html"><i class="fa fa-check"></i><b>19</b> Two-mode projections</a></li>
 <li class="chapter" data-level="20" data-path="subgroups-and-equivalence.html"><a href="subgroups-and-equivalence.html"><i class="fa fa-check"></i><b>20</b> Subgroups and equivalence</a></li>
@@ -456,10 +458,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="closeness-centrality" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Closeness Centrality</h2>
 <p><em>How to discover who’s the most central node in the network? If you have information that you want everyone in the group to have, and you can only give it to one person in the group, who would you give it to?</em></p>
-<p>Every extra step needed to reach someone decreases accuracy and increases costs. A <strong>geodesic</strong> is the shortest path between two actors. There may be more than one shortest path connecting any two vertices.</p>
+<p>Every extra step needed to reach someone decreases accuracy and increases costs. A <strong>geodesic</strong> is the shortest path between two actors. Geodesics are not necessarily unique, there could be multiple paths of equally short length. A long geodesic distance implies that, even under the very best conditions, it would be a long time before something gets from one node to the other.</p>
+<p>In the following subsections, two versions of the closeness centrality will be presented: Freeman’s approach, which is about reaching everyone in the minimum number of steps; the reciprocal approach, which is about reaching the highest number possible in a few steps.</p>
 <div id="freemans-closeness-centrality" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Freeman’s closeness centrality</h3>
-<p>We start with a person that has the information and in one step we count how many of them have been reached starting from him/her.</p>
+<p>Freeman defines closeness centrality as the sum of geodesic distances from a node to all others. Large numbers indicate that a node is highly peripheral, while small numbers indicate that a node is more central. We start with a person that has the information and in one step we count how many of them have been reached starting from him/her.</p>
 <aside>
 <p><img src="https://img.icons8.com/plasticine/400/homer-simpson.png" alt="https://img.icons8.com/plasticine/400/homer-simpson.png" width="40px" /> <em>Consider the following example where we start from Marge and try to reach for every other node in the network.</em></p>
 </aside>
@@ -468,10 +471,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="images/04-Centrality/Untitled%201.png" width="50%" style="display: block; margin: auto;" /></p>
 <p><img src="images/04-Centrality/Untitled%202.png" width="50%" style="display: block; margin: auto;" /></p>
 <p>By considering the final table obtained by counting the necessary steps to reach any other node starting from a specific one, we obtain the table below. We can notice how Homer and Krusty are equivalent since they reach in the same number of steps all the nodes in the network, but Lisa and Bart minimize the cost with equivalent connections. On the other side, Cecil maximizes the path cost to reach all the other nodes.</p>
-<p>These values can be normalized by computing the reciprocal, multiply for the minimum value possible: <span class="math inline">\(n-1\)</span>, which equals 9 in the Simpsons’ example.</p>
+<p>These values can be normalized by computing the reciprocal, multiply for the minimum value possible: <span class="math inline">\(n-1\)</span>, which equals <span class="math inline">\(9\)</span> in the Simpsons’ example.</p>
 <p>The lower the closeness, the less central a node is; the higher the closeness, the more central a node becomes. This can be computed through the following command on R:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="centrality.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
-<span id="cb7-2"><a href="centrality.html#cb7-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n <span class="ot">=</span> <span class="fu">as.network</span>(<span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;Datasets/simpsons.csv&quot;</span>, </span>
+<span id="cb7-2"><a href="centrality.html#cb7-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n <span class="ot">=</span> <span class="fu">as.network</span>(<span class="fu">as.matrix</span>(<span class="fu">read.csv</span>(<span class="st">&quot;datasets/simpsons.csv&quot;</span>, </span>
 <span id="cb7-3"><a href="centrality.html#cb7-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">row.names=</span><span class="dv">1</span>, </span>
 <span id="cb7-4"><a href="centrality.html#cb7-4" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">stringsAsFactors =</span> F)),</span>
 <span id="cb7-5"><a href="centrality.html#cb7-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">directed=</span>F)</span>
@@ -529,7 +532,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p><em>What happens if we add multiple components?</em></p>
-<p>The other nodes will never be reached, therefore it is counted as Inf, but it shouldn’t be summed up to other steps, or every node will be equivalently central. Considering the code, we would obtain:</p>
+<p>The other nodes will never be reached, therefore it is counted as <span class="math inline">\(Inf\)</span> (i.e. undefined), but it shouldn’t be summed up to other steps, or every node will be equivalently central. Considering the code, we would obtain:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="centrality.html#cb8-1" aria-hidden="true" tabindex="-1"></a>Simpsons_n2<span class="ot">&lt;-</span>Simpsons_n</span>
 <span id="cb8-2"><a href="centrality.html#cb8-2" aria-hidden="true" tabindex="-1"></a>Simpsons_n2[<span class="dv">9</span>,<span class="dv">10</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
 <span id="cb8-3"><a href="centrality.html#cb8-3" aria-hidden="true" tabindex="-1"></a>Simpsons_n2[<span class="dv">10</span>,<span class="dv">9</span>]<span class="ot">&lt;-</span><span class="dv">0</span></span>
@@ -549,9 +552,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-3"><a href="centrality.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="centrality.html#cb10-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
 <span id="cb10-5"><a href="centrality.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Name&quot;</span> <span class="ot">=</span> <span class="fu">get.vertex.attribute</span>(Simpsons_n, <span class="st">&quot;vertex.names&quot;</span>),</span>
-<span id="cb10-6"><a href="centrality.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Reciprocal Closeness Centrality</span><span class="st">`</span> <span class="ot">=</span> sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n2, <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>, <span class="at">cmode=</span><span class="st">&quot;suminvundir&quot;</span>))</span>
-<span id="cb10-7"><a href="centrality.html#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="centrality.html#cb10-8" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df, <span class="at">col.names =</span> <span class="fu">gsub</span>(<span class="st">&quot;[.]&quot;</span>,<span class="st">&quot; &quot;</span>, <span class="fu">names</span>(df)))</span></code></pre></div>
+<span id="cb10-6"><a href="centrality.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Reciprocal Closeness Centrality</span><span class="st">`</span> <span class="ot">=</span> sna<span class="sc">::</span><span class="fu">closeness</span>(Simpsons_n2,</span>
+<span id="cb10-7"><a href="centrality.html#cb10-7" aria-hidden="true" tabindex="-1"></a>                                                       <span class="at">gmode=</span><span class="st">&quot;graph&quot;</span>,</span>
+<span id="cb10-8"><a href="centrality.html#cb10-8" aria-hidden="true" tabindex="-1"></a>                                                       <span class="at">cmode=</span><span class="st">&quot;suminvundir&quot;</span>))</span>
+<span id="cb10-9"><a href="centrality.html#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="centrality.html#cb10-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df, <span class="at">col.names =</span> <span class="fu">gsub</span>(<span class="st">&quot;[.]&quot;</span>,<span class="st">&quot; &quot;</span>, <span class="fu">names</span>(df)))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -670,7 +675,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="betweenness-centrality" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Betweenness Centrality</h2>
 <p><em>Who is important as an “in-between” person to transfer information?</em></p>
-<p>This centrality is about the gatekeepers between two nodes that gain power from this situation. The more nodes in between, the more extra points are earned to connect other nodes.</p>
+<p>This centrality is about the gatekeepers between two nodes that gain power from this situation, in terms of potential for controlling flows through the network. The more nodes in between, the more extra points are earned to connect other nodes. Betweenness centrality is a measure of how often a node falls along the shortest path between two other nodes:</p>
+<p><span class="math display">\[
+b_j = \frac{\sum_{i&lt;k}g_{ijk}}{g_{ik}}
+\]</span></p>
+<p>with <span class="math inline">\(g_{ijk}\)</span> being the number of geodesic paths connecting <span class="math inline">\(i\)</span> and <span class="math inline">\(k\)</span> through <span class="math inline">\(j\)</span> and <span class="math inline">\(g_{ik}\)</span> the total number of geodesic paths connecting <span class="math inline">\(i\)</span> and <span class="math inline">\(k\)</span>. Whenever a node is an isolate or whenever every alter it has is connected to every other alter, the betweenness falls to <span class="math inline">\(0\)</span>.</p>
 <aside>
 <p><img src="https://img.icons8.com/plasticine/400/homer-simpson.png" alt="https://img.icons8.com/plasticine/400/homer-simpson.png" width="40px" /> <em>Consider Lisa as the in-between person we’re interested in. She’s important whenever she connects all nodes except for Abe to the line composed of Krusty, Bob and Cecil.</em></p>
 </aside>
@@ -709,22 +718,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 (1) B needs specific resources from A, therefore can exert power over it until B needs the resources;
 (2) there are no alternatives for B to A: the power disappears by increasing the number of alternatives.</em></p>
 </blockquote>
-<p>According to Brass work about being in the right place, the dependent variable is influence. He looked at closeness and betweenness centrality when focusing on newspaper publishing company employees. In particular:</p>
+<p>According to Daniel Brass’s work about being in the right place, the dependent variable is influence. He looked at closeness and betweenness centrality when focusing on newspaper publishing company employees. In particular:</p>
 <ul>
-<li>closeness centrality is expressed as <strong>access</strong> or minimal distance between a focal actor and all other persons;</li>
-<li>betweenness centrality is expressed as <strong>control</strong> or the relative extent to which a focal actor falls on the shortest path between any two other persons.</li>
+<li><p>closeness centrality is expressed as <strong>access</strong> or minimal distance between a focal actor and all other persons;</p></li>
+<li><p>betweenness centrality is expressed as <strong>control</strong> or the relative extent to which a focal actor falls on the shortest path between any two other persons.</p></li>
 </ul>
 <p>Also, there were three levels of analysis: workgroup, department and organization. According to the result:</p>
 <ul>
-<li>when it comes to a workgroup, access to the whole resources is important. When it came to controlling, it is not important;</li>
-<li>control instead is more pivotal at the organizational level, whereas access to resources has no importance since it is strict.</li>
+<li><p>when it comes to a workgroup, access to the whole resources is important. When it came to controlling, it is not important;</p></li>
+<li><p>control instead is more pivotal at the organizational level, whereas access to resources has no importance since it is strict.</p></li>
 </ul>
 </div>
 <div id="bonacich-beta-centrality" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> Bonacich Beta Centrality</h2>
 <p>It is similar to closeness centrality because we worry about near connections with people that have a lot of connections.</p>
 <p>Beta centrality not only refers to geodesic, as closeness does, but also to all possible walks. Flowing of information can be repeated and changed, such as attitude and beliefs. Whenever we reinforce the same links over and over again, we may risk entering inside an echo chamber, so the repetition of connections (back and forward) may affect the centrality of a node.</p>
-<p>Closeness is a binary situation of connection, while Bonacich Beta Centrality is more on continuity and consistent connection between nodes.</p>
+<p>Closeness is a binary situation of connection, while Bonacich Beta Centrality is more on continuity and consistent connection between nodes. Bonacich based his idea on the fact that actors who have more connections are more likely to be powerful because they c1an directly affect more other actors.</p>
 <p><img src="images/04-Centrality/Untitled%207.png" width="60%" style="display: block; margin: auto;" /></p>
 
 </div>
