@@ -206,14 +206,17 @@ knitr::include_graphics("images/14-Christakis and Valente/Untitled 4.png")
     
     People late in the diffusion process are late because of their position in the network, which gives them access to the behaviour or the information very late in the process. It still may happen to be connected to early adopters despite being late adopters. 
     
+    According to Valente's Threshold model, in the x-axis there's the time in which a node adopts a behaviour, while the y-axis indicates the percentage of people that adopts a behaviour, i.e. threshold. For each time, a node adopts the behaviour. The high threshold people only get affected if people around are affected by the behaviour, while low threshold people are called early adopters and do not need to be influenced to adopt a behaviour. Also, we can distinguish between early and late adopters, while low and high threshold relies on the affection of other people. 
+    
 
 ### Network Diffusion
 
 It is possible to use a `NetdiffuseR` package to track the diffusion of information. In particular, as shown in the image below, in red there are new adopters, while in blue continuing users and in grey users that do not use or have a behaviour.  
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='60%', fig.cap=""}
 knitr::include_graphics("images/14-Christakis and Valente/Untitled 5.png")
 ```
+
 
 **What happens over time during the diffusion process?** 
 

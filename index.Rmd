@@ -1,7 +1,4 @@
 --- 
-title: "Advanced Social Networks"
-author: "Aurora Maria Tumminello"
-date: "A.Y. 2021-22"
 site: bookdown::bookdown_site
 documentclass: book
 link-citations: yes

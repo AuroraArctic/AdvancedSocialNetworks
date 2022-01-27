@@ -6,7 +6,20 @@ With respect to the considered level of analysis, there are some measures that c
 
 ### Directed Network
 
-Consider a direct network, whose adjacency matrix is not symmetric. The In degree indicates the popularity of a node, while the out degree indicates its connection with other nodes.
+Consider a direct network, whose adjacency matrix is not symmetric. The in degree indicates the popularity of a node, while the out degree indicates its connection with other nodes.
+
+```{r echo=FALSE, fig.cap="Friends directed network", message=FALSE, warning=FALSE, out.width='80%'}
+library(sna)
+friends = as.network(as.matrix(read.csv("datasets/friends.csv", row.names = 1)))
+par(mar=c(0,0,0,0))
+plot(friends,
+     displaylabels = T,
+     vertex.cex = 2,
+     vertex.col = c("cornflowerblue",rep("lightpink",3), "cornflowerblue"),
+     label.cex = 0.7,
+     edge.col = "grey70",
+     arrowhead.cex = 1.5)
+```
 
 ```{=tex}
 \begin{table}[h]
@@ -29,7 +42,7 @@ Consider a direct network, whose adjacency matrix is not symmetric. The In degre
 This degree centrality can be normalized to get the proportion of outcoming/incoming connections for each node, by dividing the in/out-degree by the total number of people remaining ($n-1$, or the maximum possible connections that a node could have):
 
 ```{=tex}
-\begin{table}[h]
+\begin{table}[h!]
 \centering
 \begin{tabular}{@{}llllllll@{}}
 \toprule
@@ -46,6 +59,7 @@ This degree centrality can be normalized to get the proportion of outcoming/inco
 \label{tab:norm_dir_degree}
 \end{table}
 ```
+
 ### Undirected Network
 
 In this case, the in-degree and the out-degree are the same, since we do not distinguish the type of connections. It can be considered as a double arrow pointing to both sides:
@@ -55,6 +69,22 @@ d_i = \sum_j x_{ij}
 $$
 
 High degree centrality can be seen as higher risk of receiving whatever flows through the network, since these nodes are more visible and tend to be seen as important.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.cap = "Simpsons Undirected Network", out.width='80%'}
+colors = c("cornflowerblue", "lightpink")
+simpsons = as.network(as.matrix(read.csv("datasets/simpsons.csv",
+                                         row.names=1,
+                                         stringsAsFactors = F)), 
+                      directed = F)
+par(mar=c(0,0,0,0))
+plot(simpsons,
+     displaylabels = T,
+     vertex.cex = 2,
+     vertex.col = colors[c(1,2,1,1,2,1,2,1,1,1)],
+     label.cex = 0.7,
+     edge.col = "grey70",
+     arrowhead.cex = 1.5)
+```
 
 ```{=tex}
 \begin{table}[h]
@@ -77,6 +107,7 @@ High degree centrality can be seen as higher risk of receiving whatever flows th
 \label{tab:undirected_network}
 \end{table}
 ```
+
 ## Density and average degree
 
 The simplest measure of cohesion is density, which is the number of ties in the network, expressed as a proportion of the number possible.
@@ -155,17 +186,17 @@ By taking the maximum degree inside the network, for each node, we subtract its 
 
 </aside>
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
-knitr::include_graphics("images/02-Basic Measures/Untitled.png")
-```
-
 By considering the range between the least and the most centralized (i.e. $[0,12]$), the centralization can be finally computed by dividing the centralization for the degree by the maximum centralization value possible.
 
 <aside>
 
-💡 *In the example above, it would be* $5/12$.
+💡 *Considering the three networks in the image, the centralization in the first one is* $5/12$, *while the other two represent respectively the minimum and the maximum centralization obtainable*.
 
 </aside>
+
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='70%', fig.cap="Three examples of centralization (random network, least and most centralized ones"}
+knitr::include_graphics("images/02-Basic Measures/Untitled.png")
+```
 
 The general formula for the centralization is the following:
 

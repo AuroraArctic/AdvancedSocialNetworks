@@ -97,7 +97,7 @@ Words          & Used together       & All tweets on a specific topic \\ \bottom
 
 A usual representation for networks is the **Adjacency matrix**, a square matrix that can be reciprocal (mirrored) or not (different if we swap columns and rows). Generally, self-loops do not make sense, therefore in certain situations, we can just ignore them by inserting a 0. Whenever there is a tie linking two nodes, we insert a 1.
 
-*Note that whenever the adjacency matrix is symmetric and square with respect to the diagonal, we're looking at an undirected network, while if it is not so, we're looking at a directed network.*
+*Note that whenever the adjacency matrix is symmetric and squared with respect to the diagonal, we're looking at an undirected network, while if it is not so, we're looking at a directed network.*
 
 The value inside the adjacency matrix between a couple of nodes may assume values different from 0 and 1, e.g. the weight of the tie. By adding attributes (e.g. age, gender), we could modify the network representation based on a specific attribute (e.g. colour, size, shape).
 

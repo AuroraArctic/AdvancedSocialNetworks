@@ -8,7 +8,7 @@ With **dyad census**, we count how many mutual, asymmetric and null dyads there 
 
 -   mutual dyads: $4$;
 -   asymmetric dyads: $4$;
--   null dyads: $6\cdot 5/2 - 8 = 7$ (removing all links, counting mutual dyads one time).
+-   null dyads: $(6\cdot 5)/2 - 8 = 7$ (removing all links, counting mutual dyads one time).
 
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Example of directed network"}
 knitr::include_graphics("images/12-Reciprocity and transitivity/Untitled.png")
@@ -85,27 +85,11 @@ sna::dyad.census(mat6, g=NULL)
 sna::grecip(mat6,measure="dyadic")
 
 # Reciprocity index
-# Edgewise (like we have seen before)
+# Edgewise, 2m/(2m+a)
 sna::grecip(mat6,measure="edgewise")
 
 # Density
 sna::gden(mat6)
-
-# With igraph
-library(igraph)
-mat6i<-graph_from_adjacency_matrix(mat6,mode=c("directed"),diag=F)
-igraph::reciprocity(mat6i)
-
-igraph::edge_density(mat6i)
-
-par(mar=c(0,0,0,0))
-gplot(as.network(mat6, directed =  T),
-     displaylabels=TRUE, 
-     arrowhead.cex = 1, 
-     edge.col = "grey70",
-     gmode='digraph',
-     vertex.cex = 1.5,
-     label.cex = 0.7)
 ```
 
 ## Triads
@@ -146,7 +130,7 @@ mat6<-matrix(c(0,0,0,1,0,0,
 sna::triad.census(mat6)
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='80%', fig.cap="MAN Nomenclature"}
 knitr::include_graphics("images/12-Reciprocity and transitivity/MAN.png")
 ```
 
@@ -164,7 +148,9 @@ In order to know whether a network is transitive, we can compare the transitivit
 
 $$
 Transitivity = \frac{\sum_{i,j,k}x_{ij}x_{jk}x_{ki}}{\sum_{i,j,k}x_{ij}x_{jk}}
-$$ To simplify, we count the proportion of triads in which $A \rightarrow B \rightarrow C \implies A\rightarrow C$ over the total triads that go from $A$ to $B$ and from $B$ to $C$.
+$$ 
+
+To simplify, we count the proportion of triads in which $A \rightarrow B \rightarrow C \implies A\rightarrow C$ over the total triads that go from $A$ to $B$ and from $B$ to $C$.
 
 ```{r}
 # Transitivty

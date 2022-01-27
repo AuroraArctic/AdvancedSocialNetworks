@@ -2,57 +2,55 @@
 
 ## Dyads
 
-```{r}
-##############################
-# DYAD
-##############################
+```{r echo=FALSE, out.width="80%", fig.cap = "Example of a directed network"}
 mat6<-matrix(c(0,0,0,1,0,0,
                0,0,1,0,0,0,
                0,1,0,0,0,0,
                1,1,1,0,1,1,
                0,0,1,1,0,1,
                0,0,0,0,1,0),6,6, byrow=T)
+par(mar=c(0,0,0,0))
+gplot(mat6, 
+      displaylabels = T,
+      label.pos = 3,
+      edge.col= "grey60",
+      vertex.col = "cornflowerblue",
+      label.cex = 1,
+      vertex.cex = 1.5)
+```
 
+The `dyad.census()` function returns the number of mutual, asymmetric and null edges.
+
+```{r}
 # Dyad Census
 sna::dyad.census(mat6, g=NULL)
 ```
+In order to compute the reciprocity, there are two variants:
 
+- the first one is the ratio of mutuals $M$ and null edges $N$ over the total amount of edges possible ($M+A+N$):
 
 ```{r}
-# Like edgewise but multiplied for m/(m+a)
 sna::grecip(mat6,measure="dyadic")
 ```
 
+- the second version just considers mutuals and asymmetric (i.e. $2M/(2M+A)$):
+
 ```{r}
-# Edgewise (like we have seen before)
 sna::grecip(mat6,measure="edgewise")
 ```
 
+Also, igraph allows to compute the reciprocity but only with the second modality ($2M/(2M+A)$):
 
-```{r}
-# Density
-sna::gden(mat6)
-```
-
-
-```{r}
+```{r message=FALSE, warning=FALSE}
 # With igraph
 library(igraph)
 mat6i<-graph_from_adjacency_matrix(mat6,mode=c("directed"),diag=F)
 igraph::reciprocity(mat6i)
 ```
 
-
-```{r}
-igraph::edge_density(mat6i)
-```
-
 ## Triads
 
-```{r}
-##############################
-# TRIAD
-##############################
+```{r echo=FALSE, out.width="80%"}
 mat6<-matrix(c(0,0,0,1,0,0,
                0,0,1,0,0,0,
                0,1,0,0,0,0,
@@ -60,24 +58,30 @@ mat6<-matrix(c(0,0,0,1,0,0,
                0,0,1,1,0,1,
                0,0,0,0,1,0),6,6, byrow=T)
 
+par(mar=c(0,0,0,0))
+gplot(mat6, 
+      displaylabels = T,
+      label.pos = 3,
+      edge.col= "grey60",
+      vertex.col = "cornflowerblue",
+      label.cex = 1,
+      vertex.cex = 1.5)
+```
+
+Let's change network and compute the triad census. The function `triad.census()` will return the number of triads per type according to the MAN nomenclature. 
+```{r}
 # Triad census
 sna::triad.census(mat6)
 ```
 
+For instance, there are 3 null edges ($(6,1), (1,2), (2,6)$) and 1 210 ($4,5,6$). The transitivity amounts to `r sna::gtrans(mat6)`, which is highly significant. We can test it creating $1,000$ permutations of the graph and computing the transitivity of each of them. The probability of forming an edge equals the density of the original matrix. 
 
 ```{r}
 sna::gtrans(mat6)
 ```
-
-
 ```{r}
-sna::gden(mat6)
-```
-
-
-```{r}
-# Check if it's random
-RG100<-sna::rgraph(20,100,tprob=.2)
-hist(sna::gden(RG100))
-hist(sna::gtrans(RG100))
+RG100<-sna::rgraph(20,1000,tprob=sna::gden(mat6))
+hist(sna::gtrans(RG100), breaks = 20, col="lightpink",
+     main = "Random graphs transitivity")
+abline(v = sna::gtrans(mat6), col = "red", lty = 2, lwd = 2)
 ```

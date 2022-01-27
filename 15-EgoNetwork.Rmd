@@ -40,7 +40,7 @@ Is there a theory that directly addresses or answers our question?
 
 Let's consider the social capital theories. James Coleman in 1988 focuses on the function of social capital, which according to the economic sociology is based on a rational choice approach: it attempts to introduce social structure into his analysis by employing social capital and social norms to explain how individual rational actions translate into systematic collective action.
 
-It is not a single entity, but a variety of entities, having two characteristics in common: They all consist of some aspect of social structure, and they facilitate certain actions of individuals who are within the structure. There are three forms of social capital: *obligations and expectations*; *information channels*; *social norms*.
+It is not a single entity, but a variety of entities, having two characteristics in common: they all consist of some aspect of social structure, and they facilitate certain actions of individuals who are within the structure. There are three forms of social capital: *obligations and expectations*; *information channels*; *social norms*.
 
 A key concept is about **closure or bonding capital**, which facilitates obligations and expectations and social norms and takes the form of trust, social norms of reciprocity and cooperation.
 

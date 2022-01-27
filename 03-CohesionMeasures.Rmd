@@ -23,21 +23,32 @@ $$
 
 </aside>
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.cap = "The Big Bang Theory network"}
 library(sna)
-tbbt = as.network(as.matrix(read.csv("datasets/the_big_bang_theory.csv", row.names = 1, stringsAsFactors = FALSE)), directed=F)
-par(mar = c(0,0,0,0))
-plot(tbbt, 
-     vertex.cex = 3,
-     displaylabels=T)
+tbbt = as.matrix(read.csv("datasets/the_big_bang_theory.csv", 
+                          row.names = 1, 
+                          stringsAsFactors = FALSE))
+library(igraph)
+tbbt_i = graph_from_adjacency_matrix(tbbt, mode = "undirected")
+plot(tbbt_i, 
+     vertex.label.dist=3,
+     vertex.label.cex = 0.7,
+     edge.arrow.size = 0.5,
+     vertex.color = colors[c(2,2,1,2,1,1,1,1)],
+     displaylabels=T,
+     vertex.size = 10,
+     vertex.label.family = "Helvetica",
+     margin = c(0,0,0,0))
 ```
 
 ### Average Degree
 
 *What is the average number of connections for nodes?*
 
+It is computed as the sum of all ties each node has, divided over the total number of nodes $n$. 
+
 <aside>
-⚛️ *The average degree of connections for nodes is:* $(1+2+1+1+2+2+2+2)/8 = 1.625$.
+⚛️ *The average degree of connections for nodes in the TBBT network is:* $(1+2+1+1+2+2+2+2)/8 = 1.625$.
 
 </aside>
 
@@ -55,6 +66,22 @@ A component is a maximal set where every node can reach every other by some path
 
 </aside>
 
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.cap = "Components in the Big Bang Theory Network"}
+plot(tbbt_i, 
+     vertex.label.dist=3,
+     vertex.label.cex = 0.7,
+     edge.arrow.size = 0.5,
+     vertex.color = colors[c(2,2,1,2,1,1,1,1)],
+     displaylabels=T,
+     vertex.size = 10,
+     vertex.label.family = "Helvetica",
+     mark.groups = list(c(1,2,3),c(4:8)),
+     mark.col = c("#fff0fd", "#f0feff"),
+     mark.border=NA,
+     margin = c(0,0,0,0),
+     arrow.mode = 0)
+```
+
 Imagine that everyone has a piece of information that needs to be propagated. The more components, the less information everyone is reaching and the worse it is. The number of components of a network goes from $1$ to the total number of nodes $n$. We should think of components as a way to spread creativity inside the network. All groups hold unique ideas and being one component allows for exposure to more ideas. 
 
 ### Component ratio
@@ -66,7 +93,7 @@ CR = \frac{c-1}{n-1}
 $$
 
 <aside>
-⚛️ *In TBBT example, the component ratio would be $(2-1)/(8-1) = 1/7$.*
+⚛️ *In TBBT example, the component ratio would be $(2-1)/(8-1) = 1/7$, given the $2$ components and $8$ total nodes.*
 
 </aside>
 
@@ -83,13 +110,10 @@ Connectedness and fragmentation are more sensitive than the component ratio inst
 
 </aside>
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
-knitr::include_graphics("images/03-Cohesion measures/Untitled 2.png")
-```
-
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
-knitr::include_graphics("images/03-Cohesion measures/Untitled 3.png")
-```
+```{r, echo=FALSE,out.width="30%",fig.cap="Examples of possible arrangements of the TBBT network",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("images/03-Cohesion measures/Untitled 2.png", 
+                          "images/03-Cohesion measures/Untitled 3.png"))
+``` 
 
 *What proportion of pairs of nodes can reach each other directly or indirectly?*
 
@@ -112,8 +136,7 @@ $$
 
 ### Compactness and breadth
 
-We can study the average distance between two nodes, based on cohesion measures. Remember that longer distances reduce information sharing since it is quite expensive to reach them. The lower the average distance, the easier it is to reach other nodes and therefore the more the network is cohesive and preferable.  
-Unfortunately, average geodesic distance and its variants cannot be applied to disconnected graphs, were some distances are not defined (i.e. $Inf$). 
+We can study the average distance between two nodes, based on cohesion measures. Remember that longer distances reduce information sharing since it is quite expensive to reach them. The lower the average distance, the easier it is to reach other nodes and therefore the more the network is cohesive and preferable. Unfortunately, average geodesic distance and its variants cannot be applied to disconnected graphs, were some distances are not defined (i.e. $Inf$). 
 
 <aside>
 ⚛️ *For instance, the distance from Howard to Leonard is 2. If we want to compute the average distance between any couple of nodes inside the TBBT network, we need to consider disconnected nodes with inf distance, as shown in the geodesic distance matrix, which shows the minimum number of links to pass in order to reach a specific node.*
@@ -127,7 +150,7 @@ geodist(tbbt)$gdist
 By convention, Inf is expressed as 0 if we consider $1/\text{geodesic distance}$, also called **reciprocal distance**:
 
 ```{r}
-1/(geodist(tbbt)$gdist)
+round(1/(geodist(tbbt)$gdist),3)
 ```
 
 Excluding the diagonal, the **compactness** is expressed as the average of the reciprocal distance. It weights the paths connecting nodes inversely by their length. **Breadth** is the complement of compactness ($1-\text{compactness}$):

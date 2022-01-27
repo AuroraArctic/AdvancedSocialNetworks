@@ -62,11 +62,8 @@ KHFSn<-as.network(KHFS, directed=F)
 To save the plot as a tiff file (in the default folder) use the `tiff()` function, which opens an image file,
 and finish with `dev.off()`, which closes the image file for changes.
 
-```{r}
+```{r, fig.align="center"}
 # 4. Create and save visualization
-# tiff(file="images/Fig_01_KHFS_Random.tiff", 
-#      width=7, height=5,
-#      units="in", res=900)
 par(mar=c(0,0,0,0)) # Margin deletion
 gplot(KHFSn,
       gmode="graph",      # undirected network
@@ -77,7 +74,6 @@ gplot(KHFSn,
       displaylabels=T,    # indicate that labels should be included
       label.pos=1,        # indicate that labels should be given below points
       label.cex=.7)       # indicate the size of the labels (1 is default)
-# dev.off()
 ```
 
 _`gmode="graph"` is used for **undirected** networks, while `gmode="digraph` is used for **directed** networks. If the input graph is undirected but the selected gmode is for directed networks, then arrows on both sides will be visualized. Also, most of the times the margin deletion is not necessary._
@@ -88,7 +84,7 @@ The use of random position may be risky because of links overlapping and too clo
 
 For a circle layout, it is necessary to change `mode` into `"circle"`. 
 
-```{r}
+```{r, fig.align="center"}
 par(mar=c(0,0,0,0))
 gplot(KHFSn, 
       gmode="digraph",
@@ -104,8 +100,7 @@ gplot(KHFSn,
 
 ### FR Layout
 
-
-```{r}
+```{r, fig.align="center"}
 par(mar=c(0,0,0,0))
 gplot(KHFSn, 
       gmode="graph",
@@ -127,7 +122,7 @@ gplot(KHFSn,
 
 The following network is denser than the previous, since we multiply the matrix for its transpose, indicating
 
-```{r}
+```{r, fig.align="center"}
 # Read in the advice network for Krackhardt's high-tech managers:
 KHA<-as.matrix(read.csv("datasets/Krackhardt_HighTech_Advice.csv",
                         stringsAsFactors=FALSE, row.names=1))
@@ -154,8 +149,9 @@ gplot(KHASn,
       label.pos=1,
       label.cex=.7)
 ```
+
 We could also build a function to plot a network: 
-```{r}
+```{r, fig.align="center"}
 plot_network = function(network){
     gplot(network, 
       gmode="graph",
@@ -217,11 +213,11 @@ for (k in (1:max(WPJ6W)))
 Now let's start drawing, remembering that:
 
 * coordinates of nodes are given by their rank and their age (attributes): `coord=WPCOORD`;
-* the edge color is given by the mapping color based on their number of links: `edge.col=WPJ6W.Color`;
-* the color of the vertex indicates the gender of the primate (white for females, black for males): `vertex.col=(WPAttr$GENDER=="male")*9`;
+* the edge color is given by the mapping color based on their number of links: `edge.col = WPJ6W.Color`;
+* the color of the vertex indicates the gender of the primate (white for females, black for males): `vertex.col = (WPAttr$GENDER=="male")*9`;
 * the added arrows allows us to visualize the cartesian plan. 
 
-```{r}
+```{r, fig.align="center"}
 par(mar=c(0,0,0,0))
 gplot(WPJ6W*1.1,
       gmode="digraph", 
@@ -279,14 +275,18 @@ DEPSIM<-DEPS==t(DEPS)
 
 We can get nodes coordinates by plotting them based on their department similarity. Coords may change from an execution to another, but groupings will be the same. In this way, we will place similar nodes next to each other.
 
-```{r}
+```{r, fig.align="center", out.width="80%"}
 # 3. Get coordinates
 par(mar = c(0,0,0,0))
 DEP_COORD<-gplot(DEPSIM, 
-                 displaylabels=T)
+                 displaylabels=T,
+                 vertex.cex = 1,
+                 label.cex = 0.7,
+                 arrowhead.cex = 0.5,
+                 edge.col = "grey60")
 ```
 
-```{r}
+```{r, out.width="80%", fig.align="center"}
 # 4. Draw the friendship network using 
 #    the coordinates got from nominal friendship
 par(mar=c(0,0,0,0))
@@ -307,7 +307,7 @@ gplot(KHFSn,
 ```
 
 
-```{r}
+```{r, out.width="80%", fig.align="center"}
 par(mar=c(0,0,0,0))
 gplot(KHASn,
       gmode="graph",
@@ -324,6 +324,7 @@ gplot(KHASn,
       label.pos=1, 
       label.cex=.7)
 ```
+
 ## Geography - International trade among countries in 1928
 
 In this case, nodes are positioned based on the geographic location of their capitals. Canada and the US have been slightly moved to the West to make the trade between European countries more visible. 
@@ -358,7 +359,7 @@ for (k in (1:max(STESGT20)))
 ```
 
 
-```{r}
+```{r, fig.align="center"}
 # 6. Visualizing the map
 par(mar=c(0,0,0,0))
 gplot(STESGT20, 
@@ -379,7 +380,7 @@ gplot(STESGT20,
 
 We can apply the MDS in order to better plot nodes inside the network, by using the default function in R `cmdscale()`.
 
-```{r}
+```{r, fig.align="center"}
 # 1. Rescale values using MDS
 WPJS<-log(WPJ+1)
 WPJ_CoordMDS<-cmdscale(max(WPJS)*1.001-WPJS, eig=TRUE, k = 2)
@@ -415,7 +416,7 @@ gplot(WPJ6W*1.1,
 ```
 
 ### MDS on valued trade 
-```{r}
+```{r, fig.align="center"}
 STE<-as.matrix(read.csv("datasets/Savage_TransactionFlows_ExportsPerc.csv",
                         stringsAsFactors=FALSE, row.names=1))
 # Symmetrized using product
@@ -455,7 +456,7 @@ gplot(STESGT20,
 
 ### MDS on geodesic distances
 
-```{r}
+```{r, fig.align="center"}
 KHA<-as.matrix(read.csv("datasets/Krackhardt_HighTech_Advice.csv",
                         stringsAsFactors=FALSE, row.names=1))
 KHAS<-KHA*t(KHA)
@@ -486,15 +487,12 @@ gplot(KHASn,
 ## KamadaKawai and FR layout KHFS
 
 ### On Simulated data
-```{r}
+```{r, fig.align="center", out.width="80%"}
 mat8<-matrix(c(0),8,8)
 mat8[1,2]<-1
 mat8[2,3]<-1
-mat8[3,4]<-1
-mat8[3,5]<-1
-mat8[3,6]<-1
-mat8[4,5]<-1
-mat8[4,6]<-1
+mat8[3,4:6]<-1
+mat8[4,5:6]<-1
 mat8[5,6]<-1
 mat8[6,7]<-1
 mat8[7,8]<-1
@@ -502,28 +500,19 @@ mat8s<-(mat8+t(mat8))>0
 
 gplot(mat8, 
       gmode="graph",
-      #layout
-      mode="fruchtermanreingold",
       jitter=FALSE,
-      #ties
       edge.col="grey70",
-      #nodes
       vertex.col="cornflowerblue",
-      #labels
       displaylabels=T,
       label.pos=1,
       label.cex=.7)
 
 gplot(mat8, 
       gmode="graph",
-      #layout
       mode="kamadakawai",
       jitter=FALSE,
-      #ties
       edge.col="grey70",
-      #nodes
       vertex.col="cornflowerblue",
-      #labels
       displaylabels=T,
       label.pos=1,
       label.cex=.7)
@@ -533,7 +522,7 @@ gplot(mat8,
 
 In the next chunk, the aim is to separated into two clusters those scientists that have more than 3 years of experience in their studies from those who do not. As can be seen from the plot, two groups are obtained: one with no edges and the other where every node is connected with the center.
 
-```{r}
+```{r, fig.align="center", out.width="80%"}
 BS504Cx<-as.matrix(read.csv("datasets/Borgatti_Scientists504_Attributes.csv",
                             stringsAsFactors=FALSE, row.names=1))
 BS504C<-(BS504Cx>3)
@@ -557,7 +546,7 @@ gplot(BS504C,
 
 Let's consider scientists' tenure. If we aim to plot the variation in terms of tenure among scientists, size can be a choice:
 
-```{r}
+```{r, out.width = "80%", fig.align="center"}
 KHF<-as.matrix(read.csv("datasets/Krackhardt_HighTech_Friendship.csv",
                         stringsAsFactors=FALSE, row.names=1))
 KHFS<-KHF*t(KHF)
@@ -586,7 +575,7 @@ Now, the same plot is proposed again with:
 * level as shape and colour;
 * tenure as size.
 
-```{r}
+```{r, fig.align="center", out.width="80%"}
 # type sides of nodes
 KHF<-as.matrix(read.csv("datasets/Krackhardt_HighTech_Friendship.csv",
                         stringsAsFactors=FALSE, row.names=1))
@@ -630,7 +619,7 @@ BS504Attr<-read.csv("datasets/Borgatti_Scientists504_Attributes.csv",
 ```
 
 
-```{r}
+```{r, fig.align="center"}
 # Get the years
 Tenure<-(BS504Attr$Years)
 
@@ -655,20 +644,18 @@ TenureA2[TenureA %in% c(7,8,9,10)]<-COLWB[7]
 par(mar=c(0,0,0,0))
 gplot(BS504C, 
       gmode="graph", 
-      #layout
-      #mode="kamadakawai",
       jitter = F,
-      #ties
       edge.col="grey80",
       edge.lwd=.2, 
-      #nodes
       vertex.col=TenureA2,
       vertex.cex=1+.7*(2-BS504Attr$Sex), 
       vertex.sides=(BS504Attr$Sex-1)*47+4)
 
 legend("topright",
-       legend = c("Colors"," Senior", " Junior", " ","Shapes", " Male (2)", " Female (1)"),
-       col = c("white","lightpink","cornflowerblue","white","white","black","black"), 
+       legend = c("Colors"," Senior", " Junior",
+                  " ","Shapes", " Male (2)", " Female (1)"),
+       col = c("white","lightpink","cornflowerblue",
+               "white","white","black","black"), 
        bty = "n", pch =c(19,19,19,19,19,19,18),
        pt.cex = c(0,2.1,2.1,0,0,1.7,1.9), 
        cex = 1, 
@@ -681,7 +668,7 @@ legend("topright",
 
 ### Nodal attributes on PFM
 
-```{r}
+```{r, fig.align="center"}
 PFM<-as.matrix(read.csv("datasets/Padgett_FlorentineFamilies_Marriage.csv",
                         stringsAsFactors=FALSE, row.names=1))
 
@@ -694,15 +681,11 @@ DPFM<-sna::degree(PFMn)
 par(mar=c(0,0,0,0))
 gplot(PFMn, 
       gmode="graph", 
-      #layout
       jitter=F,
-      #ties
       edge.col="grey70",
       edge.lwd=.1, 
-      #nodes
       vertex.col="cornflowerblue",
       vertex.cex=DPFM/17+.5,
-      #labels
       displaylabels=TRUE, 
       label.pos=3, 
       label.cex=DPFM/20+.3, 
@@ -724,64 +707,89 @@ BS504CGT9<-(BS504Cx>9)
 ```
 
 
-```{r}
+```{r, fig.align="center"}
 # 3 years of experience
 par(mar=c(0,0,0,0))
 gplot(BS504CGT3,
       gmode="graph",
       jitter=F,
-      #ties
       edge.col="grey70", 
       edge.lwd=.1,
-      #nodes
       vertex.col="cornflowerblue",
       vertex.cex=.75)
 ```
 
-
-```{r}
-# 5 Years of experience
-par(mar=c(0,0,0,0))
-gplot(BS504CGT5,
-      gmode="graph",
-      #layout
-      jitter=F,
-      #ties
-      edge.col="grey60", 
-      edge.lwd=.1,
-      #nodes
-      vertex.col="cornflowerblue",
-      vertex.cex=.75)
-```
-
-
-```{r}
-# 7 Years of experience
-par(mar=c(0,0,0,0))
-gplot(BS504CGT7,
-      gmode="graph",
-      jitter=F,
-      #ties
-      edge.col="grey60", 
-      edge.lwd=.1,
-      #nodes
-      vertex.col="cornflowerblue",
-      vertex.cex=.75)
-```
-
-
-```{r}
+```{r, fig.align="center"}
 # 9 years of experience
 par(mar=c(0,0,0,0))
 gplot(BS504CGT9,
       gmode="graph",
       jitter=F,
-      #ties
       edge.col="grey60", 
       edge.lwd=.1,
-      #nodes
       vertex.col="cornflowerblue",
       vertex.cex=.75)
+```
+
+
+## Scientists example
+
+```{r, fig.align="center"}
+library(sna)
+
+# SCIENTISTS COLLABORATION
+BS504Cx<-as.matrix(read.csv("datasets/Borgatti_Scientists504_Collaboration.csv",
+                            stringsAsFactors=FALSE, row.names=1))
+
+# Pick only those who have at least 3 collabs
+BS504C<-(BS504Cx>3)
+
+# Plotting the collaborations
+par(mar=c(0,0,0,0))
+gplot(BS504C, 
+      gmode="graph",
+      mode="kamadakawai",
+      jitter=F,
+      edge.col="grey80", 
+      edge.lwd=.1,
+      vertex.col="cornflowerblue",
+      vertex.cex=.75)
+```
+
+```{r, fig.align="center"}
+# Inserting attributes
+BS504Attr<-read.csv("datasets/Borgatti_Scientists504_Attributes.csv",
+                    stringsAsFactors=FALSE, row.names=1)
+
+Tenure<-(BS504Attr$Years) # Years attribute
+TenureA<-(round(10*(Tenure)/max((Tenure)))) # Normalizing years
+colfunc <- colorRampPalette(c("#B78FB3", "#22BFAC")) # color palette
+
+COLWB<-colfunc(7) # 7 colors
+vertex_color = ifelse(TenureA %in% c(5,6),COLWB[6],
+                      ifelse(TenureA>=7, COLWB[7],COLWB[TenureA+1]))
+
+par(mar=c(0,0,0,0))
+gplot(BS504C, 
+      gmode="graph", 
+      mode="kamadakawai",
+      jitter = F,
+      edge.col="grey80",
+      edge.lwd=.2, 
+      vertex.col=vertex_color, # color
+      vertex.cex=1,#1+.7*(2-BS504Attr$Sex), 
+      vertex.sides=BS504Attr$Sex-1*47+3)
+
+legend("topright",
+       legend = c("Colors"," Senior", " Junior", " ","Shapes", " Male", " Female"),
+       col = c("white","#B78FB3","#22BFAC","white","white","black","black"), 
+       bty = "n", 
+       pch =c(19,19,19,19,19,19,18),
+       pt.cex = c(0,2.1,2.1,0,0,1.7,1.9), 
+       cex = 1, 
+       text.col = "grey10", 
+       horiz = F , 
+       inset = c(0.01))
 ```
 
 
@@ -797,43 +805,33 @@ KHFn<-as.network(KHF, directed=T)
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 # Saving coordinates
 COOKHF<-gplot(KHFn,
-              gmode="digraph",    
-              #layout
-              jitter=F,           # do not allow nodes to be "jittered"
-              #ties
+              gmode="digraph",  
+              jitter=F,  
               edge.col="grey40",
               arrowhead.cex=.7,
-              # set color of ties
-              #nodes
-              vertex.col="grey90",   # set color of nodes
+              vertex.col="grey90", 
               vertex.cex=1.4,
-              #labels
-              displaylabels=T,    # indicate that labels should be included
-              label.pos=5,        # indicate that labels should be given below points
-              label.cex=.5)       # indicate the size of the labels (1 is default)
+              displaylabels=T,    
+              label.pos=5,        
+              label.cex=.5)     
 ```
 
 
-```{r}
+```{r, fig.align="center"}
 # Plotting points based on their coordinates
 par(mar=c(0,0,0,0))
 gplot(KHFn,
       gmode="digraph",  
       coord=COOKHF,
-      #layout
-      jitter=F,           # do not allow nodes to be "jittered"
-      #ties
-      edge.col="grey30",
+      jitter=F, 
+      edge.col="grey40",
       edge.lwd=0.2,
       usecurve=T,
       edge.curve=.04, 
       arrowhead.cex=.4,
-      
-      #nodes
-      vertex.col="lightpink",   # set color of nodes
+      vertex.col="lightpink",   
       vertex.cex=1.4,
-      #labels
-      displaylabels=T,    # indicate that labels should be included
-      label.pos=5,        # indicate that labels should be given below points
-      label.cex=.5)       # indicate the size of the labels (1 is default)
+      displaylabels=T,    
+      label.pos=5,        
+      label.cex=.5)       
 ```

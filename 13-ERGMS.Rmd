@@ -210,7 +210,7 @@ P\left(X_{ij}^{t+1}=1 \mid x_{ij}^{C, t}\right)= \frac{e^{\theta_{L}\left[\# ~L_
 $$
     
 4. If we use the same rules for a long enough time, the Markov chain forgets about history
-(forgets the starting network), i.e., only takes into account the rules of the process/game ad the networks generated will tend to go towards a stable “equilibrium” (i.e. similar networks). Time after time, the algorithm will show a different characteristic of the network;
+(forgets the starting network), i.e., only takes into account the rules of the process/game and the networks generated will tend to go towards a stable “equilibrium” (i.e. similar networks). Time after time, the algorithm will show a different characteristic of the network;
 
 5. If we use the estimates that truly reflect the forces which are most likely to have led to our observed network, then the process will generate networks that are similar to our observed
 network. That is provided we run this long enough so it forgets about the start = burn-in. Of course in reality we do not know the values for the estimates but we can search for them in this way.

@@ -1,95 +1,27 @@
 # Centrality Measures
 
-## Scientists example
 
-```{r}
+```{r, fig.align="center"}
 library(sna)
-
-# SCIENTISTS COLLABORATION
-BS504Cx<-as.matrix(read.csv("datasets/Borgatti_Scientists504_Collaboration.csv",
-                            stringsAsFactors=FALSE, row.names=1))
-
-# Pick only those who have at least 3 collabs
-BS504C<-(BS504Cx>3)
-
-# Plotting the collaborations
-par(mar=c(0,0,0,0))
-gplot(BS504C, 
-      gmode="graph",
-      #layout
-      mode="kamadakawai",
-      jitter=F,
-      #ties
-      edge.col="grey80", 
-      edge.lwd=.1,
-      #nodes
-      vertex.col="cornflowerblue",
-      vertex.cex=.75)
-```
-
-```{r}
-# Inserting attributes
-BS504Attr<-read.csv("datasets/Borgatti_Scientists504_Attributes.csv",
-                    stringsAsFactors=FALSE, row.names=1)
-
-Tenure<-(BS504Attr$Years) # Years attribute
-TenureA<-(round(10*(Tenure)/max((Tenure)))) # Normalizing years
-colfunc <- colorRampPalette(c("#B78FB3", "#22BFAC")) # color palette
-
-COLWB<-colfunc(7) # 7 colors
-vertex_color = ifelse(TenureA %in% c(5,6),COLWB[6],
-                      ifelse(TenureA>=7, COLWB[7],COLWB[TenureA+1]))
-
-par(mar=c(0,0,0,0))
-gplot(BS504C, 
-      gmode="graph", 
-      #layout
-      mode="kamadakawai",
-      jitter = F,
-      #ties
-      edge.col="grey80",
-      edge.lwd=.2, 
-      #nodes
-      vertex.col=vertex_color, # color
-      vertex.cex=1,#1+.7*(2-BS504Attr$Sex), 
-      vertex.sides=BS504Attr$Sex-1*47+3)
-
-legend("topright",
-       legend = c("Colors"," Senior", " Junior", " ","Shapes", " Male", " Female"),
-       col = c("white","#B78FB3","#22BFAC","white","white","black","black"), 
-       bty = "n", 
-       pch =c(19,19,19,19,19,19,18),
-       pt.cex = c(0,2.1,2.1,0,0,1.7,1.9), 
-       cex = 1, 
-       text.col = "grey10", 
-       horiz = F , 
-       inset = c(0.01))
-```
-
-## Florentine Families
-
-```{r}
 # FLORENTINE FAMILIES
 PFM<-as.matrix(read.csv("datasets/Padgett_FlorentineFamilies_Marriage.csv",
                         stringsAsFactors=FALSE, row.names=1))
 PFMn<-as.network(PFM, directed=F)
+par(mar=c(0,0,0,0))
 gplot(PFMn, 
       gmode="graph",
-      #layout
-      mode="fruchtermanreingold",
       jitter=F,
-      #ties
       edge.col="grey80",
-      #nodes
+      vertex.cex = 1,
       vertex.col="cornflowerblue",
-      #labels
       displaylabels=T,
       label.pos=1,
-      label.cex=.8)
+      label.cex=.7)
 ```
 
+The following plot considers the family's wealth, represented both by size and colour variation.
 
-```{r}
+```{r, fig.align="center"}
 # Add attributes file and use wealth to change size of nodes (vertex.cex)
 PFA<-read.csv("datasets/Padgett_FlorentineFamilies_Attributes.csv",
                stringsAsFactors=FALSE, row.names=1)
@@ -98,29 +30,23 @@ PFA<-read.csv("datasets/Padgett_FlorentineFamilies_Attributes.csv",
 n_colors<-max(PFA$Priors)-min(PFA$Priors)+1
 colfunc <- colorRampPalette(c("#FFD670", "#70D6FF"))
 colors<-colfunc(n_colors)
-vertex_colors<-colors[PFA$Priors+1]
 
 par(mar=c(0,0,0,0))
 gplot(PFMn, 
       gmode="graph",
-      #layout
-      mode="fruchtermanreingold",
       jitter=F,
-      #ties
-      edge.col="grey20",
-      #nodes
-      vertex.col=vertex_colors,
+      edge.col="grey70",
+      vertex.col=colors[PFA$Priors+1],
       vertex.cex=PFA$Wealth/80+1,
-      #labels
       displaylabels=T,
+      mar = c(0,0,0,0),
       label.pos=1,
-      label.cex=.7)
+      label.cex=.6)
 ```
 
-
+First, we will compute some centrality measures, such as degree, betweenness, Bonacich beta centrality and the constraint index. 
 ```{r}
 # Calculate centrality measures
-
 ## Degree
 sna::degree(PFMn, gmode="graph")
 
@@ -135,7 +61,7 @@ library(igraph)
 PFM_i<-graph_from_adjacency_matrix(as.matrix(PFM),mode="undirected", diag=F)
 constraint(PFM_i)
 ```
-
+Then, some statistical tests are applied to evaluate the correlation between degree, wealth and the number of priors for each family. 
 
 ```{r}
 # Statistical tests for significance
@@ -146,6 +72,7 @@ cor.test(PFMn.Deg,PFA$Wealth) # Number or families vs Wealth
 cor.test(PFA$Priors,PFA$Wealth) # Priors vs Wealth
 ```
 
+Also, linear models can be used, paying attention to the fact that we detain a few data and the model may not be accurated and general. 
 
 ```{r}
 # Linear Models
@@ -157,15 +84,30 @@ M2<-lm(PFMn.Deg~PFA$Priors+PFA$Wealth)
 summary(M2)
 ```
 
+Since there's no right parameter to set as exponent, we can iterate over some possible values and choose the one that gives the wanted results: if negative, we repulse other people; if positive, we aim to attract people and see if our connections propagate over the network. If close to 0, we just consider direct links. 
 
 ```{r}
 # Bonacich Centrality
 exponents = c(seq(-0.5,0.5,0.1))
+exp = c()
 bonpow_results = c()
 for(e in exponents){
+   exp = append(exp, rep(e,16))
    bonpow_results = append(bonpow_results,
                            sna::bonpow(PFA, gmode="graph", exponent=e))
 }
-
-bonpow_results
 ```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(kableExtra)
+kbl(data.frame(cbind(Exponent = exp,
+                 Bonpow = round(bonpow_results[1:11*16], 3),
+                 Family = rep(rownames(PFA),11))) %>%
+   filter(Family %in% c("MEDICI","PUCCI","GUADAGNI"),
+          Exponent %in% c(-0.5,0,0.5))%>%
+   arrange(Family), 
+   booktabs = T, 
+   caption = "Three families Bonacich Beta centrality varying exponent")
+```
+

@@ -42,7 +42,7 @@ A one-mode projection is another way of representing two-mode projections by ins
 2. Compute the transpose of this matrix $t(A)$;
 3. Multiply the first matrix with the second one to compute two steps paths from a node to another $A \cdot t(A)$.  
 
-```{r}
+```{r eval=FALSE}
 # One-mode projection
 
 # Persons
@@ -51,7 +51,7 @@ DSAmS%*%t(DSAmS)
 t(DSAmS)%*%DSAmS 
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='90%', fig.cap=""}
 knitr::include_graphics("images/10-Two mode networks/Untitled.png")
 ```
 
@@ -70,7 +70,7 @@ knitr::include_graphics("images/10-Two mode networks/Untitled.png")
 
 </aside>
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='70%', fig.cap=""}
 knitr::include_graphics("images/10-Two mode networks/Untitled 1.png")
 ```
 
@@ -78,7 +78,7 @@ knitr::include_graphics("images/10-Two mode networks/Untitled 1.png")
 
 One of the problems with converting the affiliation matrix to one-mode is that there can be a loss of information. It is possible to compute a two-mode network centrality using **bipartite one-mode**: according to this modality, we put together actors and events to form total nodes and fill the same-type nodes with 0s. 
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='80%', fig.cap=""}
 knitr::include_graphics("images/10-Two mode networks/Untitled 2.png")
 ```
 
@@ -91,15 +91,31 @@ To compute the density of a two-mode network, compute the total number of edges 
 mean(DSAmS)
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='70%', fig.cap=""}
 knitr::include_graphics("images/10-Two mode networks/Untitled 3.png")
 ```
 
 ## Degree Centrality
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='40%', fig.cap="Example of network with scientists and papers"}
-knitr::include_graphics("images/10-Two mode networks/Untitled 4.png")
+```{r echo=FALSE, fig.cap = "Scientists and relative written papers network"}
+scientists_papers<-matrix(c(1,0,0,0,0,0,0,0,
+                            1,0,0,1,0,0,0,0,
+                            1,1,0,0,0,0,0,0,
+                            1,1,1,0,0,0,0,0,
+                            0,0,1,1,1,1,1,1,
+                            0,0,0,0,0,0,1,1),
+                          6,8,byrow=TRUE)
+rownames(scientists_papers)<-c("a1","a2","a3","a4","a5","a6")
+colnames(scientists_papers)<-c("e1","e2","e3","e4","e5","e6","e7","e8")
+gplot(scientists_papers, 
+      displaylabels=TRUE, 
+      usearrows=FALSE, 
+      gmode="twomode",
+      edge.col = "grey70",
+      vertex.cex = 1,
+      label.cex = 1)
 ```
+
 
 Consider a network with scientists and papers, where $n_a$ defines the number of scientists and $n_e$ defines the number of papers. It is possible to compute:
 
@@ -115,25 +131,10 @@ Consider a network with scientists and papers, where $n_a$ defines the number of
     $$
     
     ```{r}
-    scientists_papers<-matrix(c(1,0,0,0,0,0,0,0,
-                                1,0,0,1,0,0,0,0,
-                                1,1,0,0,0,0,0,0,
-                                1,1,1,0,0,0,0,0,
-                                0,0,1,1,1,1,1,1,
-                                0,0,0,0,0,0,1,1),
-                              6,8,byrow=TRUE)
-    rownames(scientists_papers)<-c("a1","a2","a3","a4","a5","a6")
-    colnames(scientists_papers)<-c("e1","e2","e3","e4","e5","e6","e7","e8")
-    gplot(scientists_papers, 
-          displaylabels=TRUE, 
-          usearrows=FALSE, 
-          gmode="twomode",
-          edge.col = "grey70",
-          vertex.cex = 1,
-          label.cex = 1)
     rowSums(scientists_papers) # Scientists Degree
     colSums(scientists_papers) # Papers Degree
     ```
+
     
 - *In what proportion of all publications ($E$) was a person ($A$) involved?*
     
@@ -162,7 +163,7 @@ Consider a network with scientists and papers, where $n_a$ defines the number of
     
 - *What is $A$’s average contribution to all publications ($E$) taking into account the contribution of co-authors?*
     
-    Take the previous value and divide it for the total number of papers in which he/she collaborated (which was the first column). 
+    Take the previous value and divide it for the total number of papers in which they collaborated (first column). 
     
     ```{r}
     round((
@@ -173,9 +174,10 @@ Consider a network with scientists and papers, where $n_a$ defines the number of
         rowSums(scientists_papers),3) 
     ```
     
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Contribution of each author"}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='70%', fig.cap="Contribution of each author"}
 knitr::include_graphics("images/10-Two mode networks/Untitled 5.png")
 ```
+
 - *In total how many unique co-authors does $A$ have?*
     1. Number of co-authors
         
@@ -255,11 +257,6 @@ knitr::include_graphics("images/10-Two mode networks/Untitled 6.png")
 
 *Which event is attended by the most people? $E_1, E_4, E_5$*
 
-### Projections
-
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
-knitr::include_graphics("images/10-Two mode networks/Untitled 7.png")
-```
 
 ## Closeness centrality
 
@@ -304,7 +301,7 @@ It is about being between other people in a structural way such that without tha
 
 Structural holes can be defined through **closure**, which is computed by the ratio of a number of co-authors with multiple counts over unique co-authors. 
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='80%', fig.cap=""}
 knitr::include_graphics("images/10-Two mode networks/Untitled 10.png")
 ```
 

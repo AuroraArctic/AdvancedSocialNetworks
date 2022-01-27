@@ -19,7 +19,7 @@ PFA<-read.csv("datasets/Padgett_FlorentineFamilies_Attributes.csv",
 # Converting the matrix into network
 PFMn<-as.network(PFM, directed=F)
 
-summary(PFMn)
+summary(PFMn, print.adj = FALSE)
 ```
 
 Then the families' links are shown in the following network, mapping colours according to the priors (i.e. number of times a family member became part of the Florence councel) and size based on families' wealth (i.e. the greener, the richer; the purpler, the poorer). 
@@ -54,9 +54,18 @@ gplot(PFMn,
 ```
 
 Then, the degree for each family is shown, indicating that the most powerful family is the De Medici, followed by Guadagni and Strozzi. Since they are not direct alters, probably they were competing for the power in Florence. 
+```{r echo=FALSE}
+library(kableExtra)
+kbl(as.data.frame(cbind(Degree = sna::degree(PFMn, gmode="graph"),
+                        Family = rownames(PFM))),
+    booktabs=T,
+    caption = "Florentine Families Degree")%>%
+  kable_styling(position = "center")
+```
+
+
 ```{r}
 # Degree
-knitr::kable(as.data.frame(sna::degree(PFMn, gmode="graph"), rownames(PFM)))
 PFMn.Deg<-sna::degree(PFMn, gmode="graph")
 ```
 
@@ -77,7 +86,7 @@ summary(M1)
 ```
 Priors is a meaningful feature to use to predict the degree, as the p-values suggests, but both the R-squared and the Adjusted R-squared indicate the low quality of the model. By plotting the fitted line over data points we may notice that there is a high variability on the extremes of the degree, while most of the families degree lies on the middle (i.e. around 3).
 
-```{r}
+```{r message=FALSE, warning=FALSE, out.width = "80%", fig.align="center"}
 library(ggplot2)
 
 ggplot()+
@@ -116,10 +125,12 @@ summary(sample_matrix)
 
 This plot shows the distribution of the Pearson correlation obtained permuting the priors $1,000$ times. We can notice that the mean is below the $0$, while the score we obtained before is around $0.5$, in the tail of the distribution. 
 
-```{r}
+```{r echo=FALSE}
 ## Plotting the correlation trend among samplings
 par(mar=c(3,3,3,3))
-hist(sample_matrix, breaks=50, main = "Distribution of the Pearson correlation obtained permuting priors")
+hist(sample_matrix, breaks=50,
+     main = "Distribution of the Pearson correlation obtained permuting priors",
+     col = "cornflowerblue")
 abline(v=cor.test(PFMn.Deg,PFA$Priors)$estimate, col = 'red')
 ```
 
@@ -142,21 +153,26 @@ The same thing can be done by considering the absolute value of the correlation 
 # Consider the absolute number of correlation
 sum(sample_matrix>=abs(corRealValue))/1000
 sum(sample_matrix<=-abs(corRealValue))/1000
-sum(sample_matrix>=abs(corRealValue))/1000 + sum(sample_matrix<=-abs(corRealValue))/1000
+sum(sample_matrix>=abs(corRealValue))/1000 +
+  sum(sample_matrix<=-abs(corRealValue))/1000
 ```
 
 If we approximate the distribution to a Gaussian, we could use `pnorm()` to get the probability for the Pearson coefficient to be equal or higher than the real coefficient. 
 
 ```{r}
 # Positive correlation Probability
-pnorm(corRealValue, mean = mean(sample_matrix), sd = sd(sample_matrix), lower.tail = F)
+pnorm(corRealValue, mean = mean(sample_matrix), 
+      sd = sd(sample_matrix), lower.tail = F)
 
 # Negative correlatio probability
-pnorm(-corRealValue, mean = mean(sample_matrix), sd = sd(sample_matrix), lower.tail = T)
+pnorm(-corRealValue, mean = mean(sample_matrix), 
+      sd = sd(sample_matrix), lower.tail = T)
 
 # Both positive and negative probability
-pnorm(corRealValue, mean = mean(sample_matrix), sd = sd(sample_matrix), lower.tail = F)+
-  pnorm(-corRealValue, mean = mean(sample_matrix), sd = sd(sample_matrix), lower.tail = T)
+pnorm(corRealValue, mean = mean(sample_matrix), 
+      sd = sd(sample_matrix), lower.tail = F)+
+  pnorm(-corRealValue, mean = mean(sample_matrix), 
+        sd = sd(sample_matrix), lower.tail = T)
 ```
 
 Suppose now we detain new data $x_1, y_1$ as follows, with a cluster in the upper part of the plot and a single data point in the lower left part. 
@@ -179,7 +195,7 @@ for (k in c(1:20000))
   x1_PERM<-sample(x1)
   OUTPUT[k,1]<-cor(y1,x1_PERM)
 }
-hist(OUTPUT, nclass=20, prob=T)
+hist(OUTPUT, nclass=20, prob=T, col = "cornflowerblue")
 ```
 We could inspect the 95% confidence interval of these permutations: 
 

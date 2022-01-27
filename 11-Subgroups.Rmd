@@ -6,10 +6,10 @@ Embedded within a network there are often groups of actors who interact with eac
 
 Let's start with the following example:
 
-```{r}
+```{r echo=FALSE}
 # Network creation
 library(sna)
-
+library(igraph)
 network<-matrix(c(
   0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
   1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -31,15 +31,17 @@ network<-matrix(c(
   0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,
   0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0),19,19)
 
-network = as.network(network, directed = F)
-
-par(mar = c(0,0,0,0))
-plot(network,
-     displaylabels=TRUE,
-     label.cex = 0.7,
-     edge.col = "grey70",
-     vertex.col = "cornflowerblue",
-     vertex.cex = 0.8)
+network_i = graph_from_adjacency_matrix(network, mode = "undirected")
+network = as.network(network, directed=F)
+plot(network_i,
+     vertex.label.dist=3,
+     vertex.label.cex = 0.7,
+     edge.arrow.size = 0.5,
+     vertex.color = "cornflowerblue",
+     displaylabels=T,
+     vertex.size = 10,
+     vertex.label.family = "Helvetica",
+     arrow.mode = 0)
 ```
 
 ### Components
@@ -56,8 +58,20 @@ A subset where everyone is directly or indirectly connected to everyone else is 
 
 ### Cliques
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Examples of cliques"}
-knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 1.png")
+```{r, fig.cap="cliques"}
+plot(network_i,
+     vertex.label.dist=3,
+     vertex.label.cex = 0.7,
+     edge.arrow.size = 0.5,
+     vertex.color = "cornflowerblue",
+     displaylabels=T,
+     vertex.size = 10,
+     vertex.label.family = "Helvetica",
+     mark.groups = list(c(14,18,19),c(1,2,3,6),c(1,7,6),c(3,4,5)),
+     mark.col = NA,
+     mark.border=c("red","blue", "orange","green"),
+     margin = c(0,0,0,0),
+     arrow.mode = 0)
 ```
 
 A subset where everyone is directly connected to everyone else in the subset is called a **clique**.
@@ -79,8 +93,21 @@ By considering the previous network, the $2$-cliques are:
 - $1, 2, 3, 6, 7$;
 - $1, 2, 3, 6, 4, 5$;
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Example of 2-cliques"}
-knitr::include_graphics("images/11-Subgroups and Structural Equivalence/12-network.png")
+```{r, fig.cap = "2 cliques"}
+plot(network_i,
+     vertex.label.dist=3,
+     vertex.label.cex = 0.7,
+     edge.arrow.size = 0.5,
+     vertex.color = "cornflowerblue",
+     displaylabels=T,
+     vertex.size = 10,
+     vertex.label.family = "Helvetica",
+     mark.groups = list(c(14, 15, 17, 18, 19),c(14, 15, 16, 17, 18),
+                        c(9, 10, 11, 12), c(1, 2, 3, 6, 7), c(1, 2, 3, 6, 4, 5)),
+     mark.col = NA,
+     mark.border=c("red","orange","green","blue","violet"),
+     margin = c(0,0,0,0),
+     arrow.mode = 0)
 ```
 
 <aside>
@@ -90,9 +117,9 @@ knitr::include_graphics("images/11-Subgroups and Structural Equivalence/12-netwo
 
 By considering instead 3-cliques, we obtain: 
 
-- 14, 15, 16, 17, 18, 19;
-- 1, 2, 3, 4, 5, 6, 7;
-- 9, 10, 11, 12.
+- $14, 15, 16, 17, 18, 19$;
+- $1, 2, 3, 4, 5, 6, 7$;
+- $9, 10, 11, 12$.
 
 If $K = N-1$, then we get a component, while if $K=1$, we get a normal clique. 
 
@@ -114,8 +141,20 @@ Some 2-clans in the network are:
 - 1, 2, 3, 6, 7;
 - 1, 2, 3, 6, 4, 5.
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Example of k-clan"}
-knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 2.png")
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='80%', fig.cap="Example of 4-clan"}
+plot(network_i,
+     vertex.label.dist=3,
+     vertex.label.cex = 0.7,
+     edge.arrow.size = 0.5,
+     vertex.color = "cornflowerblue",
+     displaylabels=T,
+     vertex.size = 10,
+     vertex.label.family = "Helvetica",
+     mark.groups = list(c(14, 17, 18, 19), c(14, 15, 18, 19)),
+     mark.col = NA,
+     mark.border=c("red","blue"),
+     margin = c(0,0,0,0),
+     arrow.mode = 0)
 ```
 
 ## Equivalence
@@ -176,11 +215,11 @@ Some types of blocks can be:
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 5.png")
 ```
 
-We can treat matrices as proximity measure and apply classification and clustering techniques. 
 
 ## Structural Equivalence on R
 
-```{r}
+We can treat matrices as proximity measure and apply classification and clustering techniques. 
+```{r include=FALSE}
 # equivalence
 network_2<-matrix(c(
   0,0,0,0,0,0,0,0,
@@ -210,7 +249,7 @@ Suppose there are two nodes $i,j$ and we want to compute the Hamming distance be
 
 </aside>
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='70%', fig.cap=""}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 6.png")
 ```
 
@@ -220,11 +259,11 @@ network_2_SEH<-sedist(network_2, method="hamming")
 network_2_SEH 
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap="Same distance matrix obtained in the chunk"}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='80%', fig.cap="Same distance matrix obtained in the chunk"}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 7.png")
 ```
 
-```{r}
+```{r, out.width="80%"}
 # Clustering
 network_2_SEHD<-as.dist(network_2_SEH)
 
@@ -241,7 +280,7 @@ $$
 Euclidean_{ij} = \sqrt{\sum_k^N \Big((x_{ik}-x{jk})^2+(x_{ki}-x_{kj})^2\Big)}
 $$
 
-```{r}
+```{r , out.width="80%"}
 network_2_SEE<-sedist(network_2, method="euclidean")
 network_2_SEE
 
@@ -252,23 +291,11 @@ plot(network_2_SEED_HC)
 
 Suppose having two nodes $i,j$ pointing to $k$. We aim to compute the euclidean distance between $x_{ik}$ and $x_{jk}$. 
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='80%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='70%', fig.cap=""}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 9.png")
 ```
 
-```{r}
-# Euclidean Structural Equivalence
-network_2_SEE<-sedist(network_2, method="euclidean")
-network_2_SEE
-```
 
 ```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='70%', fig.cap="Example of distance matrix computed with Euclidean distance, as shown in the chunk above"}
 knitr::include_graphics("images/11-Subgroups and Structural Equivalence/Untitled 10.png")
-```
-
-```{r}
-## Clustering on euclidean distance
-network_2_SEED<-as.dist(network_2_SEE)
-network_2_SEED_HC<-hclust(network_2_SEED,method="complete")
-plot(network_2_SEED_HC)
 ```

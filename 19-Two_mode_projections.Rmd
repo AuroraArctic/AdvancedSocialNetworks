@@ -1,9 +1,8 @@
 # Two-mode projections
 
+In two-mode networks, rows and columns of the adjacency matrix represent different types of nodes. In this particular example, rows represent women attending to events (i.e. columns).
+
 ```{r}
-######################
-# TWO-MODE PROJECTIONS
-######################
 library(sna)
 
 # Importing data
@@ -19,24 +18,21 @@ rownames(DSAmS)<-substring(rownames(DSAm),1,2)
 
 par(mar = c(0,0,0,0))
 # Now draw the network
-gplot(DSAmS, displaylabels=TRUE, 
+gplot(DSAmS, displaylabels=TRUE,
+      edge.col = "grey70",
       usearrows=FALSE, gmode="twomode")
 ```
 
-
+In order to get one-mode projections, matrix multiplication is necessary, by computing the transpose and ordering the terms of the multiplication according to the nodes we're focusing on. 
 ```{r}
-###########################
-# ONE MODE PROJECTIONS
-###########################
-
-DSAmS%*%t(DSAmS)
-t(DSAmS)%*%DSAmS
-mean(DSAmS)
+DSAmS%*%t(DSAmS) # Women
+t(DSAmS)%*%DSAmS # Events
+mean(DSAmS) # Degree
 ```
 
+Considering instead scientists and papers, we get a less complex network where $a$s represent scientists and $e$s represent papers. 
 
 ```{r}
-# Example dataset
 scientists_papers<-matrix(c(1,0,0,0,0,0,0,0,
                             1,0,0,1,0,0,0,0,
                             1,1,0,0,0,0,0,0,
@@ -46,14 +42,18 @@ scientists_papers<-matrix(c(1,0,0,0,0,0,0,0,
                           6,8,byrow=TRUE)
 rownames(scientists_papers)<-c("a1","a2","a3","a4","a5","a6")
 colnames(scientists_papers)<-c("e1","e2","e3","e4","e5","e6","e7","e8")
+
 gplot(scientists_papers, displaylabels=TRUE, usearrows=FALSE, gmode="twomode")
+
+# Number of papers per scientist
 rowSums(scientists_papers)
+
+# Authors per each paper
 colSums(scientists_papers)
 ```
+The following example instead of inserting 1s and 0s contains weights, which represent the strength of the link between a node and another. 
 
-
-```{r}
-#Example of valued network
+```{r, out.width="80%"}
 MATRIX2V<-matrix(c(5,1,0,0,
                    0,3,0,1,
                    0,0,1,3,
@@ -62,26 +62,35 @@ MATRIX2V<-matrix(c(5,1,0,0,
                    0,0,7,4),6,4, byrow=TRUE)
 rownames(MATRIX2V)<-c("a","b","c","d","e","f")
 colnames(MATRIX2V)<-c("w","x","y","z")
+par(mar=c(0,0,0,0))
 gplot(MATRIX2V, displaylabels=TRUE, 
       usearrows=FALSE, gmode="twomode")
 ```
 
 
-```{r}
+```{r, out.width="80%"}
+# Weighted plot
+par(mar=c(0,0,0,0))
 gplot(MATRIX2V, displaylabels=TRUE, 
-      usearrows=FALSE, gmode="twomode",edge.lwd=1)
+      usearrows=FALSE, 
+      gmode="twomode",
+      edge.lwd=1)
 ```
 
 ```{r}
 # Centrality Measures about Authors
+# Number of papers per author
 rowSums(scientists_papers)
+# Normalized number of papers per author
 rowSums(scientists_papers)/NCOL(scientists_papers)
 ```
 
 
 ```{r}
 # Centrality Measures about Papers
+# Number of authors per paper
 colSums(scientists_papers)
+# Normalized number of authors per paper
 colSums(scientists_papers)/NROW(scientists_papers)
 ```
 

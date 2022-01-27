@@ -10,9 +10,7 @@ In the classic approach, we would:
 
 ### Correlation
 
-The correlation coefficient measures the association between two interval or ratio variables. 
-
-Consider two variables $x_i$ and $y_i$. How are two continuous variables related? The correlation could be positive if increases, null if there is none and negative if decreases:
+The correlation coefficient measures the association between two interval or ratio variables. Consider two variables $x_i$ and $y_i$. How are two continuous variables related? The correlation could be positive if increases, null if there is none and negative if decreases:
 
 $$
 r_{xy} = \frac{1}{n-1}\sum^n_{i=1} \frac{(x_i-\bar{x})(y_i-\bar{y})}{s_xs_y}
@@ -27,8 +25,7 @@ It is based on the idea that a feature or variable provides some useful informat
 1. **Sample**: make a statement about the relation between two variables for a well defined and finite population. Since it is difficult to collect information for the whole population, **randomly sampling** is a solution.
 2. **Hypothesis**: Before looking at data, make a statement about the population $H_0$ that we will reject in favour of an alternative statement about the population $H_A$. What we aspire to do is to prove that $H_0$ is very unlikely. 
 3. **Probabilities**: Look at sample results. Assuming that the null hypothesis $H_0$ is true, how much chance do we have of obtaining a sample that has a correlation that is that extreme or more extreme (than we observed with the sample).
-4. **Conclusion**
-: reject the null hypothesis $H_0$ in favour of the alternative hypothesis $H_a$ if the probability of such an extreme or more extreme outcome is lower than 5% ($\rho<0.05$). 
+4. **Conclusion**: reject the null hypothesis $H_0$ in favour of the alternative hypothesis $H_a$ if the probability of such an extreme or more extreme outcome is lower than 5% ($p<0.05$). 
 
 ## Permutation Based Approach
 

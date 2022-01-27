@@ -6,12 +6,8 @@
 
 The matrices X and Y indicate the ties for 2 different network relations (e.g. communication and friendship network) for the same set of 5 actors (a,b,c,d,e), shown in the image below:
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='40%', fig.cap=""}
+```{r, echo=FALSE, out.width = "40%", fig.cap="Two networks with same nodes", fig.align='center'}
 knitr::include_graphics("images/05-Matrices and Beta centrality/Untitled.png")
-```
-
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='25%', fig.cap=""}
-knitr::include_graphics("images/05-Matrices and Beta centrality/Untitled 1.png")
 ```
 
 Suppose we want to sum $X+2Y$ to get $Z$. Considering their adjacency matrix, we get:
@@ -85,7 +81,7 @@ $$
 $$
 This equals to the adjacency matrix of two-steps paths from nodes in $X$ to nodes in $Y$. 
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='30%', fig.cap=""}
 knitr::include_graphics("images/05-Matrices and Beta centrality/Untitled 2.png")
 ```
 
@@ -101,7 +97,7 @@ Suppose the two matrices represent the flights and trains from a place to anothe
 
 Imagine there can be a repeated influence, such that it spreads on two or more steps. The image below represents some of the one, two, three and four steps paths inside the network:
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='50%', fig.cap=""}
+```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='60%', fig.cap=""}
 knitr::include_graphics("images/05-Matrices and Beta centrality/Untitled 3.png")
 ```
 
@@ -118,10 +114,6 @@ If a node has a high beta centrality score, it means there are many short walks 
 knitr::include_graphics("images/05-Matrices and Beta centrality/Untitled 4.png")
 ```
 
-```{r, echo=FALSE, fig.align='center', fig.pos='h!', out.width='30%', fig.cap=""}
-knitr::include_graphics("images/05-Matrices and Beta centrality/Untitled 5.png")
-```
-
 Given the matrix $X$, we have the adjacency matrix of nodes $A$,$B$, $C$ and $D$. We can compute all the two-steps adjacency paths and so on (i.e. $X^2, X^3, X^4,\dots$). We could compute the beta centrality of $a$ in the previous net by summing them up:
 
 $$
@@ -130,7 +122,7 @@ $$
 
 Instead of just summing them, we could insert the beta $\beta$ term which reduces the importance of the paths that necessitate of multiple steps: when $\beta$ is small, only immediate friends matter, while for high $\beta$, the global network structure matters. If positive, nodes have higher centrality when they have edges to other central nodes, while if negative they have higher centrality when they have edges to less central nodes. 
 
-*Note: When selecting negative $\beta$, centrality scores themselves can be negative, implying that an actor would be better off not having any connections. It is possible to think of situations in which this could occur but these are rare, and in those cases it is probably better to increase the value of \beta to eliminate negative scores.*
+*Note: When selecting negative $\beta$, centrality scores themselves can be negative, implying that an actor would be better off not having any connections. It is possible to think of situations in which this could occur but these are rare, and in those cases it is probably better to increase the value of $\beta$ to eliminate negative scores.*
 
 $$
 c_B(i) = XI+\beta X^2I+\beta^2X^3I+\dots
@@ -158,8 +150,23 @@ D             & 0.5065                   & 0.133         \\ \bottomrule
 \label{tab:my-table}
 \end{table}
 
+We could change the beta value to 0.2 and obtain:
 
-```{r message=FALSE, warning=FALSE}
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Node} & \textbf{Beta Centrality} & \textbf{Norm} \\ \midrule
+A             & 0.9994                   & 0.260         \\
+B             & 0.9994                   & 0.260         \\
+C             & 1.3117                   & 0.341         \\
+D             & 0.5309                   & 0.138         \\ \bottomrule
+\end{tabular}
+\caption{Beta centrality with \beta value 0.2}
+\label{tab:my-table}
+\end{table}
+
+```{r message=FALSE, warning=FALSE, out.width = "80%"}
 library(igraph)
 MAT4<-matrix(c(0, 1, 1, 0,
                1, 0, 1, 0,
@@ -193,37 +200,21 @@ bonpow(MAT4i, exponent=0.1)/sum(bonpow(MAT4i, exponent=0.1))
 bonpow(MAT4i, exponent=0.2)/sum(bonpow(MAT4i, exponent=0.2))
 ```
 
-We could change the beta value to 0.2 and obtain:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{@{}lll@{}}
-\toprule
-\textbf{Node} & \textbf{Beta Centrality} & \textbf{Norm} \\ \midrule
-A             & 0.9994                   & 0.260         \\
-B             & 0.9994                   & 0.260         \\
-C             & 1.3117                   & 0.341         \\
-D             & 0.5309                   & 0.138         \\ \bottomrule
-\end{tabular}
-\caption{Beta centrality with \beta value 0.2}
-\label{tab:my-table}
-\end{table}
-
 ## Graph exercise
 
-```{r}
+```{r, out.width = "80%"}
 MAT11<-matrix(c(
-0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0,
-0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0,
-0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0,
-0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),11,11)
+        0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+        1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+        0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0,
+        0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),11,11)
 
 # Creation of the graph
 GRAPH11<-graph_from_adjacency_matrix(MAT11,mode=c("undirected"),diag= FALSE)
@@ -250,5 +241,5 @@ bonpow(GRAPH11, exponent=.5)/sum(bonpow(GRAPH11, exponent=.5)) # Beta value = 0.
 
 bonpow(GRAPH11, exponent=0)/sum(bonpow(GRAPH11, exponent=0)) # Beta value = 0
 
-bonpow(GRAPH11, exponent=-.1)/sum(bonpow(GRAPH11, exponent=-.1)) # Beta value = -0.1
+bonpow(GRAPH11,exponent=-.1)/sum(bonpow(GRAPH11,exponent=-.1)) # Beta value = -0.1
 ```
