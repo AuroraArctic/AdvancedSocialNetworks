@@ -167,7 +167,7 @@ knitr::include_graphics("images/14-Christakis and Valente/Untitled 3.png")
     
 3. **Structural equivalent ties** 
     
-    On the other hand, structural equivalence can matter according to Burt. We might be influenced by other people too who we’re not connected, but occupy the same position in the network and therefore we tend to monitor their behaviour and situation. In some cases, competition might be there (e.g. compete for the attention of a friend) or not (e.g. occupy friendship positions and be influenced one another through direct communication). 
+    On the other hand, structural equivalence can matter according to Burt. We might be influenced by other people to who we’re not connected, but occupy the same position in the network and therefore we tend to monitor their behaviour and situation. In some cases, competition might be there (e.g. compete for the attention of a friend) or not (e.g. occupy friendship positions and be influenced one another through direct communication). 
     
 4. **Tie strength**
     

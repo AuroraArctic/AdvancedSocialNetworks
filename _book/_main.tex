@@ -1495,6 +1495,185 @@ D             & 0.5309                   & 0.138         \\ \bottomrule
 ## 0.1345574 0.1087969 0.0528912
 \end{verbatim}
 
+\hypertarget{attributes-based-measures}{%
+\chapter{Attributes based measures}\label{attributes-based-measures}}
+
+\hypertarget{resourcefulness}{%
+\section{Resourcefulness}\label{resourcefulness}}
+
+Resource generator relates to people with more resources. Resourcefulness usually establishes the measures of zero (nothing) and total (everything).
+
+💡 \emph{It is not only related to money but for instance to happiness: the more happy people we're related with, the more good vibes we will gather.}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.5\linewidth]{images/06-Attributes based measures/Untitled} 
+
+}
+
+\end{figure}
+
+The resourceful alter can be computed through the total or the average:
+
+\begin{itemize}
+\item
+  total:
+
+  \[
+    sum \ R_i = \sum_j x_{ij}r_j
+    \]
+\item
+  average
+
+  \[
+    avg \ R_i = \frac{ \sum_j x_{ij}r_j}{\sum_j x_{ij}}
+    \]
+\end{itemize}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.5\linewidth]{images/06-Attributes based measures/Untitled 1} \includegraphics[width=0.5\linewidth]{images/06-Attributes based measures/08-graph} 
+
+}
+
+\end{figure}
+
+\begin{table}[]
+\centering
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Node} & \textbf{Neighbours} & \textbf{Total R} & \textbf{Average R} \\ \midrule
+a             & b, d, e             & 45+25+21 = 91    & 91/3 = 30.3333     \\
+b             & c                   & 32               & 32                 \\
+c             & a, b                & 19+45 = 64       & 64/2 = 32          \\
+d             & a, c                & 19+32 = 51       & 51/2 = 25.5        \\
+e             & a, c, d             & 19+32+25 = 76    & 76/3 = 25.333      \\ \bottomrule
+\end{tabular}
+\caption{}
+\label{tab:my-table}
+\end{table}
+
+Consider the adjacency matrix beside, where the green table indicates the number of resources held by nodes and the blue one is the adjacency matrix. We could then compute the resourcefulness of each node, both in terms of sum and average, as shown in the table.
+
+\hypertarget{homophily}{%
+\section{Homophily}\label{homophily}}
+
+Which of the two networks is a good situation?
+
+\begin{itemize}
+\tightlist
+\item
+  it is good to be connected to similar people because they will get along, they understand each other, there is a common ground and they emphasize with each other;
+\item
+  on the other side, to spread knowledge, to exit from our echo chamber is also important to face different realities.
+\end{itemize}
+
+We could simply compute \textbf{homophily} by computing the percentage of neighbours of the central node that belongs to the same category.
+
+💡 \emph{Suppose we talk about males and females ego networks. In the first example, there's 80\% of homophily, followed by 40 and 60\%.}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.7\linewidth]{images/06-Attributes based measures/Untitled 2} 
+
+}
+
+\end{figure}
+
+To properly define homophily in ego networks, we recur to:
+
+\[
+EI_i = \frac{E_i-I_i}{E_i+I_i}
+\]
+where \(E_i\) counts the number of different nodes from the ego and \(I_i\) counts the number of similar nodes to the ego, whose sum \(E_i+I_i\) must provide the total alters in the ego's network.
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.3\linewidth]{images/06-Attributes based measures/Untitled 3} 
+
+}
+
+\caption{Example of a network, considering nodes a, b and d.}\label{fig:unnamed-chunk-39}
+\end{figure}
+
+Whenever we change our perspective considering a global network also our interpretation may change. For instance, by considering \(a\), \(b\) and \(d\) in the image as in the previous example, their connections change if we extend their ego networks.
+
+We could build a matrix by considering:
+
+\begin{itemize}
+\tightlist
+\item
+  nodes who are the same or different type as ego;
+\item
+  whether these nodes are directly connected or not to an ego.
+\end{itemize}
+
+In complete networks as the one on the right, the homophily is computed as:
+
+\[
+Q_i = \frac{ad-bc}{ad+bc}
+\]
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.8\linewidth]{images/06-Attributes based measures/Untitled 4} 
+
+}
+
+\end{figure}
+
+Whenever we have high \(b\) and \(c\), we have eterophily, tendency to choose different people from us; whenever \(a\) and \(d\) are high, homophily increases.
+
+💡 \emph{In the second network, b tends to prefer women to men, since she excludes most of the men from her connections. There's a high tendency to homophily.
+In the third network, says that he builds more connections with females than random chance. Also, he did not connect to a lot of males that were available.}
+
+The odds ratio divides \(ad\) over \(bc\). It causes problems whenever \(bc\) is zero since it tends to infinity.
+
+\[
+odds = \frac{ad}{bc}
+\]
+
+\hypertarget{diversity}{%
+\section{Diversity}\label{diversity}}
+
+Differences in characteristics imply differences in resources, so when we connect with different people, we have access to different types of resources. The \textbf{index of quality variation} looks at one person and we care about other people categories (i.e.~to what resources they can access):
+
+\begin{itemize}
+\tightlist
+\item
+  if all neighbours belong to the same category, the index values \(0\);
+\item
+  if we consider an ego network, in particular, the proportion of nodes per each category and sum their squared value, we get our value.
+\item
+  if every alter belongs to a different category, the index equals \(1\).
+\end{itemize}
+
+All values are normalized by the maximum value that the index can assume.
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.3\linewidth]{images/06-Attributes based measures/Untitled 5} 
+
+}
+
+\caption{Example of a network with diversity}\label{fig:unnamed-chunk-41}
+\end{figure}
+
+\begin{figure}[h!]
+
+{\centering \includegraphics[width=0.9\linewidth]{images/06-Attributes based measures/Untitled 6} 
+
+}
+
+\caption{Diversity computation}\label{fig:unnamed-chunk-42}
+\end{figure}
+
+💡 \textbf{Remember}:
+\emph{heterophily among alters;
+homogeneity when all connections are the same category;
+homophily among alters;
+heterophily within an ego network (people different from me that challenge me).}
+
 \hypertarget{triads-and-structural-holes}{%
 \chapter{Triads and structural holes}\label{triads-and-structural-holes}}
 
@@ -1793,7 +1972,7 @@ clearly detectable the clustering lowers.
 
 Information only reaches the direct contacts of a person and our aim is to reach as many people as possible. Suppose we consider the following network:
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-41-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-48-1.pdf}
 
 💡 We want to reach as many people as possible and we can choose the
 persons to which we can communicate the information. Who would we
@@ -1822,7 +2001,7 @@ by \(12\), \(2\) and \(16\).
 \hypertarget{ego-density}{%
 \section{Ego density}\label{ego-density}}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-49-1.pdf}
 
 Consider the Medici family, which has \(6\) alters. The number of ties between these alters is \(1\), while the maximum is \(6\cdot 5/2 = 15\). This means that the ego density is the ratio between the first value and the maximum: \(1/15 = 0.067\):
 
@@ -2333,7 +2512,7 @@ First, import data about the attendance of women to some events.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-55-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-62-1.pdf}
 
 \hypertarget{one-mode-projections}{%
 \section{One-mode projections}\label{one-mode-projections}}
@@ -2436,8 +2615,8 @@ To compute the density of a two-mode network, compute the total number of edges 
 
 \begin{figure}
 \centering
-\includegraphics{_main_files/figure-latex/unnamed-chunk-62-1.pdf}
-\caption{\label{fig:unnamed-chunk-62}Scientists and relative written papers network}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-69-1.pdf}
+\caption{\label{fig:unnamed-chunk-69}Scientists and relative written papers network}
 \end{figure}
 
 Consider a network with scientists and papers, where \(n_a\) defines the number of scientists and \(n_e\) defines the number of papers. It is possible to compute:
@@ -2566,7 +2745,7 @@ Consider a network with scientists and papers, where \(n_a\) defines the number 
 
 }
 
-\caption{Contribution of each author}\label{fig:unnamed-chunk-67}
+\caption{Contribution of each author}\label{fig:unnamed-chunk-74}
 \end{figure}
 
 \begin{itemize}
@@ -2756,7 +2935,7 @@ Embedded within a network there are often groups of actors who interact with eac
 
 Let's start with the following example:
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-76-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-83-1.pdf}
 
 \hypertarget{components-1}{%
 \subsection{Components}\label{components-1}}
@@ -2790,8 +2969,8 @@ A subset where everyone is directly or indirectly connected to everyone else is 
 
 \begin{figure}
 \centering
-\includegraphics{_main_files/figure-latex/unnamed-chunk-77-1.pdf}
-\caption{\label{fig:unnamed-chunk-77}cliques}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-84-1.pdf}
+\caption{\label{fig:unnamed-chunk-84}cliques}
 \end{figure}
 
 A subset where everyone is directly connected to everyone else in the subset is called a \textbf{clique}.
@@ -2840,8 +3019,8 @@ By considering the previous network, the \(2\)-cliques are:
 
 \begin{figure}
 \centering
-\includegraphics{_main_files/figure-latex/unnamed-chunk-78-1.pdf}
-\caption{\label{fig:unnamed-chunk-78}2 cliques}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-85-1.pdf}
+\caption{\label{fig:unnamed-chunk-85}2 cliques}
 \end{figure}
 
 💡 Note that actors might become cliques through others that are not members themselves. For instance, if we consider the 2-clique composed by \(K_2 = \{14,15,17,18,19\}\) thanks to 16.
@@ -2947,11 +3126,11 @@ Some 2-clans in the network are:
 
 \begin{figure}[h!]
 
-{\centering \includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-80-1} 
+{\centering \includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-87-1} 
 
 }
 
-\caption{Example of 4-clan}\label{fig:unnamed-chunk-80}
+\caption{Example of 4-clan}\label{fig:unnamed-chunk-87}
 \end{figure}
 
 \hypertarget{equivalence}{%
@@ -3035,7 +3214,7 @@ Some types of blocks can be:
 
 }
 
-\caption{Nine types of connection between clusters}\label{fig:unnamed-chunk-83}
+\caption{Nine types of connection between clusters}\label{fig:unnamed-chunk-90}
 \end{figure}
 
 \hypertarget{structural-equivalence-on-r}{%
@@ -3098,7 +3277,7 @@ Suppose there are two nodes \(i,j\) and we want to compute the Hamming distance 
 
 }
 
-\caption{Same distance matrix obtained in the chunk}\label{fig:unnamed-chunk-87}
+\caption{Same distance matrix obtained in the chunk}\label{fig:unnamed-chunk-94}
 \end{figure}
 
 \begin{Shaded}
@@ -3112,7 +3291,7 @@ Suppose there are two nodes \(i,j\) and we want to compute the Hamming distance 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-88-1}
+\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-95-1}
 
 \hypertarget{euclidean-structural-equivalence}{%
 \subsection{Euclidean Structural Equivalence}\label{euclidean-structural-equivalence}}
@@ -3150,7 +3329,7 @@ Euclidean_{ij} = \sqrt{\sum_k^N \Big((x_{ik}-x{jk})^2+(x_{ki}-x_{kj})^2\Big)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-89-1}
+\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-96-1}
 
 Suppose having two nodes \(i,j\) pointing to \(k\). We aim to compute the euclidean distance between \(x_{ik}\) and \(x_{jk}\).
 
@@ -3168,7 +3347,7 @@ Suppose having two nodes \(i,j\) pointing to \(k\). We aim to compute the euclid
 
 }
 
-\caption{Example of distance matrix computed with Euclidean distance, as shown in the chunk above}\label{fig:unnamed-chunk-91}
+\caption{Example of distance matrix computed with Euclidean distance, as shown in the chunk above}\label{fig:unnamed-chunk-98}
 \end{figure}
 
 \hypertarget{reciprocity-and-transitivity}{%
@@ -3198,7 +3377,7 @@ With \textbf{dyad census}, we count how many mutual, asymmetric and null dyads t
 
 }
 
-\caption{Example of directed network}\label{fig:unnamed-chunk-92}
+\caption{Example of directed network}\label{fig:unnamed-chunk-99}
 \end{figure}
 
 💡 \emph{Get the total dyads available as} \(n(n-1)/2\) and then remove the total amount of dyads actually existing (sum mutual and asymmetric's).
@@ -3379,7 +3558,7 @@ In addition, letters indicate:
 
 }
 
-\caption{MAN Nomenclature}\label{fig:unnamed-chunk-95}
+\caption{MAN Nomenclature}\label{fig:unnamed-chunk-102}
 \end{figure}
 
 By considering the code output and the triad census legend, we could focus for instance on 111U triad and try to detect them:
@@ -3879,7 +4058,7 @@ Diffusion happens out of interpersonal contact, persuasion and communication mod
 
 }
 
-\caption{Stages of adoption over time}\label{fig:unnamed-chunk-101}
+\caption{Stages of adoption over time}\label{fig:unnamed-chunk-108}
 \end{figure}
 
 Valente created mathematical models of the diffusion of innovations in different situations: for external and internal influence and when the external communications are mixed with person-to-person contact. However, it is far more interesting to study the processes that occur amongst people in the network.
@@ -3892,7 +4071,7 @@ Therefore, Valente created a hypothetical community of people and the percentage
 
 }
 
-\caption{S-curve to describe random behaviour adoption}\label{fig:unnamed-chunk-102}
+\caption{S-curve to describe random behaviour adoption}\label{fig:unnamed-chunk-109}
 \end{figure}
 
 \hypertarget{what-types-of-network-influence-weights-are-there-according-to-valente}{%
@@ -4013,7 +4192,7 @@ It is possible to use a \texttt{NetdiffuseR} package to track the diffusion of i
 
 }
 
-\caption{Phenomena that happen over time during the diffusion process and their development}\label{fig:unnamed-chunk-106}
+\caption{Phenomena that happen over time during the diffusion process and their development}\label{fig:unnamed-chunk-113}
 \end{figure}
 
 \hypertarget{egos-network}{%
@@ -4308,7 +4487,7 @@ and finish with \texttt{dev.off()}, which closes the image file for changes.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-109-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-116-1} \end{center}
 
 \emph{\texttt{gmode="graph"} is used for \textbf{undirected} networks, while \texttt{gmode="digraph} is used for \textbf{directed} networks. If the input graph is undirected but the selected gmode is for directed networks, then arrows on both sides will be visualized. Also, most of the times the margin deletion is not necessary.}
 
@@ -4335,7 +4514,7 @@ For a circle layout, it is necessary to change \texttt{mode} into \texttt{"circl
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-110-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-117-1} \end{center}
 
 \hypertarget{fr-layout}{%
 \subsection{FR Layout}\label{fr-layout}}
@@ -4360,7 +4539,7 @@ For a circle layout, it is necessary to change \texttt{mode} into \texttt{"circl
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-111-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-118-1} \end{center}
 
 \hypertarget{kha-network}{%
 \subsection{KHA Network}\label{kha-network}}
@@ -4397,7 +4576,7 @@ The following network is denser than the previous, since we multiply the matrix 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-112-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-119-1} \end{center}
 
 We could also build a function to plot a network:
 
@@ -4424,7 +4603,7 @@ We could also build a function to plot a network:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-113-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-120-1} \end{center}
 
 \hypertarget{layout-based-on-2-continuous-attributes}{%
 \section{Layout based on 2 continuous attributes}\label{layout-based-on-2-continuous-attributes}}
@@ -4513,7 +4692,7 @@ Now let's start drawing, remembering that:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-116-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-123-1} \end{center}
 
 \hypertarget{layout-where-points-are-grouped-based-on-nominal-attribute}{%
 \section{Layout where points are grouped based on nominal attribute}\label{layout-where-points-are-grouped-based-on-nominal-attribute}}
@@ -4564,7 +4743,7 @@ We can get nodes coordinates by plotting them based on their department similari
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-119-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-126-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4588,7 +4767,7 @@ We can get nodes coordinates by plotting them based on their department similari
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-120-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-127-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4610,7 +4789,7 @@ We can get nodes coordinates by plotting them based on their department similari
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-121-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-128-1} \end{center}
 
 \hypertarget{geography---international-trade-among-countries-in-1928}{%
 \section{Geography - International trade among countries in 1928}\label{geography---international-trade-among-countries-in-1928}}
@@ -4665,7 +4844,7 @@ In this case, nodes are positioned based on the geographic location of their cap
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-123-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-130-1} \end{center}
 
 \hypertarget{multidimensional-scaling}{%
 \section{Multidimensional scaling}\label{multidimensional-scaling}}
@@ -4712,7 +4891,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-124-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-131-1} \end{center}
 
 \hypertarget{mds-on-valued-trade}{%
 \subsection{MDS on valued trade}\label{mds-on-valued-trade}}
@@ -4757,7 +4936,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-125-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-132-1} \end{center}
 
 \hypertarget{mds-on-geodesic-distances}{%
 \subsection{MDS on geodesic distances}\label{mds-on-geodesic-distances}}
@@ -4847,7 +5026,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-126-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-133-1} \end{center}
 
 \hypertarget{kamadakawai-and-fr-layout-khfs}{%
 \section{KamadaKawai and FR layout KHFS}\label{kamadakawai-and-fr-layout-khfs}}
@@ -4878,7 +5057,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-127-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-134-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4894,7 +5073,7 @@ We can apply the MDS in order to better plot nodes inside the network, by using 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-127-2} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-134-2} \end{center}
 
 \hypertarget{scientists-collaborations}{%
 \subsection{Scientists collaborations}\label{scientists-collaborations}}
@@ -4922,7 +5101,7 @@ In the next chunk, the aim is to separated into two clusters those scientists th
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-128-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-135-1} \end{center}
 
 \hypertarget{nodal-attributes-on-khf}{%
 \subsection{Nodal attributes on KHF}\label{nodal-attributes-on-khf}}
@@ -4955,7 +5134,7 @@ Let's consider scientists' tenure. If we aim to plot the variation in terms of t
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-129-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-136-1} \end{center}
 
 Now, the same plot is proposed again with:
 
@@ -5000,7 +5179,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-130-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-137-1} \end{center}
 
 \hypertarget{scientists-collaboration-more-complex}{%
 \subsection{Scientists collaboration (more complex)}\label{scientists-collaboration-more-complex}}
@@ -5064,7 +5243,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-132-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-139-1} \end{center}
 
 \hypertarget{nodal-attributes-on-pfm}{%
 \subsection{Nodal attributes on PFM}\label{nodal-attributes-on-pfm}}
@@ -5095,7 +5274,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-133-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-140-1} \end{center}
 
 \hypertarget{tie-strength-on-scientists-collaborations}{%
 \section{Tie strength on Scientists collaborations}\label{tie-strength-on-scientists-collaborations}}
@@ -5127,7 +5306,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-135-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-142-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5143,7 +5322,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-136-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-143-1} \end{center}
 
 \hypertarget{scientists-example}{%
 \section{Scientists example}\label{scientists-example}}
@@ -5172,7 +5351,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-137-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-144-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5212,7 +5391,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-138-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-145-1} \end{center}
 
 \hypertarget{directed-networks}{%
 \section{Directed networks}\label{directed-networks}}
@@ -5246,7 +5425,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-141-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-148-1} \end{center}
 
 \hypertarget{centrality-measures}{%
 \chapter{Centrality Measures}\label{centrality-measures}}
@@ -5271,7 +5450,7 @@ Now, the same plot is proposed again with:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-142-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-149-1} \end{center}
 
 The following plot considers the family's wealth, represented both by size and colour variation.
 
@@ -5300,7 +5479,7 @@ The following plot considers the family's wealth, represented both by size and c
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-143-1} \end{center}
+\begin{center}\includegraphics{_main_files/figure-latex/unnamed-chunk-150-1} \end{center}
 
 First, we will compute some centrality measures, such as degree, betweenness, Bonacich beta centrality and the constraint index.
 
@@ -5508,7 +5687,7 @@ Since there's no right parameter to set as exponent, we can iterate over some po
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-148}Three families Bonacich Beta centrality varying exponent}
+\caption{\label{tab:unnamed-chunk-155}Three families Bonacich Beta centrality varying exponent}
 \centering
 \begin{tabular}[t]{lll}
 \toprule
@@ -5609,13 +5788,13 @@ Then the families' links are shown in the following network, mapping colours acc
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-150-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-157-1.pdf}
 
 Then, the degree for each family is shown, indicating that the most powerful family is the De Medici, followed by Guadagni and Strozzi. Since they are not direct alters, probably they were competing for the power in Florence.
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-151}Florentine Families Degree}
+\caption{\label{tab:unnamed-chunk-158}Florentine Families Degree}
 \centering
 \begin{tabular}[t]{ll}
 \toprule
@@ -5720,7 +5899,7 @@ Priors is a meaningful feature to use to predict the degree, as the p-values sug
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-155-1} \end{center}
+\begin{center}\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-162-1} \end{center}
 
 \hypertarget{permutation-based-approach-1}{%
 \section{Permutation based approach}\label{permutation-based-approach-1}}
@@ -5736,7 +5915,7 @@ Since the permutatio based approach is based on making samples of the original d
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  0 35  0 53 38 65 22 74  0  0  0 12 42 53 21  0
+##  [1] 12 35  0 65  0 74 42  0  0 53 53 22  0 21 38  0
 \end{verbatim}
 
 First, we build an empty matrix with \(1,000\) values, since we're going to perform \(1,000\) permutations. Inside the loop, a sample of priors data is computed, in order to perfom the correlation test on the degree and the permuted priors data.
@@ -5764,18 +5943,18 @@ We can inspect the matrix filled with correlation values to notice some basic st
 \end{Shaded}
 
 \begin{verbatim}
-##        V1            
-##  Min.   :-0.6814845  
-##  1st Qu.:-0.1684472  
-##  Median :-0.0008551  
-##  Mean   : 0.0128909  
-##  3rd Qu.: 0.1992295  
-##  Max.   : 0.7430490
+##        V1           
+##  Min.   :-0.703716  
+##  1st Qu.:-0.179136  
+##  Median : 0.007696  
+##  Mean   : 0.011347  
+##  3rd Qu.: 0.194099  
+##  Max.   : 0.688325
 \end{verbatim}
 
 This plot shows the distribution of the Pearson correlation obtained permuting the priors \(1,000\) times. We can notice that the mean is below the \(0\), while the score we obtained before is around \(0.5\), in the tail of the distribution.
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-159-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-166-1.pdf}
 
 We can compute the probability of obtaining that correlation score by computing:
 
@@ -5805,7 +5984,7 @@ We can compute the probability of obtaining that correlation score by computing:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.019
+## [1] 0.014
 \end{verbatim}
 
 \begin{Shaded}
@@ -5815,7 +5994,7 @@ We can compute the probability of obtaining that correlation score by computing:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.011
+## [1] 0.015
 \end{verbatim}
 
 \begin{Shaded}
@@ -5826,7 +6005,7 @@ We can compute the probability of obtaining that correlation score by computing:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.03
+## [1] 0.029
 \end{verbatim}
 
 The same thing can be done by considering the absolute value of the correlation score, in order to get the probability of getting such score in both tails.
@@ -5839,7 +6018,7 @@ The same thing can be done by considering the absolute value of the correlation 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.019
+## [1] 0.014
 \end{verbatim}
 
 \begin{Shaded}
@@ -5849,7 +6028,7 @@ The same thing can be done by considering the absolute value of the correlation 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.011
+## [1] 0.015
 \end{verbatim}
 
 \begin{Shaded}
@@ -5860,7 +6039,7 @@ The same thing can be done by considering the absolute value of the correlation 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.03
+## [1] 0.029
 \end{verbatim}
 
 If we approximate the distribution to a Gaussian, we could use \texttt{pnorm()} to get the probability for the Pearson coefficient to be equal or higher than the real coefficient.
@@ -5874,7 +6053,7 @@ If we approximate the distribution to a Gaussian, we could use \texttt{pnorm()} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.01983379
+## [1] 0.02126621
 \end{verbatim}
 
 \begin{Shaded}
@@ -5886,7 +6065,7 @@ If we approximate the distribution to a Gaussian, we could use \texttt{pnorm()} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.0155304
+## [1] 0.01725649
 \end{verbatim}
 
 \begin{Shaded}
@@ -5900,7 +6079,7 @@ If we approximate the distribution to a Gaussian, we could use \texttt{pnorm()} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.03536419
+## [1] 0.0385227
 \end{verbatim}
 
 Suppose now we detain new data \(x_1, y_1\) as follows, with a cluster in the upper part of the plot and a single data point in the lower left part.
@@ -5914,7 +6093,7 @@ Suppose now we detain new data \(x_1, y_1\) as follows, with a cluster in the up
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-163-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-170-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5952,7 +6131,7 @@ The correlation is 0.5859543 with p-value 0.0276672. Verify if the relationship 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-164-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-171-1.pdf}
 We could inspect the 95\% confidence interval of these permutations:
 
 \begin{Shaded}
@@ -5964,7 +6143,7 @@ We could inspect the 95\% confidence interval of these permutations:
 
 \begin{verbatim}
 ##           [,1]       [,2]
-## [1,] 0.5422184 -0.5449739
+## [1,] 0.5489494 -0.5495554
 \end{verbatim}
 
 A second approach considers \(x\) as the sequence of \(40\) numbers that go from the minimum to the maximum correlation value obtained in the previous permutation example. \(f\) is the normal distribution obtained considering its mean and standard deviation. The reproduced histogram is similar to the previous one.
@@ -5984,7 +6163,7 @@ A second approach considers \(x\) as the sequence of \(40\) numbers that go from
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-166-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-173-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5993,10 +6172,10 @@ A second approach considers \(x\) as the sequence of \(40\) numbers that go from
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.0633
+## [1] 0.064
 \end{verbatim}
 
-After \(20,000\) permutations we can see that our correlation coefficient can be get in the top 6.33\% of the correlation scores obtainable.
+After \(20,000\) permutations we can see that our correlation coefficient can be get in the top 6.4\% of the correlation scores obtainable.
 
 \hypertarget{two-mode-projections}{%
 \chapter{Two-mode projections}\label{two-mode-projections}}
@@ -6026,7 +6205,7 @@ In two-mode networks, rows and columns of the adjacency matrix represent differe
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-168-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-175-1.pdf}
 
 In order to get one-mode projections, matrix multiplication is necessary, by computing the transpose and ordering the terms of the multiplication according to the nodes we're focusing on.
 
@@ -6110,7 +6289,7 @@ Considering instead scientists and papers, we get a less complex network where \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-170-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-177-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6154,7 +6333,7 @@ The following example instead of inserting 1s and 0s contains weights, which rep
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-171-1}
+\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-178-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6167,7 +6346,7 @@ The following example instead of inserting 1s and 0s contains weights, which rep
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-172-1}
+\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-179-1}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6272,7 +6451,7 @@ The following example instead of inserting 1s and 0s contains weights, which rep
 
 Suppose we focus on the following network:
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-176-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-183-1.pdf}
 
 We can compute the census of the cliques inside this network. In particular, we can count per each node and per each \(k\)-clique how many cliques it belongs to.
 
@@ -6292,7 +6471,7 @@ We can compute the census of the cliques inside this network. In particular, we 
 
 Consider on the other side this network:
 
-\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-178-1}
+\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-185-1}
 
 Then the Hamming distance can be computed. Look at \(7\) and \(8\): they are both isolated and their Hamming distance amounts to 0. It basically represents how many edges nodes do not share with the other node. For instance, \(3\) has 3 links, while \(5\) has \(5\) links. They share a common link to \(8\) and they are linked, therefore their distance is \(1+3 = 4\).
 
@@ -6325,7 +6504,7 @@ Then the Hamming distance can be computed. Look at \(7\) and \(8\): they are bot
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-180-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-187-1.pdf}
 
 Same happens with the euclidean distance, which instead of absolute values considers the squared ones.
 
@@ -6358,7 +6537,7 @@ Same happens with the euclidean distance, which instead of absolute values consi
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-182-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-189-1.pdf}
 
 \hypertarget{dyads-and-triads}{%
 \chapter{Dyads and triads}\label{dyads-and-triads}}
@@ -6367,7 +6546,7 @@ Same happens with the euclidean distance, which instead of absolute values consi
 \section{Dyads}\label{dyads-1}}
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-183-1} \caption{Example of a directed network}\label{fig:unnamed-chunk-183}
+\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-190-1} \caption{Example of a directed network}\label{fig:unnamed-chunk-190}
 \end{figure}
 
 The \texttt{dyad.census()} function returns the number of mutual, asymmetric and null edges.
@@ -6438,7 +6617,7 @@ Also, igraph allows to compute the reciprocity but only with the second modality
 \hypertarget{triads-1}{%
 \section{Triads}\label{triads-1}}
 
-\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-188-1}
+\includegraphics[width=0.8\linewidth]{_main_files/figure-latex/unnamed-chunk-195-1}
 
 Let's change network and compute the triad census. The function \texttt{triad.census()} will return the number of triads per type according to the MAN nomenclature.
 
@@ -6475,6 +6654,6 @@ For instance, there are 3 null edges (\((6,1), (1,2), (2,6)\)) and 1 210 (\(4,5,
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-191-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-198-1.pdf}
 
 \end{document}

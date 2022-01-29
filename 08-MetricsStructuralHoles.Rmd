@@ -182,7 +182,7 @@ knitr::include_graphics("images/08-Metrics for structural holes/Untitled 2.png")
 knitr::include_graphics("images/08-Metrics for structural holes/Untitled 3.png")
 ```
     
-*Note: While igraph considers the probability $p_{ij} of $i$ to reach $j$ inside the entire network, the UCINET limits the constraint index probabilities to the ego's alters. For instance, suppose the ego is Carlo, which has Marco, Maria and Mirco as friends, all connected. In the UCINET network, $p_{Maria, Marco}$ will be $1/3$, while in igraph, supposing Maria has a friend named Clara, it would be $1/4$.* 
+*Note: While igraph considers the probability $p_{ij}$ of $i$ to reach $j$ inside the entire network, the UCINET limits the constraint index probabilities to the ego's alters. For instance, suppose the ego is Carlo, which has Marco, Maria and Mirco as friends, all connected. In the UCINET network, $p_{Maria, Marco}$ will be $1/3$, while in igraph, supposing Maria has a friend named Clara, it would be $1/4$.* 
 
 ### Florencian Families Example
 
